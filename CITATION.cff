@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+title: Singlepass WebAssembly Compiler
+authors:
+  - family-names: Depta
+    given-names: Dariusz
+    orcid: https://orcid.org/0009-0009-0117-6589
+version: 0.0.0
+date-released: 2025-09-12
+license: Apache-2.0, MIT
+url: https://github.com/EngosSoftware/wasmarin.git

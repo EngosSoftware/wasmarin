@@ -1,0 +1,27 @@
+[package]
+name = "wasmarin"
+version = "0.0.0"
+authors = ["Dariusz Depta <depta@engos.de>"]
+description = "Singlepass WebAssembly compiler"
+documentation = "https://docs.rs/wasmarin"
+repository = "https://github.com/EngosSoftware/wasmarin.git"
+keywords = ["singlepass", "webassembly", "compiler"]
+license = "MIT OR Apache-2.0"
+edition = "2021"
+exclude = [
+    "rustfmt.toml",
+    "Taskfile.yml",
+    ".github/",
+    ".gitignore",
+    "NOTES_AT_FUTURE_ME.md",
+    "CODE_OF_CONDUCT.md",
+    "CITATION.cff"
+]
+
+[lib]
+name = "wasmarin"
+path = "src/lib.rs"
+
+[[bin]]
+name = "wasmarin"
+path = "src/main.rs"
