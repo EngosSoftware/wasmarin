@@ -1,5 +1,5 @@
-use wasmarin::say_hello;
+use wasmarin::WasmarinResult;
 
-fn main() {
-  say_hello();
+fn main() -> WasmarinResult<()> {
+  Ok(())
 }
