@@ -11,9 +11,13 @@
 [apache-license-url]: https://github.com/EngosSoftware/wasmarin/blob/main/LICENSE
 [apache-notice-url]: https://github.com/EngosSoftware/wasmarin/blob/main/NOTICE
 
-**Singlepass WebAssembly Compiler**
+**WebAssembly Compiler for Smart Contracts**
 
 ## Overview
+
+This is a kind of "research" project.
+
+## Status
 
 **WORK IN PROGRESS**
 

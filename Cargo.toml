@@ -27,6 +27,7 @@ name = "wasmarin"
 path = "src/main.rs"
 
 [dependencies]
-clap = "4.5.47"
 wasmparser = "0.239.0"
+wasmprinter = "0.239.0"
+wasm-encoder = "0.239.0"
 wat = "1.239.0"

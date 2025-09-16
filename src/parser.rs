@@ -4,7 +4,7 @@ use std::ops::Range;
 use std::path::Path;
 use wasmparser::Payload;
 
-/// The parser.
+/// The WebAssembly parser.
 pub struct Parser {
   /// The version number found in the WASM file header.
   version: u16,
