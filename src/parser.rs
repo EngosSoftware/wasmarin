@@ -1,5 +1,4 @@
-use crate::features::Features;
-use crate::{WasmarinError, WasmarinResult};
+use crate::{Features, Model, WasmarinError, WasmarinResult};
 use std::ops::Range;
 use std::path::Path;
 use wasmparser::Payload;
@@ -53,7 +52,9 @@ impl Parser {
   }
 
   /// Parses WASM binary.
-  pub fn parse_wasm(&mut self, data: &[u8]) -> WasmarinResult<()> {
+  pub fn parse_wasm(&mut self, data: &[u8]) -> WasmarinResult<Model> {
+    let model = Model::default();
+
     // Validate the input data against requested WebAssembly features.
     let requested_features = Features::new();
     let mut validator = wasmparser::Validator::new_with_features(requested_features.into());
@@ -70,8 +71,9 @@ impl Parser {
         }
         Payload::TypeSection(reader) => {
           for item in reader {
-            let recursive_group = item.map_err(|e| WasmarinError::new(e.to_string()))?;
-            for sub_type in recursive_group.types() {
+            let rec_group = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            println!("RecGroup: {:?}", rec_group);
+            for sub_type in rec_group.types() {
               println!("SubType: {:?}", sub_type);
             }
           }
@@ -177,6 +179,6 @@ impl Parser {
         }
       }
     }
-    Ok(())
+    Ok(model)
   }
 }
