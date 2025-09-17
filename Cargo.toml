@@ -18,6 +18,10 @@ exclude = [
     "CITATION.cff"
 ]
 
+[features]
+default = []
+wasmtime = ["dep:wasmtime"]
+
 [lib]
 name = "wasmarin"
 path = "src/lib.rs"
@@ -29,6 +33,6 @@ path = "src/main.rs"
 [dependencies]
 wasmparser = "0.239.0"
 wasmprinter = "0.239.0"
-#wasmtime = "36.0.2"
+wasmtime = { version = "36.0.2", optional = true }
 wasm-encoder = "0.239.0"
 wat = "1.239.0"

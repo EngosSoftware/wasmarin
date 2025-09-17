@@ -1,4 +1,5 @@
-/*
+#![cfg(feature = "wasmtime")]
+
 use wasmtime::{Config, Engine, Instance, Module, Store};
 
 #[test]
@@ -94,4 +95,3 @@ fn c() {
 
   println!("{}", store.get_fuel().unwrap());
 }
-*/
