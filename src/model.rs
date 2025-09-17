@@ -9,7 +9,8 @@ pub struct CodeSectionEntry<'a> {
 #[derive(Default)]
 pub struct Model<'a> {
   pub rec_groups: Vec<wasmparser::RecGroup>,
-  pub memory_types: Vec<wasmparser::MemoryType>,
   pub function_indexes: Vec<u32>,
+  pub memory_types: Vec<wasmparser::MemoryType>,
+  pub exports: Vec<wasmparser::Export<'a>>,
   pub code_section_entries: Vec<CodeSectionEntry<'a>>,
 }

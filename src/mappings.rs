@@ -1,6 +1,16 @@
 use std::borrow::Cow;
 use wasmparser::types::TypeIdentifier;
 
+pub fn map_export_kind(external_kind: wasmparser::ExternalKind) -> wasm_encoder::ExportKind {
+  match external_kind {
+    wasmparser::ExternalKind::Func => wasm_encoder::ExportKind::Func,
+    wasmparser::ExternalKind::Table => wasm_encoder::ExportKind::Table,
+    wasmparser::ExternalKind::Memory => wasm_encoder::ExportKind::Memory,
+    wasmparser::ExternalKind::Global => wasm_encoder::ExportKind::Global,
+    wasmparser::ExternalKind::Tag => wasm_encoder::ExportKind::Tag,
+  }
+}
+
 pub fn map_memory_type(memory_type: wasmparser::MemoryType) -> wasm_encoder::MemoryType {
   wasm_encoder::MemoryType {
     minimum: memory_type.initial,

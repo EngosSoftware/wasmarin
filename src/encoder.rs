@@ -47,10 +47,10 @@ impl Encoder {
     }
 
     // Encode the export section.
-    // let mut exports = ExportSection::new();
-    // exports.export("f", ExportKind::Func, 0);
-    // module.section(&exports);
-    //
+    let mut export_section = wasm_encoder::ExportSection::new();
+    for export in model.exports {
+      export_section.export(export.name, map_export_kind(export.kind), export.index);
+    }
 
     // Encode the code section.
     let mut code_section = wasm_encoder::CodeSection::new();
@@ -63,7 +63,12 @@ impl Encoder {
       code_section.function(&f);
     }
 
-    module.section(&type_section).section(&function_section).section(&memory_section).section(&code_section);
+    module
+      .section(&type_section)
+      .section(&function_section)
+      .section(&memory_section)
+      .section(&export_section)
+      .section(&code_section);
 
     // Extract the encoded Wasm bytes for this module.
     module.finish()

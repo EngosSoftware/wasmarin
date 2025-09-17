@@ -30,6 +30,7 @@ fn simple_round_trip_should_work() {
   let model = parser.parse_wasm(&wasm_bytes_before).unwrap();
   let encoder = Encoder::new();
   let wasm_bytes_after = encoder.encode(model);
+
   let wat_after = wasmprinter::print_bytes(&wasm_bytes_after).unwrap();
   println!("{}", wat_after);
 }

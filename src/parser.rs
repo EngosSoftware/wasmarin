@@ -99,8 +99,11 @@ impl Parser {
         Payload::GlobalSection(_reader) => {
           // println!("GlobalSection: {}", reader.count());
         }
-        Payload::ExportSection(_reader) => {
-          // println!("ExportSection: {}", reader.count());
+        Payload::ExportSection(reader) => {
+          for item in reader {
+            let export = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            model.exports.push(export);
+          }
         }
         Payload::StartSection { func: _, range: _ } => {
           // println!("StartSection: func = {}, range = {:?}", func, range);
