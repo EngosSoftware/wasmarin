@@ -78,8 +78,11 @@ impl Parser {
         Payload::ImportSection(_reader) => {
           // println!("ImportSection: {}", reader.count());
         }
-        Payload::FunctionSection(_reader) => {
-          // println!("FunctionSection: {}", reader.count());
+        Payload::FunctionSection(reader) => {
+          for item in reader {
+            let function_index = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            model.function_indexes.push(function_index);
+          }
         }
         Payload::TableSection(_reader) => {
           // println!("TableSection: {}", reader.count());

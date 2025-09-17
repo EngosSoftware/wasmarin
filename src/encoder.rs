@@ -23,27 +23,36 @@ impl Encoder {
     //----------------------------------------------------------------------------------------------
     // Encode the type section.
     //----------------------------------------------------------------------------------------------
-    let mut types = wasm_encoder::TypeSection::new();
+    let mut type_section = wasm_encoder::TypeSection::new();
     for rec_group in &model.rec_groups {
       let sub_types: Vec<wasm_encoder::SubType> = rec_group.types().map(map_sub_type).collect();
       if rec_group.is_explicit_rec_group() {
-        types.ty().rec(sub_types);
+        type_section.ty().rec(sub_types);
       } else {
         for sub_type in &sub_types {
-          types.ty().subtype(sub_type);
+          type_section.ty().subtype(sub_type);
         }
       }
     }
-    module.section(&types);
+    module.section(&type_section);
 
     //----------------------------------------------------------------------------------------------
     // Encode the memory section.
     //----------------------------------------------------------------------------------------------
-    let mut memories = wasm_encoder::MemorySection::new();
+    let mut memory_section = wasm_encoder::MemorySection::new();
     for memory_type in &model.memory_types {
-      memories.memory(map_memory_type(memory_type));
+      memory_section.memory(map_memory_type(memory_type));
     }
-    module.section(&memories);
+    module.section(&memory_section);
+
+    //----------------------------------------------------------------------------------------------
+    // Encode the function section.
+    //----------------------------------------------------------------------------------------------
+    let mut function_section = wasm_encoder::FunctionSection::new();
+    for function_index in &model.function_indexes {
+      function_section.function(*function_index);
+    }
+    // module.section(&function_section);
 
     // // Encode the function section.
     // let mut functions = FunctionSection::new();
