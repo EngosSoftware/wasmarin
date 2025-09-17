@@ -87,9 +87,8 @@ impl Parser {
         Payload::MemorySection(reader) => {
           for item in reader {
             let memory_type = item.map_err(|e| WasmarinError::new(e.to_string()))?;
-            println!("{:?}", memory_type);
+            model.memory_types.push(memory_type);
           }
-          // println!("MemorySection: {}", reader.count());
         }
         Payload::TagSection(_reader) => {
           // println!("TagSection: {}", reader.count());

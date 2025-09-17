@@ -1,6 +1,7 @@
 mod encoder;
 mod errors;
 mod features;
+mod mappings;
 mod model;
 mod parser;
 
