@@ -67,6 +67,11 @@ tasks:
     cmds:
       - cmd: cargo +stable test
 
+  test-all:
+    desc: Runs tests in debug mode
+    cmds:
+      - cmd: cargo +stable test --all-features
+
   testn:
     desc: Runs tests in debug mode
     cmds:
