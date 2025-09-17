@@ -96,8 +96,12 @@ impl Parser {
         Payload::TagSection(_reader) => {
           // println!("TagSection: {}", reader.count());
         }
-        Payload::GlobalSection(_reader) => {
-          // println!("GlobalSection: {}", reader.count());
+        Payload::GlobalSection(reader) => {
+          for item in reader {
+            let global = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            println!("{:?}", global);
+            model.globals.push(global);
+          }
         }
         Payload::ExportSection(reader) => {
           for item in reader {

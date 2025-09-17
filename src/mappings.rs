@@ -1,6 +1,29 @@
 use std::borrow::Cow;
 use wasmparser::types::TypeIdentifier;
 
+pub fn map_global_type(global_type: wasmparser::GlobalType) -> wasm_encoder::GlobalType {
+  wasm_encoder::GlobalType {
+    val_type: map_val_type(global_type.content_type),
+    mutable: global_type.mutable,
+    shared: global_type.shared,
+  }
+}
+
+pub fn map_const_expr(const_expr: wasmparser::ConstExpr) -> wasm_encoder::ConstExpr {
+  let reader = const_expr.get_operators_reader();
+  let mut instructions = vec![];
+  for item in reader {
+    let operator = item.unwrap();
+    instructions.push(map_operator(operator));
+  }
+  if let Some(instruction) = instructions.last() {
+    if matches!(instruction, wasm_encoder::Instruction::End) {
+      instructions.remove(instructions.len() - 1);
+    }
+  }
+  wasm_encoder::ConstExpr::extended(instructions)
+}
+
 pub fn map_export_kind(external_kind: wasmparser::ExternalKind) -> wasm_encoder::ExportKind {
   match external_kind {
     wasmparser::ExternalKind::Func => wasm_encoder::ExportKind::Func,
@@ -21,22 +44,22 @@ pub fn map_memory_type(memory_type: wasmparser::MemoryType) -> wasm_encoder::Mem
   }
 }
 
-pub fn map_sub_type(sub_type: &wasmparser::SubType) -> wasm_encoder::SubType {
+pub fn map_sub_type(sub_type: wasmparser::SubType) -> wasm_encoder::SubType {
   wasm_encoder::SubType {
     is_final: sub_type.is_final,
     supertype_idx: sub_type.supertype_idx.map(map_packed_index),
-    composite_type: map_composite_type(&sub_type.composite_type),
+    composite_type: map_composite_type(sub_type.composite_type),
   }
 }
 
-pub fn map_composite_type(composite_type: &wasmparser::CompositeType) -> wasm_encoder::CompositeType {
+pub fn map_composite_type(composite_type: wasmparser::CompositeType) -> wasm_encoder::CompositeType {
   wasm_encoder::CompositeType {
-    inner: map_composite_inner_type(&composite_type.inner),
+    inner: map_composite_inner_type(composite_type.inner),
     shared: composite_type.shared,
   }
 }
 
-pub fn map_composite_inner_type(composite_inner_type: &wasmparser::CompositeInnerType) -> wasm_encoder::CompositeInnerType {
+pub fn map_composite_inner_type(composite_inner_type: wasmparser::CompositeInnerType) -> wasm_encoder::CompositeInnerType {
   match composite_inner_type {
     wasmparser::CompositeInnerType::Func(func_type) => wasm_encoder::CompositeInnerType::Func(map_func_type(func_type)),
     wasmparser::CompositeInnerType::Array(array_type) => wasm_encoder::CompositeInnerType::Array(map_array_type(array_type)),
@@ -47,12 +70,12 @@ pub fn map_composite_inner_type(composite_inner_type: &wasmparser::CompositeInne
 
 pub fn map_field_type(field_type: &wasmparser::FieldType) -> wasm_encoder::FieldType {
   wasm_encoder::FieldType {
-    element_type: map_storage_type(&field_type.element_type),
+    element_type: map_storage_type(field_type.element_type),
     mutable: field_type.mutable,
   }
 }
 
-pub fn map_storage_type(storage_type: &wasmparser::StorageType) -> wasm_encoder::StorageType {
+pub fn map_storage_type(storage_type: wasmparser::StorageType) -> wasm_encoder::StorageType {
   match storage_type {
     wasmparser::StorageType::I8 => wasm_encoder::StorageType::I8,
     wasmparser::StorageType::I16 => wasm_encoder::StorageType::I16,
@@ -60,24 +83,24 @@ pub fn map_storage_type(storage_type: &wasmparser::StorageType) -> wasm_encoder:
   }
 }
 
-pub fn map_func_type(func_type: &wasmparser::FuncType) -> wasm_encoder::FuncType {
-  wasm_encoder::FuncType::new(func_type.params().iter().map(map_val_type), func_type.results().iter().map(map_val_type))
+pub fn map_func_type(func_type: wasmparser::FuncType) -> wasm_encoder::FuncType {
+  wasm_encoder::FuncType::new(func_type.params().iter().cloned().map(map_val_type), func_type.results().iter().cloned().map(map_val_type))
 }
 
-pub fn map_array_type(array_type: &wasmparser::ArrayType) -> wasm_encoder::ArrayType {
+pub fn map_array_type(array_type: wasmparser::ArrayType) -> wasm_encoder::ArrayType {
   wasm_encoder::ArrayType(map_field_type(&array_type.0))
 }
 
-pub fn map_struct_type(struct_type: &wasmparser::StructType) -> wasm_encoder::StructType {
+pub fn map_struct_type(struct_type: wasmparser::StructType) -> wasm_encoder::StructType {
   let fields = struct_type.fields.iter().map(map_field_type).collect::<Vec<wasm_encoder::FieldType>>().into_boxed_slice();
   wasm_encoder::StructType { fields }
 }
 
-pub fn map_cont_type(cont_type: &wasmparser::ContType) -> wasm_encoder::ContType {
+pub fn map_cont_type(cont_type: wasmparser::ContType) -> wasm_encoder::ContType {
   wasm_encoder::ContType(map_packed_index(cont_type.0))
 }
 
-pub fn map_val_type(val_type: &wasmparser::ValType) -> wasm_encoder::ValType {
+pub fn map_val_type(val_type: wasmparser::ValType) -> wasm_encoder::ValType {
   match val_type {
     wasmparser::ValType::I32 => wasm_encoder::ValType::I32,
     wasmparser::ValType::I64 => wasm_encoder::ValType::I64,
@@ -88,24 +111,24 @@ pub fn map_val_type(val_type: &wasmparser::ValType) -> wasm_encoder::ValType {
   }
 }
 
-pub fn map_ref_type(ref_type: &wasmparser::RefType) -> wasm_encoder::RefType {
+pub fn map_ref_type(ref_type: wasmparser::RefType) -> wasm_encoder::RefType {
   wasm_encoder::RefType {
     nullable: ref_type.is_nullable(),
-    heap_type: map_heap_type(&ref_type.heap_type()),
+    heap_type: map_heap_type(ref_type.heap_type()),
   }
 }
 
-pub fn map_heap_type(heap_type: &wasmparser::HeapType) -> wasm_encoder::HeapType {
+pub fn map_heap_type(heap_type: wasmparser::HeapType) -> wasm_encoder::HeapType {
   match heap_type {
     wasmparser::HeapType::Abstract { shared, ty } => wasm_encoder::HeapType::Abstract {
-      shared: *shared,
+      shared,
       ty: map_abstract_heap_type(ty),
     },
-    wasmparser::HeapType::Concrete(unpacked_index) => wasm_encoder::HeapType::Concrete(map_unpacked_index(*unpacked_index)),
+    wasmparser::HeapType::Concrete(unpacked_index) => wasm_encoder::HeapType::Concrete(map_unpacked_index(unpacked_index)),
   }
 }
 
-pub fn map_abstract_heap_type(abstract_heap_type: &wasmparser::AbstractHeapType) -> wasm_encoder::AbstractHeapType {
+pub fn map_abstract_heap_type(abstract_heap_type: wasmparser::AbstractHeapType) -> wasm_encoder::AbstractHeapType {
   match abstract_heap_type {
     wasmparser::AbstractHeapType::Func => wasm_encoder::AbstractHeapType::Func,
     wasmparser::AbstractHeapType::Extern => wasm_encoder::AbstractHeapType::Extern,
@@ -139,7 +162,7 @@ pub fn map_unpacked_index(unpacked_index: wasmparser::UnpackedIndex) -> u32 {
 pub fn map_block_type(block_type: wasmparser::BlockType) -> wasm_encoder::BlockType {
   match block_type {
     wasmparser::BlockType::Empty => wasm_encoder::BlockType::Empty,
-    wasmparser::BlockType::Type(val_type) => wasm_encoder::BlockType::Result(map_val_type(&val_type)),
+    wasmparser::BlockType::Type(val_type) => wasm_encoder::BlockType::Result(map_val_type(val_type)),
     wasmparser::BlockType::FuncType(index) => wasm_encoder::BlockType::FunctionType(index),
   }
 }

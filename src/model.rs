@@ -11,6 +11,7 @@ pub struct Model<'a> {
   pub rec_groups: Vec<wasmparser::RecGroup>,
   pub function_indexes: Vec<u32>,
   pub memory_types: Vec<wasmparser::MemoryType>,
+  pub globals: Vec<wasmparser::Global<'a>>,
   pub exports: Vec<wasmparser::Export<'a>>,
   pub code_section_entries: Vec<CodeSectionEntry<'a>>,
 }

@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
 use crate::mappings::*;
+use crate::metering::*;
 use crate::Model;
 
 /// The WebAssembly encoder.
@@ -24,7 +25,7 @@ impl Encoder {
     // Encode the type section.
     let mut type_section = wasm_encoder::TypeSection::new();
     for rec_group in model.rec_groups {
-      let sub_types: Vec<wasm_encoder::SubType> = rec_group.types().map(map_sub_type).collect();
+      let sub_types: Vec<wasm_encoder::SubType> = rec_group.types().cloned().map(map_sub_type).collect();
       if rec_group.is_explicit_rec_group() {
         type_section.ty().rec(sub_types);
       } else {
@@ -46,6 +47,13 @@ impl Encoder {
       memory_section.memory(map_memory_type(memory_type));
     }
 
+    // Encode the global section.
+    let mut global_section = wasm_encoder::GlobalSection::new();
+    for global in model.globals {
+      global_section.global(map_global_type(global.ty), &map_const_expr(global.init_expr));
+      println!("{:?}", global_section);
+    }
+
     // Encode the export section.
     let mut export_section = wasm_encoder::ExportSection::new();
     for export in model.exports {
@@ -54,11 +62,16 @@ impl Encoder {
 
     // Encode the code section.
     let mut code_section = wasm_encoder::CodeSection::new();
-    for code_section_entry in model.code_section_entries {
-      let locals: Vec<(u32, wasm_encoder::ValType)> = code_section_entry.locals.iter().map(|(index, val_type)| (*index, map_val_type(val_type))).collect();
+    for mut code_section_entry in model.code_section_entries {
+      let locals: Vec<(u32, wasm_encoder::ValType)> = code_section_entry.locals.drain(..).map(|(index, val_type)| (index, map_val_type(val_type))).collect();
       let mut f = wasm_encoder::Function::new(locals);
+      let mut accumulated_cost = 0;
       for operator in code_section_entry.operators {
-        f.instruction(&map_operator(operator));
+        accumulated_cost += metering_cost(&operator);
+        for op in metering(operator) {
+          _ = accumulated_cost;
+          f.instruction(&map_operator(op));
+        }
       }
       code_section.function(&f);
     }
@@ -67,6 +80,7 @@ impl Encoder {
       .section(&type_section)
       .section(&function_section)
       .section(&memory_section)
+      .section(&global_section)
       .section(&export_section)
       .section(&code_section);
 
