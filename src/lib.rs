@@ -2,6 +2,7 @@ mod encoder;
 mod errors;
 mod features;
 mod mappings;
+mod metering;
 mod model;
 mod parser;
 
