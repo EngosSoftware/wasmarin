@@ -14,4 +14,5 @@ pub struct Model<'a> {
   pub globals: Vec<wasmparser::Global<'a>>,
   pub exports: Vec<wasmparser::Export<'a>>,
   pub code_section_entries: Vec<CodeSectionEntry<'a>>,
+  pub custom_sections: Vec<(String, Vec<u8>)>,
 }

@@ -67,7 +67,6 @@ impl Parser {
           self.version = num;
           self.encoding = encoding;
           self.header_range = range;
-          // println!("Version: num = {}, encoding = {:?}, range = {:?}", self.version, self.encoding, self.header_range)
         }
         Payload::TypeSection(reader) => {
           for item in reader {
@@ -76,7 +75,7 @@ impl Parser {
           }
         }
         Payload::ImportSection(_reader) => {
-          // println!("ImportSection: {}", reader.count());
+          unimplemented!("Payload::ImportSection");
         }
         Payload::FunctionSection(reader) => {
           for item in reader {
@@ -85,7 +84,7 @@ impl Parser {
           }
         }
         Payload::TableSection(_reader) => {
-          // println!("TableSection: {}", reader.count());
+          unimplemented!("Payload::TableSection");
         }
         Payload::MemorySection(reader) => {
           for item in reader {
@@ -94,12 +93,11 @@ impl Parser {
           }
         }
         Payload::TagSection(_reader) => {
-          // println!("TagSection: {}", reader.count());
+          unimplemented!("Payload::TagSection");
         }
         Payload::GlobalSection(reader) => {
           for item in reader {
             let global = item.map_err(|e| WasmarinError::new(e.to_string()))?;
-            println!("{:?}", global);
             model.globals.push(global);
           }
         }
@@ -110,16 +108,16 @@ impl Parser {
           }
         }
         Payload::StartSection { func: _, range: _ } => {
-          // println!("StartSection: func = {}, range = {:?}", func, range);
+          unimplemented!("Payload::StartSection");
         }
         Payload::ElementSection(_reader) => {
-          // println!("ElementSection: {}", reader.count());
+          unimplemented!("Payload::ElementSection");
         }
         Payload::DataCountSection { count: _, range: _ } => {
-          // println!("DataCountSection: count = {}, range = {:?}", count, range);
+          unimplemented!("Payload::DataCountSection");
         }
         Payload::DataSection(_reader) => {
-          // println!("DataSection: {}", reader.count());
+          unimplemented!("Payload::DataSection");
         }
         Payload::CodeSectionStart { count, range, size } => {
           // Here we know how many functions we'll be receiving as `CodeSectionEntry`,
@@ -142,40 +140,40 @@ impl Parser {
         }
         Payload::ModuleSection { parser: _, unchecked_range: _ } => {
           // Sections for WebAssembly components.
-          // println!("ModuleSection: unchecked range = {:?}", unchecked_range);
+          unimplemented!("Payload::ModuleSection");
         }
         Payload::InstanceSection(_reader) => {
-          // println!("InstanceSection: {}", reader.count());
+          unimplemented!("Payload::InstanceSection");
         }
         Payload::CoreTypeSection(_reader) => {
-          // println!("CoreTypeSection: {}", reader.count());
+          unimplemented!("Payload::CoreTypeSection");
         }
         Payload::ComponentSection { parser: _, unchecked_range: _ } => {
-          // println!("ComponentSection: unchecked range = {:?}", unchecked_range);
+          unimplemented!("Payload::ComponentSection");
         }
         Payload::ComponentInstanceSection(_reader) => {
-          // println!("ComponentInstanceSection: {}", reader.count());
+          unimplemented!("Payload::ComponentInstanceSection");
         }
         Payload::ComponentAliasSection(_reader) => {
-          // println!("ComponentAliasSection: {}", reader.count());
+          unimplemented!("Payload::ComponentAliasSection");
         }
         Payload::ComponentTypeSection(_reader) => {
-          // println!("ComponentTypeSection: {}", reader.count());
+          unimplemented!("Payload::ComponentTypeSection");
         }
         Payload::ComponentCanonicalSection(_reader) => {
-          // println!("ComponentCanonicalSection: {}", reader.count());
+          unimplemented!("Payload::ComponentCanonicalSection");
         }
         Payload::ComponentStartSection { start: _, range: _ } => {
-          // println!("ComponentStartSection: range = {:?}", range);
+          unimplemented!("Payload::ComponentStartSection");
         }
         Payload::ComponentImportSection(_reader) => {
-          // println!("ComponentCanonicalSection: {}", reader.count());
+          unimplemented!("Payload::ComponentImportSection");
         }
         Payload::ComponentExportSection(_reader) => {
-          // println!("CustomSection: {}", reader.count());
+          unimplemented!("Payload::ComponentExportSection");
         }
-        Payload::CustomSection(_reader) => {
-          // println!("CustomSection: {}", reader.name());
+        Payload::CustomSection(reader) => {
+          model.custom_sections.push((reader.name().to_string(), reader.data().to_vec()));
         }
         Payload::End(length) => {
           // Once we've reached the end of a parser we either resume at the parent parser

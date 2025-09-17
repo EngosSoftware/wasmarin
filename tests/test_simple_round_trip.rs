@@ -2,16 +2,6 @@ use wasmarin::{Encoder, Parser};
 
 #[test]
 fn simple_round_trip_should_work() {
-  let _expected = r#"(module
-  (type (;0;) (func (param i32) (result i32)))
-  (func (;0;) (type 0) (param i32) (result i32)
-    local.get 0
-    i32.const 1
-    i32.add)
-  (memory (;0;) 1)
-  (export "add_one" (func 0))
-)"#;
-
   let wat_str = r#"
     (module
       (memory 1)

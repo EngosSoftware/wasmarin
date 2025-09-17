@@ -3,6 +3,7 @@
 use crate::mappings::*;
 use crate::metering::*;
 use crate::Model;
+use std::borrow::Cow;
 
 /// The WebAssembly encoder.
 pub struct Encoder;
@@ -51,7 +52,6 @@ impl Encoder {
     let mut global_section = wasm_encoder::GlobalSection::new();
     for global in model.globals {
       global_section.global(map_global_type(global.ty), &map_const_expr(global.init_expr));
-      println!("{:?}", global_section);
     }
 
     // Encode the export section.
@@ -83,6 +83,15 @@ impl Encoder {
       .section(&global_section)
       .section(&export_section)
       .section(&code_section);
+
+    // Encode the custom sections.
+    for (name, data) in model.custom_sections {
+      let custom_section = wasm_encoder::CustomSection {
+        name: Cow::Owned(name),
+        data: Cow::Owned(data),
+      };
+      module.section(&custom_section);
+    }
 
     // Extract the encoded Wasm bytes for this module.
     module.finish()
