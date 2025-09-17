@@ -74,8 +74,11 @@ impl Parser {
             model.rec_groups.push(rec_group);
           }
         }
-        Payload::ImportSection(_reader) => {
-          unimplemented!("Payload::ImportSection");
+        Payload::ImportSection(reader) => {
+          for item in reader {
+            let import = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            model.imports.push(import);
+          }
         }
         Payload::FunctionSection(reader) => {
           for item in reader {
@@ -83,8 +86,11 @@ impl Parser {
             model.function_indexes.push(function_index);
           }
         }
-        Payload::TableSection(_reader) => {
-          unimplemented!("Payload::TableSection");
+        Payload::TableSection(reader) => {
+          for item in reader {
+            let table = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            model.tables.push(table);
+          }
         }
         Payload::MemorySection(reader) => {
           for item in reader {
@@ -110,14 +116,20 @@ impl Parser {
         Payload::StartSection { func: _, range: _ } => {
           unimplemented!("Payload::StartSection");
         }
-        Payload::ElementSection(_reader) => {
-          unimplemented!("Payload::ElementSection");
+        Payload::ElementSection(reader) => {
+          for item in reader {
+            let element = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            model.elements.push(element);
+          }
         }
         Payload::DataCountSection { count: _, range: _ } => {
           unimplemented!("Payload::DataCountSection");
         }
-        Payload::DataSection(_reader) => {
-          unimplemented!("Payload::DataSection");
+        Payload::DataSection(reader) => {
+          for item in reader {
+            let data = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            model.data.push(data);
+          }
         }
         Payload::CodeSectionStart { count, range, size } => {
           // Here we know how many functions we'll be receiving as `CodeSectionEntry`,
