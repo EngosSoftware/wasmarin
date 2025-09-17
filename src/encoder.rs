@@ -65,12 +65,12 @@ impl Encoder {
     // When metering is enabled, create global variables.
     if let Some(metering) = &mut self.metering {
       // Add global variable for remaining points.
-      metering.remaining_points_global_index = global_index;
+      metering.remaining_points = global_index;
       global_index += 1;
-      global_section.global(metering.remaining_points_type(), &metering.remaining_points_init());
+      global_section.global(metering.remaining_points_type(), &metering.remaining_points_initial_value());
       // Add global variable for exhausted points.
-      metering.burned_points_global_index = global_index;
-      global_section.global(metering.burned_points_type(), &metering.burned_points_init());
+      metering.points_exhausted = global_index;
+      global_section.global(metering.points_exhausted_type(), &metering.points_exhausted_initial_value());
     }
 
     // Encode the export section.
@@ -81,12 +81,8 @@ impl Encoder {
 
     // When metering is enabled, export global variables.
     if let Some(metering) = &mut self.metering {
-      export_section.export(
-        "wasmarin_metering_remaining_points",
-        wasm_encoder::ExportKind::Global,
-        metering.remaining_points_global_index,
-      );
-      export_section.export("wasmarin_metering_burned_points", wasm_encoder::ExportKind::Global, metering.burned_points_global_index);
+      export_section.export("wasmarin_metering_remaining_points", wasm_encoder::ExportKind::Global, metering.remaining_points);
+      export_section.export("wasmarin_metering_points_exhausted", wasm_encoder::ExportKind::Global, metering.points_exhausted);
     }
     // Encode the code section.
     let mut code_section = wasm_encoder::CodeSection::new();
@@ -98,8 +94,7 @@ impl Encoder {
         let mut accumulated_cost = 0;
         for operator in code_section_entry.operators {
           accumulated_cost += metering.cost(&operator);
-          for op in metering.feed(operator) {
-            _ = accumulated_cost;
+          for op in metering.feed(operator, accumulated_cost) {
             f.instruction(&map_operator(op));
           }
         }

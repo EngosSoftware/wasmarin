@@ -1,8 +1,8 @@
 /// A struct to keep track of metering properties.
 #[derive(Default)]
 pub struct Metering {
-  pub remaining_points_global_index: u32,
-  pub burned_points_global_index: u32,
+  pub remaining_points: u32,
+  pub points_exhausted: u32,
 }
 
 impl Metering {
@@ -14,32 +14,61 @@ impl Metering {
     }
   }
 
-  pub fn remaining_points_init(&self) -> wasm_encoder::ConstExpr {
+  pub fn remaining_points_initial_value(&self) -> wasm_encoder::ConstExpr {
     wasm_encoder::ConstExpr::i64_const(0)
   }
 
-  pub fn burned_points_type(&self) -> wasm_encoder::GlobalType {
+  pub fn points_exhausted_type(&self) -> wasm_encoder::GlobalType {
     wasm_encoder::GlobalType {
-      val_type: wasm_encoder::ValType::I64,
+      val_type: wasm_encoder::ValType::I32,
       mutable: true,
       shared: false,
     }
   }
 
-  pub fn burned_points_init(&self) -> wasm_encoder::ConstExpr {
+  pub fn points_exhausted_initial_value(&self) -> wasm_encoder::ConstExpr {
     wasm_encoder::ConstExpr::i64_const(0)
   }
 
-  pub fn feed<'a>(&self, operator: wasmparser::Operator<'a>) -> Vec<wasmparser::Operator<'a>> {
+  pub fn feed<'a>(&self, operator: wasmparser::Operator<'a>, accumulated_cost: i64) -> Vec<wasmparser::Operator<'a>> {
     if self.is_accounting_operator(&operator) {
-      vec![wasmparser::Operator::LocalTee { local_index: 0 }, operator]
+      vec![
+        // if unsigned(globals[remaining_points_index]) < unsigned(self.accumulated_cost) { throw(); }
+        wasmparser::Operator::GlobalGet {
+          global_index: self.remaining_points,
+        },
+        wasmparser::Operator::I64Const { value: accumulated_cost },
+        wasmparser::Operator::I64LtU,
+        wasmparser::Operator::If {
+          blockty: wasmparser::BlockType::Empty,
+        },
+        wasmparser::Operator::I32Const { value: 1 },
+        wasmparser::Operator::GlobalSet {
+          global_index: self.points_exhausted,
+        },
+        wasmparser::Operator::Unreachable,
+        wasmparser::Operator::End,
+        // globals[remaining_points_index] -= self.accumulated_cost;
+        wasmparser::Operator::GlobalGet {
+          global_index: self.remaining_points,
+        },
+        wasmparser::Operator::I64Const { value: accumulated_cost },
+        wasmparser::Operator::I64Sub,
+        wasmparser::Operator::GlobalSet {
+          global_index: self.remaining_points,
+        },
+        operator,
+      ]
     } else {
       vec![operator]
     }
   }
 
-  pub fn cost(&self, _operator: &wasmparser::Operator) -> u64 {
-    1
+  pub fn cost(&self, operator: &wasmparser::Operator) -> i64 {
+    match operator {
+      wasmparser::Operator::End => 0,
+      _ => 1,
+    }
   }
 
   /// Returns `true` iff the given operator is an `accounting` operator.
