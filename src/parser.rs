@@ -173,10 +173,10 @@ impl Parser {
         Payload::CustomSection(_reader) => {
           // println!("CustomSection: {}", reader.name());
         }
-        Payload::End(_length) => {
+        Payload::End(length) => {
           // Once we've reached the end of a parser we either resume at the parent parser
           // or the payload iterator is at its end, and we're done.
-          // println!("End at {}", length);
+          _ = length;
         }
         other => {
           // Most likely you'd return an error here, but if you want
