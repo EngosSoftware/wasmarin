@@ -53,7 +53,7 @@ impl Parser {
 
   /// Parses WASM binary.
   pub fn parse_wasm(&mut self, data: &[u8]) -> WasmarinResult<Model> {
-    let model = Model::default();
+    let mut model = Model::default();
 
     // Validate the input data against requested WebAssembly features.
     let requested_features = Features::new();
@@ -67,107 +67,104 @@ impl Parser {
           self.version = num;
           self.encoding = encoding;
           self.header_range = range;
-          println!("Version: num = {}, encoding = {:?}, range = {:?}", self.version, self.encoding, self.header_range)
+          // println!("Version: num = {}, encoding = {:?}, range = {:?}", self.version, self.encoding, self.header_range)
         }
         Payload::TypeSection(reader) => {
           for item in reader {
             let rec_group = item.map_err(|e| WasmarinError::new(e.to_string()))?;
-            println!("RecGroup: {:?}", rec_group);
-            for sub_type in rec_group.types() {
-              println!("SubType: {:?}", sub_type);
-            }
+            model.rec_groups.push(rec_group);
           }
         }
-        Payload::ImportSection(reader) => {
-          println!("ImportSection: {}", reader.count());
+        Payload::ImportSection(_reader) => {
+          // println!("ImportSection: {}", reader.count());
         }
-        Payload::FunctionSection(reader) => {
-          println!("FunctionSection: {}", reader.count());
+        Payload::FunctionSection(_reader) => {
+          // println!("FunctionSection: {}", reader.count());
         }
-        Payload::TableSection(reader) => {
-          println!("TableSection: {}", reader.count());
+        Payload::TableSection(_reader) => {
+          // println!("TableSection: {}", reader.count());
         }
         Payload::MemorySection(reader) => {
-          println!("MemorySection: {}", reader.count());
+          for item in reader {
+            let memory_type = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            println!("{:?}", memory_type);
+          }
+          // println!("MemorySection: {}", reader.count());
         }
-        Payload::TagSection(reader) => {
-          println!("TagSection: {}", reader.count());
+        Payload::TagSection(_reader) => {
+          // println!("TagSection: {}", reader.count());
         }
-        Payload::GlobalSection(reader) => {
-          println!("GlobalSection: {}", reader.count());
+        Payload::GlobalSection(_reader) => {
+          // println!("GlobalSection: {}", reader.count());
         }
-        Payload::ExportSection(reader) => {
-          println!("ExportSection: {}", reader.count());
+        Payload::ExportSection(_reader) => {
+          // println!("ExportSection: {}", reader.count());
         }
-        Payload::StartSection { func, range } => {
-          println!("StartSection: func = {}, range = {:?}", func, range);
+        Payload::StartSection { func: _, range: _ } => {
+          // println!("StartSection: func = {}, range = {:?}", func, range);
         }
-        Payload::ElementSection(reader) => {
-          println!("ElementSection: {}", reader.count());
+        Payload::ElementSection(_reader) => {
+          // println!("ElementSection: {}", reader.count());
         }
-        Payload::DataCountSection { count, range } => {
-          println!("DataCountSection: count = {}, range = {:?}", count, range);
+        Payload::DataCountSection { count: _, range: _ } => {
+          // println!("DataCountSection: count = {}, range = {:?}", count, range);
         }
-        Payload::DataSection(reader) => {
-          println!("DataSection: {}", reader.count());
+        Payload::DataSection(_reader) => {
+          // println!("DataSection: {}", reader.count());
         }
-        Payload::CodeSectionStart { count, range, size } => {
+        Payload::CodeSectionStart { count: _, range: _, size: _ } => {
           // Here we know how many functions we'll be receiving as
           // `CodeSectionEntry`, so we can prepare for that, and afterward
           // we can parse and handle each function individually.
-          println!("CodeSectionStart: count = {}, range = {:?}, size = {}", count, range, size);
+          // println!("CodeSectionStart: count = {}, range = {:?}, size = {}", count, range, size);
         }
         Payload::CodeSectionEntry(body) => {
           // Here we can iterate over `body` to parse the function and its locals.
-          let locals_reader = body.get_locals_reader().map_err(|e| WasmarinError::new(e.to_string()))?;
-          let mut operators_reader = body.get_operators_reader().map_err(|e| WasmarinError::new(e.to_string()))?;
-          let mut operator_count: usize = 0;
-          while let Ok(_operator) = operators_reader.read() {
-            operator_count += 1;
-          }
-          println!("CodeSectionEntry: locals count = {}, operators count = {}", locals_reader.get_count(), operator_count);
+          let _locals_reader = body.get_locals_reader().map_err(|e| WasmarinError::new(e.to_string()))?;
+          let _operators_reader = body.get_operators_reader().map_err(|e| WasmarinError::new(e.to_string()))?;
+          // println!("CodeSectionEntry: locals count = {}, operators count = {}", locals_reader.get_count(), operator_count);
         }
-        Payload::ModuleSection { parser: _, unchecked_range } => {
+        Payload::ModuleSection { parser: _, unchecked_range: _ } => {
           // Sections for WebAssembly components.
-          println!("ModuleSection: unchecked range = {:?}", unchecked_range);
+          // println!("ModuleSection: unchecked range = {:?}", unchecked_range);
         }
-        Payload::InstanceSection(reader) => {
-          println!("InstanceSection: {}", reader.count());
+        Payload::InstanceSection(_reader) => {
+          // println!("InstanceSection: {}", reader.count());
         }
-        Payload::CoreTypeSection(reader) => {
-          println!("CoreTypeSection: {}", reader.count());
+        Payload::CoreTypeSection(_reader) => {
+          // println!("CoreTypeSection: {}", reader.count());
         }
-        Payload::ComponentSection { parser: _, unchecked_range } => {
-          println!("ComponentSection: unchecked range = {:?}", unchecked_range);
+        Payload::ComponentSection { parser: _, unchecked_range: _ } => {
+          // println!("ComponentSection: unchecked range = {:?}", unchecked_range);
         }
-        Payload::ComponentInstanceSection(reader) => {
-          println!("ComponentInstanceSection: {}", reader.count());
+        Payload::ComponentInstanceSection(_reader) => {
+          // println!("ComponentInstanceSection: {}", reader.count());
         }
-        Payload::ComponentAliasSection(reader) => {
-          println!("ComponentAliasSection: {}", reader.count());
+        Payload::ComponentAliasSection(_reader) => {
+          // println!("ComponentAliasSection: {}", reader.count());
         }
-        Payload::ComponentTypeSection(reader) => {
-          println!("ComponentTypeSection: {}", reader.count());
+        Payload::ComponentTypeSection(_reader) => {
+          // println!("ComponentTypeSection: {}", reader.count());
         }
-        Payload::ComponentCanonicalSection(reader) => {
-          println!("ComponentCanonicalSection: {}", reader.count());
+        Payload::ComponentCanonicalSection(_reader) => {
+          // println!("ComponentCanonicalSection: {}", reader.count());
         }
-        Payload::ComponentStartSection { start: _, range } => {
-          println!("ComponentStartSection: range = {:?}", range);
+        Payload::ComponentStartSection { start: _, range: _ } => {
+          // println!("ComponentStartSection: range = {:?}", range);
         }
-        Payload::ComponentImportSection(reader) => {
-          println!("ComponentCanonicalSection: {}", reader.count());
+        Payload::ComponentImportSection(_reader) => {
+          // println!("ComponentCanonicalSection: {}", reader.count());
         }
-        Payload::ComponentExportSection(reader) => {
-          println!("CustomSection: {}", reader.count());
+        Payload::ComponentExportSection(_reader) => {
+          // println!("CustomSection: {}", reader.count());
         }
-        Payload::CustomSection(reader) => {
-          println!("CustomSection: {}", reader.name());
+        Payload::CustomSection(_reader) => {
+          // println!("CustomSection: {}", reader.name());
         }
-        Payload::End(length) => {
+        Payload::End(_length) => {
           // Once we've reached the end of a parser we either resume at the parent parser
           // or the payload iterator is at its end, and we're done.
-          println!("End at {}", length);
+          // println!("End at {}", length);
         }
         other => {
           // Most likely you'd return an error here, but if you want
