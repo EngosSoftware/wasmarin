@@ -1,4 +1,4 @@
-use crate::{Features, Model, WasmarinError, WasmarinResult};
+use crate::{CodeSectionEntry, Features, Model, WasmarinError, WasmarinResult};
 use std::ops::Range;
 use std::path::Path;
 use wasmparser::Payload;
@@ -52,7 +52,7 @@ impl Parser {
   }
 
   /// Parses WASM binary.
-  pub fn parse_wasm(&mut self, data: &[u8]) -> WasmarinResult<Model> {
+  pub fn parse_wasm<'a>(&mut self, data: &'a [u8]) -> WasmarinResult<Model<'a>> {
     let mut model = Model::default();
 
     // Validate the input data against requested WebAssembly features.
@@ -114,17 +114,24 @@ impl Parser {
         Payload::DataSection(_reader) => {
           // println!("DataSection: {}", reader.count());
         }
-        Payload::CodeSectionStart { count: _, range: _, size: _ } => {
-          // Here we know how many functions we'll be receiving as
-          // `CodeSectionEntry`, so we can prepare for that, and afterward
-          // we can parse and handle each function individually.
-          // println!("CodeSectionStart: count = {}, range = {:?}, size = {}", count, range, size);
+        Payload::CodeSectionStart { count, range, size } => {
+          // Here we know how many functions we'll be receiving as `CodeSectionEntry`,
+          // so we can prepare for that, and afterward we can parse and handle each function individually.
+          _ = (count, range, size);
         }
         Payload::CodeSectionEntry(body) => {
-          // Here we can iterate over `body` to parse the function and its locals.
-          let _locals_reader = body.get_locals_reader().map_err(|e| WasmarinError::new(e.to_string()))?;
-          let _operators_reader = body.get_operators_reader().map_err(|e| WasmarinError::new(e.to_string()))?;
-          // println!("CodeSectionEntry: locals count = {}, operators count = {}", locals_reader.get_count(), operator_count);
+          let mut code_section_entry = CodeSectionEntry::default();
+          let locals_reader = body.get_locals_reader().map_err(|e| WasmarinError::new(e.to_string()))?;
+          for item in locals_reader {
+            let (local_index, local_val_type) = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            code_section_entry.locals.push((local_index, local_val_type));
+          }
+          let operators_reader = body.get_operators_reader().map_err(|e| WasmarinError::new(e.to_string()))?;
+          for item in operators_reader {
+            let operator = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            code_section_entry.operators.push(operator);
+          }
+          model.code_section_entries.push(code_section_entry);
         }
         Payload::ModuleSection { parser: _, unchecked_range: _ } => {
           // Sections for WebAssembly components.
