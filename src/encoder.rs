@@ -7,8 +7,8 @@ use std::borrow::Cow;
 
 /// The WebAssembly encoder.
 pub struct Encoder {
-  /// Enables metering.
-  metering: bool,
+  /// Metering properties.
+  metering: Option<Metering>,
 }
 
 impl Default for Encoder {
@@ -20,10 +20,12 @@ impl Default for Encoder {
 impl Encoder {
   /// Creates a new instance of the [Encoder].
   pub fn new(metering: bool) -> Self {
-    Self { metering }
+    Self {
+      metering: if metering { Some(Metering::default()) } else { None },
+    }
   }
 
-  pub fn encode(&self, model: Model) -> Vec<u8> {
+  pub fn encode(&mut self, model: Model) -> Vec<u8> {
     // Prepare the WebAssembly module.
     let mut module = wasm_encoder::Module::new();
 
@@ -54,8 +56,21 @@ impl Encoder {
 
     // Encode the global section.
     let mut global_section = wasm_encoder::GlobalSection::new();
+    let mut global_index = 0;
     for global in model.globals {
       global_section.global(map_global_type(global.ty), &map_const_expr(global.init_expr));
+      global_index += 1;
+    }
+
+    // When metering is enabled, create global variables.
+    if let Some(metering) = &mut self.metering {
+      // Add global variable for remaining points.
+      metering.remaining_points_global_index = global_index;
+      global_index += 1;
+      global_section.global(metering.remaining_points_type(), &metering.remaining_points_init());
+      // Add global variable for exhausted points.
+      metering.burned_points_global_index = global_index;
+      global_section.global(metering.burned_points_type(), &metering.burned_points_init());
     }
 
     // Encode the export section.
@@ -64,23 +79,32 @@ impl Encoder {
       export_section.export(export.name, map_export_kind(export.kind), export.index);
     }
 
+    // When metering is enabled, export global variables.
+    if let Some(metering) = &mut self.metering {
+      export_section.export(
+        "wasmarin_metering_remaining_points",
+        wasm_encoder::ExportKind::Global,
+        metering.remaining_points_global_index,
+      );
+      export_section.export("wasmarin_metering_burned_points", wasm_encoder::ExportKind::Global, metering.burned_points_global_index);
+    }
     // Encode the code section.
     let mut code_section = wasm_encoder::CodeSection::new();
     for mut code_section_entry in model.code_section_entries {
       let locals: Vec<(u32, wasm_encoder::ValType)> = code_section_entry.locals.drain(..).map(|(index, val_type)| (index, map_val_type(val_type))).collect();
       let mut f = wasm_encoder::Function::new(locals);
-      if self.metering {
-        // When metering is ENABLED, extend operators with metering functionality.
+      if let Some(metering) = &self.metering {
+        // When metering is enabled, extend operators with metering functionality.
         let mut accumulated_cost = 0;
         for operator in code_section_entry.operators {
-          accumulated_cost += metering_cost(&operator);
-          for op in metering(operator) {
+          accumulated_cost += metering.cost(&operator);
+          for op in metering.feed(operator) {
             _ = accumulated_cost;
             f.instruction(&map_operator(op));
           }
         }
       } else {
-        // When metering is NOT ENABLED, just map operators into instructions.
+        // When metering is disabled, just map operators into instructions.
         for operator in code_section_entry.operators {
           f.instruction(&map_operator(operator));
         }
