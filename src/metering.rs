@@ -2,7 +2,6 @@
 #[derive(Default)]
 pub struct Metering {
   pub remaining_points: u32,
-  pub points_exhausted: u32,
 }
 
 impl Metering {
@@ -18,37 +17,9 @@ impl Metering {
     wasm_encoder::ConstExpr::i64_const(0)
   }
 
-  pub fn points_exhausted_type(&self) -> wasm_encoder::GlobalType {
-    wasm_encoder::GlobalType {
-      val_type: wasm_encoder::ValType::I32,
-      mutable: true,
-      shared: false,
-    }
-  }
-
-  pub fn points_exhausted_initial_value(&self) -> wasm_encoder::ConstExpr {
-    wasm_encoder::ConstExpr::i64_const(0)
-  }
-
   pub fn feed<'a>(&self, operator: wasmparser::Operator<'a>, accumulated_cost: i64) -> Vec<wasmparser::Operator<'a>> {
     if self.is_accounting_operator(&operator) {
       vec![
-        // if unsigned(globals[remaining_points_index]) < unsigned(self.accumulated_cost) { throw(); }
-        wasmparser::Operator::GlobalGet {
-          global_index: self.remaining_points,
-        },
-        wasmparser::Operator::I64Const { value: accumulated_cost },
-        wasmparser::Operator::I64LtU,
-        wasmparser::Operator::If {
-          blockty: wasmparser::BlockType::Empty,
-        },
-        wasmparser::Operator::I32Const { value: 1 },
-        wasmparser::Operator::GlobalSet {
-          global_index: self.points_exhausted,
-        },
-        wasmparser::Operator::Unreachable,
-        wasmparser::Operator::End,
-        // globals[remaining_points_index] -= self.accumulated_cost;
         wasmparser::Operator::GlobalGet {
           global_index: self.remaining_points,
         },
@@ -57,6 +28,16 @@ impl Metering {
         wasmparser::Operator::GlobalSet {
           global_index: self.remaining_points,
         },
+        wasmparser::Operator::GlobalGet {
+          global_index: self.remaining_points,
+        },
+        wasmparser::Operator::I64Const { value: 0 },
+        wasmparser::Operator::I64LtS,
+        wasmparser::Operator::If {
+          blockty: wasmparser::BlockType::Empty,
+        },
+        wasmparser::Operator::Unreachable,
+        wasmparser::Operator::End,
         operator,
       ]
     } else {

@@ -66,11 +66,7 @@ impl Encoder {
     if let Some(metering) = &mut self.metering {
       // Add global variable for remaining points.
       metering.remaining_points = global_index;
-      global_index += 1;
       global_section.global(metering.remaining_points_type(), &metering.remaining_points_initial_value());
-      // Add global variable for exhausted points.
-      metering.points_exhausted = global_index;
-      global_section.global(metering.points_exhausted_type(), &metering.points_exhausted_initial_value());
     }
 
     // Encode the export section.
@@ -82,7 +78,6 @@ impl Encoder {
     // When metering is enabled, export global variables.
     if let Some(metering) = &mut self.metering {
       export_section.export("wasmarin_metering_remaining_points", wasm_encoder::ExportKind::Global, metering.remaining_points);
-      export_section.export("wasmarin_metering_points_exhausted", wasm_encoder::ExportKind::Global, metering.points_exhausted);
     }
     // Encode the code section.
     let mut code_section = wasm_encoder::CodeSection::new();
