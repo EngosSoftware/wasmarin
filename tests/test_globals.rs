@@ -3,7 +3,7 @@
 use wasmtime::{Engine, Instance, Module, Store, Val};
 
 #[test]
-fn a() {
+fn accessing_global_variables_should_work() {
   let wat_str = r#"
     (module
       (global (mut i32) (i32.const 2))
@@ -17,27 +17,34 @@ fn a() {
       (export "offset" (global 0))
     )
   "#;
-  let wasm_binary = wat::parse_str(wat_str).unwrap();
+  let wasm_bytes = wat::parse_str(wat_str).unwrap();
 
-  // compile module
+  // Compile the WASM module.
   let engine = Engine::default();
-  let module = Module::from_binary(&engine, &wasm_binary).unwrap();
+  let module = Module::from_binary(&engine, &wasm_bytes).unwrap();
 
-  // instantiate
+  // Instantiate the module.
   let mut store = Store::new(&engine, ());
   let instance = Instance::new(&mut store, &module, &[]).unwrap();
 
-  // get the function handle
+  // Get the 'add_one' function.
   let add_one = instance.get_typed_func::<i32, i32>(&mut store, "add_one").unwrap();
+
+  // Execute 'add_one' function.
   let output = add_one.call(&mut store, 2).unwrap();
 
-  // the global 'offset' variable is set to 2 so the result should be 4
+  // The global 'offset' variable is initially set to 2, so the result should be 2 + 2 = 4.
   assert_eq!(4, output);
 
+  // Get the 'offset' global variable.
   let offset = instance.get_global(&mut store, "offset").unwrap();
+
+  // Change the offset value.
   offset.set(&mut store, Val::I32(4)).unwrap();
+
+  // Execute 'add_one' function.
   let output = add_one.call(&mut store, 1).unwrap();
 
-  // the global 'offset' variable is set to 4 so the result should be 6
+  // Now the global 'offset' variable is set to 4, so the result should be 1 + 4 = 5.
   assert_eq!(5, output);
 }
