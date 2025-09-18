@@ -1,35 +1,78 @@
-/// A struct to keep track of metering properties.
+use crate::mappings::map_operator;
+
+/// Exported name of the global variable for keeping track of remaining points.
+const EXPORT_NAME_REMAINING_POINTS: &str = "wasmarin_metering_remaining_points";
+
+/// Metering properties.
 #[derive(Default)]
 pub struct Metering {
-  pub remaining_points: u32,
+  /// Enables metering functionality.
+  enabled: bool,
+  /// Index of a global variable storing remaining points.
+  remaining_points_global_index: u32,
 }
 
 impl Metering {
-  pub fn remaining_points_type(&self) -> wasm_encoder::GlobalType {
-    wasm_encoder::GlobalType {
-      val_type: wasm_encoder::ValType::I64,
-      mutable: true,
-      shared: false,
+  /// Creates a new [Metering] instance.
+  pub fn new(enabled: bool) -> Self {
+    Self {
+      enabled,
+      remaining_points_global_index: 0,
     }
   }
 
-  pub fn remaining_points_initial_value(&self) -> wasm_encoder::ConstExpr {
-    wasm_encoder::ConstExpr::i64_const(0)
+  /// Adds a global variable to keep track of remaining points.
+  pub fn update_global_section(&mut self, global_section: &mut wasm_encoder::GlobalSection) {
+    if self.enabled {
+      self.remaining_points_global_index = global_section.len();
+      global_section.global(
+        wasm_encoder::GlobalType {
+          val_type: wasm_encoder::ValType::I64,
+          mutable: true,
+          shared: false,
+        },
+        &wasm_encoder::ConstExpr::i64_const(0),
+      );
+    }
   }
 
-  pub fn feed<'a>(&self, operator: wasmparser::Operator<'a>, accumulated_cost: i64) -> Vec<wasmparser::Operator<'a>> {
+  /// Adds and export name for the global variable that keeps track of remaining points.
+  pub fn update_export_section(&mut self, export_section: &mut wasm_encoder::ExportSection) {
+    if self.enabled {
+      export_section.export(EXPORT_NAME_REMAINING_POINTS, wasm_encoder::ExportKind::Global, self.remaining_points_global_index);
+    }
+  }
+
+  /// Updates function's operator with metering code.
+  pub fn update_function(&mut self, function: &mut wasm_encoder::Function, operators: Vec<wasmparser::Operator>) {
+    if self.enabled {
+      let mut accumulated_cost = 0;
+      for operator in operators {
+        accumulated_cost += self.cost(&operator);
+        for op in self.feed(operator, accumulated_cost) {
+          function.instruction(&map_operator(op));
+        }
+      }
+    } else {
+      for operator in operators {
+        function.instruction(&map_operator(operator));
+      }
+    }
+  }
+
+  fn feed<'a>(&self, operator: wasmparser::Operator<'a>, accumulated_cost: i64) -> Vec<wasmparser::Operator<'a>> {
     if self.is_accounting_operator(&operator) {
       vec![
         wasmparser::Operator::GlobalGet {
-          global_index: self.remaining_points,
+          global_index: self.remaining_points_global_index,
         },
         wasmparser::Operator::I64Const { value: accumulated_cost },
         wasmparser::Operator::I64Sub,
         wasmparser::Operator::GlobalSet {
-          global_index: self.remaining_points,
+          global_index: self.remaining_points_global_index,
         },
         wasmparser::Operator::GlobalGet {
-          global_index: self.remaining_points,
+          global_index: self.remaining_points_global_index,
         },
         wasmparser::Operator::I64Const { value: 0 },
         wasmparser::Operator::I64LtS,
@@ -45,7 +88,7 @@ impl Metering {
     }
   }
 
-  pub fn cost(&self, operator: &wasmparser::Operator) -> i64 {
+  fn cost(&self, operator: &wasmparser::Operator) -> i64 {
     match operator {
       wasmparser::Operator::End => 0,
       _ => 1,
