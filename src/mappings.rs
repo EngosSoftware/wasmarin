@@ -847,20 +847,21 @@ fn make_sure_all_operators_are_covered() {
   let mut operators = std::collections::BTreeSet::<String>::new();
   let mut collect_operators = false;
   for line in content.lines().map(|line| line.trim()).filter(|line| !line.is_empty()) {
-    // Iterate all lines until `map_operator` function definition, then start to collect operator names.
+    // Iterate over all lines until `map_operator` function definition is encountered,
+    // and then start to collect operator names.
     if line.starts_with("pub fn map_operator") {
       collect_operators = true;
     }
-    // Finish collecting operator name before the function definition ends.
+    // Finish collecting operator names before the end of the `map_operator` function.
     if line == "}" {
       collect_operators = false;
     }
-    // Collect operator name.
+    // Collect operator names if inside `map_operator` function.
     if collect_operators && line.starts_with("wasmparser::Operator::") {
-      let operator = line.split_ascii_whitespace().next().unwrap()[22..].to_string();
+      let operator_name = line.split_ascii_whitespace().next().unwrap()[22..].to_string();
       // Make sure the same name is used for operator and instruction.
-      assert!(line.contains(&format!("wasm_encoder::Instruction::{}", operator)));
-      operators.insert(operator);
+      assert!(line.contains(&format!("wasm_encoder::Instruction::{}", operator_name)));
+      operators.insert(operator_name);
     }
   }
   // Now the `operators` contains all operator names handled in the function `map_operator`.
@@ -877,20 +878,20 @@ fn make_sure_all_operators_are_covered() {
   // Now the `enumerated_operators` contains all operator names defined in `wasmparser::Operator` enumeration.
 
   // Let's check, if all operators from the `wasmparser::Operator` enumeration are handled in the function `map_operator`.
-  for enumerated_operator in &enumerated_operators {
+  for enumerated_operator_name in &enumerated_operators {
     assert!(
-      operators.contains(enumerated_operator),
+      operators.contains(enumerated_operator_name),
       "Operator '{}' is not handled in `map_operator` function",
-      enumerated_operator
+      enumerated_operator_name
     );
   }
 
   // Let's check, if all operators handled in the function `map_operator` are defined in `wasmparser::Operator` enumeration.
-  for operator in &operators {
+  for operator_name in &operators {
     assert!(
-      enumerated_operators.contains(operator),
+      enumerated_operators.contains(operator_name),
       "Operator '{}' is not defined in `wasmparser::Operator` enumeration",
-      operator
+      operator_name
     );
   }
 }
