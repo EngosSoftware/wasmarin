@@ -202,14 +202,6 @@ pub fn map_block_type(block_type: wasmparser::BlockType) -> wasm_encoder::BlockT
   }
 }
 
-pub fn map_ieee32(ieee32: wasmparser::Ieee32) -> wasm_encoder::Ieee32 {
-  wasm_encoder::Ieee32::new(ieee32.bits())
-}
-
-pub fn map_ieee64(ieee64: wasmparser::Ieee64) -> wasm_encoder::Ieee64 {
-  wasm_encoder::Ieee64::new(ieee64.bits())
-}
-
 pub fn map_mem_arg(mem_arg: wasmparser::MemArg) -> wasm_encoder::MemArg {
   wasm_encoder::MemArg {
     offset: mem_arg.offset,
@@ -268,8 +260,8 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::MemoryGrow { mem } => wasm_encoder::Instruction::MemoryGrow(mem),
     wasmparser::Operator::I32Const { value } => wasm_encoder::Instruction::I32Const(value),
     wasmparser::Operator::I64Const { value } => wasm_encoder::Instruction::I64Const(value),
-    wasmparser::Operator::F32Const { value } => wasm_encoder::Instruction::F32Const(map_ieee32(value)),
-    wasmparser::Operator::F64Const { value } => wasm_encoder::Instruction::F64Const(map_ieee64(value)),
+    wasmparser::Operator::F32Const { value } => wasm_encoder::Instruction::F32Const(wasm_encoder::Ieee32::new(value.bits())),
+    wasmparser::Operator::F64Const { value } => wasm_encoder::Instruction::F64Const(wasm_encoder::Ieee64::new(value.bits())),
     wasmparser::Operator::I32Eqz => wasm_encoder::Instruction::I32Eqz,
     wasmparser::Operator::I32Eq => wasm_encoder::Instruction::I32Eq,
     wasmparser::Operator::I32Ne => wasm_encoder::Instruction::I32Ne,
