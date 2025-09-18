@@ -2,6 +2,7 @@ use crate::mappings::*;
 use crate::metering::*;
 use crate::Model;
 use std::borrow::Cow;
+use wasmparser::TableInit;
 
 /// The WebAssembly encoder.
 pub struct Encoder {
@@ -50,6 +51,19 @@ impl Encoder {
     let mut function_section = wasm_encoder::FunctionSection::new();
     for function_index in model.function_indexes {
       function_section.function(function_index);
+    }
+
+    // Encode the table section.
+    let mut table_section = wasm_encoder::TableSection::new();
+    for table in model.tables {
+      match table.init {
+        TableInit::RefNull => {
+          table_section.table(map_table_type(table.ty));
+        }
+        TableInit::Expr(const_expr) => {
+          table_section.table_with_init(map_table_type(table.ty), &map_const_expr(const_expr));
+        }
+      }
     }
 
     // Encode the memory section.
@@ -110,6 +124,7 @@ impl Encoder {
       .section(&type_section)
       .section(&import_section)
       .section(&function_section)
+      .section(&table_section)
       .section(&memory_section)
       .section(&global_section)
       .section(&export_section)
