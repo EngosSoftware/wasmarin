@@ -1,6 +1,19 @@
 use std::borrow::Cow;
 use wasmparser::types::TypeIdentifier;
 
+pub fn map_catches(mut catches: Vec<wasmparser::Catch>) -> Vec<wasm_encoder::Catch> {
+  catches.drain(..).map(map_catch).collect()
+}
+
+pub fn map_catch(catch: wasmparser::Catch) -> wasm_encoder::Catch {
+  match catch {
+    wasmparser::Catch::One { tag, label } => wasm_encoder::Catch::One { tag, label },
+    wasmparser::Catch::OneRef { tag, label } => wasm_encoder::Catch::OneRef { tag, label },
+    wasmparser::Catch::All { label } => wasm_encoder::Catch::All { label },
+    wasmparser::Catch::AllRef { label } => wasm_encoder::Catch::AllRef { label },
+  }
+}
+
 pub fn map_ordering(ordering: wasmparser::Ordering) -> wasm_encoder::Ordering {
   match ordering {
     wasmparser::Ordering::AcqRel => wasm_encoder::Ordering::AcqRel,
@@ -819,16 +832,14 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::I16x8RelaxedQ15mulrS => wasm_encoder::Instruction::I16x8RelaxedQ15mulrS,
     wasmparser::Operator::I16x8RelaxedDotI8x16I7x16S => wasm_encoder::Instruction::I16x8RelaxedDotI8x16I7x16S,
     wasmparser::Operator::I32x4RelaxedDotI8x16I7x16AddS => wasm_encoder::Instruction::I32x4RelaxedDotI8x16I7x16AddS,
-    /*
-    wasmparser::Operator::TryTable { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::Throw { .. } => wasm_encoder::Instruction::
-    */
+    wasmparser::Operator::TryTable { try_table } => wasm_encoder::Instruction::TryTable(map_block_type(try_table.ty), Cow::Owned(map_catches(try_table.catches))),
+    wasmparser::Operator::Throw { tag_index } => wasm_encoder::Instruction::Throw(tag_index),
     wasmparser::Operator::ThrowRef => wasm_encoder::Instruction::ThrowRef,
     /*
-    wasmparser::Operator::Try { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::Catch { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::Rethrow { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::Delegate { .. } => wasm_encoder::Instruction::
+    wasmparser::Operator::Try      { } => wasm_encoder::Instruction::Try
+    wasmparser::Operator::Catch    { } => wasm_encoder::Instruction::Catch
+    wasmparser::Operator::Rethrow  { } => wasm_encoder::Instruction::Rethrow
+    wasmparser::Operator::Delegate { } => wasm_encoder::Instruction::Delegate
     */
     wasmparser::Operator::CatchAll => wasm_encoder::Instruction::CatchAll,
 
