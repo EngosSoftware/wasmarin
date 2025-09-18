@@ -1061,8 +1061,6 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::I64Sub128 => wasm_encoder::Instruction::I64Sub128,
     wasmparser::Operator::I64MulWideS => wasm_encoder::Instruction::I64MulWideS,
     wasmparser::Operator::I64MulWideU => wasm_encoder::Instruction::I64MulWideU,
-    other => {
-      todo!("{:?}", other)
-    }
+    other => unimplemented!("{:?}", other),
   }
 }
