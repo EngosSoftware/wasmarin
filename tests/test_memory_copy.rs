@@ -1,3 +1,5 @@
+#![cfg(feature = "wasmtime")]
+
 #[test]
 fn memory_copy_should_work() {
   let wat_str = r#"

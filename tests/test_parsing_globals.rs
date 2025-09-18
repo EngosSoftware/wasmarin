@@ -23,3 +23,16 @@ fn parsing_globals_should_work() {
   let wat = wasmprinter::print_bytes(&wasm_bytes).unwrap();
   println!("{}", wat);
 }
+
+#[test]
+fn a() {
+  let word = 32;
+  for i in 0..=100 {
+    print!("{:3} ", i);
+  }
+  println!();
+  for i in 0..=100 {
+    let coefficient = (i + word - 1) / word;
+    print!("{:3} ", coefficient);
+  }
+}
