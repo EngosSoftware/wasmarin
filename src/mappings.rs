@@ -402,7 +402,6 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::StructNewDefault { struct_type_index } => wasm_encoder::Instruction::StructNewDefault(struct_type_index),
     wasmparser::Operator::StructGet { struct_type_index, field_index } => wasm_encoder::Instruction::StructGet { struct_type_index, field_index },
     wasmparser::Operator::StructGetS { struct_type_index, field_index } => wasm_encoder::Instruction::StructGetS { struct_type_index, field_index },
-
     wasmparser::Operator::StructGetU { struct_type_index, field_index } => wasm_encoder::Instruction::StructGetU { struct_type_index, field_index },
     wasmparser::Operator::StructSet { struct_type_index, field_index } => wasm_encoder::Instruction::StructSet { struct_type_index, field_index },
     wasmparser::Operator::ArrayNew { array_type_index } => wasm_encoder::Instruction::ArrayNew(array_type_index),
@@ -835,14 +834,11 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::TryTable { try_table } => wasm_encoder::Instruction::TryTable(map_block_type(try_table.ty), Cow::Owned(map_catches(try_table.catches))),
     wasmparser::Operator::Throw { tag_index } => wasm_encoder::Instruction::Throw(tag_index),
     wasmparser::Operator::ThrowRef => wasm_encoder::Instruction::ThrowRef,
-    /*
-    wasmparser::Operator::Try      { } => wasm_encoder::Instruction::Try
-    wasmparser::Operator::Catch    { } => wasm_encoder::Instruction::Catch
-    wasmparser::Operator::Rethrow  { } => wasm_encoder::Instruction::Rethrow
-    wasmparser::Operator::Delegate { } => wasm_encoder::Instruction::Delegate
-    */
+    wasmparser::Operator::Try { blockty } => wasm_encoder::Instruction::Try(map_block_type(blockty)),
+    wasmparser::Operator::Catch { tag_index } => wasm_encoder::Instruction::Catch(tag_index),
+    wasmparser::Operator::Rethrow { relative_depth } => wasm_encoder::Instruction::Rethrow(relative_depth),
+    wasmparser::Operator::Delegate { relative_depth } => wasm_encoder::Instruction::Delegate(relative_depth),
     wasmparser::Operator::CatchAll => wasm_encoder::Instruction::CatchAll,
-
     wasmparser::Operator::GlobalAtomicGet { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicGet {
       ordering: map_ordering(ordering),
       global_index,
