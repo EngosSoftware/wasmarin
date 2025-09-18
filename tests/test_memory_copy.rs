@@ -4,9 +4,9 @@ fn copying_memory_should_work() {
     (module
       (memory 1)
       (func (export "copy_memory")
-        i32.const 2     ;; destination offset in memory
-        i32.const 0     ;; source offset in memory
-        i32.const 12    ;; length to be copied (in bytes)
+        i32.const 2   ;; destination offset in memory
+        i32.const 0   ;; source offset in memory
+        i32.const 12  ;; length to be copied (in bytes)
         memory.copy
       )
       (export "mem" (memory 0))
