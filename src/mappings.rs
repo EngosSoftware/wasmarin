@@ -843,3 +843,62 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     other => unimplemented!("{:?}", other),
   }
 }
+
+/// This test is a little bit tricky, but the goal is to be sure, that all `wasmparser` operators
+/// are properly mapped into `wasm_encoder` instructions. As the [wasmparser::Operator] is non-exhaustive,
+/// the easiest way is to compare the names of all mapped operators with all names defined in the enumeration.
+/// This is done exactly in the following test.
+#[test]
+fn make_sure_all_operators_are_covered() {
+  // Read the whole content of this file.
+  let content = std::fs::read_to_string(file!()).unwrap();
+  let mut operators = std::collections::BTreeSet::<String>::new();
+  let mut collect_operators = false;
+  for line in content.lines().map(|line| line.trim()).filter(|line| !line.is_empty()) {
+    // Iterate all lines until `map_operator` function definition, then start to collect operator names.
+    if line.starts_with("pub fn map_operator") {
+      collect_operators = true;
+    }
+    // Finish collecting operator name before the function definition ends.
+    if line == "}" {
+      collect_operators = false;
+    }
+    // Collect operator name.
+    if collect_operators && line.starts_with("wasmparser::Operator::") {
+      let operator = line.split_ascii_whitespace().next().unwrap()[22..].to_string();
+      // Make sure the same name is used for operator and instruction.
+      assert!(line.contains(&format!("wasm_encoder::Instruction::{}", operator)));
+      operators.insert(operator);
+    }
+  }
+  // Now the `operators` contains all operator names handled in the function `map_operator`.
+
+  // Let's collect operator names from `wasmparser::Operator` enumeration.
+  let mut enumerated_operators = std::collections::BTreeSet::<String>::new();
+
+  macro_rules! collect_enumerated_operator {
+    ($( @$proposal:ident $op:ident $({ $($arg:ident: $arg_type:ty),* })? => $visit:ident ($($ann:tt)*))*) => {
+      $( enumerated_operators.insert(stringify!($op).to_string()); )*
+    }
+  }
+  wasmparser::for_each_operator!(collect_enumerated_operator);
+  // Now the `enumerated_operators` contains all operator names defined in `wasmparser::Operator` enumeration.
+
+  // Let's check, if all operators from the `wasmparser::Operator` enumeration are handled in the function `map_operator`.
+  for enumerated_operator in &enumerated_operators {
+    assert!(
+      operators.contains(enumerated_operator),
+      "Operator '{}' is not handled in `map_operator` function",
+      enumerated_operator
+    );
+  }
+
+  // Let's check, if all operators handled in the function `map_operator` are defined in `wasmparser::Operator` enumeration.
+  for operator in &operators {
+    assert!(
+      enumerated_operators.contains(operator),
+      "Operator '{}' is not defined in `wasmparser::Operator` enumeration",
+      operator
+    );
+  }
+}
