@@ -218,6 +218,7 @@ pub fn map_mem_arg(mem_arg: wasmparser::MemArg) -> wasm_encoder::MemArg {
   }
 }
 
+#[rustfmt::skip]
 pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruction<'a> {
   match operator {
     wasmparser::Operator::Unreachable => wasm_encoder::Instruction::Unreachable,
@@ -407,70 +408,23 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::ArrayNew { array_type_index } => wasm_encoder::Instruction::ArrayNew(array_type_index),
     wasmparser::Operator::ArrayNewDefault { array_type_index } => wasm_encoder::Instruction::ArrayNewDefault(array_type_index),
     wasmparser::Operator::ArrayNewFixed { array_type_index, array_size } => wasm_encoder::Instruction::ArrayNewFixed { array_type_index, array_size },
-    wasmparser::Operator::ArrayNewData {
-      array_type_index,
-      array_data_index,
-    } => wasm_encoder::Instruction::ArrayNewData {
-      array_type_index,
-      array_data_index,
-    },
-    wasmparser::Operator::ArrayNewElem {
-      array_type_index,
-      array_elem_index,
-    } => wasm_encoder::Instruction::ArrayNewElem {
-      array_type_index,
-      array_elem_index,
-    },
+    wasmparser::Operator::ArrayNewData { array_type_index, array_data_index } => wasm_encoder::Instruction::ArrayNewData { array_type_index, array_data_index },
+    wasmparser::Operator::ArrayNewElem { array_type_index, array_elem_index } => wasm_encoder::Instruction::ArrayNewElem { array_type_index, array_elem_index },
     wasmparser::Operator::ArrayGet { array_type_index } => wasm_encoder::Instruction::ArrayGet(array_type_index),
     wasmparser::Operator::ArrayGetS { array_type_index } => wasm_encoder::Instruction::ArrayGetS(array_type_index),
     wasmparser::Operator::ArrayGetU { array_type_index } => wasm_encoder::Instruction::ArrayGetU(array_type_index),
     wasmparser::Operator::ArraySet { array_type_index } => wasm_encoder::Instruction::ArraySet(array_type_index),
     wasmparser::Operator::ArrayLen => wasm_encoder::Instruction::ArrayLen,
     wasmparser::Operator::ArrayFill { array_type_index } => wasm_encoder::Instruction::ArrayFill(array_type_index),
-    wasmparser::Operator::ArrayCopy {
-      array_type_index_dst,
-      array_type_index_src,
-    } => wasm_encoder::Instruction::ArrayCopy {
-      array_type_index_dst,
-      array_type_index_src,
-    },
-    wasmparser::Operator::ArrayInitData {
-      array_type_index,
-      array_data_index,
-    } => wasm_encoder::Instruction::ArrayInitData {
-      array_type_index,
-      array_data_index,
-    },
-    wasmparser::Operator::ArrayInitElem {
-      array_type_index,
-      array_elem_index,
-    } => wasm_encoder::Instruction::ArrayInitElem {
-      array_type_index,
-      array_elem_index,
-    },
+    wasmparser::Operator::ArrayCopy { array_type_index_dst, array_type_index_src } => wasm_encoder::Instruction::ArrayCopy { array_type_index_dst, array_type_index_src },
+    wasmparser::Operator::ArrayInitData { array_type_index, array_data_index } => wasm_encoder::Instruction::ArrayInitData { array_type_index, array_data_index },
+    wasmparser::Operator::ArrayInitElem { array_type_index, array_elem_index } => wasm_encoder::Instruction::ArrayInitElem { array_type_index, array_elem_index },
     wasmparser::Operator::RefTestNonNull { hty } => wasm_encoder::Instruction::RefTestNonNull(map_heap_type(hty)),
     wasmparser::Operator::RefTestNullable { hty } => wasm_encoder::Instruction::RefTestNullable(map_heap_type(hty)),
     wasmparser::Operator::RefCastNonNull { hty } => wasm_encoder::Instruction::RefCastNonNull(map_heap_type(hty)),
     wasmparser::Operator::RefCastNullable { hty } => wasm_encoder::Instruction::RefCastNullable(map_heap_type(hty)),
-    wasmparser::Operator::BrOnCast {
-      relative_depth,
-      from_ref_type,
-      to_ref_type,
-    } => wasm_encoder::Instruction::BrOnCast {
-      relative_depth,
-      from_ref_type: map_ref_type(from_ref_type),
-      to_ref_type: map_ref_type(to_ref_type),
-    },
-    wasmparser::Operator::BrOnCastFail {
-      relative_depth,
-      from_ref_type,
-      to_ref_type,
-    } => wasm_encoder::Instruction::BrOnCastFail {
-      relative_depth,
-      from_ref_type: map_ref_type(from_ref_type),
-      to_ref_type: map_ref_type(to_ref_type),
-    },
-
+    wasmparser::Operator::BrOnCast { relative_depth, from_ref_type, to_ref_type } => wasm_encoder::Instruction::BrOnCast { relative_depth, from_ref_type: map_ref_type(from_ref_type), to_ref_type: map_ref_type(to_ref_type) },
+    wasmparser::Operator::BrOnCastFail { relative_depth, from_ref_type, to_ref_type } => wasm_encoder::Instruction::BrOnCastFail { relative_depth, from_ref_type: map_ref_type(from_ref_type), to_ref_type: map_ref_type(to_ref_type) },
     wasmparser::Operator::AnyConvertExtern => wasm_encoder::Instruction::AnyConvertExtern,
     wasmparser::Operator::ExternConvertAny => wasm_encoder::Instruction::ExternConvertAny,
     wasmparser::Operator::RefI31 => wasm_encoder::Instruction::RefI31,
@@ -495,124 +449,120 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::TypedSelectMulti { tys } => wasm_encoder::Instruction::TypedSelectMulti(Cow::Owned(map_val_types(tys))),
     wasmparser::Operator::RefNull { hty } => wasm_encoder::Instruction::RefNull(map_heap_type(hty)),
     wasmparser::Operator::RefIsNull => wasm_encoder::Instruction::RefIsNull,
-    /*
-    wasmparser::Operator::RefFunc { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::TableFill { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::TableGet { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::TableSet { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::TableGrow { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::TableSize { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ReturnCall { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ReturnCallIndirect { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::MemoryDiscard { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::MemoryAtomicNotify { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::MemoryAtomicWait32 { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::MemoryAtomicWait64 { .. } => wasm_encoder::Instruction::
-    */
+    wasmparser::Operator::RefFunc { function_index } => wasm_encoder::Instruction::RefFunc(function_index),
+    wasmparser::Operator::TableFill { table } => wasm_encoder::Instruction::TableFill(table),
+    wasmparser::Operator::TableGet { table } => wasm_encoder::Instruction::TableGet(table),
+    wasmparser::Operator::TableSet { table } => wasm_encoder::Instruction::TableSet(table),
+    wasmparser::Operator::TableGrow { table } => wasm_encoder::Instruction::TableGrow(table),
+    wasmparser::Operator::TableSize { table } => wasm_encoder::Instruction::TableSize(table),
+    wasmparser::Operator::ReturnCall { function_index } => wasm_encoder::Instruction::ReturnCall(function_index),
+    wasmparser::Operator::ReturnCallIndirect { type_index, table_index } => wasm_encoder::Instruction::ReturnCallIndirect { type_index, table_index },
+    wasmparser::Operator::MemoryDiscard { mem } => wasm_encoder::Instruction::MemoryDiscard(mem),
+    wasmparser::Operator::MemoryAtomicNotify { memarg } => wasm_encoder::Instruction::MemoryAtomicNotify(map_mem_arg(memarg)),
+    wasmparser::Operator::MemoryAtomicWait32 { memarg } => wasm_encoder::Instruction::MemoryAtomicWait32(map_mem_arg(memarg)),
+    wasmparser::Operator::MemoryAtomicWait64 { memarg } => wasm_encoder::Instruction::MemoryAtomicWait64(map_mem_arg(memarg)),
     wasmparser::Operator::AtomicFence => wasm_encoder::Instruction::AtomicFence,
-    /*
-    wasmparser::Operator::I32AtomicLoad { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicLoad { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicLoad8U { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicLoad16U { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicLoad8U { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicLoad16U { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicLoad32U { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicStore { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicStore { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicStore8 { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicStore16 { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicStore8 { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicStore16 { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicStore32 { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmwAdd { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmwAdd { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw8AddU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw16AddU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw8AddU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw16AddU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw32AddU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmwSub { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmwSub { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw8SubU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw16SubU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw8SubU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw16SubU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw32SubU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmwAnd { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmwAnd { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw8AndU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw16AndU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw8AndU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw16AndU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw32AndU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmwOr { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmwOr { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw8OrU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw16OrU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw8OrU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw16OrU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw32OrU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmwXor { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmwXor { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw8XorU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw16XorU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw8XorU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw16XorU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw32XorU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmwXchg { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmwXchg { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw8XchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw16XchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw8XchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw16XchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw32XchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmwCmpxchg { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmwCmpxchg { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw8CmpxchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32AtomicRmw16CmpxchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw8CmpxchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw16CmpxchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64AtomicRmw32CmpxchgU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load8x8S { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load8x8U { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load16x4S { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load16x4U { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load32x2S { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load32x2U { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load8Splat { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load16Splat { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load32Splat { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load64Splat { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load32Zero { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load64Zero { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Store { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load8Lane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load16Lane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load32Lane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Load64Lane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Store8Lane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Store16Lane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Store32Lane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Store64Lane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::V128Const { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I8x16Shuffle { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I8x16ExtractLaneS { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I8x16ExtractLaneU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I8x16ReplaceLane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I16x8ExtractLaneS { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I16x8ExtractLaneU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I16x8ReplaceLane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32x4ExtractLane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I32x4ReplaceLane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64x2ExtractLane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::I64x2ReplaceLane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::F32x4ExtractLane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::F32x4ReplaceLane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::F64x2ExtractLane { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::F64x2ReplaceLane { .. } => wasm_encoder::Instruction::
-    */
+    wasmparser::Operator::I32AtomicLoad { memarg } => wasm_encoder::Instruction::I32AtomicLoad(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicLoad { memarg } => wasm_encoder::Instruction::I64AtomicLoad(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicLoad8U { memarg } => wasm_encoder::Instruction::I32AtomicLoad8U(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicLoad16U { memarg } => wasm_encoder::Instruction::I32AtomicLoad16U(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicLoad8U { memarg } => wasm_encoder::Instruction::I64AtomicLoad8U(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicLoad16U { memarg } => wasm_encoder::Instruction::I64AtomicLoad16U(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicLoad32U { memarg } => wasm_encoder::Instruction::I64AtomicLoad32U(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicStore { memarg } => wasm_encoder::Instruction::I32AtomicStore(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicStore { memarg } => wasm_encoder::Instruction::I64AtomicStore(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicStore8 { memarg } => wasm_encoder::Instruction::I32AtomicStore8(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicStore16 { memarg } => wasm_encoder::Instruction::I32AtomicStore16(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicStore8 { memarg } => wasm_encoder::Instruction::I64AtomicStore8(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicStore16 { memarg } => wasm_encoder::Instruction::I64AtomicStore16(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicStore32 { memarg } => wasm_encoder::Instruction::I64AtomicStore32(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmwAdd { memarg } => wasm_encoder::Instruction::I32AtomicRmwAdd(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmwAdd { memarg } => wasm_encoder::Instruction::I64AtomicRmwAdd(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw8AddU { memarg } => wasm_encoder::Instruction::I32AtomicRmw8AddU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw16AddU { memarg } => wasm_encoder::Instruction::I32AtomicRmw16AddU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw8AddU { memarg } => wasm_encoder::Instruction::I64AtomicRmw8AddU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw16AddU { memarg } => wasm_encoder::Instruction::I64AtomicRmw16AddU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw32AddU { memarg } => wasm_encoder::Instruction::I64AtomicRmw32AddU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmwSub { memarg } => wasm_encoder::Instruction::I32AtomicRmwSub(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmwSub { memarg } => wasm_encoder::Instruction::I64AtomicRmwSub(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw8SubU { memarg } => wasm_encoder::Instruction::I32AtomicRmw8SubU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw16SubU { memarg } => wasm_encoder::Instruction::I32AtomicRmw16SubU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw8SubU { memarg } => wasm_encoder::Instruction::I64AtomicRmw8SubU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw16SubU { memarg } => wasm_encoder::Instruction::I64AtomicRmw16SubU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw32SubU { memarg } => wasm_encoder::Instruction::I64AtomicRmw32SubU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmwAnd { memarg } => wasm_encoder::Instruction::I32AtomicRmwAnd(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmwAnd { memarg } => wasm_encoder::Instruction::I64AtomicRmwAnd(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw8AndU { memarg } => wasm_encoder::Instruction::I32AtomicRmw8AndU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw16AndU { memarg } => wasm_encoder::Instruction::I32AtomicRmw16AndU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw8AndU { memarg } => wasm_encoder::Instruction::I64AtomicRmw8AndU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw16AndU { memarg } => wasm_encoder::Instruction::I64AtomicRmw16AndU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw32AndU { memarg } => wasm_encoder::Instruction::I64AtomicRmw32AndU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmwOr { memarg } => wasm_encoder::Instruction::I32AtomicRmwOr(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmwOr { memarg } => wasm_encoder::Instruction::I64AtomicRmwOr(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw8OrU { memarg } => wasm_encoder::Instruction::I32AtomicRmw8OrU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw16OrU { memarg } => wasm_encoder::Instruction::I32AtomicRmw16OrU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw8OrU { memarg } => wasm_encoder::Instruction::I64AtomicRmw8OrU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw16OrU { memarg } => wasm_encoder::Instruction::I64AtomicRmw16OrU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw32OrU { memarg } => wasm_encoder::Instruction::I64AtomicRmw32OrU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmwXor { memarg } => wasm_encoder::Instruction::I32AtomicRmwXor(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmwXor { memarg } => wasm_encoder::Instruction::I64AtomicRmwXor(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw8XorU { memarg } => wasm_encoder::Instruction::I32AtomicRmw8XorU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw16XorU { memarg } => wasm_encoder::Instruction::I32AtomicRmw16XorU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw8XorU { memarg } => wasm_encoder::Instruction::I64AtomicRmw8XorU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw16XorU { memarg } => wasm_encoder::Instruction::I64AtomicRmw16XorU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw32XorU { memarg } => wasm_encoder::Instruction::I64AtomicRmw32XorU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmwXchg { memarg } => wasm_encoder::Instruction::I32AtomicRmwXchg(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmwXchg { memarg } => wasm_encoder::Instruction::I64AtomicRmwXchg(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw8XchgU { memarg } => wasm_encoder::Instruction::I32AtomicRmw8XchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw16XchgU { memarg } => wasm_encoder::Instruction::I32AtomicRmw16XchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw8XchgU { memarg } => wasm_encoder::Instruction::I64AtomicRmw8XchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw16XchgU { memarg } => wasm_encoder::Instruction::I64AtomicRmw16XchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw32XchgU { memarg } => wasm_encoder::Instruction::I64AtomicRmw32XchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmwCmpxchg { memarg } => wasm_encoder::Instruction::I32AtomicRmwCmpxchg(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmwCmpxchg { memarg } => wasm_encoder::Instruction::I64AtomicRmwCmpxchg(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw8CmpxchgU { memarg } => wasm_encoder::Instruction::I32AtomicRmw8CmpxchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::I32AtomicRmw16CmpxchgU { memarg } => wasm_encoder::Instruction::I32AtomicRmw16CmpxchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw8CmpxchgU { memarg } => wasm_encoder::Instruction::I64AtomicRmw8CmpxchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw16CmpxchgU { memarg } => wasm_encoder::Instruction::I64AtomicRmw16CmpxchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::I64AtomicRmw32CmpxchgU { memarg } => wasm_encoder::Instruction::I64AtomicRmw32CmpxchgU(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load { memarg } => wasm_encoder::Instruction::V128Load(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load8x8S { memarg } => wasm_encoder::Instruction::V128Load8x8S(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load8x8U { memarg } => wasm_encoder::Instruction::V128Load8x8U(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load16x4S { memarg } => wasm_encoder::Instruction::V128Load16x4S(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load16x4U { memarg } => wasm_encoder::Instruction::V128Load16x4U(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load32x2S { memarg } => wasm_encoder::Instruction::V128Load32x2S(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load32x2U { memarg } => wasm_encoder::Instruction::V128Load32x2U(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load8Splat { memarg } => wasm_encoder::Instruction::V128Load8Splat(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load16Splat { memarg } => wasm_encoder::Instruction::V128Load16Splat(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load32Splat { memarg } => wasm_encoder::Instruction::V128Load32Splat(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load64Splat { memarg } => wasm_encoder::Instruction::V128Load64Splat(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load32Zero { memarg } => wasm_encoder::Instruction::V128Load32Zero(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load64Zero { memarg } => wasm_encoder::Instruction::V128Load64Zero(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Store { memarg } => wasm_encoder::Instruction::V128Store(map_mem_arg(memarg)),
+    wasmparser::Operator::V128Load8Lane { memarg, lane } => wasm_encoder::Instruction::V128Load8Lane { memarg: map_mem_arg(memarg), lane },
+    wasmparser::Operator::V128Load16Lane { memarg, lane } => wasm_encoder::Instruction::V128Load16Lane { memarg: map_mem_arg(memarg), lane },
+    wasmparser::Operator::V128Load32Lane { memarg, lane } => wasm_encoder::Instruction::V128Load32Lane { memarg: map_mem_arg(memarg), lane },
+    wasmparser::Operator::V128Load64Lane { memarg, lane } => wasm_encoder::Instruction::V128Load64Lane { memarg: map_mem_arg(memarg), lane },
+    wasmparser::Operator::V128Store8Lane { memarg, lane } => wasm_encoder::Instruction::V128Store8Lane { memarg: map_mem_arg(memarg), lane },
+    wasmparser::Operator::V128Store16Lane { memarg, lane } => wasm_encoder::Instruction::V128Store16Lane { memarg: map_mem_arg(memarg), lane },
+    wasmparser::Operator::V128Store32Lane { memarg, lane } => wasm_encoder::Instruction::V128Store32Lane { memarg: map_mem_arg(memarg), lane },
+    wasmparser::Operator::V128Store64Lane { memarg, lane } => wasm_encoder::Instruction::V128Store64Lane { memarg: map_mem_arg(memarg), lane },
+    wasmparser::Operator::V128Const { value } => wasm_encoder::Instruction::V128Const(value.i128()),
+    wasmparser::Operator::I8x16Shuffle { lanes } => wasm_encoder::Instruction::I8x16Shuffle(lanes),
+    wasmparser::Operator::I8x16ExtractLaneS { lane } => wasm_encoder::Instruction::I8x16ExtractLaneS(lane),
+    wasmparser::Operator::I8x16ExtractLaneU { lane } => wasm_encoder::Instruction::I8x16ExtractLaneU(lane),
+    wasmparser::Operator::I8x16ReplaceLane { lane } => wasm_encoder::Instruction::I8x16ReplaceLane(lane),
+    wasmparser::Operator::I16x8ExtractLaneS { lane } => wasm_encoder::Instruction::I16x8ExtractLaneS(lane),
+    wasmparser::Operator::I16x8ExtractLaneU { lane } => wasm_encoder::Instruction::I16x8ExtractLaneU(lane),
+    wasmparser::Operator::I16x8ReplaceLane { lane } => wasm_encoder::Instruction::I16x8ReplaceLane(lane),
+    wasmparser::Operator::I32x4ExtractLane { lane } => wasm_encoder::Instruction::I32x4ExtractLane(lane),
+    wasmparser::Operator::I32x4ReplaceLane { lane } => wasm_encoder::Instruction::I32x4ReplaceLane(lane),
+    wasmparser::Operator::I64x2ExtractLane { lane } => wasm_encoder::Instruction::I64x2ExtractLane(lane),
+    wasmparser::Operator::I64x2ReplaceLane { lane } => wasm_encoder::Instruction::I64x2ReplaceLane(lane),
+    wasmparser::Operator::F32x4ExtractLane { lane } => wasm_encoder::Instruction::F32x4ExtractLane(lane),
+    wasmparser::Operator::F32x4ReplaceLane { lane } => wasm_encoder::Instruction::F32x4ReplaceLane(lane),
+    wasmparser::Operator::F64x2ExtractLane { lane } => wasm_encoder::Instruction::F64x2ExtractLane(lane),
+    wasmparser::Operator::F64x2ReplaceLane { lane } => wasm_encoder::Instruction::F64x2ReplaceLane(lane),
     wasmparser::Operator::I8x16Swizzle => wasm_encoder::Instruction::I8x16Swizzle,
     wasmparser::Operator::I8x16Splat => wasm_encoder::Instruction::I8x16Splat,
     wasmparser::Operator::I16x8Splat => wasm_encoder::Instruction::I16x8Splat,
@@ -839,201 +789,41 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::Rethrow { relative_depth } => wasm_encoder::Instruction::Rethrow(relative_depth),
     wasmparser::Operator::Delegate { relative_depth } => wasm_encoder::Instruction::Delegate(relative_depth),
     wasmparser::Operator::CatchAll => wasm_encoder::Instruction::CatchAll,
-    wasmparser::Operator::GlobalAtomicGet { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicGet {
-      ordering: map_ordering(ordering),
-      global_index,
-    },
-    wasmparser::Operator::GlobalAtomicSet { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicSet {
-      ordering: map_ordering(ordering),
-      global_index,
-    },
-    wasmparser::Operator::GlobalAtomicRmwAdd { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwAdd {
-      ordering: map_ordering(ordering),
-      global_index,
-    },
-    wasmparser::Operator::GlobalAtomicRmwSub { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwSub {
-      ordering: map_ordering(ordering),
-      global_index,
-    },
-    wasmparser::Operator::GlobalAtomicRmwAnd { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwAnd {
-      ordering: map_ordering(ordering),
-      global_index,
-    },
-    wasmparser::Operator::GlobalAtomicRmwOr { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwOr {
-      ordering: map_ordering(ordering),
-      global_index,
-    },
-    wasmparser::Operator::GlobalAtomicRmwXor { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwXor {
-      ordering: map_ordering(ordering),
-      global_index,
-    },
-    wasmparser::Operator::GlobalAtomicRmwXchg { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwXchg {
-      ordering: map_ordering(ordering),
-      global_index,
-    },
-    wasmparser::Operator::GlobalAtomicRmwCmpxchg { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwCmpxchg {
-      ordering: map_ordering(ordering),
-      global_index,
-    },
-    wasmparser::Operator::TableAtomicGet { ordering, table_index } => wasm_encoder::Instruction::TableAtomicGet {
-      ordering: map_ordering(ordering),
-      table_index,
-    },
-    wasmparser::Operator::TableAtomicSet { ordering, table_index } => wasm_encoder::Instruction::TableAtomicSet {
-      ordering: map_ordering(ordering),
-      table_index,
-    },
-    wasmparser::Operator::TableAtomicRmwXchg { ordering, table_index } => wasm_encoder::Instruction::TableAtomicRmwXchg {
-      ordering: map_ordering(ordering),
-      table_index,
-    },
-    wasmparser::Operator::TableAtomicRmwCmpxchg { ordering, table_index } => wasm_encoder::Instruction::TableAtomicRmwCmpxchg {
-      ordering: map_ordering(ordering),
-      table_index,
-    },
-    wasmparser::Operator::StructAtomicGet {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicGet {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicGetS {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicGetS {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicGetU {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicGetU {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicSet {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicSet {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicRmwAdd {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicRmwAdd {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicRmwSub {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicRmwSub {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicRmwAnd {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicRmwAnd {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicRmwOr {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicRmwOr {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicRmwXor {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicRmwXor {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicRmwXchg {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicRmwXchg {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::StructAtomicRmwCmpxchg {
-      ordering,
-      struct_type_index,
-      field_index,
-    } => wasm_encoder::Instruction::StructAtomicRmwCmpxchg {
-      ordering: map_ordering(ordering),
-      struct_type_index,
-      field_index,
-    },
-    wasmparser::Operator::ArrayAtomicGet { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicGet {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicGetS { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicGetS {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicGetU { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicGetU {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicSet { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicSet {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicRmwAdd { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwAdd {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicRmwSub { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwSub {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicRmwAnd { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwAnd {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicRmwOr { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwOr {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicRmwXor { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwXor {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicRmwXchg { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwXchg {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
-    wasmparser::Operator::ArrayAtomicRmwCmpxchg { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwCmpxchg {
-      ordering: map_ordering(ordering),
-      array_type_index,
-    },
+    wasmparser::Operator::GlobalAtomicGet { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicGet { ordering: map_ordering(ordering), global_index },
+    wasmparser::Operator::GlobalAtomicSet { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicSet { ordering: map_ordering(ordering), global_index },
+    wasmparser::Operator::GlobalAtomicRmwAdd { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwAdd { ordering: map_ordering(ordering), global_index },
+    wasmparser::Operator::GlobalAtomicRmwSub { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwSub { ordering: map_ordering(ordering), global_index },
+    wasmparser::Operator::GlobalAtomicRmwAnd { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwAnd { ordering: map_ordering(ordering), global_index },
+    wasmparser::Operator::GlobalAtomicRmwOr { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwOr { ordering: map_ordering(ordering), global_index },
+    wasmparser::Operator::GlobalAtomicRmwXor { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwXor { ordering: map_ordering(ordering), global_index },
+    wasmparser::Operator::GlobalAtomicRmwXchg { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwXchg { ordering: map_ordering(ordering), global_index },
+    wasmparser::Operator::GlobalAtomicRmwCmpxchg { ordering, global_index } => wasm_encoder::Instruction::GlobalAtomicRmwCmpxchg { ordering: map_ordering(ordering), global_index },
+    wasmparser::Operator::TableAtomicGet { ordering, table_index } => wasm_encoder::Instruction::TableAtomicGet { ordering: map_ordering(ordering), table_index },
+    wasmparser::Operator::TableAtomicSet { ordering, table_index } => wasm_encoder::Instruction::TableAtomicSet { ordering: map_ordering(ordering), table_index },
+    wasmparser::Operator::TableAtomicRmwXchg { ordering, table_index } => wasm_encoder::Instruction::TableAtomicRmwXchg { ordering: map_ordering(ordering), table_index },
+    wasmparser::Operator::TableAtomicRmwCmpxchg { ordering, table_index } => wasm_encoder::Instruction::TableAtomicRmwCmpxchg { ordering: map_ordering(ordering), table_index },
+    wasmparser::Operator::StructAtomicGet { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicGet { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicGetS { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicGetS { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicGetU { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicGetU { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicSet { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicSet { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicRmwAdd { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicRmwAdd { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicRmwSub { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicRmwSub { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicRmwAnd { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicRmwAnd { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicRmwOr { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicRmwOr { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicRmwXor { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicRmwXor { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicRmwXchg { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicRmwXchg { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::StructAtomicRmwCmpxchg { ordering, struct_type_index, field_index } => wasm_encoder::Instruction::StructAtomicRmwCmpxchg { ordering: map_ordering(ordering), struct_type_index, field_index },
+    wasmparser::Operator::ArrayAtomicGet { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicGet { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicGetS { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicGetS { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicGetU { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicGetU { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicSet { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicSet { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicRmwAdd { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwAdd { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicRmwSub { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwSub { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicRmwAnd { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwAnd { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicRmwOr { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwOr { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicRmwXor { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwXor { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicRmwXchg { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwXchg { ordering: map_ordering(ordering), array_type_index },
+    wasmparser::Operator::ArrayAtomicRmwCmpxchg { ordering, array_type_index } => wasm_encoder::Instruction::ArrayAtomicRmwCmpxchg { ordering: map_ordering(ordering), array_type_index },
     wasmparser::Operator::RefI31Shared => wasm_encoder::Instruction::RefI31Shared,
     wasmparser::Operator::CallRef { type_index } => wasm_encoder::Instruction::CallRef(type_index),
     wasmparser::Operator::ReturnCallRef { type_index } => wasm_encoder::Instruction::ReturnCallRef(type_index),
@@ -1043,19 +833,8 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::ContNew { cont_type_index } => wasm_encoder::Instruction::ContNew(cont_type_index),
     wasmparser::Operator::ContBind { argument_index, result_index } => wasm_encoder::Instruction::ContBind { argument_index, result_index },
     wasmparser::Operator::Suspend { tag_index } => wasm_encoder::Instruction::Suspend(tag_index),
-    wasmparser::Operator::Resume { cont_type_index, resume_table } => wasm_encoder::Instruction::Resume {
-      cont_type_index,
-      resume_table: Cow::Owned(map_resume_table(resume_table)),
-    },
-    wasmparser::Operator::ResumeThrow {
-      cont_type_index,
-      tag_index,
-      resume_table,
-    } => wasm_encoder::Instruction::ResumeThrow {
-      cont_type_index,
-      tag_index,
-      resume_table: Cow::Owned(map_resume_table(resume_table)),
-    },
+    wasmparser::Operator::Resume { cont_type_index, resume_table } => wasm_encoder::Instruction::Resume { cont_type_index, resume_table: Cow::Owned(map_resume_table(resume_table)) },
+    wasmparser::Operator::ResumeThrow { cont_type_index, tag_index, resume_table } => wasm_encoder::Instruction::ResumeThrow { cont_type_index, tag_index, resume_table: Cow::Owned(map_resume_table(resume_table)) },
     wasmparser::Operator::Switch { cont_type_index, tag_index } => wasm_encoder::Instruction::Switch { cont_type_index, tag_index },
     wasmparser::Operator::I64Add128 => wasm_encoder::Instruction::I64Add128,
     wasmparser::Operator::I64Sub128 => wasm_encoder::Instruction::I64Sub128,
