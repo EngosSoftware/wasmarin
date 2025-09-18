@@ -40,6 +40,12 @@ impl Encoder {
       }
     }
 
+    // Encode the import section.
+    let mut import_section = wasm_encoder::ImportSection::new();
+    for import in model.imports {
+      import_section.import(import.module, import.name, map_type_ref(import.ty));
+    }
+
     // Encode the function section.
     let mut function_section = wasm_encoder::FunctionSection::new();
     for function_index in model.function_indexes {
@@ -102,6 +108,7 @@ impl Encoder {
 
     module
       .section(&type_section)
+      .section(&import_section)
       .section(&function_section)
       .section(&memory_section)
       .section(&global_section)

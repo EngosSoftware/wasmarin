@@ -1,6 +1,16 @@
 use std::borrow::Cow;
 use wasmparser::types::TypeIdentifier;
 
+pub fn map_type_ref(type_ref: wasmparser::TypeRef) -> wasm_encoder::EntityType {
+  match type_ref {
+    wasmparser::TypeRef::Func(index) => wasm_encoder::EntityType::Function(index),
+    wasmparser::TypeRef::Table(table_type) => wasm_encoder::EntityType::Table(map_table_type(table_type)),
+    wasmparser::TypeRef::Memory(memory_type) => wasm_encoder::EntityType::Memory(map_memory_type(memory_type)),
+    wasmparser::TypeRef::Global(global_type) => wasm_encoder::EntityType::Global(map_global_type(global_type)),
+    wasmparser::TypeRef::Tag(tag_type) => wasm_encoder::EntityType::Tag(map_tag_type(tag_type)),
+  }
+}
+
 pub fn map_catches(mut catches: Vec<wasmparser::Catch>) -> Vec<wasm_encoder::Catch> {
   catches.drain(..).map(map_catch).collect()
 }
@@ -32,14 +42,6 @@ pub fn map_handle(handle: wasmparser::Handle) -> wasm_encoder::Handle {
   }
 }
 
-pub fn map_global_type(global_type: wasmparser::GlobalType) -> wasm_encoder::GlobalType {
-  wasm_encoder::GlobalType {
-    val_type: map_val_type(global_type.content_type),
-    mutable: global_type.mutable,
-    shared: global_type.shared,
-  }
-}
-
 pub fn map_const_expr(const_expr: wasmparser::ConstExpr) -> wasm_encoder::ConstExpr {
   let reader = const_expr.get_operators_reader();
   let mut instructions = vec![];
@@ -65,6 +67,16 @@ pub fn map_export_kind(external_kind: wasmparser::ExternalKind) -> wasm_encoder:
   }
 }
 
+pub fn map_table_type(table_type: wasmparser::TableType) -> wasm_encoder::TableType {
+  wasm_encoder::TableType {
+    element_type: map_ref_type(table_type.element_type),
+    table64: table_type.table64,
+    minimum: table_type.initial,
+    maximum: table_type.maximum,
+    shared: table_type.shared,
+  }
+}
+
 pub fn map_memory_type(memory_type: wasmparser::MemoryType) -> wasm_encoder::MemoryType {
   wasm_encoder::MemoryType {
     minimum: memory_type.initial,
@@ -72,6 +84,27 @@ pub fn map_memory_type(memory_type: wasmparser::MemoryType) -> wasm_encoder::Mem
     memory64: memory_type.memory64,
     shared: memory_type.shared,
     page_size_log2: memory_type.page_size_log2,
+  }
+}
+
+pub fn map_global_type(global_type: wasmparser::GlobalType) -> wasm_encoder::GlobalType {
+  wasm_encoder::GlobalType {
+    val_type: map_val_type(global_type.content_type),
+    mutable: global_type.mutable,
+    shared: global_type.shared,
+  }
+}
+
+pub fn map_tag_type(tag_type: wasmparser::TagType) -> wasm_encoder::TagType {
+  wasm_encoder::TagType {
+    kind: map_tag_kind(tag_type.kind),
+    func_type_idx: 0,
+  }
+}
+
+pub fn map_tag_kind(tag_kind: wasmparser::TagKind) -> wasm_encoder::TagKind {
+  match tag_kind {
+    wasmparser::TagKind::Exception => wasm_encoder::TagKind::Exception,
   }
 }
 
