@@ -1,5 +1,3 @@
-use wasmtime::Val;
-
 #[test]
 fn memory_copy_metering_should_work() {
   let wat_str = r#"
@@ -31,7 +29,7 @@ fn memory_copy_metering_should_work() {
   let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
 
   let remaining_points = instance.get_global(&mut store, "wasmarin_metering_remaining_points").unwrap();
-  remaining_points.set(&mut store, Val::I64(500)).unwrap();
+  remaining_points.set(&mut store, wasmtime::Val::I64(500)).unwrap();
 
   // Get the 'mem' memory handle.
   let memory = instance.get_memory(&mut store, "mem").unwrap();

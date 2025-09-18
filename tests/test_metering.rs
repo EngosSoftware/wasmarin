@@ -50,3 +50,76 @@ fn metering_should_work() {
 
   println!("remaining points: {}", remaining_points.get(&mut store).i64().unwrap());
 }
+
+/*
+
+(module
+  (type (;0;) (func))
+  (global (;0;) (mut i64) i64.const 0)
+  (func (;0;) (type 0)
+    global.get 0
+    i64.const 4
+    i64.sub
+    global.set 0
+    global.get 0
+    i64.const 0
+    i64.lt_s
+    if ;; label = @1
+      unreachable
+    end
+  )
+)
+
+wasm[0]::function[0]:
+  push rbp
+  mov  rbp, rsp
+  mov  rax, qword ptr [rdi + 0x60]
+  sub  rax, 0x4
+  mov  qword ptr [rdi + 0x60], rax
+  test rax, rax
+  jl   0x1e <wasm[0]::function[0]+0x1e>
+  mov  rsp, rbp
+  pop  rbp
+  ret
+  ud2
+
+*/
+
+/*
+
+(module
+  (type (;0;) (func))
+  (global (;0;) (mut i64) i64.const 0)
+  (global (;1;) (mut i32) i32.const 0)
+  (func (;0;) (type 0)
+    global.get 0
+    i64.const 4
+    i64.lt_u
+    if ;; label = @1
+      i32.const 1
+      global.set 1
+      unreachable
+    end
+    global.get 0
+    i64.const 4
+    i64.sub
+    global.set 0
+  )
+)
+
+
+wasm[0]::function[0]:
+ push	rbp
+ mov	rbp, rsp
+ mov	rax, qword ptr [rdi + 0x60]
+ cmp	rax, 0x4
+ jb	0x1f <wasm[0]::function[0]+0x1f>
+ sub	rax, 0x4
+ mov	qword ptr [rdi + 0x60], rax
+ mov	rsp, rbp
+ pop	rbp
+ ret
+ mov	dword ptr [rdi + 0x70], 0x1
+ ud2
+
+*/
