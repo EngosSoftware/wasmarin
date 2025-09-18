@@ -1,6 +1,17 @@
 use std::borrow::Cow;
 use wasmparser::types::TypeIdentifier;
 
+pub fn map_resume_table(mut resume_table: wasmparser::ResumeTable) -> Vec<wasm_encoder::Handle> {
+  resume_table.handlers.drain(..).map(map_handle).collect()
+}
+
+pub fn map_handle(handle: wasmparser::Handle) -> wasm_encoder::Handle {
+  match handle {
+    wasmparser::Handle::OnLabel { tag, label } => wasm_encoder::Handle::OnLabel { tag, label },
+    wasmparser::Handle::OnSwitch { tag } => wasm_encoder::Handle::OnSwitch { tag },
+  }
+}
+
 pub fn map_global_type(global_type: wasmparser::GlobalType) -> wasm_encoder::GlobalType {
   wasm_encoder::GlobalType {
     val_type: map_val_type(global_type.content_type),
@@ -109,6 +120,10 @@ pub fn map_val_type(val_type: wasmparser::ValType) -> wasm_encoder::ValType {
     wasmparser::ValType::V128 => wasm_encoder::ValType::V128,
     wasmparser::ValType::Ref(ref_type) => wasm_encoder::ValType::Ref(map_ref_type(ref_type)),
   }
+}
+
+pub fn map_val_types(val_types: Vec<wasmparser::ValType>) -> Vec<wasm_encoder::ValType> {
+  val_types.iter().cloned().map(map_val_type).collect()
 }
 
 pub fn map_ref_type(ref_type: wasmparser::RefType) -> wasm_encoder::RefType {
@@ -363,35 +378,80 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::I64Extend16S => wasm_encoder::Instruction::I64Extend16S,
     wasmparser::Operator::I64Extend32S => wasm_encoder::Instruction::I64Extend32S,
     wasmparser::Operator::RefEq => wasm_encoder::Instruction::RefEq,
+    wasmparser::Operator::StructNew { struct_type_index } => wasm_encoder::Instruction::StructNew(struct_type_index),
+    wasmparser::Operator::StructNewDefault { struct_type_index } => wasm_encoder::Instruction::StructNewDefault(struct_type_index),
+    wasmparser::Operator::StructGet { struct_type_index, field_index } => wasm_encoder::Instruction::StructGet { struct_type_index, field_index },
+    wasmparser::Operator::StructGetS { struct_type_index, field_index } => wasm_encoder::Instruction::StructGetS { struct_type_index, field_index },
 
-    /*
-    wasmparser::Operator::StructNew { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::StructNewDefault { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::StructGet { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::StructGetS { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::StructGetU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::StructSet { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayNew { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayNewDefault { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayNewFixed { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayNewData { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayNewElem { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayGet { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayGetS { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayGetU { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArraySet { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayLen => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayFill { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayCopy { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayInitData { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ArrayInitElem { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::RefTestNonNull { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::RefTestNullable { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::RefCastNonNull { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::RefCastNullable { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::BrOnCast { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::BrOnCastFail { .. } => wasm_encoder::Instruction::
-    */
+    wasmparser::Operator::StructGetU { struct_type_index, field_index } => wasm_encoder::Instruction::StructGetU { struct_type_index, field_index },
+    wasmparser::Operator::StructSet { struct_type_index, field_index } => wasm_encoder::Instruction::StructSet { struct_type_index, field_index },
+    wasmparser::Operator::ArrayNew { array_type_index } => wasm_encoder::Instruction::ArrayNew(array_type_index),
+    wasmparser::Operator::ArrayNewDefault { array_type_index } => wasm_encoder::Instruction::ArrayNewDefault(array_type_index),
+    wasmparser::Operator::ArrayNewFixed { array_type_index, array_size } => wasm_encoder::Instruction::ArrayNewFixed { array_type_index, array_size },
+    wasmparser::Operator::ArrayNewData {
+      array_type_index,
+      array_data_index,
+    } => wasm_encoder::Instruction::ArrayNewData {
+      array_type_index,
+      array_data_index,
+    },
+    wasmparser::Operator::ArrayNewElem {
+      array_type_index,
+      array_elem_index,
+    } => wasm_encoder::Instruction::ArrayNewElem {
+      array_type_index,
+      array_elem_index,
+    },
+    wasmparser::Operator::ArrayGet { array_type_index } => wasm_encoder::Instruction::ArrayGet(array_type_index),
+    wasmparser::Operator::ArrayGetS { array_type_index } => wasm_encoder::Instruction::ArrayGetS(array_type_index),
+    wasmparser::Operator::ArrayGetU { array_type_index } => wasm_encoder::Instruction::ArrayGetU(array_type_index),
+    wasmparser::Operator::ArraySet { array_type_index } => wasm_encoder::Instruction::ArraySet(array_type_index),
+    wasmparser::Operator::ArrayLen => wasm_encoder::Instruction::ArrayLen,
+    wasmparser::Operator::ArrayFill { array_type_index } => wasm_encoder::Instruction::ArrayFill(array_type_index),
+    wasmparser::Operator::ArrayCopy {
+      array_type_index_dst,
+      array_type_index_src,
+    } => wasm_encoder::Instruction::ArrayCopy {
+      array_type_index_dst,
+      array_type_index_src,
+    },
+    wasmparser::Operator::ArrayInitData {
+      array_type_index,
+      array_data_index,
+    } => wasm_encoder::Instruction::ArrayInitData {
+      array_type_index,
+      array_data_index,
+    },
+    wasmparser::Operator::ArrayInitElem {
+      array_type_index,
+      array_elem_index,
+    } => wasm_encoder::Instruction::ArrayInitElem {
+      array_type_index,
+      array_elem_index,
+    },
+    wasmparser::Operator::RefTestNonNull { hty } => wasm_encoder::Instruction::RefTestNonNull(map_heap_type(hty)),
+    wasmparser::Operator::RefTestNullable { hty } => wasm_encoder::Instruction::RefTestNullable(map_heap_type(hty)),
+    wasmparser::Operator::RefCastNonNull { hty } => wasm_encoder::Instruction::RefCastNonNull(map_heap_type(hty)),
+    wasmparser::Operator::RefCastNullable { hty } => wasm_encoder::Instruction::RefCastNullable(map_heap_type(hty)),
+    wasmparser::Operator::BrOnCast {
+      relative_depth,
+      from_ref_type,
+      to_ref_type,
+    } => wasm_encoder::Instruction::BrOnCast {
+      relative_depth,
+      from_ref_type: map_ref_type(from_ref_type),
+      to_ref_type: map_ref_type(to_ref_type),
+    },
+    wasmparser::Operator::BrOnCastFail {
+      relative_depth,
+      from_ref_type,
+      to_ref_type,
+    } => wasm_encoder::Instruction::BrOnCastFail {
+      relative_depth,
+      from_ref_type: map_ref_type(from_ref_type),
+      to_ref_type: map_ref_type(to_ref_type),
+    },
+
     wasmparser::Operator::AnyConvertExtern => wasm_encoder::Instruction::AnyConvertExtern,
     wasmparser::Operator::ExternConvertAny => wasm_encoder::Instruction::ExternConvertAny,
     wasmparser::Operator::RefI31 => wasm_encoder::Instruction::RefI31,
@@ -409,14 +469,12 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::DataDrop { data_index } => wasm_encoder::Instruction::DataDrop(data_index),
     wasmparser::Operator::MemoryCopy { dst_mem, src_mem } => wasm_encoder::Instruction::MemoryCopy { dst_mem, src_mem },
     wasmparser::Operator::MemoryFill { mem } => wasm_encoder::Instruction::MemoryFill(mem),
-    /*
-    wasmparser::Operator::TableInit { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ElemDrop { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::TableCopy { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::TypedSelect { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::TypedSelectMulti { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::RefNull { .. } => wasm_encoder::Instruction::
-    */
+    wasmparser::Operator::TableInit { elem_index, table } => wasm_encoder::Instruction::TableInit { elem_index, table },
+    wasmparser::Operator::ElemDrop { elem_index } => wasm_encoder::Instruction::ElemDrop(elem_index),
+    wasmparser::Operator::TableCopy { dst_table, src_table } => wasm_encoder::Instruction::TableCopy { dst_table, src_table },
+    wasmparser::Operator::TypedSelect { ty } => wasm_encoder::Instruction::TypedSelect(map_val_type(ty)),
+    wasmparser::Operator::TypedSelectMulti { tys } => wasm_encoder::Instruction::TypedSelectMulti(Cow::Owned(map_val_types(tys))),
+    wasmparser::Operator::RefNull { hty } => wasm_encoder::Instruction::RefNull(map_heap_type(hty)),
     wasmparser::Operator::RefIsNull => wasm_encoder::Instruction::RefIsNull,
     /*
     wasmparser::Operator::RefFunc { .. } => wasm_encoder::Instruction::
@@ -804,21 +862,30 @@ pub fn map_operator<'a>(operator: wasmparser::Operator) -> wasm_encoder::Instruc
     wasmparser::Operator::ArrayAtomicRmwCmpxchg { .. } => wasm_encoder::Instruction::
     */
     wasmparser::Operator::RefI31Shared => wasm_encoder::Instruction::RefI31Shared,
-    /*
-    wasmparser::Operator::CallRef { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ReturnCallRef { .. } => wasm_encoder::Instruction::
-    */
+    wasmparser::Operator::CallRef { type_index } => wasm_encoder::Instruction::CallRef(type_index),
+    wasmparser::Operator::ReturnCallRef { type_index } => wasm_encoder::Instruction::ReturnCallRef(type_index),
     wasmparser::Operator::RefAsNonNull => wasm_encoder::Instruction::RefAsNonNull,
-    /*
-    wasmparser::Operator::BrOnNull { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::BrOnNonNull { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ContNew { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ContBind { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::Suspend { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::Resume { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::ResumeThrow { .. } => wasm_encoder::Instruction::
-    wasmparser::Operator::Switch { .. } => wasm_encoder::Instruction::
-    */
+
+    wasmparser::Operator::BrOnNull { relative_depth } => wasm_encoder::Instruction::BrOnNull(relative_depth),
+    wasmparser::Operator::BrOnNonNull { relative_depth } => wasm_encoder::Instruction::BrOnNonNull(relative_depth),
+    wasmparser::Operator::ContNew { cont_type_index } => wasm_encoder::Instruction::ContNew(cont_type_index),
+    wasmparser::Operator::ContBind { argument_index, result_index } => wasm_encoder::Instruction::ContBind { argument_index, result_index },
+    wasmparser::Operator::Suspend { tag_index } => wasm_encoder::Instruction::Suspend(tag_index),
+    wasmparser::Operator::Resume { cont_type_index, resume_table } => wasm_encoder::Instruction::Resume {
+      cont_type_index,
+      resume_table: Cow::Owned(map_resume_table(resume_table)),
+    },
+    wasmparser::Operator::ResumeThrow {
+      cont_type_index,
+      tag_index,
+      resume_table,
+    } => wasm_encoder::Instruction::ResumeThrow {
+      cont_type_index,
+      tag_index,
+      resume_table: Cow::Owned(map_resume_table(resume_table)),
+    },
+    wasmparser::Operator::Switch { cont_type_index, tag_index } => wasm_encoder::Instruction::Switch { cont_type_index, tag_index },
+
     wasmparser::Operator::I64Add128 => wasm_encoder::Instruction::I64Add128,
     wasmparser::Operator::I64Sub128 => wasm_encoder::Instruction::I64Sub128,
     wasmparser::Operator::I64MulWideS => wasm_encoder::Instruction::I64MulWideS,
