@@ -1,3 +1,5 @@
+//! # Runtime for WebAssembly smart contracts
+
 mod encoder;
 mod errors;
 mod features;

@@ -1,4 +1,4 @@
-//! # Definition of result and error types
+//! # Common error definition
 
 use std::fmt;
 

@@ -1,5 +1,3 @@
-#![allow(dead_code)]
-
 use crate::mappings::*;
 use crate::metering::*;
 use crate::Model;
