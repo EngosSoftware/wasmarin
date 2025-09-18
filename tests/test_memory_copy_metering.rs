@@ -1,5 +1,7 @@
+use wasmtime::Val;
+
 #[test]
-fn memory_copy_should_work() {
+fn memory_copy_metering_should_work() {
   let wat_str = r#"
     (module
       (memory 1)
@@ -14,6 +16,12 @@ fn memory_copy_should_work() {
     "#;
   let wasm_bytes = wat::parse_str(wat_str).unwrap();
 
+  let mut parser = wasmarin::Parser::new();
+  let model = parser.parse_wasm_bytes(&wasm_bytes).unwrap();
+  let mut encoder = wasmarin::Encoder::new_with_metering();
+  let wasm_bytes = encoder.encode(model);
+  println!("{}", wasmprinter::print_bytes(&wasm_bytes).unwrap());
+
   // Compile the module.
   let engine = wasmtime::Engine::default();
   let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
@@ -21,6 +29,9 @@ fn memory_copy_should_work() {
   // Instantiate the module.
   let mut store = wasmtime::Store::new(&engine, ());
   let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+
+  let remaining_points = instance.get_global(&mut store, "wasmarin_metering_remaining_points").unwrap();
+  remaining_points.set(&mut store, Val::I64(500)).unwrap();
 
   // Get the 'mem' memory handle.
   let memory = instance.get_memory(&mut store, "mem").unwrap();
@@ -36,4 +47,6 @@ fn memory_copy_should_work() {
 
   let data = &memory.data(&mut store)[0..20];
   assert_eq!(b"HeHello world!_____-", data);
+
+  println!("remaining points: {}", remaining_points.get(&mut store).i64().unwrap());
 }
