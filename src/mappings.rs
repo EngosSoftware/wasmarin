@@ -122,8 +122,8 @@ pub fn map_val_type(val_type: wasmparser::ValType) -> wasm_encoder::ValType {
   }
 }
 
-pub fn map_val_types(val_types: Vec<wasmparser::ValType>) -> Vec<wasm_encoder::ValType> {
-  val_types.iter().cloned().map(map_val_type).collect()
+pub fn map_val_types(mut val_types: Vec<wasmparser::ValType>) -> Vec<wasm_encoder::ValType> {
+  val_types.drain(..).map(map_val_type).collect()
 }
 
 pub fn map_ref_type(ref_type: wasmparser::RefType) -> wasm_encoder::RefType {
