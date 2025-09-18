@@ -5,7 +5,7 @@ use wasmarin::{Encoder, Parser};
 fn _0001() {
   let data = fs::read("./tests/test_round_trip/burner.wasm").unwrap();
   let mut parser = Parser::new();
-  let model = parser.parse_wasm(&data).unwrap();
+  let model = parser.parse_wasm_bytes(&data).unwrap();
   let mut encoder = Encoder::default();
   let wasm_bytes = encoder.encode(model);
 

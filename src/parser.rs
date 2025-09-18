@@ -33,26 +33,26 @@ impl Parser {
   /// Parses WAT file.
   pub fn parse_wat_file(&mut self, file: impl AsRef<Path>) -> WasmarinResult<()> {
     let wasm = wat::parse_file(file).map_err(|e| WasmarinError::new(e.to_string()))?;
-    self.parse_wasm(&wasm)?;
+    self.parse_wasm_bytes(&wasm)?;
     Ok(())
   }
 
   /// Parses WAT bytes.
   pub fn parse_wat_bytes(&mut self, data: &[u8]) -> WasmarinResult<()> {
     let wasm = wat::parse_bytes(data).map_err(|e| WasmarinError::new(e.to_string()))?;
-    self.parse_wasm(&wasm)?;
+    self.parse_wasm_bytes(&wasm)?;
     Ok(())
   }
 
   /// Parses WAT string.
   pub fn parse_wat_str(&mut self, wat: impl AsRef<str>) -> WasmarinResult<()> {
     let wasm = wat::parse_str(wat).map_err(|e| WasmarinError::new(e.to_string()))?;
-    self.parse_wasm(&wasm)?;
+    self.parse_wasm_bytes(&wasm)?;
     Ok(())
   }
 
   /// Parses WASM binary.
-  pub fn parse_wasm<'a>(&mut self, data: &'a [u8]) -> WasmarinResult<Model<'a>> {
+  pub fn parse_wasm_bytes<'a>(&mut self, data: &'a [u8]) -> WasmarinResult<Model<'a>> {
     let mut model = Model::default();
 
     // Validate the input data against requested WebAssembly features.

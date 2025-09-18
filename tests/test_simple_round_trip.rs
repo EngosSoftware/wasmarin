@@ -17,7 +17,7 @@ fn simple_round_trip_should_work() {
   let wat_before = wasmprinter::print_bytes(&wasm_bytes_before).unwrap();
   println!("{}", wat_before);
   let mut parser = Parser::new();
-  let model = parser.parse_wasm(&wasm_bytes_before).unwrap();
+  let model = parser.parse_wasm_bytes(&wasm_bytes_before).unwrap();
   let mut encoder = Encoder::default();
   let wasm_bytes_after = encoder.encode(model);
 
