@@ -44,7 +44,7 @@ Inputs:
 - `accumulated_cost` - statically analyzed (calculated) cost of operations before `memory.copy` instruction.
 
 ```math
-result = \frac{ length + word - 1 }{ word } + accumulated_cost
+result = \frac{ length + word - 1 }{ word } + accumulated\_cost
 ```
 
 ### TableInit
