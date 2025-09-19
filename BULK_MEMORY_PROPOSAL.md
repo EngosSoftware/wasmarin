@@ -35,6 +35,12 @@ ElemDrop { elem_index: u32 }
 > During execution, when the `memory.copy` instruction is encountered,
 > the number of bytes to be copied is placed at the top of the stack. 
 
+#### Metering algorithm for `memory.copy`
+
+- a
+- b
+- c
+
 ### TableInit
 
 ### TableCopy
