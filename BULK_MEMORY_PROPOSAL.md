@@ -66,21 +66,6 @@ ElemDrop { elem_index: u32 }
 > The check must be performed before executing `memory.copy` instruction!
 > Otherwise, someone could copy memory not having enough oil. 
 
-#### Metering algorithm for `memory.copy`
-
-Inputs:
-
-- `memory_unit_size` - the number of bytes in one memory unit,
-- `memory_unit_cost` - cost of the operation per one memory unit,
-- `memory_length` - the number of bytes of memory in operation,
-- `accumulated_cost` - accumulated cost of operations until `memory.copy` instruction (including).
-
-Total cost:
-
-```math
-total\_cost = (\frac{memory\_length + memory\_unit\_size - 1}{memory\_unit\_size}) \times memory\_unit\_cost + accumulated\_cost
-```
-
 ### TableInit
 
 ```webassembly
@@ -103,4 +88,19 @@ total\_cost = (\frac{memory\_length + memory\_unit\_size - 1}{memory\_unit\_size
 
 ```webassembly
 (module)
+```
+
+## Total cost calculation for memory operations
+
+Inputs:
+
+- `memory_unit_size` - the number of bytes in one memory unit,
+- `memory_unit_cost` - cost of the operation per one memory unit,
+- `memory_length` - the number of bytes of memory in operation,
+- `accumulated_cost` - accumulated cost of operations until `memory.copy` instruction (including).
+
+Calculation:
+
+```math
+total\_cost = (\frac{memory\_length + memory\_unit\_size - 1}{memory\_unit\_size}) \times memory\_unit\_cost + accumulated\_cost
 ```
