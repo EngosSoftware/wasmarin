@@ -121,3 +121,50 @@ wasm[0]::function[0]:
  ud2
 
 */
+
+/// This is an example of metering code used to calculate
+/// the cost of copying memory of specified size.
+#[test]
+fn memory_copy_metering_code() {
+  let wat_str = r#"
+    (module
+      (func (export "fun") (param $length i32) (result i64)
+        local.get $length   ;; This simulates the memory length on the top of the stack.
+        i64.extend_i32_u    ;; Convert i32 value to i64 value.
+        i64.const 31        ;; Push (bulk_memory_operation_unit - 1)
+        i64.add             ;; Add (length + (bulk_memory_operation_unit - 1))
+        i64.const 32        ;; Push bulk_memory_operation_unit
+        i64.div_u           ;; Divide ((length + (bulk_memory_operation_unit - 1)) / bulk_memory_operation_unit)
+        i64.const 13        ;; Push unit_cost
+        i64.mul             ;; Multiply (((length + (bulk_memory_operation_unit - 1)) / bulk_memory_operation_unit) * unit_cost)
+        i64.const 3         ;; Push accumulated_cost
+        i64.add             ;; Add ((((length + (bulk_memory_operation_unit - 1)) / bulk_memory_operation_unit) * unit_cost) + accumulated_cost)
+      )
+    )
+  "#;
+  let wasm_bytes = wat::parse_str(wat_str).unwrap();
+  let engine = wasmtime::Engine::default();
+  let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
+  let mut store = wasmtime::Store::new(&engine, ());
+  let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let fun = instance.get_typed_func::<i32, i64>(&mut store, "fun").unwrap();
+  assert_eq!(68, fun.call(&mut store, 158).unwrap());
+}
+
+/*
+
+wasm[0]::function[0]:
+ push	rbp
+ mov	rbp, rsp
+ mov	esi, edx
+ lea	rax, [rsi + 0x1f]
+ mov	esi, 0x20
+ xor	rdx, rdx
+ div	rsi
+ imul	rsi, rax, 0xd
+ lea	rax, [rsi + 0x3]
+ mov	rsp, rbp
+ pop	rbp
+ ret
+
+*/

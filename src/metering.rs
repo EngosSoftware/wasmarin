@@ -9,8 +9,8 @@ pub struct Metering {
   enabled: bool,
   /// Index of a global variable storing remaining points.
   remaining_points_global_index: u32,
-  /// the size of the unit (in bytes) for bulk-memory operations.
-  bulk_memory_unit: i64,
+  /// The size of the memory unit (in bytes) for bulk-memory operations.
+  bulk_memory_operation_unit: i64,
 }
 
 impl Default for Metering {
@@ -26,7 +26,7 @@ impl Metering {
     Self {
       enabled,
       remaining_points_global_index: 0,
-      bulk_memory_unit: 32,
+      bulk_memory_operation_unit: 32,
     }
   }
 
@@ -97,6 +97,7 @@ impl Metering {
     if self.is_bulk_memory_operator(&operator) {
       // more operators
       // *accumulated_cost = 0;
+      _ = self.bulk_memory_operation_unit;
       return vec![operator];
     }
     vec![operator]
