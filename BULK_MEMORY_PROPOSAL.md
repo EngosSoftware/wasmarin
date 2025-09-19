@@ -75,6 +75,8 @@ Inputs:
 - `length` - the number of bytes to be copied,
 - `accumulated_cost` - accumulated cost of operations until `memory.copy` instruction (including).
 
+Total cost:
+
 ```math
 total\_cost = (\frac{length + memory\_unit\_size - 1}{memory\_unit\_size}) \times memory\_unit\_cost + accumulated\_cost
 ```
