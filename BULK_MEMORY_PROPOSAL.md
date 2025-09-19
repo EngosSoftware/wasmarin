@@ -49,7 +49,7 @@ Inputs:
 ```
 
 ```math
-total\_cost = (\frac{length + word - 1}{word}) * unit\_cost + accumulated\_cost
+total\_cost = (\frac{length + word - 1}{word}) \times unit\_cost + accumulated\_cost
 ```
 
 ### TableInit
