@@ -927,4 +927,8 @@ fn make_sure_all_operators_are_covered() {
       operator_name
     );
   }
+
+  assert_eq!(enumerated_operators.len(), operators.len());
+  assert_eq!(619, enumerated_operators.len());
+  assert_eq!(619, operators.len());
 }
