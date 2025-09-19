@@ -35,6 +35,10 @@ ElemDrop { elem_index: u32 }
 > During execution, when the `memory.copy` instruction is encountered,
 > the number of bytes to be copied is placed at the top of the stack. 
 
+> [!WARNING]  
+> The check must be performed before executing `memory.copy` instruction!
+> Otherwise, someone could copy memory not having enough oil. 
+
 #### Metering algorithm for `memory.copy`
 
 Inputs:

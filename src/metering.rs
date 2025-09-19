@@ -4,12 +4,20 @@ use crate::mappings::map_operator;
 pub const REMAINING_POINTS_EXPORT_NAME: &str = "wasmarin_metering_remaining_points";
 
 /// Metering properties.
-#[derive(Default)]
 pub struct Metering {
   /// Enables metering functionality.
   enabled: bool,
   /// Index of a global variable storing remaining points.
   remaining_points_global_index: u32,
+  /// the size of the unit (in bytes) for bulk-memory operations.
+  bulk_memory_unit: i64,
+}
+
+impl Default for Metering {
+  /// Creates a default [Metering] instance.
+  fn default() -> Self {
+    Self::new(false)
+  }
 }
 
 impl Metering {
@@ -18,6 +26,7 @@ impl Metering {
     Self {
       enabled,
       remaining_points_global_index: 0,
+      bulk_memory_unit: 32,
     }
   }
 
