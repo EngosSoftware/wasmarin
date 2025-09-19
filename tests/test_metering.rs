@@ -228,11 +228,13 @@ fn memory_copy_metering_code_full() {
   // Burn some oil by copying memory.
   fun.call(&mut store, ()).unwrap();
   assert_eq!(b"HeHello world!_____-", &memory.data(&mut store)[0..20]);
+  // Burned 16 barrels.
   assert_eq!(19, oil.get(&mut store).i64().unwrap());
 
   // Burn some more oil by copying memory.
   fun.call(&mut store, ()).unwrap();
   assert_eq!(b"HeHeHello worl_____-", &memory.data(&mut store)[0..20]);
+  // Burned 16 barrels again.
   assert_eq!(3, oil.get(&mut store).i64().unwrap());
 
   // There is not enough oil to copy memory again.
