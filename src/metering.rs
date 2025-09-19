@@ -48,6 +48,7 @@ impl Metering {
     if self.enabled {
       let mut accumulated_cost = 0;
       for operator in operators {
+        // Accumulate the cost of the operator before taking any other action.
         accumulated_cost += self.cost(&operator);
         for op in self.feed(operator, &mut accumulated_cost) {
           function.instruction(&map_operator(op));
