@@ -85,11 +85,27 @@ total\_cost = (\frac{length + word - 1}{word}) \times unit\_cost + accumulated\_
 
 ### TableInit
 
+```webassembly
+(module)
+```
+
 ### TableCopy
+
+```webassembly
+(module)
+```
 
 ### DataDrop
 
+```webassembly
+(module)
+```
+
 ### ElemDrop
+
+```webassembly
+(module)
+```
 
 ## WebAssembly operators semantics used in metering
 
