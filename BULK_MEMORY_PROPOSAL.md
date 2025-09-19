@@ -12,6 +12,14 @@ TableCopy { dst_table: u32, src_table: u32 }
 ElemDrop { elem_index: u32 }
 ```
 
+> [!IMPORTANT]  
+> There are other table operators like: 
+> - memory.grow
+> - table.fill
+> - table.grow
+> 
+> that should be also be taken into consideration.
+
 ### MemoryInit
 
 ```webassembly
