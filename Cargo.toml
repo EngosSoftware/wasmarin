@@ -1,6 +1,6 @@
 [package]
 name = "wasmarin"
-version = "0.0.0"
+version = "0.0.1"
 authors = ["Dariusz Depta <depta@engos.de>"]
 description = "Singlepass WebAssembly compiler"
 documentation = "https://docs.rs/wasmarin"

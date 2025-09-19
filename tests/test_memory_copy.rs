@@ -3,10 +3,10 @@ fn memory_copy_should_work() {
   let wat_str = r#"
     (module
       (memory 1)
-      (func (export "copy_memory")
-        i32.const 2   ;; destination offset in memory
-        i32.const 0   ;; source offset in memory
-        i32.const 12  ;; length to be copied (in bytes)
+      (func (export "fun_memory_copy")
+        i32.const 2   ;; Destination offset in memory.
+        i32.const 0   ;; Source offset in memory.
+        i32.const 12  ;; Length in bytes to be copied.
         memory.copy
       )
       (export "mem" (memory 0))
@@ -29,7 +29,7 @@ fn memory_copy_should_work() {
   memory.write(&mut store, 0, b"Hello world!_______-").unwrap();
 
   // Get the 'copy_memory' function handle.
-  let copy_memory = instance.get_typed_func::<(), ()>(&mut store, "copy_memory").unwrap();
+  let copy_memory = instance.get_typed_func::<(), ()>(&mut store, "fun_memory_copy").unwrap();
 
   // Execute the 'copy_memory' function handle.
   copy_memory.call(&mut store, ()).unwrap();

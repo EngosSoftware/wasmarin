@@ -12,6 +12,7 @@ tasks:
   clean:
     desc: Cleans all targets
     cmds:
+      - cmd: cargo clean
 
   clippy:
     desc: Runs clippy for all targets

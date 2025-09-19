@@ -1121,7 +1121,7 @@ dependencies = [
 
 [[package]]
 name = "wasmarin"
-version = "0.0.0"
+version = "0.0.1"
 dependencies = [
  "wasm-encoder 0.239.0",
  "wasmparser 0.239.0",
