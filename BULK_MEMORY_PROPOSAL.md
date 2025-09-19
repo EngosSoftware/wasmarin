@@ -72,13 +72,13 @@ Inputs:
 
 - `memory_unit_size` - the number of bytes in one memory unit,
 - `memory_unit_cost` - cost of the operation per one memory unit,
-- `length` - the number of bytes to be copied,
+- `memory_length` - the number of bytes of memory in operation,
 - `accumulated_cost` - accumulated cost of operations until `memory.copy` instruction (including).
 
 Total cost:
 
 ```math
-total\_cost = (\frac{length + memory\_unit\_size - 1}{memory\_unit\_size}) \times memory\_unit\_cost + accumulated\_cost
+total\_cost = (\frac{memory\_length + memory\_unit\_size - 1}{memory\_unit\_size}) \times memory\_unit\_cost + accumulated\_cost
 ```
 
 ### TableInit
