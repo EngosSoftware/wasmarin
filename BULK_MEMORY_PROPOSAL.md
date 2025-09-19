@@ -14,15 +14,29 @@ ElemDrop { elem_index: u32 }
 
 ### MemoryInit
 
+```webassembly
+(module
+  (memory 1)
+  (data "Hello WebAssembly!")
+  (func (export "fun")
+    i32.const 2    ;; Destination offset in memory.
+    i32.const 6    ;; Source offset in passive data segment.
+    i32.const 12   ;; Number of bytes to be copied
+    memory.init 0  ;; Use the first data segment.
+  )
+  (export "mem" (memory 0))
+)
+```
+
 ### MemoryFill
 
 ```webassembly
 (module
   (memory 1)
-  (func (export "fun_memory_fill")
+  (func (export "fun")
     i32.const 22  ;; Start offset in memory.
     i32.const 64  ;; Fill with letter '@'.
-    i32.const 11  ;; Length in bytes to be filled.
+    i32.const 11  ;; Number of bytes to be filled.
     memory.fill
   )
   (export "mem" (memory 0))
@@ -34,10 +48,10 @@ ElemDrop { elem_index: u32 }
 ```webassembly
 (module
   (memory 1)
-  (func (export "fun_memory_copy")
+  (func (export "fun")
     i32.const 2   ;; Destination offset in memory.
     i32.const 0   ;; Source offset in memory.
-    i32.const 12  ;; Length in bytes to be copied.
+    i32.const 12  ;; Number of bytes to be copied.
     memory.copy
   )
   (export "mem" (memory 0))
