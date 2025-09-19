@@ -3,7 +3,7 @@ fn memory_fill_should_work() {
   let wat_str = r#"
     (module
       (memory 1)
-      (func (export "fun_memory_fill")
+      (func (export "fun")
         i32.const 22  ;; Start offset in memory.
         i32.const 64  ;; Fill with letter '@'.
         i32.const 11  ;; Length in bytes to be filled.
@@ -18,7 +18,7 @@ fn memory_fill_should_work() {
   let mut store = wasmtime::Store::new(&engine, ());
   let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
   let memory = instance.get_memory(&mut store, "mem").unwrap();
-  let fun = instance.get_typed_func::<(), ()>(&mut store, "fun_memory_fill").unwrap();
+  let fun = instance.get_typed_func::<(), ()>(&mut store, "fun").unwrap();
   fun.call(&mut store, ()).unwrap();
   let data = &memory.data(&mut store)[20..40];
   assert_eq!(b"\0\0@@@@@@@@@@@\0\0\0\0\0\0\0", data);
