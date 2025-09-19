@@ -1,5 +1,3 @@
-#![cfg(feature = "wasmtime")]
-
 use wasmtime::{Engine, Instance, Module, Store, Val};
 
 #[test]

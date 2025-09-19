@@ -1,5 +1,3 @@
-#![cfg(feature = "wasmtime")]
-
 use wasmarin::{Encoder, Parser};
 use wasmtime::{Engine, Instance, Module, Store, Val};
 
