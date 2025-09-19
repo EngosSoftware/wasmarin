@@ -16,6 +16,19 @@ ElemDrop { elem_index: u32 }
 
 ### MemoryFill
 
+```webassembly
+(module
+  (memory 1)
+  (func (export "fun_memory_fill")
+    i32.const 22  ;; Start offset in memory.
+    i32.const 64  ;; Fill with letter '@'.
+    i32.const 11  ;; Length in bytes to be filled.
+    memory.fill
+  )
+  (export "mem" (memory 0))
+)
+```
+
 ### MemoryCopy
 
 ```webassembly
