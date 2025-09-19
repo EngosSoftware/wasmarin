@@ -21,11 +21,19 @@ ElemDrop { elem_index: u32 }
 ```webassembly
 (module
   (memory 1)
-  (func
-     memory.copy
-  ) 
+  (func (export "fun_memory_copy")
+    i32.const 2   ;; Destination offset in memory.
+    i32.const 0   ;; Source offset in memory.
+    i32.const 12  ;; Length in bytes to be copied.
+    memory.copy
+  )
+  (export "mem" (memory 0))
 )
 ```
+
+> [!NOTE]  
+> During execution, when the `memory.copy` instruction is encountered,
+> the number of bytes to be copied is at the top of the stack. 
 
 ### TableInit
 
