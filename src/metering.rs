@@ -1,7 +1,7 @@
 use crate::mappings::map_operator;
 
-/// Exported name of the global variable for keeping track of remaining points.
-const EXPORT_NAME_REMAINING_POINTS: &str = "wasmarin_metering_remaining_points";
+/// Exported name of the global variable for keeping track of the remaining points.
+pub const REMAINING_POINTS_EXPORT_NAME: &str = "wasmarin_metering_remaining_points";
 
 /// Metering properties.
 #[derive(Default)]
@@ -39,7 +39,7 @@ impl Metering {
   /// Adds and export name for the global variable that keeps track of remaining points.
   pub fn update_export_section(&mut self, export_section: &mut wasm_encoder::ExportSection) {
     if self.enabled {
-      export_section.export(EXPORT_NAME_REMAINING_POINTS, wasm_encoder::ExportKind::Global, self.remaining_points_global_index);
+      export_section.export(REMAINING_POINTS_EXPORT_NAME, wasm_encoder::ExportKind::Global, self.remaining_points_global_index);
     }
   }
 
@@ -49,7 +49,7 @@ impl Metering {
       let mut accumulated_cost = 0;
       for operator in operators {
         accumulated_cost += self.cost(&operator);
-        for op in self.feed(operator, accumulated_cost) {
+        for op in self.feed(operator, &mut accumulated_cost) {
           function.instruction(&map_operator(op));
         }
       }
@@ -60,13 +60,13 @@ impl Metering {
     }
   }
 
-  fn feed<'a>(&self, operator: wasmparser::Operator<'a>, accumulated_cost: i64) -> Vec<wasmparser::Operator<'a>> {
-    if self.is_accounting_operator(&operator) {
-      vec![
+  fn feed<'a>(&self, operator: wasmparser::Operator<'a>, accumulated_cost: &mut i64) -> Vec<wasmparser::Operator<'a>> {
+    if self.is_branching_operator(&operator) && *accumulated_cost > 0 {
+      return vec![
         wasmparser::Operator::GlobalGet {
           global_index: self.remaining_points_global_index,
         },
-        wasmparser::Operator::I64Const { value: accumulated_cost },
+        wasmparser::Operator::I64Const { value: *accumulated_cost },
         wasmparser::Operator::I64Sub,
         wasmparser::Operator::GlobalSet {
           global_index: self.remaining_points_global_index,
@@ -82,10 +82,14 @@ impl Metering {
         wasmparser::Operator::Unreachable,
         wasmparser::Operator::End,
         operator,
-      ]
-    } else {
-      vec![operator]
+      ];
     }
+    if self.is_bulk_memory_operator(&operator) {
+      // more operators
+      // *accumulated_cost = 0;
+      return vec![operator];
+    }
+    vec![operator]
   }
 
   fn cost(&self, operator: &wasmparser::Operator) -> i64 {
@@ -95,11 +99,8 @@ impl Metering {
     }
   }
 
-  /// Returns `true` iff the given operator is an `accounting` operator.
-  ///
-  /// Before each `accounting` operator, there is an additional work
-  /// to be done to track the metering points properly.
-  fn is_accounting_operator(&self, operator: &wasmparser::Operator) -> bool {
+  /// Returns `true` iff the given operator is a `branching` operator.
+  fn is_branching_operator(&self, operator: &wasmparser::Operator) -> bool {
     matches!(
       operator,
       wasmparser::Operator::Loop { .. } // loop headers are branch targets
@@ -129,6 +130,20 @@ impl Metering {
             | wasmparser::Operator::ReturnCallRef { .. } // branch source
             | wasmparser::Operator::BrOnNull { .. } // branch source
             | wasmparser::Operator::BrOnNonNull { .. } // branch source
+    )
+  }
+
+  /// Returns `true` iff the given operator is a `bulk-memory` operator.
+  fn is_bulk_memory_operator(&self, operator: &wasmparser::Operator) -> bool {
+    matches!(
+      operator,
+      wasmparser::Operator::MemoryInit { .. }
+        | wasmparser::Operator::MemoryFill { .. }
+        | wasmparser::Operator::MemoryCopy { .. }
+        | wasmparser::Operator::TableInit { .. }
+        | wasmparser::Operator::TableCopy { .. }
+        | wasmparser::Operator::DataDrop { .. }
+        | wasmparser::Operator::ElemDrop { .. }
     )
   }
 }

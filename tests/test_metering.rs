@@ -32,7 +32,7 @@ fn metering_should_work() {
   let mut store = Store::new(&engine, ());
   let instance = Instance::new(&mut store, &module, &[]).unwrap();
 
-  let remaining_points = instance.get_global(&mut store, "wasmarin_metering_remaining_points").unwrap();
+  let remaining_points = instance.get_global(&mut store, wasmarin::REMAINING_POINTS_EXPORT_NAME).unwrap();
   remaining_points.set(&mut store, Val::I64(4)).unwrap();
 
   // get the function handle

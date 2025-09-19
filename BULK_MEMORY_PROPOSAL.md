@@ -37,9 +37,15 @@ ElemDrop { elem_index: u32 }
 
 #### Metering algorithm for `memory.copy`
 
-- a
-- b
-- c
+Inputs:
+
+- `word` - the size of memory block that is a metering unit, 
+- `length` - the number of memory bytes to be copied,
+- `accumulated_cost` - statically analyzed (calculated) cost of operations before `memory.copy` instruction.
+
+```math
+result = \frac{a+b-1}{b}
+```
 
 ### TableInit
 

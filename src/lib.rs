@@ -11,5 +11,6 @@ mod parser;
 pub use encoder::Encoder;
 pub use errors::{WasmarinError, WasmarinResult};
 pub use features::Features;
+pub use metering::REMAINING_POINTS_EXPORT_NAME;
 pub use model::{CodeSectionEntry, Model};
 pub use parser::Parser;

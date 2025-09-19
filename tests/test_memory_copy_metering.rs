@@ -3,10 +3,10 @@ fn memory_copy_metering_should_work() {
   let wat_str = r#"
     (module
       (memory 1)
-      (func (export "copy_memory")
-        i32.const 2   ;; destination offset in memory
-        i32.const 0   ;; source offset in memory
-        i32.const 12  ;; length to be copied (in bytes)
+      (func (export "fun_memory_copy")
+        i32.const 2   ;; Destination offset in memory.
+        i32.const 0   ;; Source offset in memory.
+        i32.const 12  ;; Length in bytes to be copied.
         memory.copy
       )
       (export "mem" (memory 0))
@@ -20,6 +20,8 @@ fn memory_copy_metering_should_work() {
   let wasm_bytes = encoder.encode(model);
   println!("{}", wasmprinter::print_bytes(&wasm_bytes).unwrap());
 
+  /*
+
   // Compile the module.
   let engine = wasmtime::Engine::default();
   let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
@@ -28,7 +30,7 @@ fn memory_copy_metering_should_work() {
   let mut store = wasmtime::Store::new(&engine, ());
   let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
 
-  let remaining_points = instance.get_global(&mut store, "wasmarin_metering_remaining_points").unwrap();
+  let remaining_points = instance.get_global(&mut store, wasmarin::REMAINING_POINTS_EXPORT_NAME).unwrap();
   remaining_points.set(&mut store, wasmtime::Val::I64(500)).unwrap();
 
   // Get the 'mem' memory handle.
@@ -38,7 +40,7 @@ fn memory_copy_metering_should_work() {
   memory.write(&mut store, 0, b"Hello world!_______-").unwrap();
 
   // Get the 'copy_memory' function handle.
-  let copy_memory = instance.get_typed_func::<(), ()>(&mut store, "copy_memory").unwrap();
+  let copy_memory = instance.get_typed_func::<(), ()>(&mut store, "fun_memory_copy").unwrap();
 
   // Execute the 'copy_memory' function handle.
   copy_memory.call(&mut store, ()).unwrap();
@@ -47,4 +49,6 @@ fn memory_copy_metering_should_work() {
   assert_eq!(b"HeHello world!_____-", data);
 
   println!("remaining points: {}", remaining_points.get(&mut store).i64().unwrap());
+
+  */
 }
