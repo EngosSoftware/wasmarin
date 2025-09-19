@@ -70,17 +70,13 @@ ElemDrop { elem_index: u32 }
 
 Inputs:
 
-- `word` - the size of memory block that is a metering unit,
-- `unit_cost` - cost of the one unit (`word`),
-- `length` - the number of memory bytes to be copied,
-- `accumulated_cost` - statically analyzed (calculated) cost of operations before `memory.copy` instruction.
+- `memory_unit_size` - the number of bytes in one memory unit,
+- `memory_unit_cost` - cost of the operation per one memory unit,
+- `length` - the number of bytes to be copied,
+- `accumulated_cost` - accumulated cost of operations until `memory.copy` instruction (including).
 
 ```math
-\lceil \frac{a}{b} \rceil = \frac{a + b - 1}{b} 
-```
-
-```math
-total\_cost = (\frac{length + word - 1}{word}) \times unit\_cost + accumulated\_cost
+total\_cost = (\frac{length + memory\_unit\_size - 1}{memory\_unit\_size}) \times memory\_unit\_cost + accumulated\_cost
 ```
 
 ### TableInit
