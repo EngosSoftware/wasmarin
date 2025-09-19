@@ -4,7 +4,6 @@ fn memory_copy_metering_should_work() {
     (module
       (memory 1)
       (func (export "fun_memory_copy")
-        (local $x i32)
         i32.const 2       ;; Destination offset in memory.
         i32.const 0       ;; Source offset in memory.
         i32.const 12      ;; Length in bytes to be copied.
