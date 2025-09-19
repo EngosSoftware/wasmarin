@@ -63,3 +63,17 @@ total\_cost = (\frac{length + word - 1}{word}) \times unit\_cost + accumulated\_
 ### DataDrop
 
 ### ElemDrop
+
+## WebAssembly operators semantics used in metering
+
+### i64.sub
+
+```webassembly
+(module
+  (func
+    i64.const 10   ;; push 10,        stack: 10
+    i64.const 3    ;; push 3,         stack: 3, 10 
+    i64.sub        ;; compute 10-3,   stack: 7 
+  )
+)
+```
