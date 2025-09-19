@@ -20,7 +20,7 @@ ElemDrop { elem_index: u32 }
 > 
 > that should be also be taken into consideration.
 
-### MemoryInit
+### memory.init
 
 ```webassembly
 (module
@@ -36,7 +36,20 @@ ElemDrop { elem_index: u32 }
 )
 ```
 
-### MemoryFill
+### memory.grow
+
+```webassembly
+(module
+  (memory 1)
+  (func (export "fun") (result i32)
+    i32.const 2   ;; Number of pages to grow the memory.
+    memory.grow
+  )
+  (export "mem" (memory 0))
+)
+```
+
+### memory.fill
 
 ```webassembly
 (module
@@ -51,7 +64,7 @@ ElemDrop { elem_index: u32 }
 )
 ```
 
-### MemoryCopy
+### memory.copy
 
 ```webassembly
 (module
@@ -74,25 +87,25 @@ ElemDrop { elem_index: u32 }
 > The check must be performed before executing `memory.copy` instruction!
 > Otherwise, someone could copy memory not having enough oil. 
 
-### TableInit
+### table.init
 
 ```webassembly
 (module)
 ```
 
-### TableCopy
+### table.copy
 
 ```webassembly
 (module)
 ```
 
-### DataDrop
+### data.drop
 
 ```webassembly
 (module)
 ```
 
-### ElemDrop
+### elem.drop
 
 ```webassembly
 (module)
