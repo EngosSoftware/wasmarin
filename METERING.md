@@ -38,4 +38,4 @@ resources that may be consumed during execution. As execution proceeds, each ins
 to its cost model (e.g., CPU cycles, memory (de)allocations). If sufficient gas remains, execution completes
 successfully, and the total gas consumed is deducted from the initial value. If execution attempts to consume
 more gas than was provided, it is aborted immediately, and any state changes are rolled back,
-except for the gas that has been already consumed.
+except for the gas that has already been consumed.
