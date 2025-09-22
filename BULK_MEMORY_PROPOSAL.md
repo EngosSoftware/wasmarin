@@ -36,7 +36,7 @@ ElemDrop { elem_index: u32 }
 )
 ```
 
-> [!IMPORTANT]  
+> [!NOTE]  
 > Can be handled with the same algorithm like `memory.copy`.
 
 ### memory.grow
