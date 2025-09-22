@@ -2,7 +2,7 @@ use crate::mappings::*;
 use crate::metering::*;
 use crate::Model;
 use std::borrow::Cow;
-use wasmparser::TableInit;
+use wasmparser::{ElementKind, TableInit};
 
 /// The WebAssembly encoder.
 pub struct Encoder {
@@ -113,6 +113,23 @@ impl Encoder {
     self.metering.update_export_section(&mut export_section);
 
     //----------------------------------------------------------------------------------------------
+    // START SECTION
+    //
+    let start_section: Option<wasm_encoder::StartSection> = model.start_function_index.map(|function_index| wasm_encoder::StartSection { function_index });
+
+    //----------------------------------------------------------------------------------------------
+    // ELEMENT SECTION
+    //
+    let mut element_section = wasm_encoder::ElementSection::new();
+    for element in model.elements {
+      // match element.kind {
+      //   ElementKind::Passive => element_section.passive()
+      //   ElementKind::Active { .. } => element_section.active()
+      //   ElementKind::Declared => element_section.declared()
+      // }
+    }
+
+    //----------------------------------------------------------------------------------------------
     // CODE SECTION
     //
     let mut code_section = wasm_encoder::CodeSection::new();
@@ -123,15 +140,21 @@ impl Encoder {
       code_section.function(&function);
     }
 
-    module
-      .section(&type_section)
-      .section(&import_section)
-      .section(&function_section)
-      .section(&table_section)
-      .section(&tag_section)
-      .section(&global_section)
-      .section(&export_section)
-      .section(&code_section);
+    module.section(&type_section);
+    module.section(&import_section);
+    module.section(&function_section);
+    module.section(&table_section);
+    module.section(&memory_section);
+    if !tag_section.is_empty() {
+      module.section(&tag_section);
+    }
+    module.section(&global_section);
+    module.section(&export_section);
+    if let Some(start_section) = start_section {
+      module.section(&start_section);
+    }
+    module.section(&element_section);
+    module.section(&code_section);
 
     // Encode the custom sections.
     for (name, data) in model.custom_sections {

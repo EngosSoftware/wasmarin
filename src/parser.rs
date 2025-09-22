@@ -116,8 +116,8 @@ impl Parser {
             model.exports.push(export);
           }
         }
-        Payload::StartSection { func: _, range: _ } => {
-          unimplemented!("Payload::StartSection");
+        Payload::StartSection { func, range: _ } => {
+          model.start_function_index = Some(func);
         }
         Payload::ElementSection(reader) => {
           for item in reader {
