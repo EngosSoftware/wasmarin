@@ -2,10 +2,10 @@
 name = "wasmarin"
 version = "0.0.1"
 authors = ["Dariusz Depta <depta@engos.de>"]
-description = "Singlepass WebAssembly compiler"
+description = "WebAssembly runtime for Smart Contracts"
 documentation = "https://docs.rs/wasmarin"
 repository = "https://github.com/EngosSoftware/wasmarin.git"
-keywords = ["singlepass", "webassembly", "compiler"]
+keywords = ["webassembly", "runtime", "smart", "contracts"]
 license = "MIT OR Apache-2.0"
 edition = "2021"
 exclude = [
