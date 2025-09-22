@@ -2,14 +2,13 @@
 fn memory_copy_metering_should_work() {
   let wat_str = r#"
     (module
-      (memory 1)
+      (memory (export "mem") 1)
       (func (export "fun_memory_copy")
-        i32.const 2       ;; Destination offset in memory.
-        i32.const 0       ;; Source offset in memory.
-        i32.const 12      ;; Length in bytes to be copied.
-        memory.copy
+        i32.const 2    ;; Destination offset in memory.
+        i32.const 0    ;; Source offset in memory.
+        i32.const 12   ;; Length in bytes to be copied.
+        memory.copy    ;; Copy memory.
       )
-      (export "mem" (memory 0))
     )
     "#;
   let wasm_bytes = wat::parse_str(wat_str).unwrap();

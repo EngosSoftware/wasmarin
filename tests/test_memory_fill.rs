@@ -2,14 +2,13 @@
 fn memory_fill_should_work() {
   let wat_str = r#"
     (module
-      (memory 1)
+      (memory (export "mem") 1)
       (func (export "fun")
         i32.const 22  ;; Start offset in memory.
         i32.const 64  ;; Fill with letter '@'.
         i32.const 11  ;; Length in bytes to be filled.
-        memory.fill
+        memory.fill   ;; Fill the memory.
       )
-      (export "mem" (memory 0))
     )
     "#;
   let wasm_bytes = wat::parse_str(wat_str).unwrap();
