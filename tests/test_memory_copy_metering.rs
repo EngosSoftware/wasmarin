@@ -17,7 +17,7 @@ fn memory_copy_metering_should_work() {
   let mut parser = wasmarin::Parser::new();
   let model = parser.parse_wasm_bytes(&wasm_bytes).unwrap();
   let mut encoder = wasmarin::Encoder::new_with_metering();
-  let wasm_bytes = encoder.encode(model);
+  let wasm_bytes = encoder.encode(model).unwrap();
   println!("{}", wasmprinter::print_bytes(&wasm_bytes).unwrap());
 
   /*

@@ -19,7 +19,7 @@ fn parsing_globals_should_work() {
   let mut parser = Parser::new();
   let model = parser.parse_wasm_bytes(&wasm_bytes).unwrap();
   let mut encoder = Encoder::new_with_metering();
-  let wasm_bytes = encoder.encode(model);
+  let wasm_bytes = encoder.encode(model).unwrap();
   let wat = wasmprinter::print_bytes(&wasm_bytes).unwrap();
   println!("{}", wat);
 }

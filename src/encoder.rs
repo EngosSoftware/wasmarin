@@ -1,6 +1,7 @@
 use crate::mappings::*;
 use crate::metering::*;
 use crate::Model;
+use crate::WasmarinResult;
 use std::borrow::Cow;
 use wasmparser::{DataKind, ElementKind, TableInit};
 
@@ -28,7 +29,7 @@ impl Encoder {
   }
 
   /// Encode the WebAssembly model into WASM binary.
-  pub fn encode(&mut self, model: Model) -> Vec<u8> {
+  pub fn encode(&mut self, model: Model) -> WasmarinResult<Vec<u8>> {
     // Prepare the WebAssembly module.
     let mut module = wasm_encoder::Module::new();
 
@@ -137,13 +138,13 @@ impl Encoder {
     for element in model.elements {
       match element.kind {
         ElementKind::Passive => {
-          element_section.passive(map_element_items(element.items));
+          element_section.passive(map_element_items(element.items)?);
         }
         ElementKind::Active { table_index, offset_expr } => {
-          element_section.active(table_index, &map_const_expr(offset_expr), map_element_items(element.items));
+          element_section.active(table_index, &map_const_expr(offset_expr), map_element_items(element.items)?);
         }
         ElementKind::Declared => {
-          element_section.declared(map_element_items(element.items));
+          element_section.declared(map_element_items(element.items)?);
         }
       }
     }
@@ -197,6 +198,6 @@ impl Encoder {
     }
 
     // Extract the encoded Wasm bytes for this module.
-    module.finish()
+    Ok(module.finish())
   }
 }
