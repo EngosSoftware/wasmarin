@@ -2,7 +2,7 @@
 name = "wasmarin"
 version = "0.0.1"
 authors = ["Dariusz Depta <depta@engos.de>"]
-description = "WebAssembly runtime for Smart Contracts"
+description = "WebAssembly runtime for smart contracts"
 documentation = "https://docs.rs/wasmarin"
 repository = "https://github.com/EngosSoftware/wasmarin.git"
 keywords = ["webassembly", "runtime", "smart", "contracts"]

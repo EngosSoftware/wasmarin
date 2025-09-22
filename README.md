@@ -11,7 +11,7 @@
 [apache-license-url]: https://github.com/EngosSoftware/wasmarin/blob/main/LICENSE
 [apache-notice-url]: https://github.com/EngosSoftware/wasmarin/blob/main/NOTICE
 
-**WebAssembly runtime for Smart Contracts**
+**WebAssembly runtime for smart contracts**
 
 ## Overview
 

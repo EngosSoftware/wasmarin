@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
-title: WebAssembly runtime for Smart Contracts
+title: WebAssembly runtime for smart contracts
 authors:
   - family-names: Depta
     given-names: Dariusz
