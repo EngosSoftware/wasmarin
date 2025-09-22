@@ -1,5 +1,3 @@
-use wasmarin::{Encoder, Parser};
-
 #[test]
 fn parsing_globals_should_work() {
   let wat_str = r#"
@@ -16,9 +14,9 @@ fn parsing_globals_should_work() {
     )
   "#;
   let wasm_bytes = wat::parse_str(wat_str).unwrap();
-  let mut parser = Parser::new();
+  let mut parser = wasmarin::Parser::default();
   let model = parser.parse_wasm_bytes(&wasm_bytes).unwrap();
-  let mut encoder = Encoder::new_with_metering();
+  let mut encoder = wasmarin::Encoder::new_with_metering();
   let wasm_bytes = encoder.encode(model).unwrap();
   let wat = wasmprinter::print_bytes(&wasm_bytes).unwrap();
   println!("{}", wat);

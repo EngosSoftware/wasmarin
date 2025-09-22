@@ -1,26 +1,27 @@
-use crate::WasmarinResult;
+use crate::{WasmarinError, WasmarinResult};
 use std::borrow::Cow;
 use wasmparser::types::TypeIdentifier;
 
-//TODO Improve this function.
 pub fn map_element_items(element_items: wasmparser::ElementItems) -> WasmarinResult<wasm_encoder::Elements> {
   match element_items {
-    wasmparser::ElementItems::Functions(a) => {
-      let mut c = vec![];
-      for a in a.into_iter() {
-        let b = a.unwrap();
-        c.push(b);
-      }
-      Ok(wasm_encoder::Elements::Functions(Cow::Owned(c)))
-    }
-    wasmparser::ElementItems::Expressions(a, b) => {
-      let mut d = vec![];
-      for a in b.into_iter() {
-        let c = a.unwrap();
-        d.push(map_const_expr(c));
-      }
-      Ok(wasm_encoder::Elements::Expressions(map_ref_type(a), Cow::Owned(d)))
-    }
+    wasmparser::ElementItems::Functions(function_identifiers) => Ok(wasm_encoder::Elements::Functions(Cow::Owned(
+      function_identifiers
+        .into_iter()
+        .collect::<Result<Vec<u32>, _>>()
+        .map_err(|e| WasmarinError::new(e.to_string()))?,
+    ))),
+    wasmparser::ElementItems::Expressions(ref_type, const_expressions) => Ok(wasm_encoder::Elements::Expressions(
+      map_ref_type(ref_type),
+      Cow::Owned(
+        const_expressions
+          .into_iter()
+          .collect::<Result<Vec<wasmparser::ConstExpr>, _>>()
+          .map_err(|e| WasmarinError::new(e.to_string()))?
+          .iter()
+          .map(|const_expr| map_const_expr(const_expr.clone()))
+          .collect(),
+      ),
+    )),
   }
 }
 
