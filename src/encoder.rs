@@ -46,6 +46,7 @@ impl Encoder {
         }
       }
     }
+    module.section(&type_section);
 
     //----------------------------------------------------------------------------------------------
     // IMPORT SECTION
@@ -54,6 +55,7 @@ impl Encoder {
     for import in model.imports {
       import_section.import(import.module, import.name, map_type_ref(import.ty));
     }
+    module.section(&import_section);
 
     //----------------------------------------------------------------------------------------------
     // FUNCTION SECTION
@@ -62,6 +64,7 @@ impl Encoder {
     for function_index in model.function_indexes {
       function_section.function(function_index);
     }
+    module.section(&function_section);
 
     //----------------------------------------------------------------------------------------------
     // TABLE SECTION
@@ -77,6 +80,7 @@ impl Encoder {
         }
       }
     }
+    module.section(&table_section);
 
     //----------------------------------------------------------------------------------------------
     // MEMORY SECTION
@@ -85,6 +89,7 @@ impl Encoder {
     for memory_type in model.memory_types {
       memory_section.memory(map_memory_type(memory_type));
     }
+    module.section(&memory_section);
 
     //----------------------------------------------------------------------------------------------
     // TAG SECTION
@@ -92,6 +97,9 @@ impl Encoder {
     let mut tag_section = wasm_encoder::TagSection::new();
     for tag_type in model.tag_types {
       tag_section.tag(map_tag_type(tag_type));
+    }
+    if !tag_section.is_empty() {
+      module.section(&tag_section);
     }
 
     //----------------------------------------------------------------------------------------------
@@ -102,6 +110,7 @@ impl Encoder {
       global_section.global(map_global_type(global.ty), &map_const_expr(global.init_expr));
     }
     self.metering.update_global_section(&mut global_section);
+    module.section(&global_section);
 
     //----------------------------------------------------------------------------------------------
     // EXPORT SECTION
@@ -111,11 +120,15 @@ impl Encoder {
       export_section.export(export.name, map_export_kind(export.kind), export.index);
     }
     self.metering.update_export_section(&mut export_section);
+    module.section(&export_section);
 
     //----------------------------------------------------------------------------------------------
     // START SECTION
     //
-    let start_section: Option<wasm_encoder::StartSection> = model.start_function_index.map(|function_index| wasm_encoder::StartSection { function_index });
+    if let Some(function_index) = model.start_function_index {
+      let start_section = wasm_encoder::StartSection { function_index };
+      module.section(&start_section);
+    }
 
     //----------------------------------------------------------------------------------------------
     // ELEMENT SECTION
@@ -128,6 +141,7 @@ impl Encoder {
       //   ElementKind::Declared => element_section.declared()
       // }
     }
+    module.section(&element_section);
 
     //----------------------------------------------------------------------------------------------
     // CODE SECTION
@@ -139,24 +153,11 @@ impl Encoder {
       self.metering.update_function(&mut function, code_section_entry.operators);
       code_section.function(&function);
     }
-
-    module.section(&type_section);
-    module.section(&import_section);
-    module.section(&function_section);
-    module.section(&table_section);
-    module.section(&memory_section);
-    if !tag_section.is_empty() {
-      module.section(&tag_section);
-    }
-    module.section(&global_section);
-    module.section(&export_section);
-    if let Some(start_section) = start_section {
-      module.section(&start_section);
-    }
-    module.section(&element_section);
     module.section(&code_section);
 
-    // Encode the custom sections.
+    //----------------------------------------------------------------------------------------------
+    // CUSTOM SECTIONS
+    //
     for (name, data) in model.custom_sections {
       let custom_section = wasm_encoder::CustomSection {
         name: Cow::Owned(name),
