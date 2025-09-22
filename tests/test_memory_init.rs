@@ -9,7 +9,6 @@ fn memory_init_should_work() {
         i32.const 6    ;; Source offset in passive data segment.
         i32.const 12   ;; Number of bytes to be copied
         memory.init 0  ;; Use the first data segment.
-        data.drop 0    ;; The first data segment will not be used any more.
       )
       (export "mem" (memory 0))
     )
