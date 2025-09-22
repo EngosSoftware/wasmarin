@@ -36,6 +36,9 @@ ElemDrop { elem_index: u32 }
 )
 ```
 
+> [!IMPORTANT]  
+> Can be handled with the same algorithm like `memory.copy`.
+
 ### memory.grow
 
 ```webassembly
