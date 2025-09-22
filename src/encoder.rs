@@ -151,6 +151,14 @@ impl Encoder {
     module.section(&element_section);
 
     //----------------------------------------------------------------------------------------------
+    // DATA COUNT SECTION
+    //
+    if let Some(count) = model.data_count {
+      let data_count_section = wasm_encoder::DataCountSection { count };
+      module.section(&data_count_section);
+    }
+
+    //----------------------------------------------------------------------------------------------
     // CODE SECTION
     //
     let mut code_section = wasm_encoder::CodeSection::new();
@@ -177,14 +185,6 @@ impl Encoder {
       }
     }
     module.section(&data_section);
-
-    //----------------------------------------------------------------------------------------------
-    // DATA COUNT SECTION
-    //
-    if let Some(count) = model.data_count {
-      let data_count_section = wasm_encoder::DataCountSection { count };
-      module.section(&data_count_section);
-    }
 
     //----------------------------------------------------------------------------------------------
     // CUSTOM SECTIONS
