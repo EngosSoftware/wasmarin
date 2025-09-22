@@ -1,6 +1,27 @@
 use std::borrow::Cow;
 use wasmparser::types::TypeIdentifier;
 
+pub fn map_element_items(element_items: wasmparser::ElementItems) -> wasm_encoder::Elements {
+  match element_items {
+    wasmparser::ElementItems::Functions(a) => {
+      let mut c = vec![];
+      for a in a.into_iter() {
+        let b = a.unwrap();
+        c.push(b);
+      }
+      wasm_encoder::Elements::Functions(Cow::Owned(c))
+    }
+    wasmparser::ElementItems::Expressions(a, b) => {
+      let mut d = vec![];
+      for a in b.into_iter() {
+        let c = a.unwrap();
+        d.push(map_const_expr(c));
+      }
+      wasm_encoder::Elements::Expressions(map_ref_type(a), Cow::Owned(d))
+    }
+  }
+}
+
 pub fn map_type_ref(type_ref: wasmparser::TypeRef) -> wasm_encoder::EntityType {
   match type_ref {
     wasmparser::TypeRef::Func(index) => wasm_encoder::EntityType::Function(index),

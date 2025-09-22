@@ -135,11 +135,17 @@ impl Encoder {
     //
     let mut element_section = wasm_encoder::ElementSection::new();
     for element in model.elements {
-      // match element.kind {
-      //   ElementKind::Passive => element_section.passive()
-      //   ElementKind::Active { .. } => element_section.active()
-      //   ElementKind::Declared => element_section.declared()
-      // }
+      match element.kind {
+        ElementKind::Passive => {
+          element_section.passive(map_element_items(element.items));
+        }
+        ElementKind::Active { table_index, offset_expr } => {
+          element_section.active(table_index, &map_const_expr(offset_expr), map_element_items(element.items));
+        }
+        ElementKind::Declared => {
+          element_section.declared(map_element_items(element.items));
+        }
+      }
     }
     module.section(&element_section);
 
