@@ -1,6 +1,7 @@
 use std::borrow::Cow;
 use wasmparser::types::TypeIdentifier;
 
+//TODO Improve this function.
 pub fn map_element_items(element_items: wasmparser::ElementItems) -> wasm_encoder::Elements {
   match element_items {
     wasmparser::ElementItems::Functions(a) => {

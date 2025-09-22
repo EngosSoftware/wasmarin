@@ -135,7 +135,8 @@ impl Parser {
           }
         }
         Payload::CodeSectionStart { count: _, range: _, size: _ } => {
-          // Ignore for now.
+          // Here we know how many functions we'll be receiving as `CodeSectionEntry`,
+          // so we can prepare for that, and afterward we can parse and handle each function individually.
         }
         Payload::CodeSectionEntry(body) => {
           let mut code_section_entry = CodeSectionEntry::default();
@@ -188,10 +189,9 @@ impl Parser {
         Payload::CustomSection(reader) => {
           model.custom_sections.push((reader.name().to_string(), reader.data().to_vec()));
         }
-        Payload::End(length) => {
+        Payload::End(_length) => {
           // Once we've reached the end of a parser we either resume at the parent parser
           // or the payload iterator is at its end, and we're done.
-          _ = length;
         }
         other => {
           // Most likely you'd return an error here, but if you want
