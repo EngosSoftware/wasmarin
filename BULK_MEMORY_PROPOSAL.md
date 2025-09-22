@@ -1,6 +1,6 @@
 # Metering for WebAssembly bulk-memory proposal
 
-## Instructions introduced in bulk-memory proposal
+## Instructions introduced in `bulk-memory` proposal
 
 ```text
 MemoryInit { data_index: u32, mem: u32 }
@@ -13,14 +13,14 @@ ElemDrop { elem_index: u32 }
 ```
 
 > [!IMPORTANT]  
-> There are other table operators like: 
+> There are other "bulk" operators like: 
 > - memory.grow
 > - table.fill
 > - table.grow
 > 
-> that should be also be taken into consideration.
+> that could be also be taken into consideration.
 
-### memory.init
+### `memory.init`
 
 ```webassembly
 (module
