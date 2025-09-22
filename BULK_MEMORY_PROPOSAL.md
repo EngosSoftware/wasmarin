@@ -37,9 +37,9 @@ ElemDrop { elem_index: u32 }
 ```
 
 > [!NOTE]  
-> Can be handled with the same algorithm like `memory.copy`.
+> Can be handled with the same algorithm as `memory.copy`.
 
-### memory.grow
+### `memory.grow`
 
 ```webassembly
 (module
@@ -52,7 +52,10 @@ ElemDrop { elem_index: u32 }
 )
 ```
 
-### memory.fill
+> [!NOTE]  
+> On the stack is the number of pages, not bytes, so the `memory.copy` algorithm has to be adjusted.
+
+### `memory.fill`
 
 ```webassembly
 (module
@@ -66,6 +69,9 @@ ElemDrop { elem_index: u32 }
   (export "mem" (memory 0))
 )
 ```
+
+> [!NOTE]  
+> Can be handled with the same algorithm as `memory.copy`.
 
 ### memory.copy
 
@@ -88,27 +94,39 @@ ElemDrop { elem_index: u32 }
 
 > [!WARNING]  
 > The check must be performed before executing `memory.copy` instruction!
-> Otherwise, someone could copy memory not having enough oil. 
+> Otherwise, someone could copy memory not having enough gas. 
 
-### table.init
-
-```webassembly
-(module)
-```
-
-### table.copy
+### `table.init`
 
 ```webassembly
 (module)
 ```
 
-### data.drop
+### `table.grow`
 
 ```webassembly
 (module)
 ```
 
-### elem.drop
+### `table.fill`
+
+```webassembly
+(module)
+```
+
+### `table.copy`
+
+```webassembly
+(module)
+```
+
+### `data.drop`
+
+```webassembly
+(module)
+```
+
+### `elem.drop`
 
 ```webassembly
 (module)
@@ -118,10 +136,10 @@ ElemDrop { elem_index: u32 }
 
 Inputs:
 
+- `memory_length` - the number of bytes of memory in operation,
 - `memory_unit_size` - the number of bytes in one memory unit,
 - `memory_unit_cost` - cost of the operation per one memory unit,
-- `memory_length` - the number of bytes of memory in operation,
-- `accumulated_cost` - accumulated cost of operations until `memory.copy` instruction (including).
+- `accumulated_cost` - accumulated cost of operations until memory intensive instruction (including).
 
 Calculation:
 
