@@ -39,3 +39,39 @@ to its cost model (e.g., CPU cycles, memory (de)allocations). If sufficient gas 
 successfully, and the total gas consumed is deducted from the initial value. If execution attempts to consume
 more gas than was provided, it is aborted immediately, and any state changes are rolled back,
 except for the gas that has already been consumed.
+
+## Metering approaches for WebAssembly code
+
+### Bytecode instrumentation (static metering)
+
+Before deploying a contract, the blockchain rewrites the Wasm bytecode.
+For each Wasm instruction (or basic block), it injects extra instructions that decrement a gas counter.
+If the counter hits zero, execution traps (aborts). This approach:
+
+- is **deterministic**, as all nodes see the same modified Wasm 👍,
+- is **flexible**, as different operations can have different costs 👍,
+- increases code size and runtime overhead 👎.
+
+### Host function wrapping (dynamic metering)
+
+Instead of rewriting the Wasm code, the blockchain runtime wraps host functions (syscalls, storage ops, etc.)
+with gas charging. Only heavyweight operations (storage, cryptography, I/O) are metered. This approach:
+
+- is **efficient**, less instrumentation overhead 👍,
+- but doesn’t cover _pure computation_ (like infinite loops with just Wasm instructions) 👎.
+
+### Interpreter or VM-level metering
+
+If the blockchain uses its own Wasm interpreter (instead of a JIT or AoT), it can directly account
+for gas at runtime per instruction. In this approach:
+
+- no code rewriting is needed 👍,
+- but it's harder to optimize (slower compared to native JIT or AoT) 👎.
+
+### Hybrid approaches
+
+Many systems combine strategies:
+
+- static instrumentation for Wasm arithmetic/logic,
+- dynamic host-function charging for storage and external calls,
+- VM-level safety as a fallback.
