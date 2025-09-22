@@ -125,8 +125,8 @@ impl Parser {
             model.elements.push(element);
           }
         }
-        Payload::DataCountSection { count: _, range: _ } => {
-          unimplemented!("Payload::DataCountSection");
+        Payload::DataCountSection { count, range: _ } => {
+          model.data_count = Some(count);
         }
         Payload::DataSection(reader) => {
           for item in reader {
@@ -134,10 +134,8 @@ impl Parser {
             model.data.push(data);
           }
         }
-        Payload::CodeSectionStart { count, range, size } => {
-          // Here we know how many functions we'll be receiving as `CodeSectionEntry`,
-          // so we can prepare for that, and afterward we can parse and handle each function individually.
-          _ = (count, range, size);
+        Payload::CodeSectionStart { count: _, range: _, size: _ } => {
+          // Ignore for now.
         }
         Payload::CodeSectionEntry(body) => {
           let mut code_section_entry = CodeSectionEntry::default();

@@ -20,5 +20,6 @@ pub struct Model<'a> {
   pub tag_types: Vec<wasmparser::TagType>,
   pub elements: Vec<wasmparser::Element<'a>>,
   pub data: Vec<wasmparser::Data<'a>>,
+  pub data_count: Option<u32>,
   pub code_section_entries: Vec<CodeSectionEntry<'a>>,
 }

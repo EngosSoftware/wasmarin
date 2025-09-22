@@ -2,7 +2,7 @@ use crate::mappings::*;
 use crate::metering::*;
 use crate::Model;
 use std::borrow::Cow;
-use wasmparser::{ElementKind, TableInit};
+use wasmparser::{DataKind, ElementKind, TableInit};
 
 /// The WebAssembly encoder.
 pub struct Encoder {
@@ -154,6 +154,30 @@ impl Encoder {
       code_section.function(&function);
     }
     module.section(&code_section);
+
+    //----------------------------------------------------------------------------------------------
+    // DATA SECTION
+    //
+    let mut data_section = wasm_encoder::DataSection::new();
+    for data in model.data {
+      match data.kind {
+        DataKind::Passive => {
+          data_section.passive(data.data.iter().cloned());
+        }
+        DataKind::Active { memory_index, offset_expr } => {
+          data_section.active(memory_index, &map_const_expr(offset_expr), data.data.iter().cloned());
+        }
+      }
+    }
+    module.section(&data_section);
+
+    //----------------------------------------------------------------------------------------------
+    // DATA COUNT SECTION
+    //
+    if let Some(count) = model.data_count {
+      let data_count_section = wasm_encoder::DataCountSection { count };
+      module.section(&data_count_section);
+    }
 
     //----------------------------------------------------------------------------------------------
     // CUSTOM SECTIONS
