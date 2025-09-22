@@ -87,6 +87,14 @@ impl Encoder {
     }
 
     //----------------------------------------------------------------------------------------------
+    // TAG SECTION
+    //
+    let mut tag_section = wasm_encoder::TagSection::new();
+    for tag_type in model.tag_types {
+      tag_section.tag(map_tag_type(tag_type));
+    }
+
+    //----------------------------------------------------------------------------------------------
     // GLOBAL SECTION
     //
     let mut global_section = wasm_encoder::GlobalSection::new();
@@ -120,7 +128,7 @@ impl Encoder {
       .section(&import_section)
       .section(&function_section)
       .section(&table_section)
-      .section(&memory_section)
+      .section(&tag_section)
       .section(&global_section)
       .section(&export_section)
       .section(&code_section);

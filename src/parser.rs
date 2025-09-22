@@ -98,8 +98,11 @@ impl Parser {
             model.memory_types.push(memory_type);
           }
         }
-        Payload::TagSection(_reader) => {
-          unimplemented!("Payload::TagSection");
+        Payload::TagSection(reader) => {
+          for item in reader {
+            let tag_type = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            model.tag_types.push(tag_type);
+          }
         }
         Payload::GlobalSection(reader) => {
           for item in reader {

@@ -13,6 +13,7 @@ pub struct Model<'a> {
   pub function_indexes: Vec<u32>,
   pub tables: Vec<wasmparser::Table<'a>>,
   pub memory_types: Vec<wasmparser::MemoryType>,
+  pub tag_types: Vec<wasmparser::TagType>,
   pub globals: Vec<wasmparser::Global<'a>>,
   pub elements: Vec<wasmparser::Element<'a>>,
   pub data: Vec<wasmparser::Data<'a>>,
