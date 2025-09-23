@@ -121,7 +121,7 @@ ElemDrop { elem_index: u32 }
 
 ```webassembly
 (module
-  (table (export "tab") 21 21 funcref)
+  (table 21 funcref)
   (elem declare func $f111)
   (func $f111 (result i32) i32.const 111)
   (func (export "fun")
