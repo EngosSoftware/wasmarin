@@ -5,8 +5,8 @@ fn data_drop_should_work() {
       (data "Hello WebAssembly!")
       (data "Hello world!")
       (func (export "fun")
-        data.drop 0    ;; Drop passivbe data segment 0.
-        data.drop 1    ;; Drop passivbe data segment 1.
+        data.drop 0    ;; Drop passive data segment 0.
+        data.drop 1    ;; Drop passive data segment 1.
       )
     )
     "#;
