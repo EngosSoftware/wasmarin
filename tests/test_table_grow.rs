@@ -1,5 +1,5 @@
 #[test]
-fn table_size_should_work() {
+fn table_grow_should_work() {
   let wat_str = r#"
     (module
       (table 2 funcref)

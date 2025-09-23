@@ -120,7 +120,17 @@ ElemDrop { elem_index: u32 }
 ### `table.fill`
 
 ```webassembly
-(module)
+(module
+  (table (export "tab") 21 21 funcref)
+  (elem declare func $f111)
+  (func $f111 (result i32) i32.const 111)
+  (func (export "fun")
+    i32.const 1      ;; Start offset in table.
+    ref.func $f111   ;; Reference value to fill the table.
+    i32.const 20     ;; Number of elements to be filled.
+    table.fill 0     ;; Fill the table.
+  )
+)
 ```
 
 ### `table.copy`
