@@ -73,7 +73,7 @@ ElemDrop { elem_index: u32 }
 > [!NOTE]  
 > Can be handled with the same algorithm as `memory.copy`.
 
-### memory.copy
+### `memory.copy`
 
 ```webassembly
 (module
@@ -169,13 +169,33 @@ ElemDrop { elem_index: u32 }
 ### `data.drop`
 
 ```webassembly
-(module)
+(module
+  (data "Hello WebAssembly!")
+  (data "Hello world!")
+  (func (export "fun")
+    data.drop 0    ;; Drop passivbe data segment 0.
+    data.drop 1    ;; Drop passivbe data segment 1.
+  )
+)
 ```
 
 ### `elem.drop`
 
 ```webassembly
-(module)
+(module
+  (elem func $f1 $f2 $f3 $f4 $f5 $f6)
+  (elem func $f2 $f3 $f4)
+  (func $f1)
+  (func $f2)
+  (func $f3)
+  (func $f4)
+  (func $f5)
+  (func $f6)
+  (func (export "fun")
+    elem.drop 0  ;; Drop passive element segment 0
+    elem.drop 1  ;; Drop passive element segment 1
+  )
+)
 ```
 
 ## Total cost calculation for memory operations

@@ -1,5 +1,6 @@
 mod test_data_drop;
 mod test_data_drop_metering;
+mod test_elem_drop;
 mod test_features;
 mod test_globals;
 mod test_memory_copy;

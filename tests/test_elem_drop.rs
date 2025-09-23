@@ -1,12 +1,18 @@
 #[test]
-fn data_drop_should_work() {
+fn elem_drop_should_work() {
   let wat_str = r#"
     (module
-      (data "Hello WebAssembly!")
-      (data "Hello world!")
+      (elem func $f1 $f2 $f3 $f4 $f5 $f6)
+      (elem func $f2 $f3 $f4)
+      (func $f1)
+      (func $f2)
+      (func $f3)
+      (func $f4)
+      (func $f5)
+      (func $f6)
       (func (export "fun")
-        data.drop 0    ;; Drop passivbe data segment 0.
-        data.drop 1    ;; Drop passivbe data segment 1.
+        elem.drop 0  ;; Drop passive element segment 0
+        elem.drop 1  ;; Drop passive element segment 1
       )
     )
     "#;
