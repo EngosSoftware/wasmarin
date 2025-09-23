@@ -105,7 +105,16 @@ ElemDrop { elem_index: u32 }
 ### `table.grow`
 
 ```webassembly
-(module)
+(module
+  (table 2 funcref)
+  (func (export "fun") (result i32)
+    ref.null func  ;; New table elements with be null function references.
+    i32.const 100  ;; Number of new elements in the table.
+    table.grow 0   ;; Grow the table.
+    drop           ;; Drop the old table size.
+    table.size 0   ;; Return the new table size.
+  )
+)
 ```
 
 ### `table.fill`

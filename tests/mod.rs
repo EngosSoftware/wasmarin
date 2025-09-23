@@ -14,4 +14,5 @@ mod test_round_trip;
 mod test_semantics;
 mod test_simple_round_trip;
 mod test_simple_wasmtime;
+mod test_table_grow;
 mod test_table_size;
