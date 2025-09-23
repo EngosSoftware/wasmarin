@@ -99,7 +99,21 @@ ElemDrop { elem_index: u32 }
 ### `table.init`
 
 ```webassembly
-(module)
+(module
+  (table 10 funcref)
+  (elem func $f1 $f2 $f3 $f4 $f5)
+  (func $f1)
+  (func $f2)
+  (func $f3)
+  (func $f4)
+  (func $f5)
+  (func (export "fun")
+    i32.const 5     ;; Destination offset in the table.
+    i32.const 0     ;; Source offset in the elements.
+    i32.const 3     ;; Number of elements to be used as initialization.
+    table.init 0 0  ;; Initialize table.
+  )
+)
 ```
 
 ### `table.grow`
