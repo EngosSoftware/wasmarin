@@ -67,15 +67,12 @@ pub fn map_handle(handle: wasmparser::Handle) -> wasm_encoder::Handle {
 }
 
 pub fn map_const_expr(const_expr: wasmparser::ConstExpr) -> wasm_encoder::ConstExpr {
-  let reader = const_expr.get_operators_reader();
   let mut instructions = vec![];
-  for item in reader {
-    let operator = item.unwrap();
+  let mut reader = const_expr.get_operators_reader();
+  while let Ok(operator) = reader.read() {
     instructions.push(map_operator(operator));
-  }
-  if let Some(instruction) = instructions.last() {
-    if matches!(instruction, wasm_encoder::Instruction::End) {
-      instructions.remove(instructions.len() - 1);
+    if reader.is_end_then_eof() {
+      break;
     }
   }
   wasm_encoder::ConstExpr::extended(instructions)

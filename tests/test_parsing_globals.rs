@@ -2,7 +2,7 @@
 fn parsing_globals_should_work() {
   let wat_str = r#"
     (module
-      (global (mut i32) i32.const 2)
+      (global (mut i32) (i32.add (i32.const 1) (i32.const 1)))
       (type (func (param i32) (result i32)))
       (func (type 0) (param i32) (result i32)
         local.get 0
@@ -20,17 +20,4 @@ fn parsing_globals_should_work() {
   let wasm_bytes = encoder.encode(model).unwrap();
   let wat = wasmprinter::print_bytes(&wasm_bytes).unwrap();
   println!("{}", wat);
-}
-
-#[test]
-fn a() {
-  let word = 32;
-  for i in 0..=100 {
-    print!("{:3} ", i);
-  }
-  println!();
-  for i in 0..=100 {
-    let coefficient = (i + word - 1) / word;
-    print!("{:3} ", coefficient);
-  }
 }
