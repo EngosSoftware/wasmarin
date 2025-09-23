@@ -150,7 +150,20 @@ ElemDrop { elem_index: u32 }
 ### `table.copy`
 
 ```webassembly
-(module)
+(module
+  (table $dst 7 funcref)
+  (table $src 5 funcref)
+  (elem (table $src) (i32.const 1) func $f1 $f2 $f3)
+  (func $f1)
+  (func $f2)
+  (func $f3)
+  (func (export "fun")
+    i32.const 2           ;; Destination ofset in table $dst.
+    i32.const 1           ;; Source ofset in table $src.
+    i32.const 3           ;; Number of elements to be copied.
+    table.copy $dst $src  ;; Copy elements from table $src to table $dst.
+  )
+)
 ```
 
 ### `data.drop`
