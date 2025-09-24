@@ -12,9 +12,9 @@
 
 > [!IMPORTANT]  
 > There are other "bulk" operators like: 
-> - memory.grow
-> - table.fill
-> - table.grow
+> - `memory.grow`
+> - `table.fill`
+> - `table.grow`
 > 
 > that could be also be taken into consideration.
 
