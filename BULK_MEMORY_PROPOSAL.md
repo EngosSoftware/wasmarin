@@ -2,21 +2,27 @@
 
 ## Instructions introduced in `bulk-memory` proposal
 
-- `memory.init`
-- `memory.fill`
 - `memory.copy`
+- `memory.fill`
+- `memory.init`
 - `data.drop`
-- `table.init`
 - `table.copy`
+- `table.init`
 - `elem.drop`
 
 > [!IMPORTANT]  
 > There are other "bulk" operators like: 
 > - `memory.grow`
-> - `table.fill`
+> - `memory.size`
+> - `table.get`
+> - `table.set`
+> - `table.size`
 > - `table.grow`
+> - `table.fill`
 > 
-> that could be also be taken into consideration.
+> that should be also be taken into consideration for new metering implementation.
+
+## Semantics of instructions
 
 ### `memory.init`
 
