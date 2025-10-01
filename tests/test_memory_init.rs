@@ -1,9 +1,11 @@
+///
 /// Demonstrates the use of the `memory.init` instruction in WebAssembly.
 ///
 /// This example defines a module with one memory and one passive data segment
 /// containing the string `Hello WebAssembly!`.
-/// The exported function `fun` copies 12 bytes starting from offset 6 in the
-/// data segment into memory at offset 2, using `memory.init` instruction.
+///
+/// The exported function `fun` copies 12 bytes starting from offset 6 in the data segment
+/// into memory at offset 2, using `memory.init` instruction.
 ///
 /// After calling `fun`, the memory should contain the sequence:
 ///
@@ -13,6 +15,9 @@
 /// ```
 ///
 /// This test asserts this by comparing the memory slice against `\0\0WebAssembly!\0\0`.
+///
+/// The `memory.init` instruction should be benchmarked based on the number of bytes copied.
+///
 #[test]
 fn memory_init_should_work() {
   let wat_str = r#"
