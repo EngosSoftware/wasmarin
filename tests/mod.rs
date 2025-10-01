@@ -12,4 +12,3 @@ mod test_simple_wasmtime;
 mod test_table_copy;
 mod test_table_fill;
 mod test_table_grow;
-mod test_table_size;

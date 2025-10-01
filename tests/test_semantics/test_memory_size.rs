@@ -5,7 +5,7 @@
 ///
 /// # NOTES:
 ///
-/// The `memory.size` instruction execution time does not depend on memory size.
+/// - The `memory.size` instruction execution time does not depend on memory size.
 ///
 #[test]
 fn _0001() {
