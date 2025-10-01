@@ -6,6 +6,7 @@ mod test_memory_fill;
 mod test_memory_grow;
 mod test_memory_init;
 mod test_memory_size;
+mod test_table_copy;
 mod test_table_fill;
 mod test_table_init;
 mod test_table_size;
