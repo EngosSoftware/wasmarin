@@ -1,4 +1,5 @@
 mod test_data_drop;
+mod test_elem_drop;
 mod test_i64_div_u;
 mod test_i64_sub;
 mod test_memory_copy;
