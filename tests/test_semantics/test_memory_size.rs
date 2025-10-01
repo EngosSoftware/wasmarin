@@ -3,6 +3,10 @@
 ///
 /// This example defines a module with one memory of size 7 pages (7 x 64kB).
 ///
+/// # NOTES:
+///
+/// The `memory.size` instruction execution time does not depend on memory size.
+///
 #[test]
 fn memory_size_should_work() {
   let wat_str = r#"
