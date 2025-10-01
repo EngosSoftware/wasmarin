@@ -16,7 +16,12 @@
 ///
 /// This test asserts this by comparing the memory slice against `\0\0WebAssembly!\0\0`.
 ///
-/// The `memory.init` instruction should be benchmarked based on the number of bytes copied.
+/// # NOTES:
+///
+/// - Before executing the `memory.init` instruction, the number of bytes to be copied
+///   from passive data segment to memory offset is placed on the top of the stack.
+///
+/// - The `memory.init` instruction should be benchmarked based on the number of bytes copied.
 ///
 #[test]
 fn memory_init_should_work() {
