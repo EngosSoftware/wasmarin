@@ -1,5 +1,21 @@
+///
+/// Demonstrates the use of the `table.copy` instruction in WebAssembly.
+///
+/// This example defines two tables. The source table is of size 5 and has initially
+/// 3 non-zero elements filled in. The destination table is of size 7 and is initially empty.
+///
+/// The exported function `fun` copies 3 elements from source table starting from offset 1
+/// to destination table to offset 2 using `table.copy` instruction.
+///
+/// # NOTES:
+///
+/// - Before executing the `table.copy` instruction, the number of elements to be copied
+///   is placed on the top of the stack.
+///
+/// - The `table.copy` instruction should be benchmarked based on the number of elements copied.
+///
 #[test]
-fn table_copy_should_work() {
+fn _0001() {
   let wat_str = r#"
     (module
       (table $dst (export "tab_dst") 7 funcref)
@@ -9,10 +25,10 @@ fn table_copy_should_work() {
       (func $f2)
       (func $f3)
       (func (export "fun")
-        i32.const 2           ;; Destination ofset in table $dst.
-        i32.const 1           ;; Source ofset in table $src.
-        i32.const 3           ;; Number of elements to be copied.
-        table.copy $dst $src  ;; Copy elements from table $src to table $dst.
+        i32.const 2           ;; Destination ofset in table $dst;              push: 2  stack: 2
+        i32.const 1           ;; Source ofset in table $src;                   push: 1  stack: 1 2
+        i32.const 3           ;; Number of elements to be copied;              push: 3  stack: 3 1 2
+        table.copy $dst $src  ;; Copy elements from table $src to table $dst;           stack: (empty)
       )
     )
     "#;
