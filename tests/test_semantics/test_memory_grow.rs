@@ -14,7 +14,7 @@
 /// - The `memory.grow` instruction should be benchmarked based on the number of pages.
 ///
 #[test]
-fn memory_grow_should_work() {
+fn _0001() {
   let wat_str = r#"
     (module
       (memory (export "mem") 1)

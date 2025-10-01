@@ -8,7 +8,7 @@
 /// The `memory.size` instruction execution time does not depend on memory size.
 ///
 #[test]
-fn memory_size_should_work() {
+fn _0001() {
   let wat_str = r#"
     (module
       (memory (export "mem") 7)

@@ -23,7 +23,7 @@
 /// - The `memory.fill` instruction should be benchmarked based on the number of bytes filled.
 ///
 #[test]
-fn memory_fill_should_work() {
+fn _0001() {
   let wat_str = r#"
     (module
       (memory (export "mem") 1)

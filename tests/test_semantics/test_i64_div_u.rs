@@ -1,5 +1,5 @@
 #[test]
-fn i64_div_u() {
+fn _0001() {
   let wat_str = r#"
     (module
       (func (export "fun") (result i64)
