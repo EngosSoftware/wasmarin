@@ -20,20 +20,20 @@
 /// - Before executing the `memory.copy` instruction, the number of bytes to be copied
 ///   is placed on the top of the stack.
 ///
-/// - The `memory.copy` instruction should be benchmarked based on the number of bytes filled.
+/// - The `memory.copy` instruction should be benchmarked based on the number of bytes copied.
 ///
 #[test]
 fn memory_copy_should_work() {
   let wat_str = r#"
-    (module
-      (memory (export "mem") 1)
-      (func (export "fun")
-        i32.const 2   ;; Destination offset in memory;  push: 2   stack: 2
-        i32.const 0   ;; Source offset in memory;       push: 0   stack: 0 2
-        i32.const 12  ;; Length in bytes to be copied;  push: 12  stack: 12 0 2
-        memory.copy   ;; Copy memory;                             stack: (empty)
-      )
-    )
+(module
+  (memory (export "mem") 1)
+  (func (export "fun")
+    i32.const 2   ;; Destination offset in memory;  push: 2   stack: 2
+    i32.const 0   ;; Source offset in memory;       push: 0   stack: 0 2
+    i32.const 12  ;; Length in bytes to be copied;  push: 12  stack: 12 0 2
+    memory.copy   ;; Copy memory;                             stack: (empty)
+  )
+)
     "#;
   let wasm_bytes = wat::parse_str(wat_str).unwrap();
   let engine = wasmtime::Engine::default();
