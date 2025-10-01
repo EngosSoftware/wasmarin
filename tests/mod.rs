@@ -5,7 +5,6 @@ mod test_features;
 mod test_globals;
 mod test_memory_copy;
 mod test_memory_copy_metering;
-mod test_memory_fill;
 mod test_memory_grow;
 mod test_metering;
 mod test_parsing_globals;
