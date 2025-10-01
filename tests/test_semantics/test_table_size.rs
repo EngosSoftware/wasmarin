@@ -10,14 +10,14 @@
 /// - The `table.size` instruction execution time does not depend on table size.
 ///
 #[test]
-fn table_size_should_work() {
+fn _0001() {
   let wat_str = r#"
     (module
       (table 2025 funcref)
       (func (export "fun") (result i32)
         table.size 0   ;; Return the size of the first table;  push: 2025  stack: 2025
       )
-    )
+)
     "#;
   let wasm_bytes = wat::parse_str(wat_str).unwrap();
   let engine = wasmtime::Engine::default();
