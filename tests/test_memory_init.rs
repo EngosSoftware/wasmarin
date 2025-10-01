@@ -20,10 +20,10 @@ fn memory_init_should_work() {
       (memory (export "mem") 1)
       (data "Hello WebAssembly!")
       (func (export "fun")
-        i32.const 2    ;; Destination offset in memory.
-        i32.const 6    ;; Source offset in passive data segment.
-        i32.const 12   ;; Number of bytes to be copied
-        memory.init 0  ;; Use the first data segment to initialize the memory.
+        i32.const 2    ;; Destination offset in memory;                         push: 2   stack: 2
+        i32.const 6    ;; Source offset in passive data segment;                push: 6   stack: 6 2
+        i32.const 12   ;; Number of bytes to be copied;                         push: 12  stack: 12 6 2
+        memory.init 0  ;; Use the first data segment to initialize the memory;            stack: (empty)
       )
     )
     "#;
