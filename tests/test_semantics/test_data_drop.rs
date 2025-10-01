@@ -11,7 +11,7 @@
 ///   but dropping data segment itself may cause freeing the memory used by this
 ///   data segment which may (or not) consume more resources.
 ///
-/// - The `data.grow` instruction should be benchmarked based on the size of passive data segments.
+/// - The `data.drop` instruction should be benchmarked based on the size of passive data segment.
 ///
 #[test]
 fn _0001() {
