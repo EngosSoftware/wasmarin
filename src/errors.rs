@@ -1,17 +1,15 @@
 //! # Common error definition
 
-use std::fmt;
-
 /// Result type definition.
-pub type WasmarinResult<T, E = WasmarinError> = std::result::Result<T, E>;
+pub type WasmarinResult<T, E = WasmarinError> = Result<T, E>;
 
 /// Error definition.
 #[derive(PartialEq, Eq)]
 pub struct WasmarinError(String);
 
-impl fmt::Debug for WasmarinError {
+impl std::fmt::Debug for WasmarinError {
   /// Implementation of [Debug] trait for [WasmarinError].
-  fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
     write!(f, "{}", self.0)
   }
 }
