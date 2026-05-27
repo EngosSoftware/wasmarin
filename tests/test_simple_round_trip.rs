@@ -23,4 +23,6 @@ fn simple_round_trip_should_work() {
 
   let wat_after = wasmprinter::print_bytes(&wasm_bytes_after).unwrap();
   println!("{}", wat_after);
+
+  assert_eq!(wat_before, wat_after);
 }
