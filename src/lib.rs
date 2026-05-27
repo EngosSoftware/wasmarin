@@ -1,4 +1,4 @@
-//! # Runtime for WebAssembly smart contracts
+//! # WebAssembly runtime for decision contracts
 
 mod encoder;
 mod errors;

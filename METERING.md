@@ -1,4 +1,4 @@
-# Metering for WebAssembly smart contracts
+# Metering for WebAssembly decision contracts
 
 ## Motivation
 
@@ -17,7 +17,7 @@
 - **Economic incentives & resource accounting**
 
   Just like Ethereum’s gas model, metering ensures that users pay for the computation/storage they consume.
-  This prevents `free riders` and encourages efficient smart contract design.
+  This prevents `free riders` and encourages efficient decision contract design.
 
 - **Security and isolation**
 
@@ -32,7 +32,7 @@
 
 ## Observables
 
-From the user’s perspective, execution of a smart contract consumes resources such as CPU time and memory.
+From the user’s perspective, execution of a decision contract consumes resources such as CPU time and memory.
 When a contract entry point is invoked, it is supplied with a fixed amount of gas, representing the maximum
 resources that may be consumed during execution. As execution proceeds, each instruction consumes gas according
 to its cost model (e.g., CPU cycles, memory (de)allocations). If sufficient gas remains, execution completes

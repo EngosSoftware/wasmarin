@@ -2,10 +2,10 @@
 name = "wasmarin"
 version = "0.0.1"
 authors = ["Dariusz Depta <depta@engos.de>"]
-description = "WebAssembly runtime for smart contracts"
+description = "WebAssembly runtime for decision contracts"
 documentation = "https://docs.rs/wasmarin"
 repository = "https://github.com/EngosSoftware/wasmarin.git"
-keywords = ["webassembly", "runtime", "smart", "contracts"]
+keywords = ["webassembly", "runtime", "decision", "contracts"]
 license = "MIT OR Apache-2.0"
 edition = "2021"
 exclude = [
