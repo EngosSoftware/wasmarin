@@ -2,25 +2,20 @@
 
 ## Instruction summary
 
-- `memory.copy`
-- `memory.fill`
 - `memory.init`
-- `data.drop`
-- `table.copy`
+- `memory.grow`
+- `memory.fill`
+- `memory.copy`
 - `table.init`
+- `table.grow`
+- `table.fill`
+- `table.copy`
+- `data.drop`
 - `elem.drop`
-
-> [!IMPORTANT]  
-> There are other _bulk_ operators like: 
-> - `memory.grow`
-> - `memory.size`
-> - `table.get`
-> - `table.set`
-> - `table.size`
-> - `table.grow`
-> - `table.fill`
-> 
-> that should be also be taken into consideration for new metering implementation.
+- `memory.size`
+- `table.size`
+- `table.get`
+- `table.set`
 
 ## Instruction semantics
 
@@ -214,3 +209,22 @@ Inputs:
 Calculation:
 
 \\[ total = (\frac{length + unitSize - 1}{unitSize}) \times unitCost + accumulated \\]
+
+## Implementation
+
+| Operation     | Where is the <br/> `length` | Remarks              |
+|---------------|-----------------------------|----------------------|
+| `memory.init` | Top of the stack.           |                      |
+| `memory.grow` | Top of the stack.           |                      |
+| `memory.fill` | Top of the stack.           |                      |
+| `memory.copy` | Top of the stack.           |                      |
+| `table.init`  | Top of the stack.           |                      |
+| `table.grow`  | Top of the stack.           |                      |
+| `table.fill`  | Top of the stack.           |                      |
+| `table.copy`  | Top of the stack.           |                      |
+| `data.drop`   |                             | Benchmark to decide. |
+| `elem.drop`   |                             | Benchmark to decide. |
+| `memory.size` |                             | Benchmark to decide. |
+| `table.size`  |                             | Benchmark to decide. |
+| `table.get`   |                             | Benchmark to decide. |
+| `table.set`   |                             | Benchmark to decide. |

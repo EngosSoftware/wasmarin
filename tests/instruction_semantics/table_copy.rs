@@ -25,8 +25,8 @@ fn _0001() {
       (func $f2)
       (func $f3)
       (func (export "fun")
-        i32.const 2           ;; Destination ofset in table $dst;              push: 2  stack: 2
-        i32.const 1           ;; Source ofset in table $src;                   push: 1  stack: 1 2
+        i32.const 2           ;; Destination offset in table $dst;             push: 2  stack: 2
+        i32.const 1           ;; Source offset in table $src;                  push: 1  stack: 1 2
         i32.const 3           ;; Number of elements to be copied;              push: 3  stack: 3 1 2
         table.copy $dst $src  ;; Copy elements from table $src to table $dst;           stack: (empty)
       )
