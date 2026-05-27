@@ -1,4 +1,4 @@
-/// # Intermediate model for parsed WebAssembly
+/// # Intermediate model for parsed WebAssembly code
 
 #[derive(Default)]
 pub struct CodeSectionEntry<'a> {
