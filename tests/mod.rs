@@ -1,10 +1,10 @@
+mod instruction_semantics;
+mod round_trip;
 mod test_data_drop_metering;
 mod test_features;
 mod test_globals;
 mod test_memory_copy_metering;
 mod test_metering;
 mod test_parsing_globals;
-mod test_round_trip;
-mod test_semantics;
 mod test_simple_round_trip;
 mod test_simple_wasmtime;

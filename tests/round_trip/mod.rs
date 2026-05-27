@@ -1,6 +1,6 @@
 #[test]
 fn _0001() {
-  let data = std::fs::read("./tests/test_round_trip/burner.wasm").unwrap();
+  let data = std::fs::read("./tests/round_trip/burner.wasm").unwrap();
   let mut parser = wasmarin::Parser::new();
   let model = parser.parse_wasm_bytes(&data).unwrap();
   let mut encoder = wasmarin::Encoder::default();
