@@ -206,11 +206,11 @@
 
 Inputs:
 
-- `memoryLength` - the number of bytes of memory in operation,
-- `memoryUnitSize` - the number of bytes in one memory unit,
-- `memoryUnitCost` - cost of the operation per one memory unit,
-- `accumulatedCost` - accumulated cost of operations until memory intensive instruction was encountered (including).
+- `length` - number of bytes used in block operation,
+- `unitSize` - arbitrary number of bytes in one unit,
+- `unitCost` - arbitrary cost of the operation per one unit,
+- `accumulated` - accumulated cost of operations until block instruction was encountered (including the block operation).
 
 Calculation:
 
-\\[ totalCost = (\frac{memoryLength + memoryUnitSize - 1}{memoryUnitSize}) \times memoryUnitCost + accumulatedCost \\]
+\\[ total = (\frac{length + unitSize - 1}{unitSize}) \times unitCost + accumulated \\]
