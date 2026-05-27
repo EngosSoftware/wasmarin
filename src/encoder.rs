@@ -1,7 +1,6 @@
 use crate::mappings::*;
 use crate::metering::*;
-use crate::Model;
-use crate::WasmarinResult;
+use crate::{Model, WasmarinResult};
 use std::borrow::Cow;
 use wasmparser::{DataKind, ElementKind, TableInit};
 
