@@ -1,6 +1,6 @@
 # Metering for WebAssembly bulk-memory proposal
 
-## Instructions introduced in `bulk-memory` proposal
+## Instruction summary
 
 - `memory.copy`
 - `memory.fill`
@@ -11,7 +11,7 @@
 - `elem.drop`
 
 > [!IMPORTANT]  
-> There are other "bulk" operators like: 
+> There are other _bulk_ operators like: 
 > - `memory.grow`
 > - `memory.size`
 > - `table.get`
@@ -22,9 +22,9 @@
 > 
 > that should be also be taken into consideration for new metering implementation.
 
-## Semantics of instructions
+## Instruction semantics
 
-### `memory.init`
+### memory.init
 
 ```webassembly
 (module
@@ -41,9 +41,9 @@
 ```
 
 > [!NOTE]  
-> Can be handled with the same algorithm as `memory.copy`.
+> Can be handled with the same algorithm as [memory.copy](#memorycopy).
 
-### `memory.grow`
+### memory.grow
 
 ```webassembly
 (module
@@ -59,7 +59,7 @@
 > [!NOTE]  
 > On the stack is the number of pages, not bytes, so the `memory.copy` algorithm has to be adjusted.
 
-### `memory.fill`
+### memory.fill
 
 ```webassembly
 (module
@@ -77,7 +77,7 @@
 > [!NOTE]  
 > Can be handled with the same algorithm as `memory.copy`.
 
-### `memory.copy`
+### memory.copy
 
 ```webassembly
 (module
@@ -100,7 +100,7 @@
 > The check must be performed before executing `memory.copy` instruction!
 > Otherwise, someone could copy memory not having enough gas. 
 
-### `table.init`
+### table.init
 
 ```webassembly
 (module
@@ -120,7 +120,7 @@
 )
 ```
 
-### `table.grow`
+### table.grow
 
 ```webassembly
 (module
@@ -135,7 +135,7 @@
 )
 ```
 
-### `table.fill`
+### table.fill
 
 ```webassembly
 (module
@@ -151,7 +151,7 @@
 )
 ```
 
-### `table.copy`
+### table.copy
 
 ```webassembly
 (module
@@ -170,7 +170,7 @@
 )
 ```
 
-### `data.drop`
+### data.drop
 
 ```webassembly
 (module
@@ -183,7 +183,7 @@
 )
 ```
 
-### `elem.drop`
+### elem.drop
 
 ```webassembly
 (module
@@ -202,17 +202,15 @@
 )
 ```
 
-## Total cost calculation for memory operations
+## Cost calculation
 
 Inputs:
 
-- `memory_length` - the number of bytes of memory in operation,
-- `memory_unit_size` - the number of bytes in one memory unit,
-- `memory_unit_cost` - cost of the operation per one memory unit,
-- `accumulated_cost` - accumulated cost of operations until memory intensive instruction (including).
+- `memoryLength` - the number of bytes of memory in operation,
+- `memoryUnitSize` - the number of bytes in one memory unit,
+- `memoryUnitCost` - cost of the operation per one memory unit,
+- `accumulatedCost` - accumulated cost of operations until memory intensive instruction was encountered (including).
 
 Calculation:
 
-```math
-total\_cost = (\frac{memory\_length + memory\_unit\_size - 1}{memory\_unit\_size}) \times memory\_unit\_cost + accumulated\_cost
-```
+\\[ totalCost = (\frac{memoryLength + memoryUnitSize - 1}{memoryUnitSize}) \times memoryUnitCost + accumulatedCost \\]

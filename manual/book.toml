@@ -1,0 +1,8 @@
+[book]
+title = "wasmaring"
+authors = ["Dariusz Depta"]
+description = "WebAssembly runtime for decision contracts"
+language = "en"
+
+[output.html]
+mathjax-support = true

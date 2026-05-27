@@ -13,6 +13,7 @@ tasks:
     desc: Cleans all targets
     cmds:
       - cmd: cargo clean
+      - cmd: rm -rf ./manual/book
 
   clippy:
     desc: Runs clippy for all targets
@@ -35,7 +36,7 @@ tasks:
     desc: Generates the detailed code coverage badge
     cmds:
       - cmd: cargo +stable llvm-cov clean
-      - cmd: cargo +stable llvm-cov --no-cfg-coverage --json --summary-only | coverio --collapse --tag cov-badge-wasmarin
+      - cmd: cargo +stable llvm-cov --no-cfg-coverage --json --summary-only | coverio --collapse --tag cov-badge
 
   doc:
     desc: Generates documentation
@@ -61,6 +62,24 @@ tasks:
     desc: Runs code formatter
     cmds:
       - cmd: cargo +nightly fmt
+
+  manual:
+    desc: Builds the manual from its markdown files
+    cmds:
+      - cmd: cd manual && mdbook build
+
+  readme:
+    desc: Regenerates README.md file
+    cmds:
+      - cmd: magg readme
+      - task: cov-badge
+
+  serve:
+    desc: Serves the manual locally and rebuilds on changes
+    silent: true
+    ignore_error: true
+    cmds:
+      - cmd: cd manual && mdbook serve || true
 
   test:
     desc: Runs tests in debug mode
