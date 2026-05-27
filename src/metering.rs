@@ -45,7 +45,7 @@ impl Metering {
     }
   }
 
-  /// Adds and export name for the global variable that keeps track of remaining points.
+  /// Adds and exports a name of the global variable that keeps track of the remaining points.
   pub fn update_export_section(&mut self, export_section: &mut wasm_encoder::ExportSection) {
     if self.enabled {
       export_section.export(REMAINING_POINTS_EXPORT_NAME, wasm_encoder::ExportKind::Global, self.remaining_points_global_index);
