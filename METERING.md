@@ -4,9 +4,9 @@
 
 - **Prevent denial of service (DoS) attacks**
   
-  Without metering, a malicious contract could loop infinitely or consume excessive computation,
+  Without metering, a malicious decision contract could loop infinitely or consume excessive computation,
   locking up the blockchain’s execution environment. Metering ensures each instruction has a cost,
-  so contracts cannot run indefinitely for free.
+  so decision contracts cannot run indefinitely for free.
 
 - **Deterministic and fair execution**
 
@@ -14,7 +14,7 @@
   Metering ensures each operation has a well-defined `price` (gas cost), making resource consumption
   predictable and uniform across all nodes.
 
-- **Economic incentives & resource accounting**
+- **Economic incentives and resource accounting**
 
   Just like Ethereum’s gas model, metering ensures that users pay for the computation/storage they consume.
   This prevents `free riders` and encourages efficient decision contract design.
@@ -22,7 +22,7 @@
 - **Security and isolation**
 
   Wasm itself provides memory safety and sandboxing, but not resource limits.
-  Metering provides a second layer of defense, making sure contracts don’t hog resources,
+  Metering provides a second layer of defense, making sure decision contracts don’t hog resources,
   even if they’re memory-safe.
 
 - **Predictable block production times**
