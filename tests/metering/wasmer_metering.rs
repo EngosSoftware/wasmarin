@@ -5,8 +5,8 @@ fn wasmer_metering_memory_copy() {
       (memory 1)
       (global (export "wasmer_metering_remaining_points") (mut i64) i64.const 0)  ;; Remaining points
       (global (export "wasmer_metering_points_exhausted") (mut i32) i32.const 0)  ;; Points exhausted: 0-not exhausted, 1-exhausted
-      (global (export "wasmer_metering_bytes_length") (mut i32) i32.const 0)      ;; Length of bulk-memory operation
-      (global (export "wasmer_metering_total_cost") (mut i64) i64.const 0)        ;; Total cost of bulk-memory operation
+      (global (export "wasmer_metering_length") (mut i32) i32.const 0)            ;; Length of bulk-memory operation
+      (global (export "wasmer_metering_cost") (mut i64) i64.const 0)              ;; Total cost until bulk-memory operator
       (func (export "fun")
         i32.const 2          ;; Destination offset in memory.
         i32.const 0          ;; Source offset in memory.
