@@ -56,7 +56,10 @@ fn wasmer_metering_memory_copy() {
   let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
   let memory = instance.get_memory(&mut store, "mem").unwrap();
   let remaining_points = instance.get_global(&mut store, "wasmer_metering_remaining_points").unwrap();
+  let points_exhausted = instance.get_global(&mut store, "wasmer_metering_points_exhausted").unwrap();
   let fun = instance.get_typed_func::<(), ()>(&mut store, "fun").unwrap();
+
+  assert_eq!(0, points_exhausted.get(&mut store).i32().unwrap());
 
   // Initialize the memory.
   memory.write(&mut store, 0, b"Hello world!_______-").unwrap();
@@ -69,16 +72,18 @@ fn wasmer_metering_memory_copy() {
   // Burned 16 points.
   assert_eq!(19, remaining_points.get(&mut store).i64().unwrap());
 
-  // // Burn some more oil by copying memory.
-  // fun.call(&mut store, ()).unwrap();
-  // assert_eq!(b"HeHeHello worl_____-", &memory.data(&mut store)[0..20]);
-  // // Burned 16 barrels again.
-  // assert_eq!(3, remaining_points.get(&mut store).i64().unwrap());
-  //
-  // // There is not enough oil to copy memory again.
-  // fun.call(&mut store, ()).unwrap_err();
-  // // No changes in memory, because the function was stopped before calling `memory.copy`.
-  // assert_eq!(b"HeHeHello worl_____-", &memory.data(&mut store)[0..20]);
-  // // Now much additional oil do we need next time? 13 barrels!
-  // assert_eq!(-13, remaining_points.get(&mut store).i64().unwrap());
+  // Burn some more points by copying memory.
+  fun.call(&mut store, ()).unwrap();
+  assert_eq!(b"HeHeHello worl_____-", &memory.data(&mut store)[0..20]);
+  // Burned another 16 points.
+  assert_eq!(3, remaining_points.get(&mut store).i64().unwrap());
+
+  // There are not enough points to copy memory again.
+  fun.call(&mut store, ()).unwrap_err();
+  // No changes in memory, because the function was stopped before calling `memory.copy`.
+  assert_eq!(b"HeHeHello worl_____-", &memory.data(&mut store)[0..20]);
+  // There should be a small amount of remaining points.
+  assert_eq!(3, remaining_points.get(&mut store).i64().unwrap());
+  // Points exhausted flag should be set.
+  assert_eq!(1, points_exhausted.get(&mut store).i32().unwrap());
 }
