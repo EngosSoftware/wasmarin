@@ -1,4 +1,3 @@
-///
 #[test]
 fn wasmer_metering_memory_copy() {
   let wat_str = r#"
@@ -80,7 +79,7 @@ fn wasmer_metering_memory_copy() {
 
   // There are not enough points to copy memory again.
   fun.call(&mut store, ()).unwrap_err();
-  // No changes in memory, because the function was stopped before calling `memory.copy`.
+  // No changes in memory, because the function execution was stopped before reaching `memory.copy`.
   assert_eq!(b"HeHeHello worl_____-", &memory.data(&mut store)[0..20]);
   // There should be a small amount of remaining points.
   assert_eq!(3, remaining_points.get(&mut store).i64().unwrap());
