@@ -10,7 +10,7 @@ fn wasmer_metering_memory_copy() {
       (func (export "fun")
         i32.const 2          ;; Destination offset in memory.
         i32.const 0          ;; Source offset in memory.
-        i32.const 12         ;; Memory length in bytes to be copied.
+        i32.const 14         ;; Memory length in bytes to be copied.
 
         ;; Begin of the injected code
 
@@ -58,31 +58,38 @@ fn wasmer_metering_memory_copy() {
   let points_exhausted = instance.get_global(&mut store, "wasmer_metering_points_exhausted").unwrap();
   let fun = instance.get_typed_func::<(), ()>(&mut store, "fun").unwrap();
 
-  assert_eq!(0, points_exhausted.get(&mut store).i32().unwrap());
+  let text = b"Hello world!$$##__-";
 
   // Initialize the memory.
-  memory.write(&mut store, 0, b"Hello world!_______-").unwrap();
+  memory.write(&mut store, 0, text).unwrap();
+
   // Set initial remaining points to 35.
   remaining_points.set(&mut store, wasmtime::Val::I64(35)).unwrap();
+  // Points are not exhausted.
+  assert_eq!(0, points_exhausted.get(&mut store).i32().unwrap());
 
   // Burn some points by copying memory.
   fun.call(&mut store, ()).unwrap();
-  assert_eq!(b"HeHello world!_____-", &memory.data(&mut store)[0..20]);
-  // Burned 16 points.
+  assert_eq!(b"HeHello world!$$__-", &memory.data(&mut store)[0..text.len()]);
+  // Burned 16 points, so 19 remain.
   assert_eq!(19, remaining_points.get(&mut store).i64().unwrap());
+  // Points are not exhausted.
+  assert_eq!(0, points_exhausted.get(&mut store).i32().unwrap());
 
   // Burn some more points by copying memory.
   fun.call(&mut store, ()).unwrap();
-  assert_eq!(b"HeHeHello worl_____-", &memory.data(&mut store)[0..20]);
-  // Burned another 16 points.
+  assert_eq!(b"HeHeHello world!__-", &memory.data(&mut store)[0..text.len()]);
+  // Burned another 16 points, so 3 points remain
   assert_eq!(3, remaining_points.get(&mut store).i64().unwrap());
+  // Points are not exhausted.
+  assert_eq!(0, points_exhausted.get(&mut store).i32().unwrap());
 
   // There are not enough points to copy memory again.
   fun.call(&mut store, ()).unwrap_err();
   // No changes in memory, because the function execution was stopped before reaching `memory.copy`.
-  assert_eq!(b"HeHeHello worl_____-", &memory.data(&mut store)[0..20]);
+  assert_eq!(b"HeHeHello world!__-", &memory.data(&mut store)[0..text.len()]);
   // There should be a small amount of remaining points.
   assert_eq!(3, remaining_points.get(&mut store).i64().unwrap());
-  // Points exhausted flag should be set.
+  // Points are exhausted.
   assert_eq!(1, points_exhausted.get(&mut store).i32().unwrap());
 }
