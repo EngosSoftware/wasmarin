@@ -7,3 +7,7 @@ WebAssembly specifications:
 WebAssembly proposals:
 
 - <https://github.com/WebAssembly/proposals>
+
+finite-wasm
+
+- https://github.com/near/finite-wasm
