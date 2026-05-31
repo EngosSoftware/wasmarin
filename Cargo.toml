@@ -29,6 +29,6 @@ path = "src/main.rs"
 [dependencies]
 wasmparser = "0.239.0"
 wasmprinter = "0.239.0"
-wasmtime = "37.0.0"
+wasmtime = { version = "37.0.0", features = ["winch"] }
 wasm-encoder = "0.239.0"
 wat = "1.239.0"
