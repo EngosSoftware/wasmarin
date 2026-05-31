@@ -60,3 +60,39 @@ Wasmtime Winch:
 6524.493963068182 ns/iter (+/- 247.82946732954588)
 
 */
+
+#[bench]
+fn _0003(b: &mut Bencher) {
+  const WAT: &str = include_str!("../tests/contracts/big_locals.wat");
+  let wasm_bytes = wat::parse_str(WAT).unwrap();
+  let engine = wasmtime::Engine::default();
+  let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
+  let mut store = wasmtime::Store::new(&engine, ());
+  let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let fun = instance.get_typed_func::<(), i32>(&mut store, "wrapper").unwrap();
+  assert_eq!(10, fun.call(&mut store, ()).unwrap());
+  b.iter(|| _ = fun.call(&mut store, ()).unwrap());
+}
+
+#[bench]
+fn _0004(b: &mut Bencher) {
+  const WAT: &str = include_str!("../tests/contracts/big_locals.wat");
+  let wasm_bytes = wat::parse_str(WAT).unwrap();
+  let mut config = wasmtime::Config::new();
+  config.strategy(wasmtime::Strategy::Winch);
+  let engine = wasmtime::Engine::new(&config).unwrap();
+  let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
+  let mut store = wasmtime::Store::new(&engine, ());
+  let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let fun = instance.get_typed_func::<(), i32>(&mut store, "wrapper").unwrap();
+  assert_eq!(10, fun.call(&mut store, ()).unwrap());
+  b.iter(|| _ = fun.call(&mut store, ()).unwrap());
+}
+
+/*
+
+12.164178593179049 ns/iter (+/- 3.0009552978915544)
+
+6312.811979166667 ns/iter (+/- 128.74218098958318)
+
+*/
