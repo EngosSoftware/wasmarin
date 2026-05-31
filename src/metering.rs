@@ -71,6 +71,17 @@ impl Metering {
   }
 
   fn feed<'a>(&self, operator: wasmparser::Operator<'a>, accumulated_cost: &mut i64) -> Vec<wasmparser::Operator<'a>> {
+    match &operator {
+      wasmparser::Operator::Call { function_index } => {
+        _ = function_index;
+        // println!("DDD: Call, function_index = {}", function_index);
+      }
+      wasmparser::Operator::CallIndirect { type_index, table_index } => {
+        _ = (type_index, table_index)
+        // println!("DDD: CallIndirect, type_index = {}, table_index = {}", type_index, table_index);
+      }
+      _ => {}
+    }
     if self.is_branching_operator(&operator) && *accumulated_cost > 0 {
       return vec![
         wasmparser::Operator::GlobalGet {
@@ -121,7 +132,7 @@ impl Metering {
             | wasmparser::Operator::Br { .. } // branch source
             | wasmparser::Operator::BrTable { .. } // branch source
             | wasmparser::Operator::BrIf { .. } // branch source
-            | wasmparser::Operator::Call { .. } // function call ia a branch source
+            | wasmparser::Operator::Call { .. } // function call is a branch source
             | wasmparser::Operator::CallIndirect { .. } // function call is a branch source
             | wasmparser::Operator::Return // end of function is a branch source
             // exceptions proposal

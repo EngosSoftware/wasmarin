@@ -1,4 +1,5 @@
 mod instruction_semantics;
+mod metering;
 mod round_trip;
 mod test_data_drop_metering;
 mod test_features;
@@ -8,4 +9,3 @@ mod test_metering;
 mod test_parsing_globals;
 mod test_simple_round_trip;
 mod test_simple_wasmtime;
-mod metering;
