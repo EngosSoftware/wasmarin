@@ -7,7 +7,7 @@ tasks:
   build:
     desc: Builds in debug mode
     cmds:
-      - cmd: cargo +stable build
+      - cmd: cargo build
 
   clean:
     desc: Cleans all targets
@@ -18,45 +18,45 @@ tasks:
   clippy:
     desc: Runs clippy for all targets
     cmds:
-      - cmd: cargo +stable clippy --all-targets
+      - cmd: cargo clippy --all-targets
 
   cov:
     desc: Generates code coverage report in text format
     cmds:
-      - cmd: cargo +stable llvm-cov clean
-      - cmd: cargo +stable llvm-cov --no-cfg-coverage
+      - cmd: cargo llvm-cov clean
+      - cmd: cargo llvm-cov --no-cfg-coverage
 
   cov-html:
     desc: Generates code coverage report in HTML format
     cmds:
-      - cmd: cargo +stable llvm-cov clean
-      - cmd: cargo +stable llvm-cov --no-cfg-coverage --html --open
+      - cmd: cargo llvm-cov clean
+      - cmd: cargo llvm-cov --no-cfg-coverage --html --open
 
   cov-badge:
     desc: Generates the detailed code coverage badge
     cmds:
-      - cmd: cargo +stable llvm-cov clean
-      - cmd: cargo +stable llvm-cov --no-cfg-coverage --json --summary-only | coverio --collapse --tag cov-badge
+      - cmd: cargo llvm-cov clean
+      - cmd: cargo llvm-cov --no-cfg-coverage --json --summary-only | coverio --collapse --tag cov-badge
 
   doc:
     desc: Generates documentation
     cmds:
-      - cmd: cargo +stable doc
+      - cmd: cargo doc
 
   doc-private:
     desc: Generates documentation
     cmds:
-      - cmd: cargo +stable doc --document-private-items
+      - cmd: cargo doc --document-private-items
 
   doc-open:
     desc: Generates documentation and opens in browser
     cmds:
-      - cmd: cargo +stable doc --open
+      - cmd: cargo doc --open
 
   doc-private-open:
     desc: Generates documentation and opens in browser
     cmds:
-      - cmd: cargo +stable doc --open --document-private-items
+      - cmd: cargo doc --open --document-private-items
 
   fmt:
     desc: Runs code formatter
@@ -84,9 +84,9 @@ tasks:
   test:
     desc: Runs tests in debug mode
     cmds:
-      - cmd: cargo +stable test
+      - cmd: cargo test
 
   testn:
     desc: Runs tests in debug mode
     cmds:
-      - cmd: cargo +stable nextest run
+      - cmd: cargo nextest run
