@@ -59,7 +59,7 @@ fn _0004(b: &mut Bencher) {
 
 #[bench]
 fn _0005(b: &mut Bencher) {
-  let wasm_bytes = wat::parse_str(create_wat(50000)).unwrap();
+  let wasm_bytes = wat::parse_str(create_wat(500)).unwrap();
   let compiler = wasmer::sys::Singlepass::default();
   let mut store = wasmer::Store::new(compiler);
   let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();

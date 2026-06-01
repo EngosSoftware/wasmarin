@@ -93,8 +93,18 @@
 | Locals | Time (ns) |
 |-------:|----------:|
 |      1 |     18.21 |
+|      2 |     18.85 |
+|      5 |     17.76 |
 |     10 |     18.89 |
+|     20 |     19.92 |
+|     30 |     21.46 |
+|     40 |     23.74 |
+|     50 |     26.17 |
+|     60 |     28.09 |
+|     70 |     30.14 |
 |    100 |     37.72 |
+|    200 |     66.05 |
+|    500 |    133.06 |
 |   1000 |    247.32 |
 |  10000 |   2278.10 |
 |  20000 |   4527.03 |
@@ -119,3 +129,9 @@ The correlation is strongly linear for locals > 100.
 |  50000 |  11331.20 |
 
 The correlation is strongly linear for locals > 100.
+
+### Summary
+
+- 0..100 - no additional gas fee
+- N..100 - 1 op gas fee
+- 100..  - N * gas per local
