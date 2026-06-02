@@ -5,6 +5,7 @@ use wasmarin::WasmarinResult;
 fn main() -> WasmarinResult<()> {
   let args = std::env::args().skip(1).collect::<Vec<String>>();
   if args.len() == 1 {
+    println!("Dir = {}", args[0]);
     let (sum, max) = count_totals(&args[0]);
     println!("    max locals = {}", max);
     println!("  total locals = {}", sum);
@@ -23,7 +24,7 @@ fn count_totals(dir: impl AsRef<Path>) -> (usize, usize) {
   for entry in std::fs::read_dir(dir).unwrap() {
     let entry = entry.unwrap();
     let path = entry.path();
-    if path.is_file() {
+    if path.is_file() && path.display().to_string().ends_with(".wasm") {
       let (max, sum) = count_locals(path);
       total_max = total_max.max(max);
       total_sum = total_sum.max(sum);
