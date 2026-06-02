@@ -3,9 +3,12 @@ use std::path::Path;
 use wasmarin::WasmarinResult;
 
 fn main() -> WasmarinResult<()> {
-  let (sum, max) = count_totals("../../DariuszDepta/wasm-compilation-time/input");
-  println!("    max locals = {}", max);
-  println!("  total locals = {}", sum);
+  let args = std::env::args().skip(1).collect::<Vec<String>>();
+  if args.len() == 1 {
+    let (sum, max) = count_totals(&args[0]);
+    println!("    max locals = {}", max);
+    println!("  total locals = {}", sum);
+  }
   Ok(())
 }
 
