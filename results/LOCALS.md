@@ -70,14 +70,20 @@ Some constraints:
 - Gas per WASM operation = 115
 - Gas per function call = 14 * 115 = 1_610
 
+---
+
 The function used for benchmarking contains one WASM operator, so the execution cost is `115` gas.
 With one local variable, the execution time is `68.445` ns.
 Let's assume then that `115` gas = `68.445` ns.
 We charge `1_610` gas per function call, so it is `958.23` ns.
 So for the price of `1_610` gas we are in plus until `6_000` local variables per call.
 
-Locals per function limit = `50`: ~`80` ns and `1_610` gas
-Locals per contract limit = `5_000`: `80` * `100` = `8` µs and `161_000` gas.
+---
+
+- Locals per function limit = `50`: ~`80` ns and `1_610` gas
+- Locals per contract limit = `5_000`: `80` * `100` = `8` µs and `161_000` gas.
+
+---
 
 - SDK gas: `100_000_000`
 - WASM gas: SDK gas * `140_000` = `100_000_000` * `140_000` = `14_000_000_000_000`
