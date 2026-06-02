@@ -19,7 +19,7 @@ The number of locals is changed before each test.
           
 - Wasmer 5.0.6
 - Fedora Linux 43
-- Intel Core i7-6700 8 core 3.40GHz
+- Intel Core i7-6700 (4 cores, 8 threads) 3.40GHz
 - 32GB DDR4 2133 MT/s
 - Rust benchmarks using Criterion
 
