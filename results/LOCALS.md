@@ -1,5 +1,28 @@
+# Locals
 
+## Test module
+   
+```wat
+(module
+  (memory 0 1)
+  (func (export "fun") (result i32)
+    (local i32)
+    i32.const 10
+  )
+  (export "mem" (memory 0))
+)
+```
 
+The number of locals is changed before each test.
+       
+
+## Results
+          
+- Wasmer 5.0.6
+- Fedora Linux 43
+- Intel Core i7-6700 8 core 3.40GHz
+- 32GB DDR4 2133 MT/s
+- Rust benchmarks using Criterion
 
 | Locals |      Time |
 |-------:|----------:|
