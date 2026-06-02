@@ -126,11 +126,14 @@ impl Parser {
           }
         }
         Payload::DataCountSection { count, range: _ } => {
+          println!("DDD: data count section = {}", count);
           model.data_count = Some(count);
         }
         Payload::DataSection(reader) => {
+          println!("DDD: data section encountered");
           for item in reader {
             let data = item.map_err(|e| WasmarinError::new(e.to_string()))?;
+            println!("DDD: {:?}", data.kind);
             model.data.push(data);
           }
         }
