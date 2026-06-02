@@ -33,3 +33,10 @@ wasmtime = { version = "=37.0.0", features = ["winch"] }
 wasm-encoder = "=0.239.0"
 wat = "=1.239.0"
 wasmer = { version = "=5.0.6", features = ["singlepass"] }
+
+[dev-dependencies]
+criterion = "0.8.2"
+
+[[bench]]
+name = "locals"
+harness = false
