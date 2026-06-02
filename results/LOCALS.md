@@ -14,7 +14,6 @@
 ```
 
 The number of locals is changed before each test.
-       
 
 ## Results
           
@@ -62,3 +61,5 @@ The number of locals is changed before each test.
 |  30000 | 4.5880 µs |
 |  40000 | 6.2185 µs |
 |  50000 | 7.9366 µs |
+
+## Discussion
