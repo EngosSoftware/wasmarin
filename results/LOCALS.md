@@ -88,4 +88,4 @@ So for the price of `1_610` gas we are in plus until `6_000` local variables per
 - SDK gas: `100_000_000`
 - WASM gas: SDK gas * `140_000` = `100_000_000` * `140_000` = `14_000_000_000_000`
 - NoCalls = WASM gas / 1 call gas: `14_000_000_000_000` / `1_610` = `8695652173.913044`
-- Duration = NoCalls * CallTime = `695` s 
+- Duration = NoCalls * CallTime = `68695` s 
