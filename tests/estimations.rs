@@ -10,14 +10,14 @@ fn estimations() {
   ];
 
   for (locals, time) in LOCALS.iter().zip(TIMES) {
-    let old_gas_per_second = ((1.0 / (time * 1e-9)) * 1640.0).round();
+    let old_gas_in_second = ((1.0 / (time * 1e-9)) * 1640.0).round();
     let gas_per_locals = gas_for_locals(locals);
     let new_gas_in_second = ((1.0 / (time * 1e-9)) * (1640.0 + gas_per_locals as f64)).round();
-    let teragas_in_second = new_gas_in_second / 1e12;
-    let diff = new_gas_in_second - old_gas_per_second;
+    let old_teragas_in_second = old_gas_in_second / 1e12;
+    let new_teragas_in_second = new_gas_in_second / 1e12;
     println!(
-      "{:10} {:20} {:20} {:20} {:10.3} {:20}",
-      locals, old_gas_per_second, new_gas_in_second, diff, teragas_in_second, gas_per_locals
+      "| {:10} | {:10.6} | {:10.6} | {:10} |",
+      locals, old_teragas_in_second, new_teragas_in_second, gas_per_locals
     );
   }
 }
