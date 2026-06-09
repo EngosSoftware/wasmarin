@@ -1,6 +1,6 @@
-mod instruction_semantics;
 mod metering;
 mod round_trip;
+mod semantics;
 mod test_data_drop_metering;
 mod test_features;
 mod test_globals;
