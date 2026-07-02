@@ -63,7 +63,7 @@ fn create_wat(mut n: usize) -> String {
 
 #[test]
 fn creating_wat_should_work() {
-  assert_eq!("(module\n  (memory 1)\n  (func $fun (export \"fun\") (result i32);\n    (local i32)\n    i32.const 10\n  )\n  (func (export \"wrapper\") (result i32)\n    call $fun\n  )\n  (export \"mem\" (memory 0))\n)", create_wat(1));
+  assert_eq!("(module\n  (memory 1)\n  (func $fun (export \"fun\") (result i32)\n    (local i32)\n    i32.const 10\n  )\n  (func (export \"wrapper\") (result i32)\n    call $fun\n  )\n  (export \"mem\" (memory 0))\n)", create_wat(1));
 }
 
 criterion_group!(benches, _0001, _0002, _0003);
