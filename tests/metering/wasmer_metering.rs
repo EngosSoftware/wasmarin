@@ -93,3 +93,60 @@ fn wasmer_metering_memory_copy() {
   // Points are exhausted.
   assert_eq!(1, points_exhausted.get(&mut store).i32().unwrap());
 }
+
+#[test]
+fn _0001() {
+  let wat_str = r#"
+    (module
+      (global (export "wasmer_metering_remaining_points") (mut i64) i64.const 0)  ;; Remaining gas points
+      (global (export "wasmer_metering_points_exhausted") (mut i32) i32.const 0)  ;; Points exhausted: 0-not exhausted, 1-exhausted
+      (global (export "wasmer_metering_data_length") (mut i32) i32.const 0)       ;; Data length of bulk-memory operation
+      (global (export "wasmer_metering_dynamic_cost") (mut i64) i64.const 0)      ;; Dynamic cost of bulk-memory operation
+      (func (export "fun") (result i32)
+        i32.const 117        ;; Data length is on top of the stack                      [117(i32)]
+
+        ;; Begin of the injected code
+
+        global.set 2         ;; Pop $length from stack and save in $data_length         []
+        global.get 2         ;; Push $length to stack                                   [117(i32)]
+        i64.extend_i32_u     ;; Convert i32 $length to i64 value                        [117]
+        i64.const 31         ;; Push $decrUnitSize                                      [31, 117]
+        i64.add              ;; Add $length + $decUnitSize                              [148]
+        i64.const 32         ;; Push $unitSize                                          [32, 148]
+        i64.div_u            ;; Div ($length + $decUnitSize) / $unitSize                [4]
+        i64.const 13         ;; Push $unitCost                                          [13, 4]
+        i64.mul              ;; Mul (($length + $decUnitSize) / $unitSize) * $unitCost  [52]
+        i64.const 3          ;; Push $accumulatedCost                                   [3, 52]
+        i64.add              ;; $dynamicCost                                            [55]
+        global.set 3         ;; Pop $dynamicCost and save in $dynamic_cost              []
+        global.get 0         ;; Push $remainingPoints to stack                          [100]
+        global.get 3         ;; Push $dynamicCost                                       [55, 100]
+        i64.lt_u             ;; $remainingPoints < $dynamicCost                         [0]
+        if
+          i32.const 1        ;; Prepare exhausted flag
+          global.set 1       ;; Set exhausted global variable
+          unreachable        ;; Break execution
+        end
+        global.get 0         ;; Push $remainingPoints> for calculations
+        global.get 3         ;; Push $dynamicCost for calculations
+        i64.sub              ;; Sub $remainingPoints - $dynamicCost
+        global.set 0         ;; Save $remainingPoints in global variable
+        global.get 2         ;; Push $length back to stack
+
+        ;; End of injected code
+      )
+    )
+  "#;
+
+  let wasm_bytes = wat::parse_str(wat_str).unwrap();
+  let engine = wasmtime::Engine::default();
+  let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
+  let mut store = wasmtime::Store::new(&engine, ());
+  let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let remaining_points = instance.get_global(&mut store, "wasmer_metering_remaining_points").unwrap();
+  // let points_exhausted = instance.get_global(&mut store, "wasmer_metering_points_exhausted").unwrap();
+  let fun = instance.get_typed_func::<(), i32>(&mut store, "fun").unwrap();
+  remaining_points.set(&mut store, wasmtime::Val::I64(100)).unwrap();
+  assert_eq!(117, fun.call(&mut store, ()).unwrap());
+  assert_eq!(45, remaining_points.get(&mut store).i64().unwrap());
+}
