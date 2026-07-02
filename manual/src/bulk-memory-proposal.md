@@ -222,8 +222,8 @@ Calculation:
 | `table.grow`  | Top of the stack.           |                         |
 | `table.fill`  | Top of the stack.           |                         |
 | `table.copy`  | Top of the stack.           |                         |
-| `data.drop`   |                             | No additional metering. |
-| `elem.drop`   |                             | No additional metering. |
+| `data.drop`   |                             |                         |
+| `elem.drop`   |                             |                         |
 | `memory.size` |                             | No additional metering. |
 | `table.size`  |                             | No additional metering. |
 | `table.get`   |                             | No additional metering. |
