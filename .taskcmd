@@ -1,5 +1,9 @@
 .tasks
 
+  .audit
+    .desc Checks for vulnerabilities
+    .cmd cargo audit
+
   .build
     .desc Builds in debug mode
     .cmd cargo build
