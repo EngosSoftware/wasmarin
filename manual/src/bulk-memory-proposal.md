@@ -241,7 +241,7 @@ Assuming that length is on the top of the stack and unitSize and unitCost are 64
 
 ```wat
 ;; length is already TOS (i64)
-i64.const <unitSize - 1>     ;; e.g. 63 if unitSize=64 — precomputed
+i64.const <unitSize - 1>     ;; e.g. 63 if unitSize = 64 (precomputed value)
 i64.add
 i64.const <unitSize>         ;; e.g. 64
 i64.div_u
@@ -250,8 +250,8 @@ i64.mul
 ```
 
 ```wat
-global.set $scratch          ;; pop length, save it
-global.get $scratch          ;; push length back for calculation
+global.set $scratch          ;; pop length from stack, save it in global variable
+global.get $scratch          ;; push length back on stack for further calculations
 i64.const <unitSize - 1>
 i64.add
 i64.const <unitSize>
@@ -259,6 +259,6 @@ i64.div_u
 i64.const <unitCost>
 i64.mul
                              ;; TOS = total
-global.get $scratch          ;; TOS = length  ✓
+global.get $scratch          ;; TOS = length
 memory.fill                  ;; original instruction
 ```
