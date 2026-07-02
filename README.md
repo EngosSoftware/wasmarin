@@ -15,7 +15,7 @@
 
 [crates-badge]: https://img.shields.io/crates/v/wasmarin.svg
 [crates-url]: https://crates.io/crates/wasmarin
-[cov-badge]: https://img.shields.io/badge/cov-40%25%20%E2%94%82%2046%25%20%E2%94%82%2043%25-f52020.svg
+[cov-badge]: https://img.shields.io/badge/cov-40%25%20%E2%94%82%2050%25%20%E2%94%82%2043%25-f52020.svg
 [cov-url]: https://crates.io/crates/coverio
 [build-badge-linux-gnu]: https://github.com/EngosSoftware/wasmarin/actions/workflows/build-linux-gnu.yml/badge.svg
 [build-badge-linux-musl]: https://github.com/EngosSoftware/wasmarin/actions/workflows/build-linux-musl.yml/badge.svg
