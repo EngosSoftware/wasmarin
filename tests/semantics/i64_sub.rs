@@ -3,8 +3,8 @@ fn _0001() {
   let wat_str = r#"
     (module
       (func (export "fun") (result i64)
-        i64.const 22  ;; Push 22        stack: [22]
-        i64.const 2   ;; Push 2         stack: [2, 22]
+        i64.const 22  ;; Push 22        stack: [22]        c1 = 22
+        i64.const 2   ;; Push 2         stack: [2, 22]     c2 = 2
         i64.sub       ;; Pop c2 = 2     stack: [22]
                       ;; Pop c1 = 22    stack: []
                       ;; Push c1 - c2   stack: [20]
@@ -25,8 +25,8 @@ fn _0002() {
   let wat_str = r#"
     (module
       (func (export "fun") (result i64)
-        i64.const 2   ;; Push 2         stack: [2]
-        i64.const 22  ;; Push 22        stack: [22, 2]
+        i64.const 2   ;; Push 2         stack: [2]         c1 = 2
+        i64.const 22  ;; Push 22        stack: [22, 2]     c2 = 22
         i64.sub       ;; Pop c2 = 22    stack: [2]
                       ;; Pop c1 = 2     stack: []
                       ;; Push c1 - c2   stack: [-20]
