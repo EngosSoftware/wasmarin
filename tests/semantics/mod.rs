@@ -1,5 +1,6 @@
 mod data_drop;
 mod elem_drop;
+mod i64_lt_u;
 mod i64_sub;
 mod invalid_memory;
 mod memory_copy;
