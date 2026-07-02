@@ -1,5 +1,5 @@
 [book]
-title = "wasmaring"
+title = "wasmarin"
 authors = ["Dariusz Depta"]
 description = "WebAssembly runtime for decision contracts"
 language = "en"

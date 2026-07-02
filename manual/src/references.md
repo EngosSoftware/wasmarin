@@ -10,4 +10,4 @@ WebAssembly proposals:
 
 finite-wasm
 
-- https://github.com/near/finite-wasm
+- <https://github.com/near/finite-wasm>
