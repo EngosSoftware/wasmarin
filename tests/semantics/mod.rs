@@ -1,9 +1,9 @@
 mod data_drop;
 mod elem_drop;
+mod i64_sub;
 mod invalid_memory;
 mod memory_copy;
 mod memory_fill;
-mod subtract;
 mod table_copy;
 mod table_fill;
 mod table_grow;
