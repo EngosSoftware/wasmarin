@@ -3,6 +3,7 @@ mod elem_drop;
 mod invalid_memory;
 mod memory_copy;
 mod memory_fill;
+mod subtract;
 mod table_copy;
 mod table_fill;
 mod table_grow;
