@@ -41,3 +41,8 @@ criterion = "0.8.2"
 name = "locals"
 path = "benches/locals.rs"
 harness = false
+
+[[bench]]
+name = "memory-copy"
+path = "benches/memory_copy.rs"
+harness = false
