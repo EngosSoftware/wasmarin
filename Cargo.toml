@@ -39,4 +39,5 @@ criterion = "0.8.2"
 
 [[bench]]
 name = "locals"
+path = "benches/locals.rs"
 harness = false
