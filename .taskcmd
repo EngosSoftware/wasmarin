@@ -11,6 +11,10 @@
     .desc Builds in debug mode
     .cmd cargo build
 
+  .bench-memory-copy
+    .desc Executes benchmarks for memory.copy operator
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-copy
+
   .bench-memory-grow
     .desc Executes benchmarks for memory.grow operator
     .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-grow

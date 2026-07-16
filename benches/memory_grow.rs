@@ -29,8 +29,8 @@ fn make_config() -> Criterion {
     .configure_from_args()
 }
 
-fn _0001(c: &mut Criterion) {
-  // Check if the Wasm code works properly.
+fn precheck() {
+  // Check if the benchmarked Wasm code works properly.
   for pages in PAGES {
     let wasm_bytes = wat::parse_str(wat_source(pages)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
@@ -43,6 +43,10 @@ fn _0001(c: &mut Criterion) {
     assert_eq!(pages, memory.view(&store).size().0 as usize);
     assert_eq!(pages * WASM_PAGE_SIZE, memory.view(&store).data_size() as usize);
   }
+}
+
+fn _0001(c: &mut Criterion) {
+  precheck();
   // Execute benchmarks.
   let mut group = c.benchmark_group("memory-grow");
   for pages in PAGES {
