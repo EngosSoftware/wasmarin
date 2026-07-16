@@ -47,8 +47,8 @@ fn create_wat(length: usize) -> String {
 fn make_config() -> Criterion {
   Criterion::default()
     .without_plots()
-    .measurement_time(Duration::new(10, 0))
-    .sample_size(100)
+    .measurement_time(Duration::new(20, 0))
+    .sample_size(20)
     .configure_from_args()
 }
 
