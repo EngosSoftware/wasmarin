@@ -46,19 +46,21 @@ fn _0003(c: &mut Criterion) {
   }
 }
 
-const TEMPLATE: &str = r#"(module
+const TEMPLATE: &str = r#"
+(module
   (memory 0 1)
   (func (export "fun") (result i32)
-    (local;;LOCAL;;)
+    (local<LOCALS>)
     i32.const 10
   )
   (export "mem" (memory 0))
-)"#;
+)
+"#;
 
 fn create_wat(mut n: usize) -> String {
   n = n.max(1);
   let locals = " i32".repeat(n);
-  TEMPLATE.replace(";;LOCAL;;", &locals)
+  TEMPLATE.replace("<LOCALS>", &locals)
 }
 
 criterion_group!(benches, _0001, _0002, _0003);
