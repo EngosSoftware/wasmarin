@@ -43,11 +43,16 @@ path = "benches/locals.rs"
 harness = false
 
 [[bench]]
-name = "memory-copy"
-path = "benches/memory_copy.rs"
+name = "memory-init"
+path = "benches/memory_init.rs"
 harness = false
 
 [[bench]]
 name = "memory-grow"
 path = "benches/memory_grow.rs"
+harness = false
+
+[[bench]]
+name = "memory-copy"
+path = "benches/memory_copy.rs"
 harness = false
