@@ -77,3 +77,29 @@ fn _0002() {
   assert!(tab.get(&mut store, 5).unwrap().as_func().unwrap().is_some()); // FUNC
   assert!(tab.get(&mut store, 6).unwrap().as_func().unwrap().is_some()); // FUNC
 }
+
+#[test]
+fn _0003() {
+  let wat_str = r#"
+    (module
+      (table (export "tab") 0 funcref)
+      (func (export "fun") (result i32 i32)
+        ref.null func
+        i32.const <GROW>
+        table.grow 0
+        table.size 0
+      )
+    )
+    "#;
+  let grow = 10_000_000;
+  let wasm_bytes = wat::parse_str(wat_str.replace("<GROW>", &grow.to_string())).unwrap();
+  let engine = wasmtime::Engine::default();
+  let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
+  let mut store = wasmtime::Store::new(&engine, ());
+  let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let tab = instance.get_table(&mut store, "tab").unwrap();
+  assert_eq!(0, tab.size(&store));
+  let fun = instance.get_typed_func::<(), (i32, i32)>(&mut store, "fun").unwrap();
+  assert_eq!((0, grow), fun.call(&mut store, ()).unwrap());
+  assert_eq!(grow as u64, tab.size(&store));
+}
