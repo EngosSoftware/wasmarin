@@ -72,5 +72,5 @@ fn _0001(c: &mut Criterion) {
   }
 }
 
-criterion_group!(name = memory_init; config = make_config(); targets = _0001);
-criterion_main!(memory_init);
+criterion_group!(name = memory_fill; config = make_config(); targets = _0001);
+criterion_main!(memory_fill);

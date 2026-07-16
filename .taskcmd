@@ -31,6 +31,11 @@
     .cmd rm -rf target/criterion
     .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-copy
 
+  .bench-table-init
+    .desc Executes benchmarks for table.init operator
+    .cmd rm -rf target/criterion
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init
+
   .clean
     .desc Cleans all targets
     .cmd cargo clean

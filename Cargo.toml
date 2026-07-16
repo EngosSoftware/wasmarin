@@ -61,3 +61,8 @@ harness = false
 name = "memory-copy"
 path = "benches/memory_copy.rs"
 harness = false
+
+[[bench]]
+name = "table-init"
+path = "benches/table_init.rs"
+harness = false
