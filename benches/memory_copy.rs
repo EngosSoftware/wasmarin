@@ -30,7 +30,7 @@ const TEMPLATE: &str = r#"
 fn _0001(c: &mut Criterion) {
   let mut group = c.benchmark_group("memory-copy");
   for mem_size in MEM_SIZE {
-    let wasm_bytes = wat::parse_str(create_wat(mem_size)).unwrap();
+    let wasm_bytes = wat::parse_str(wat_source(mem_size)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
     let mut store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
@@ -40,7 +40,7 @@ fn _0001(c: &mut Criterion) {
   }
 }
 
-fn create_wat(length: usize) -> String {
+fn wat_source(length: usize) -> String {
   TEMPLATE.replace("<LENGTH>", &length.to_string())
 }
 
