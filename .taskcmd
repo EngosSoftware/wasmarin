@@ -1,3 +1,6 @@
+.vars
+  .BENCH_TOOLKIT +1.88.0
+
 .tasks
 
   .audit
@@ -7,6 +10,10 @@
   .build
     .desc Builds in debug mode
     .cmd cargo build
+
+  .bench-memory-grow
+    .desc Executes benchmarks for memory.grow operator
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-grow
 
   .clean
     .desc Cleans all targets

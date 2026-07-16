@@ -31,12 +31,60 @@ fn _0001() {
   let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
   let memory = instance.get_memory(&mut store, "mem").unwrap();
   let fun = instance.get_typed_func::<(), i32>(&mut store, "fun").unwrap();
-  // The size before growing is 1 page, the new size is 3 pages.
+  // The size before growing was 1 page, the new size is 3 pages.
   assert_eq!(1, fun.call(&mut store, ()).unwrap());
   assert_eq!(3, memory.size(&mut store));
   assert_eq!(196608, memory.data_size(&mut store));
-  // The size before growing is 3 pages, the new size is 5 pages.
+  // The size before growing was 3 pages, the new size is 5 pages.
   assert_eq!(3, fun.call(&mut store, ()).unwrap());
   assert_eq!(5, memory.size(&mut store));
   assert_eq!(327680, memory.data_size(&mut store));
+}
+
+#[test]
+fn _0002() {
+  let wat_str = r#"
+    (module
+      (memory (export "mem") 0)
+      (func (export "fun") (result i32)
+        i32.const 65536  ;; Number of pages to grow to the maximum size of the memory
+        memory.grow      ;; Grow the memory, return the previous size
+      )
+    )
+    "#;
+  let wasm_bytes = wat::parse_str(wat_str).unwrap();
+  let engine = wasmtime::Engine::default();
+  let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
+  let mut store = wasmtime::Store::new(&engine, ());
+  let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let memory = instance.get_memory(&mut store, "mem").unwrap();
+  let fun = instance.get_typed_func::<(), i32>(&mut store, "fun").unwrap();
+  // The size before growing was 0 pages, the new size is 65536 pages.
+  assert_eq!(0, fun.call(&mut store, ()).unwrap());
+  assert_eq!(65536, memory.size(&mut store));
+  assert_eq!(4294967296, memory.data_size(&mut store));
+}
+
+#[test]
+fn _0003() {
+  let wat_str = r#"
+    (module
+      (memory (export "mem") 0)
+      (func (export "fun") (result i32)
+        i32.const 65537  ;; Invalid number of pages to grow
+        memory.grow      ;; Growing the memory should return -1
+      )
+    )
+    "#;
+  let wasm_bytes = wat::parse_str(wat_str).unwrap();
+  let engine = wasmtime::Engine::default();
+  let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
+  let mut store = wasmtime::Store::new(&engine, ());
+  let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let memory = instance.get_memory(&mut store, "mem").unwrap();
+  let fun = instance.get_typed_func::<(), i32>(&mut store, "fun").unwrap();
+  // Growing memory should fail.
+  assert_eq!(-1, fun.call(&mut store, ()).unwrap());
+  assert_eq!(0, memory.size(&mut store));
+  assert_eq!(0, memory.data_size(&mut store));
 }
