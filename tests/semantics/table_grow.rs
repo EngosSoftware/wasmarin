@@ -21,12 +21,11 @@ fn _0001() {
   let wat_str = r#"
     (module
       (table 2 funcref)
-      (func (export "fun") (result i32)
+      (func (export "fun") (result i32 i32)
         ref.null func  ;; New elements with be null function references;  push: null  stack: null
         i32.const 100  ;; Number of new elements in the table;            push: 100   stack: 100 null
         table.grow 0   ;; Grow the table;                                             stack: 2 (old size)
-        drop           ;; Drop the old table size.                                    stack: (empty)
-        table.size 0   ;; Return the new table size.                                  stack: 102
+        table.size 0   ;; Push the new table size;                                    stack: 102 2 (new size, old size)
       )
     )
     "#;
@@ -35,6 +34,6 @@ fn _0001() {
   let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
   let mut store = wasmtime::Store::new(&engine, ());
   let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
-  let fun = instance.get_typed_func::<(), i32>(&mut store, "fun").unwrap();
-  assert_eq!(102, fun.call(&mut store, ()).unwrap());
+  let fun = instance.get_typed_func::<(), (i32, i32)>(&mut store, "fun").unwrap();
+  assert_eq!((2, 102), fun.call(&mut store, ()).unwrap());
 }
