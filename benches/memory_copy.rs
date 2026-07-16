@@ -1,5 +1,6 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
+
 const MEM_SIZE: [usize; 11] = [
   1,
   100,
@@ -14,15 +15,17 @@ const MEM_SIZE: [usize; 11] = [
   4_000_000_000,
 ];
 
-const TEMPLATE: &str = r#"(module
+const TEMPLATE: &str = r#"
+(module
   (memory 65536)
   (func (export "fun")
-    i32.const 200000000
-    i32.const 0
-    i32.const ;;LENGTH;;
-    memory.copy
+    i32.const 294967295    ;; Destination offset in memory
+    i32.const 0            ;; Source offset in memory
+    i32.const <LENGTH>     ;; Length in bytes to be copied
+    memory.copy            ;; Execute memory copy
   )
-)"#;
+)
+"#;
 
 fn _0001(c: &mut Criterion) {
   let mut group = c.benchmark_group("memory-copy");
@@ -38,14 +41,14 @@ fn _0001(c: &mut Criterion) {
 }
 
 fn create_wat(length: usize) -> String {
-  TEMPLATE.replace(";;LENGTH;;", &length.to_string())
+  TEMPLATE.replace("<LENGTH>", &length.to_string())
 }
 
 fn make_config() -> Criterion {
   Criterion::default()
     .without_plots()
-    .measurement_time(Duration::new(8, 0))
-    .sample_size(50)
+    .measurement_time(Duration::new(10, 0))
+    .sample_size(100)
     .configure_from_args()
 }
 
