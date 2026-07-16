@@ -29,8 +29,8 @@ fn make_config() -> Criterion {
     .configure_from_args()
 }
 
+/// Checks if the benchmarked Wasm code works properly.
 fn precheck() {
-  // Check if the benchmarked Wasm code works properly.
   for pages in PAGES {
     let wasm_bytes = wat::parse_str(wat_source(pages)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
