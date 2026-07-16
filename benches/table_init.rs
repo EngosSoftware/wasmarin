@@ -44,14 +44,14 @@ fn precheck() {
     let mut store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
     let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
-    let table = instance.exports.get_table("tab").unwrap();
-    assert_eq!(length + 1, table.size(&store) as usize);
+    let tab = instance.exports.get_table("tab").unwrap();
+    assert_eq!(length + 1, tab.size(&store) as usize);
     let fun = instance.exports.get_typed_function::<(), ()>(&store, "fun").unwrap();
     fun.call(&mut store).unwrap();
     for index in 0..length {
-      assert!(table.get(&mut store, index as u32).unwrap().funcref().unwrap().is_some());
+      assert!(tab.get(&mut store, index as u32).unwrap().funcref().unwrap().is_some());
     }
-    assert!(table.get(&mut store, length as u32).unwrap().funcref().unwrap().is_none());
+    assert!(tab.get(&mut store, length as u32).unwrap().funcref().unwrap().is_none());
   }
 }
 

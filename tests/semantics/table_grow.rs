@@ -20,7 +20,7 @@
 fn _0001() {
   let wat_str = r#"
     (module
-      (table 2 funcref)
+      (table (export "tab") 2 funcref)
       (func (export "fun") (result i32 i32)
         ref.null func  ;; New elements with be null function references;  push: null  stack: null
         i32.const 100  ;; Number of new elements in the table;            push: 100   stack: 100 null
@@ -34,6 +34,46 @@ fn _0001() {
   let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
   let mut store = wasmtime::Store::new(&engine, ());
   let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let tab = instance.get_table(&mut store, "tab").unwrap();
+  assert_eq!(2, tab.size(&store));
   let fun = instance.get_typed_func::<(), (i32, i32)>(&mut store, "fun").unwrap();
   assert_eq!((2, 102), fun.call(&mut store, ()).unwrap());
+  assert_eq!(102, tab.size(&store));
+  for index in 0..102 {
+    assert!(tab.get(&mut store, index).unwrap().as_func().unwrap().is_none());
+  }
+}
+
+#[test]
+fn _0002() {
+  let wat_str = r#"
+    (module
+      (table (export "tab") 2 funcref)
+      (elem func $f1)
+      (func $f1)
+      (func (export "fun") (result i32 i32)
+        ref.func $f1
+        i32.const 5
+        table.grow 0
+        table.size 0
+      )
+    )
+    "#;
+  let wasm_bytes = wat::parse_str(wat_str).unwrap();
+  let engine = wasmtime::Engine::default();
+  let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
+  let mut store = wasmtime::Store::new(&engine, ());
+  let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let tab = instance.get_table(&mut store, "tab").unwrap();
+  assert_eq!(2, tab.size(&store));
+  let fun = instance.get_typed_func::<(), (i32, i32)>(&mut store, "fun").unwrap();
+  assert_eq!((2, 7), fun.call(&mut store, ()).unwrap());
+  assert_eq!(7, tab.size(&store));
+  assert!(tab.get(&mut store, 0).unwrap().as_func().unwrap().is_none()); // NULL
+  assert!(tab.get(&mut store, 1).unwrap().as_func().unwrap().is_none()); // NULL
+  assert!(tab.get(&mut store, 2).unwrap().as_func().unwrap().is_some()); // FUNC
+  assert!(tab.get(&mut store, 3).unwrap().as_func().unwrap().is_some()); // FUNC
+  assert!(tab.get(&mut store, 4).unwrap().as_func().unwrap().is_some()); // FUNC
+  assert!(tab.get(&mut store, 5).unwrap().as_func().unwrap().is_some()); // FUNC
+  assert!(tab.get(&mut store, 6).unwrap().as_func().unwrap().is_some()); // FUNC
 }
