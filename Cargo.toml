@@ -53,6 +53,11 @@ path = "benches/memory_grow.rs"
 harness = false
 
 [[bench]]
+name = "memory-fill"
+path = "benches/memory_fill.rs"
+harness = false
+
+[[bench]]
 name = "memory-copy"
 path = "benches/memory_copy.rs"
 harness = false

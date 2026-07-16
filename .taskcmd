@@ -21,6 +21,11 @@
     .cmd rm -rf target/criterion
     .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-grow
 
+  .bench-memory-fill
+    .desc Executes benchmarks for memory.fill operator
+    .cmd rm -rf target/criterion
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-fill
+
   .bench-memory-copy
     .desc Executes benchmarks for memory.copy operator
     .cmd rm -rf target/criterion
