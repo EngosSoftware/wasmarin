@@ -23,14 +23,14 @@
 fn _0001() {
   let wat_str = r#"
     (module
-      (table (export "tab") 9 9 funcref)
-      (elem declare func $f111)
-      (func $f111 (result i32) i32.const 111)
+      (table (export "tab") 9 funcref)
+      (elem func $f1)
+      (func $f1 (result i32) i32.const 1)
       (func (export "fun")
-        i32.const 1     ;; Start offset in table;              push: 1      stack: 1
-        ref.func $f111  ;; Reference value to fill the table;  push: $f111  stack: $f111 1
-        i32.const 8     ;; Number of elements to be filled;    push: 8      stack: 8 $f111 1
-        table.fill 0    ;; Fill the table;                                  stack: (empty)
+        i32.const 1     ;; Start offset in table;              push: 1     stack: 1
+        ref.func $f1    ;; Reference value to fill the table;  push: $f1   stack: $f1 1
+        i32.const 8     ;; Number of elements to be filled;    push: 8     stack: 8 $f1 1
+        table.fill 0    ;; Fill the table;                                 stack: (empty)
       )
     )
     "#;

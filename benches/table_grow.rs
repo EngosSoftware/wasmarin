@@ -2,10 +2,10 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
 /// Number of elements the table will be extended in benchmarks.
-const GROWTHS: [usize; 12] = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000, 2_147_483_647];
+const GROWTHS: [usize; 11] = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000];
 
 /// Initial size of the benchmarked table.
-const INITIAL: usize = 0;
+const INITIAL: usize = 10_000_000;
 
 const TEMPLATE: &str = r#"
 (module

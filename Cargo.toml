@@ -71,3 +71,8 @@ harness = false
 name = "table-grow"
 path = "benches/table_grow.rs"
 harness = false
+
+[[bench]]
+name = "table-fill"
+path = "benches/table_fill.rs"
+harness = false
