@@ -1,7 +1,7 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
-/// Number of elements used for benchmarking.
+/// Lengths used for benchmarking.
 const LENGTHS: [usize; 8] = [1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000];
 
 const TEMPLATE: &str = r#"
