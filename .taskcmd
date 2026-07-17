@@ -46,6 +46,11 @@
     .cmd rm -rf target/criterion
     .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-fill
 
+  .bench-table-copy
+    .desc Executes benchmarks for table.copy operator
+    .cmd rm -rf target/criterion
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-copy
+
   .clean
     .desc Cleans all targets
     .cmd cargo clean

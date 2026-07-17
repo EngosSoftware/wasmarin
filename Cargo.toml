@@ -76,3 +76,8 @@ harness = false
 name = "table-fill"
 path = "benches/table_fill.rs"
 harness = false
+
+[[bench]]
+name = "table-copy"
+path = "benches/table_copy.rs"
+harness = false
