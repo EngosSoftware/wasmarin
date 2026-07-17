@@ -24,7 +24,7 @@ fn wat_source(pages: usize) -> String {
 fn make_config() -> Criterion {
   Criterion::default()
     .without_plots()
-    .measurement_time(Duration::new(5, 0))
+    .measurement_time(Duration::new(1, 0))
     .sample_size(20)
     .configure_from_args()
 }
