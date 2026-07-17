@@ -2,7 +2,7 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
 /// Number of elements the table will be extended in benchmarks.
-const GROWTHS: [usize; 9] = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000];
+const GROWTHS: [usize; 12] = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000, 2_147_483_647];
 
 /// Initial size of the benchmarked table.
 const INITIAL: usize = 0;
@@ -27,7 +27,7 @@ fn wat_source(grow: usize) -> String {
 fn make_config() -> Criterion {
   Criterion::default()
     .without_plots()
-    .measurement_time(Duration::new(5, 0))
+    .measurement_time(Duration::new(2, 0))
     .sample_size(20)
     .configure_from_args()
 }
