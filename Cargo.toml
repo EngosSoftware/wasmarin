@@ -81,3 +81,8 @@ harness = false
 name = "table-copy"
 path = "benches/table_copy.rs"
 harness = false
+
+[[bench]]
+name = "data-drop"
+path = "benches/data_drop.rs"
+harness = false

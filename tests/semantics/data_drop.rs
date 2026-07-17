@@ -33,3 +33,24 @@ fn _0001() {
   let fun = instance.get_typed_func::<(), ()>(&mut store, "fun").unwrap();
   fun.call(&mut store, ()).unwrap();
 }
+
+#[test]
+fn _0002() {
+  let wat_str = r#"
+    (module
+      (data "<DATA>")
+      (func (export "fun")
+        data.drop 0    ;; Drop passive data segment 0
+      )
+    )
+    "#;
+  let length = 1_000_000;
+  let data = "A".repeat(length);
+  let wasm_bytes = wat::parse_str(wat_str.replace("<DATA>", &data)).unwrap();
+  let engine = wasmtime::Engine::default();
+  let module = wasmtime::Module::from_binary(&engine, &wasm_bytes).unwrap();
+  let mut store = wasmtime::Store::new(&engine, ());
+  let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
+  let fun = instance.get_typed_func::<(), ()>(&mut store, "fun").unwrap();
+  fun.call(&mut store, ()).unwrap();
+}

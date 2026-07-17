@@ -51,6 +51,16 @@
     .cmd rm -rf target/criterion
     .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-copy
 
+  .bench-data-drop
+    .desc Executes benchmarks for data.drop operator
+    .cmd rm -rf target/criterion
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench data-drop
+
+  .bench-elem-drop
+      .desc Executes benchmarks for elem.drop operator
+      .cmd rm -rf target/criterion
+      .cmd cargo {{BENCH_TOOLKIT}} bench --bench elem-drop
+
   .clean
     .desc Cleans all targets
     .cmd cargo clean
