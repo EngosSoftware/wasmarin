@@ -1,11 +1,11 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
-/// Number of pages to grow memory during benchmarking.
-const PAGES: [usize; 10] = [1, 10, 100, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 65_535];
+/// Lengths used for benchmarking.
+const LENGTHS: [usize; 11] = [0, 1, 10, 100, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 65_535];
 
 /// Page size of the Wasm memory.
-const WASM_PAGE_SIZE: usize = 65536;
+const WASM_PAGE_SIZE: usize = 65_536;
 
 const TEMPLATE: &str = r#"
 (module
@@ -31,8 +31,8 @@ fn make_config() -> Criterion {
 
 /// Checks if the benchmarked Wasm code works properly.
 fn precheck() {
-  for pages in PAGES {
-    let wasm_bytes = wat::parse_str(wat_source(pages)).unwrap();
+  for lengths in LENGTHS {
+    let wasm_bytes = wat::parse_str(wat_source(lengths)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
     let mut store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
@@ -40,23 +40,33 @@ fn precheck() {
     let memory = instance.exports.get_memory("mem").unwrap();
     let fun = instance.exports.get_typed_function::<(), i32>(&store, "fun").unwrap();
     assert_eq!(0, fun.call(&mut store).unwrap());
-    assert_eq!(pages, memory.view(&store).size().0 as usize);
-    assert_eq!(pages * WASM_PAGE_SIZE, memory.view(&store).data_size() as usize);
+    assert_eq!(lengths, memory.view(&store).size().0 as usize);
+    assert_eq!(lengths * WASM_PAGE_SIZE, memory.view(&store).data_size() as usize);
   }
 }
 
 fn _0001(c: &mut Criterion) {
   precheck();
-  // Execute benchmarks.
   let mut group = c.benchmark_group("memory-grow");
-  for pages in PAGES {
-    let wasm_bytes = wat::parse_str(wat_source(pages)).unwrap();
+  for length in LENGTHS {
+    let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
-    let mut store = wasmer::Store::new(compiler);
+    let store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
-    let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
-    let fun = instance.exports.get_typed_function::<(), i32>(&store, "fun").unwrap();
-    group.bench_with_input(format!("pages = {pages}"), &pages, |b, &_| b.iter(|| fun.call(&mut store).unwrap()));
+    group.bench_with_input(format!("length = {length}"), &length, |b, _| {
+      b.iter_batched(
+        || {
+          let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());
+          let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
+          let fun = instance.exports.get_typed_function::<(), i32>(&store, "fun").unwrap();
+          (store, fun)
+        },
+        |(mut store, fun)| {
+          fun.call(&mut store).unwrap();
+        },
+        criterion::BatchSize::LargeInput,
+      );
+    });
   }
 }
 
