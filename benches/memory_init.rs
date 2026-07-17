@@ -2,10 +2,29 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
 /// Lengths used for benchmarking.
-const LENGTHS: [usize; 19] = [
-  0, 1, 10, 100, 200, 1_000, 2_000, 10_000, 20_000, 50_000, 100_000, 200_000, 500_000, 1_000_000, 2_000_000, 5_000_000, 10_000_000, 20_000_000, 50_000_000,
+const LENGTHS: [usize; 21] = [
+  0,
+  1,
+  10,
+  100,
+  200,
+  1_000,
+  2_000,
+  5_000,
+  10_000,
+  20_000,
+  50_000,
+  100_000,
+  200_000,
+  500_000,
+  1_000_000,
+  2_000_000,
+  5_000_000,
+  10_000_000,
+  20_000_000,
+  50_000_000,
+  100_000_000,
 ];
-// const LENGTHS: [usize; 1] = [100_000_000];
 
 const TEMPLATE: &str = r#"
 (module
@@ -28,7 +47,7 @@ fn wat_source(length: usize) -> String {
 fn make_config() -> Criterion {
   Criterion::default()
     .without_plots()
-    .measurement_time(Duration::new(5, 0))
+    .measurement_time(Duration::new(10, 0))
     .sample_size(20)
     .configure_from_args()
 }
