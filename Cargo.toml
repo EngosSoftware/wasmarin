@@ -86,3 +86,8 @@ harness = false
 name = "data-drop"
 path = "benches/data_drop.rs"
 harness = false
+
+[[bench]]
+name = "elem-drop"
+path = "benches/elem_drop.rs"
+harness = false
