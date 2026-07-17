@@ -36,6 +36,11 @@
     .cmd rm -rf target/criterion
     .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init
 
+  .bench-table-grow
+    .desc Executes benchmarks for table.grow operator
+    .cmd rm -rf target/criterion
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-grow
+
   .clean
     .desc Cleans all targets
     .cmd cargo clean

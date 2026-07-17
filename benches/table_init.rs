@@ -58,7 +58,7 @@ fn precheck() {
 fn _0001(c: &mut Criterion) {
   precheck();
   // Execute benchmarks.
-  let mut group = c.benchmark_group("memory-init");
+  let mut group = c.benchmark_group("table-init");
   for length in LENGTHS {
     let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
