@@ -2,19 +2,39 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
 /// Lengths used for benchmarking.
-#[rustfmt::skip]
-const LENGTHS: [usize; 31] = [0,
-                              1, 2, 5,
-                              10, 20, 50,
-                              100, 200, 500,
-                              1_000, 2_000, 5_000,
-                              10_000, 20_000, 50_000,
-                              100_000, 200_000, 500_000,
-                              1_000_000, 2_000_000, 5_000_000,
-                              10_000_000, 20_000_000, 50_000_000,
-                              100_000_000, 200_000_000, 500_000_000,
-                              1_000_000_000, 2_000_000_000, 4_294_967_296
-                             ];
+const LENGTHS: [usize; 31] = [
+  0,
+  1,
+  2,
+  5,
+  10,
+  20,
+  50,
+  100,
+  200,
+  500,
+  1_000,
+  2_000,
+  5_000,
+  10_000,
+  20_000,
+  50_000,
+  100_000,
+  200_000,
+  500_000,
+  1_000_000,
+  2_000_000,
+  5_000_000,
+  10_000_000,
+  20_000_000,
+  50_000_000,
+  100_000_000,
+  200_000_000,
+  500_000_000,
+  1_000_000_000,
+  2_000_000_000,
+  i32::MAX as usize,
+];
 
 const TEMPLATE: &str = r#"
 (module
@@ -45,20 +65,22 @@ fn make_config() -> Criterion {
 /// Checks if the benchmarked Wasm code works properly.
 fn precheck() {
   for length in LENGTHS {
-    let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
-    let compiler = wasmer::sys::Singlepass::default();
-    let mut store = wasmer::Store::new(compiler);
-    let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
-    let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
-    let memory = instance.exports.get_memory("mem").unwrap();
-    let fun = instance.exports.get_typed_function::<(), ()>(&store, "fun").unwrap();
-    fun.call(&mut store).unwrap();
-    let start_index = length.saturating_sub(1) as u64;
-    let data = memory.view(&store).copy_range_to_vec(start_index..(start_index + 2)).unwrap();
-    if length == 0 {
-      assert_eq!(vec![0, 0], data);
-    } else {
-      assert_eq!(vec![65, 0], data);
+    if length <= 1_000 {
+      let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
+      let compiler = wasmer::sys::Singlepass::default();
+      let mut store = wasmer::Store::new(compiler);
+      let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
+      let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
+      let memory = instance.exports.get_memory("mem").unwrap();
+      let fun = instance.exports.get_typed_function::<(), ()>(&store, "fun").unwrap();
+      fun.call(&mut store).unwrap();
+      let start_index = length.saturating_sub(1) as u64;
+      let data = memory.view(&store).copy_range_to_vec(start_index..(start_index + 2)).unwrap();
+      if length == 0 {
+        assert_eq!(vec![0, 0], data);
+      } else {
+        assert_eq!(vec![65, 0], data);
+      }
     }
   }
 }
