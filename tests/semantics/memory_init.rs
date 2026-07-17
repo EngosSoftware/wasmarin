@@ -1,3 +1,5 @@
+use std::time::Instant;
+
 ///
 /// Demonstrates the use of the `memory.init` instruction in WebAssembly.
 ///
@@ -44,6 +46,14 @@ fn _0001() {
   let instance = wasmtime::Instance::new(&mut store, &module, &[]).unwrap();
   let memory = instance.get_memory(&mut store, "mem").unwrap();
   let fun = instance.get_typed_func::<(), ()>(&mut store, "fun").unwrap();
+
+  let start = Instant::now();
+
   fun.call(&mut store, ()).unwrap();
+
+  let elapsed = start.elapsed();
+
+  println!("µs: {}", elapsed.as_micros());
+
   assert_eq!(b"\0\0WebAssembly!\0\0", &memory.data(&mut store)[0..16]);
 }
