@@ -1,0 +1,66 @@
+elem-drop/length = 1    time:   [380.82 ns 384.10 ns 388.00 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+elem-drop/length = 2    time:   [378.18 ns 382.14 ns 387.34 ns]
+elem-drop/length = 5    time:   [380.52 ns 384.33 ns 389.39 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+elem-drop/length = 10   time:   [384.13 ns 387.48 ns 391.64 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+elem-drop/length = 20   time:   [390.12 ns 394.17 ns 399.63 ns]
+elem-drop/length = 50   time:   [395.72 ns 399.08 ns 403.33 ns]
+elem-drop/length = 100  time:   [396.43 ns 400.03 ns 405.19 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+elem-drop/length = 200  time:   [402.22 ns 406.58 ns 410.94 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+elem-drop/length = 500  time:   [407.08 ns 421.64 ns 439.53 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+elem-drop/length = 1000 time:   [466.82 ns 478.23 ns 488.31 ns]
+elem-drop/length = 2000 time:   [533.39 ns 538.52 ns 545.07 ns]
+Found 5 outliers among 20 measurements (25.00%)
+  4 (20.00%) low severe
+  1 (5.00%) high mild
+elem-drop/length = 5000 time:   [562.09 ns 568.10 ns 576.24 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) low severe
+elem-drop/length = 10000
+                        time:   [556.33 ns 565.75 ns 571.85 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  2 (10.00%) low mild
+elem-drop/length = 20000
+                        time:   [494.66 ns 509.74 ns 518.87 ns]
+elem-drop/length = 50000
+                        time:   [416.90 ns 426.07 ns 432.84 ns]
+elem-drop/length = 100000
+                        time:   [380.76 ns 388.41 ns 395.22 ns]
+elem-drop/length = 200000
+                        time:   [401.76 ns 412.04 ns 425.73 ns]
+elem-drop/length = 500000
+                        time:   [485.28 ns 506.51 ns 533.53 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+elem-drop/length = 1000000
+                        time:   [754.47 ns 796.22 ns 846.67 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+elem-drop/length = 2000000
+                        time:   [1.0414 µs 1.1044 µs 1.2045 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+elem-drop/length = 5000000
+                        time:   [1.9016 ms 1.9374 ms 1.9889 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+elem-drop/length = 10000000
+                        time:   [3.8265 ms 3.8835 ms 3.9471 ms]
+

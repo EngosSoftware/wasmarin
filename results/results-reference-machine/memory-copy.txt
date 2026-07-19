@@ -1,0 +1,123 @@
+memory-copy/length = 1  time:   [12.000 µs 12.042 µs 12.096 µs]
+Found 5 outliers among 20 measurements (25.00%)
+  3 (15.00%) high mild
+  2 (10.00%) high severe
+memory-copy/length = 2  time:   [11.982 µs 12.032 µs 12.085 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+memory-copy/length = 5  time:   [12.002 µs 12.050 µs 12.109 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+memory-copy/length = 10 time:   [12.043 µs 12.083 µs 12.131 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+memory-copy/length = 20 time:   [12.031 µs 12.068 µs 12.119 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+memory-copy/length = 50 time:   [12.040 µs 12.072 µs 12.119 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+memory-copy/length = 100
+                        time:   [12.068 µs 12.101 µs 12.150 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+memory-copy/length = 200
+                        time:   [12.058 µs 12.094 µs 12.142 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+memory-copy/length = 500
+                        time:   [12.104 µs 12.130 µs 12.170 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+memory-copy/length = 1000
+                        time:   [12.119 µs 12.159 µs 12.211 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+memory-copy/length = 2000
+                        time:   [12.146 µs 12.205 µs 12.263 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high mild
+memory-copy/length = 5000
+                        time:   [15.304 µs 15.349 µs 15.419 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+memory-copy/length = 10000
+                        time:   [18.947 µs 19.012 µs 19.106 µs]
+memory-copy/length = 20000
+                        time:   [27.603 µs 27.663 µs 27.788 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high mild
+memory-copy/length = 50000
+                        time:   [52.843 µs 52.987 µs 53.267 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+memory-copy/length = 100000
+                        time:   [93.167 µs 93.327 µs 93.640 µs]
+memory-copy/length = 200000
+                        time:   [177.32 µs 177.63 µs 178.23 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+memory-copy/length = 500000
+                        time:   [422.45 µs 423.19 µs 424.63 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  3 (15.00%) high mild
+  1 (5.00%) high severe
+memory-copy/length = 1000000
+                        time:   [841.84 µs 843.25 µs 846.33 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  3 (15.00%) high mild
+  1 (5.00%) high severe
+memory-copy/length = 2000000
+                        time:   [1.6740 ms 1.6770 ms 1.6837 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high mild
+memory-copy/length = 5000000
+                        time:   [4.3137 ms 4.3207 ms 4.3360 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  3 (15.00%) high mild
+  1 (5.00%) high severe
+memory-copy/length = 10000000
+                        time:   [8.5186 ms 8.5336 ms 8.5592 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  3 (15.00%) high mild
+  1 (5.00%) high severe
+memory-copy/length = 20000000
+                        time:   [16.938 ms 16.964 ms 17.018 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  3 (15.00%) high mild
+  1 (5.00%) high severe
+memory-copy/length = 50000000
+                        time:   [42.346 ms 42.405 ms 42.518 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high severe
+memory-copy/length = 100000000
+                        time:   [84.066 ms 84.137 ms 84.280 ms]
+Found 5 outliers among 20 measurements (25.00%)
+  1 (5.00%) high mild
+  4 (20.00%) high severe
+memory-copy/length = 200000000
+                        time:   [167.32 ms 167.45 ms 167.70 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high severe
+memory-copy/length = 500000000
+                        time:   [395.30 ms 396.97 ms 399.10 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+memory-copy/length = 1000000000
+                        time:   [816.95 ms 820.00 ms 824.20 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+memory-copy/length = 2000000000
+                        time:   [1.6478 s 1.6556 s 1.6672 s]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+memory-copy/length = 4000000000
+                        time:   [3.3202 s 3.3276 s 3.3397 s]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+
