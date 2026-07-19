@@ -62,7 +62,7 @@ fn make_config() -> Criterion {
     .configure_from_args()
 }
 
-/// Checks if the benchmarked Wasm code works properly.
+/// Checks if the benchmarked Wasm code works.
 fn precheck() {
   for length in LENGTHS {
     if length <= 1_000 {

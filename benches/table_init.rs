@@ -36,7 +36,7 @@ fn make_config() -> Criterion {
     .configure_from_args()
 }
 
-/// Checks if the benchmarked Wasm code works properly.
+/// Checks if the benchmarked Wasm code works.
 fn precheck() {
   for length in LENGTHS {
     let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
@@ -57,7 +57,6 @@ fn precheck() {
 
 fn _0001(c: &mut Criterion) {
   precheck();
-  // Execute benchmarks.
   let mut group = c.benchmark_group("table-init");
   for length in LENGTHS {
     let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
