@@ -1,8 +1,10 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
-/// Number of elements to be filled in the benchmarked table.
-const LENGTHS: [usize; 9] = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 9_999_999];
+/// Lengths used for benchmarking.
+const LENGTHS: [usize; 23] = [
+  0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 100_000, 200_000, 500_000, 1_000_000, 2_000_000, 5_000_000, 9_999_999,
+];
 
 const TEMPLATE: &str = r#"
 (module
@@ -58,11 +60,22 @@ fn _0001(c: &mut Criterion) {
   for length in LENGTHS {
     let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
-    let mut store = wasmer::Store::new(compiler);
+    let store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
-    let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
-    let fun = instance.exports.get_typed_function::<(), ()>(&store, "fun").unwrap();
-    group.bench_with_input(format!("length = {length}"), &length, |b, &_| b.iter(|| fun.call(&mut store).unwrap()));
+    group.bench_with_input(format!("length = {length}"), &length, |b, _| {
+      b.iter_batched(
+        || {
+          let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());
+          let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
+          let fun = instance.exports.get_typed_function::<(), ()>(&store, "fun").unwrap();
+          (store, fun)
+        },
+        |(mut store, fun)| {
+          fun.call(&mut store).unwrap();
+        },
+        criterion::BatchSize::LargeInput,
+      );
+    });
   }
 }
 
