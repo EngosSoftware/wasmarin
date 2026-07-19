@@ -1,7 +1,11 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
+#[cfg(target_os = "macos")]
 const MEASUREMENT_TIME: u64 = 2;
+#[cfg(target_os = "linux")]
+const MEASUREMENT_TIME: u64 = 2;
+
 const SAMPLE_SIZE: usize = 20;
 
 /// Lengths used for benchmarking.
