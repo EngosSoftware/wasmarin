@@ -1,8 +1,38 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
-/// Number of elements the table will be extended in benchmarks.
-const GROWTHS: [usize; 11] = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000];
+/// Lengths used for benchmarking.
+const LENGTHS: [usize; 29] = [
+  0,
+  1,
+  2,
+  5,
+  10,
+  20,
+  50,
+  100,
+  200,
+  500,
+  1_000,
+  2_000,
+  5_000,
+  10_000,
+  20_000,
+  50_000,
+  100_000,
+  200_000,
+  500_000,
+  1_000_000,
+  2_000_000,
+  5_000_000,
+  10_000_000,
+  20_000_000,
+  50_000_000,
+  100_000_000,
+  200_000_000,
+  500_000_000,
+  1_000_000_000,
+];
 
 /// Initial size of the benchmarked table.
 const INITIAL: usize = 10_000_000;
@@ -34,8 +64,8 @@ fn make_config() -> Criterion {
 
 /// Checks if the benchmarked Wasm code works.
 fn precheck() {
-  for grow in GROWTHS {
-    let wasm_bytes = wat::parse_str(wat_source(grow)).unwrap();
+  for length in LENGTHS {
+    let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
     let mut store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
@@ -44,21 +74,32 @@ fn precheck() {
     assert_eq!(INITIAL, tab.size(&store) as usize);
     let fun = instance.exports.get_typed_function::<(), i32>(&store, "fun").unwrap();
     assert_eq!(INITIAL as i32, fun.call(&mut store).unwrap());
-    assert_eq!(INITIAL + grow, tab.size(&store) as usize);
+    assert_eq!(INITIAL + length, tab.size(&store) as usize);
   }
 }
 
 fn _0001(c: &mut Criterion) {
   precheck();
   let mut group = c.benchmark_group("table-grow");
-  for grow in GROWTHS {
-    let wasm_bytes = wat::parse_str(wat_source(grow)).unwrap();
+  for length in LENGTHS {
+    let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
-    let mut store = wasmer::Store::new(compiler);
+    let store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
-    let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
-    let fun = instance.exports.get_typed_function::<(), i32>(&store, "fun").unwrap();
-    group.bench_with_input(format!("grow = {grow}"), &grow, |b, &_| b.iter(|| fun.call(&mut store).unwrap()));
+    group.bench_with_input(format!("length = {length}"), &length, |b, _| {
+      b.iter_batched(
+        || {
+          let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());
+          let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
+          let fun = instance.exports.get_typed_function::<(), i32>(&store, "fun").unwrap();
+          (store, fun)
+        },
+        |(mut store, fun)| {
+          fun.call(&mut store).unwrap();
+        },
+        criterion::BatchSize::LargeInput,
+      );
+    });
   }
 }
 
