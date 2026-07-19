@@ -1,6 +1,9 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
+const MEASUREMENT_TIME: u64 = 5;
+const SAMPLE_SIZE: usize = 20;
+
 /// Lengths used for benchmarking.
 /// In wasmparser, in the limits.rs file, the maximum number of table entries is set to 10_000_000.
 const LENGTHS: [usize; 22] = [
@@ -33,8 +36,8 @@ fn wat_source(length: usize) -> String {
 fn make_config() -> Criterion {
   Criterion::default()
     .without_plots()
-    .measurement_time(Duration::new(5, 0))
-    .sample_size(20)
+    .measurement_time(Duration::new(MEASUREMENT_TIME, 0))
+    .sample_size(SAMPLE_SIZE)
     .configure_from_args()
 }
 

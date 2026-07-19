@@ -1,6 +1,9 @@
 use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
+const MEASUREMENT_TIME: u64 = 1;
+const SAMPLE_SIZE: usize = 20;
+
 /// Lengths used for benchmarking.
 const LENGTHS: [usize; 11] = [0, 1, 10, 100, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 65_535];
 
@@ -24,8 +27,8 @@ fn wat_source(pages: usize) -> String {
 fn make_config() -> Criterion {
   Criterion::default()
     .without_plots()
-    .measurement_time(Duration::new(1, 0))
-    .sample_size(20)
+    .measurement_time(Duration::new(MEASUREMENT_TIME, 0))
+    .sample_size(SAMPLE_SIZE)
     .configure_from_args()
 }
 
