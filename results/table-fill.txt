@@ -1,0 +1,75 @@
+table-fill/length = 0   time:   [181.10 ns 182.73 ns 184.65 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) low mild
+table-fill/length = 1   time:   [184.73 ns 189.96 ns 196.24 ns]
+table-fill/length = 2   time:   [187.14 ns 190.44 ns 194.19 ns]
+table-fill/length = 5   time:   [185.06 ns 185.67 ns 186.24 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  2 (10.00%) low mild
+table-fill/length = 10  time:   [183.37 ns 185.40 ns 187.27 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low mild
+table-fill/length = 20  time:   [198.04 ns 200.36 ns 202.57 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+table-fill/length = 50  time:   [210.60 ns 213.46 ns 218.20 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+table-fill/length = 100 time:   [221.73 ns 225.34 ns 228.53 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+table-fill/length = 200 time:   [288.80 ns 291.78 ns 294.52 ns]
+table-fill/length = 500 time:   [440.08 ns 444.96 ns 449.09 ns]
+table-fill/length = 1000
+                        time:   [699.77 ns 703.60 ns 707.99 ns]
+table-fill/length = 2000
+                        time:   [1.2022 µs 1.2124 µs 1.2241 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+table-fill/length = 5000
+                        time:   [2.7304 µs 2.7359 µs 2.7415 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high mild
+table-fill/length = 10000
+                        time:   [5.2186 µs 5.2303 µs 5.2506 µs]
+table-fill/length = 20000
+                        time:   [10.303 µs 10.343 µs 10.386 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+table-fill/length = 50000
+                        time:   [25.366 µs 25.452 µs 25.542 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+table-fill/length = 100000
+                        time:   [50.605 µs 50.915 µs 51.208 µs]
+table-fill/length = 200000
+                        time:   [101.30 µs 101.72 µs 102.11 µs]
+table-fill/length = 500000
+                        time:   [250.59 µs 251.11 µs 251.73 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+table-fill/length = 1000000
+                        time:   [499.22 µs 500.33 µs 501.47 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+table-fill/length = 2000000
+                        time:   [1.0027 ms 1.0049 ms 1.0081 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+table-fill/length = 5000000
+                        time:   [2.5022 ms 2.5062 ms 2.5101 ms]
+Found 7 outliers among 20 measurements (35.00%)
+  2 (10.00%) low severe
+  2 (10.00%) low mild
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+table-fill/length = 9999999
+                        time:   [5.0020 ms 5.0075 ms 5.0153 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+

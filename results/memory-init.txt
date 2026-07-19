@@ -1,0 +1,91 @@
+memory-init/length = 0  time:   [3.9681 µs 4.0045 µs 4.0267 µs]
+memory-init/length = 1  time:   [18.110 µs 18.217 µs 18.284 µs]
+memory-init/length = 2  time:   [18.243 µs 18.322 µs 18.388 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+memory-init/length = 5  time:   [18.267 µs 18.366 µs 18.438 µs]
+memory-init/length = 10 time:   [18.379 µs 18.475 µs 18.543 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low mild
+memory-init/length = 20 time:   [18.492 µs 18.580 µs 18.639 µs]
+memory-init/length = 50 time:   [18.467 µs 18.563 µs 18.651 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+memory-init/length = 100
+                        time:   [18.520 µs 18.620 µs 18.727 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+memory-init/length = 200
+                        time:   [18.540 µs 18.610 µs 18.667 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+memory-init/length = 500
+                        time:   [18.594 µs 18.709 µs 18.785 µs]
+memory-init/length = 1000
+                        time:   [18.726 µs 18.818 µs 18.917 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+memory-init/length = 2000
+                        time:   [18.650 µs 18.716 µs 18.770 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+memory-init/length = 5000
+                        time:   [18.707 µs 18.927 µs 19.145 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+memory-init/length = 10000
+                        time:   [19.107 µs 19.183 µs 19.239 µs]
+memory-init/length = 20000
+                        time:   [19.848 µs 20.039 µs 20.189 µs]
+memory-init/length = 50000
+                        time:   [21.339 µs 21.434 µs 21.522 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+memory-init/length = 100000
+                        time:   [23.308 µs 23.390 µs 23.450 µs]
+memory-init/length = 200000
+                        time:   [28.440 µs 28.589 µs 28.702 µs]
+memory-init/length = 500000
+                        time:   [41.667 µs 41.939 µs 42.202 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low mild
+  2 (10.00%) high mild
+memory-init/length = 1000000
+                        time:   [62.287 µs 62.517 µs 62.694 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+memory-init/length = 2000000
+                        time:   [106.54 µs 107.09 µs 107.89 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+memory-init/length = 5000000
+                        time:   [240.39 µs 241.00 µs 241.41 µs]
+memory-init/length = 10000000
+                        time:   [468.73 µs 470.79 µs 472.27 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+memory-init/length = 20000000
+                        time:   [924.68 µs 928.61 µs 933.48 µs]
+memory-init/length = 50000000
+                        time:   [2.3296 ms 2.3478 ms 2.3666 ms]
+memory-init/length = 100000000
+                        time:   [4.8789 ms 4.9231 ms 4.9590 ms]
+memory-init/length = 200000000
+                        time:   [9.6950 ms 11.963 ms 17.213 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+memory-init/length = 500000000
+                        time:   [23.847 ms 23.918 ms 24.032 ms]
+memory-init/length = 1000000000
+                        time:   [48.061 ms 48.166 ms 48.292 ms]
+memory-init/length = 2000000000
+                        time:   [97.568 ms 97.948 ms 98.419 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+memory-init/length = 2147483647
+                        time:   [102.01 ms 102.37 ms 102.99 ms]
+
