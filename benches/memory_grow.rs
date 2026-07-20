@@ -9,7 +9,7 @@ const MEASUREMENT_TIME: u64 = 1;
 const SAMPLE_SIZE: usize = 20;
 
 /// Lengths used for benchmarking.
-const LENGTHS: [usize; 11] = [0, 1, 10, 100, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 65_535];
+const LENGTHS: [usize; 17] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 65_535];
 
 /// Page size of the Wasm memory.
 const WASM_PAGE_SIZE: usize = 65_536;

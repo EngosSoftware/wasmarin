@@ -1,24 +1,11 @@
-memory-grow/length = 0  time:   [3.6453 µs 3.6750 µs 3.6923 µs]
-memory-grow/length = 1  time:   [4.4612 µs 4.6725 µs 4.7943 µs]
-memory-grow/length = 10 time:   [4.1613 µs 4.2889 µs 4.3666 µs]
-memory-grow/length = 100
-                        time:   [3.9029 µs 3.9279 µs 3.9426 µs]
-memory-grow/length = 1000
-                        time:   [3.9050 µs 3.9357 µs 3.9544 µs]
-memory-grow/length = 2000
-                        time:   [3.9270 µs 3.9541 µs 3.9691 µs]
-memory-grow/length = 5000
-                        time:   [4.0108 µs 4.0390 µs 4.0572 µs]
-memory-grow/length = 10000
-                        time:   [4.0795 µs 4.1074 µs 4.1224 µs]
-memory-grow/length = 20000
-                        time:   [4.3032 µs 4.3264 µs 4.3397 µs]
-memory-grow/length = 50000
-                        time:   [4.8386 µs 4.8515 µs 4.8603 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) low mild
-memory-grow/length = 65535
-                        time:   [5.0916 µs 5.1048 µs 5.1173 µs]
-Found 3 outliers among 20 measurements (15.00%)
-  3 (15.00%) low mild
-
+memory-grow/length = 0      time:   [3.6453 µs 3.6750 µs 3.6923 µs]
+memory-grow/length = 1      time:   [4.4612 µs 4.6725 µs 4.7943 µs]
+memory-grow/length = 10     time:   [4.1613 µs 4.2889 µs 4.3666 µs]
+memory-grow/length = 100    time:   [3.9029 µs 3.9279 µs 3.9426 µs]
+memory-grow/length = 1000   time:   [3.9050 µs 3.9357 µs 3.9544 µs]
+memory-grow/length = 2000   time:   [3.9270 µs 3.9541 µs 3.9691 µs]
+memory-grow/length = 5000   time:   [4.0108 µs 4.0390 µs 4.0572 µs]
+memory-grow/length = 10000  time:   [4.0795 µs 4.1074 µs 4.1224 µs]
+memory-grow/length = 20000  time:   [4.3032 µs 4.3264 µs 4.3397 µs]
+memory-grow/length = 50000  time:   [4.8386 µs 4.8515 µs 4.8603 µs]
+memory-grow/length = 65535  time:   [5.0916 µs 5.1048 µs 5.1173 µs]

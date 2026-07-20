@@ -1,89 +1,30 @@
-memory-copy/length = 1  time:   [33.085 µs 33.883 µs 34.808 µs]
-memory-copy/length = 2  time:   [31.696 µs 32.327 µs 33.005 µs]
-memory-copy/length = 5  time:   [31.974 µs 32.414 µs 32.817 µs]
-memory-copy/length = 10 time:   [32.039 µs 32.609 µs 33.363 µs]
-memory-copy/length = 20 time:   [31.420 µs 31.939 µs 32.553 µs]
-memory-copy/length = 50 time:   [31.967 µs 32.976 µs 33.760 µs]
-Found 4 outliers among 20 measurements (20.00%)
-  3 (15.00%) high mild
-  1 (5.00%) high severe
-memory-copy/length = 100
-                        time:   [32.647 µs 33.390 µs 34.071 µs]
-memory-copy/length = 200
-                        time:   [31.093 µs 31.260 µs 31.518 µs]
-memory-copy/length = 500
-                        time:   [32.559 µs 33.057 µs 33.649 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-memory-copy/length = 1000
-                        time:   [31.542 µs 32.183 µs 32.955 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-copy/length = 2000
-                        time:   [32.799 µs 33.676 µs 34.428 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-copy/length = 5000
-                        time:   [33.964 µs 34.255 µs 34.618 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-copy/length = 10000
-                        time:   [32.300 µs 32.982 µs 34.003 µs]
-memory-copy/length = 20000
-                        time:   [33.479 µs 33.962 µs 34.469 µs]
-memory-copy/length = 50000
-                        time:   [36.367 µs 36.925 µs 37.458 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-memory-copy/length = 100000
-                        time:   [42.454 µs 42.947 µs 43.475 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-copy/length = 200000
-                        time:   [52.306 µs 52.689 µs 53.125 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-copy/length = 500000
-                        time:   [77.413 µs 78.242 µs 79.126 µs]
-memory-copy/length = 1000000
-                        time:   [121.01 µs 123.01 µs 125.00 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-copy/length = 2000000
-                        time:   [205.80 µs 209.50 µs 212.14 µs]
-memory-copy/length = 5000000
-                        time:   [483.39 µs 489.93 µs 496.57 µs]
-memory-copy/length = 10000000
-                        time:   [935.97 µs 952.43 µs 971.28 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-memory-copy/length = 20000000
-                        time:   [1.8261 ms 1.8400 ms 1.8568 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-copy/length = 50000000
-                        time:   [4.5311 ms 4.5839 ms 4.6693 ms]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high severe
-memory-copy/length = 100000000
-                        time:   [9.1367 ms 9.2462 ms 9.3829 ms]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-memory-copy/length = 200000000
-                        time:   [18.429 ms 18.571 ms 18.735 ms]
-memory-copy/length = 500000000
-                        time:   [41.640 ms 42.521 ms 43.652 ms]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) high mild
-  2 (10.00%) high severe
-memory-copy/length = 1000000000
-                        time:   [74.903 ms 76.126 ms 77.340 ms]
-memory-copy/length = 2000000000
-                        time:   [142.74 ms 145.28 ms 147.85 ms]
-memory-copy/length = 4000000000
-                        time:   [278.70 ms 284.84 ms 291.57 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-
+memory-copy/length = 1           time:   [33.085 µs 33.883 µs 34.808 µs]
+memory-copy/length = 2           time:   [31.696 µs 32.327 µs 33.005 µs]
+memory-copy/length = 5           time:   [31.974 µs 32.414 µs 32.817 µs]
+memory-copy/length = 10          time:   [32.039 µs 32.609 µs 33.363 µs]
+memory-copy/length = 20          time:   [31.420 µs 31.939 µs 32.553 µs]
+memory-copy/length = 50          time:   [31.967 µs 32.976 µs 33.760 µs]
+memory-copy/length = 100         time:   [32.647 µs 33.390 µs 34.071 µs]
+memory-copy/length = 200         time:   [31.093 µs 31.260 µs 31.518 µs]
+memory-copy/length = 500         time:   [32.559 µs 33.057 µs 33.649 µs]
+memory-copy/length = 1000        time:   [31.542 µs 32.183 µs 32.955 µs]
+memory-copy/length = 2000        time:   [32.799 µs 33.676 µs 34.428 µs]
+memory-copy/length = 5000        time:   [33.964 µs 34.255 µs 34.618 µs]
+memory-copy/length = 10000       time:   [32.300 µs 32.982 µs 34.003 µs]
+memory-copy/length = 20000       time:   [33.479 µs 33.962 µs 34.469 µs]
+memory-copy/length = 50000       time:   [36.367 µs 36.925 µs 37.458 µs]
+memory-copy/length = 100000      time:   [42.454 µs 42.947 µs 43.475 µs]
+memory-copy/length = 200000      time:   [52.306 µs 52.689 µs 53.125 µs]
+memory-copy/length = 500000      time:   [77.413 µs 78.242 µs 79.126 µs]
+memory-copy/length = 1000000     time:   [121.01 µs 123.01 µs 125.00 µs]
+memory-copy/length = 2000000     time:   [205.80 µs 209.50 µs 212.14 µs]
+memory-copy/length = 5000000     time:   [483.39 µs 489.93 µs 496.57 µs]
+memory-copy/length = 10000000    time:   [935.97 µs 952.43 µs 971.28 µs]
+memory-copy/length = 20000000    time:   [1.8261 ms 1.8400 ms 1.8568 ms]
+memory-copy/length = 50000000    time:   [4.5311 ms 4.5839 ms 4.6693 ms]
+memory-copy/length = 100000000   time:   [9.1367 ms 9.2462 ms 9.3829 ms]
+memory-copy/length = 200000000   time:   [18.429 ms 18.571 ms 18.735 ms]
+memory-copy/length = 500000000   time:   [41.640 ms 42.521 ms 43.652 ms]
+memory-copy/length = 1000000000  time:   [74.903 ms 76.126 ms 77.340 ms]
+memory-copy/length = 2000000000  time:   [142.74 ms 145.28 ms 147.85 ms]
+memory-copy/length = 4000000000  time:   [278.70 ms 284.84 ms 291.57 ms]
