@@ -1,63 +1,23 @@
-table-fill/length = 0   time:   [407.43 ns 411.55 ns 417.05 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-table-fill/length = 1   time:   [409.73 ns 413.11 ns 417.73 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-table-fill/length = 2   time:   [409.36 ns 412.54 ns 416.99 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  3 (15.00%) high mild
-table-fill/length = 5   time:   [412.39 ns 416.29 ns 421.10 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-table-fill/length = 10  time:   [414.62 ns 418.30 ns 422.62 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high severe
-table-fill/length = 20  time:   [430.47 ns 433.70 ns 437.94 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-table-fill/length = 50  time:   [450.73 ns 454.60 ns 460.13 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-fill/length = 100 time:   [498.17 ns 501.62 ns 506.48 ns]
-table-fill/length = 200 time:   [574.88 ns 579.80 ns 586.74 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-table-fill/length = 500 time:   [809.34 ns 821.01 ns 835.53 ns]
-table-fill/length = 1000
-                        time:   [1.2780 µs 1.2984 µs 1.3218 µs]
-table-fill/length = 2000
-                        time:   [2.1275 µs 2.1462 µs 2.1712 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-table-fill/length = 5000
-                        time:   [4.5123 µs 4.5587 µs 4.6237 µs]
-table-fill/length = 10000
-                        time:   [8.3621 µs 8.4482 µs 8.5706 µs]
-table-fill/length = 20000
-                        time:   [16.122 µs 16.273 µs 16.470 µs]
-table-fill/length = 50000
-                        time:   [39.188 µs 39.549 µs 40.048 µs]
-table-fill/length = 100000
-                        time:   [77.644 µs 78.467 µs 79.611 µs]
-table-fill/length = 200000
-                        time:   [154.42 µs 155.82 µs 157.70 µs]
-table-fill/length = 500000
-                        time:   [385.25 µs 389.95 µs 396.19 µs]
-table-fill/length = 1000000
-                        time:   [892.38 µs 900.32 µs 912.60 µs]
-table-fill/length = 2000000
-                        time:   [1.8029 ms 1.8183 ms 1.8397 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-fill/length = 5000000
-                        time:   [6.1739 ms 6.2450 ms 6.3645 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high severe
-table-fill/length = 9999999
-                        time:   [12.486 ms 12.675 ms 12.889 ms]
-
+table-fill/length = 0        time:   [407.43 ns 411.55 ns 417.05 ns]
+table-fill/length = 1        time:   [409.73 ns 413.11 ns 417.73 ns]
+table-fill/length = 2        time:   [409.36 ns 412.54 ns 416.99 ns]
+table-fill/length = 5        time:   [412.39 ns 416.29 ns 421.10 ns]
+table-fill/length = 10       time:   [414.62 ns 418.30 ns 422.62 ns]
+table-fill/length = 20       time:   [430.47 ns 433.70 ns 437.94 ns]
+table-fill/length = 50       time:   [450.73 ns 454.60 ns 460.13 ns]
+table-fill/length = 100      time:   [498.17 ns 501.62 ns 506.48 ns]
+table-fill/length = 200      time:   [574.88 ns 579.80 ns 586.74 ns]
+table-fill/length = 500      time:   [809.34 ns 821.01 ns 835.53 ns]
+table-fill/length = 1000     time:   [1.2780 µs 1.2984 µs 1.3218 µs]
+table-fill/length = 2000     time:   [2.1275 µs 2.1462 µs 2.1712 µs]
+table-fill/length = 5000     time:   [4.5123 µs 4.5587 µs 4.6237 µs]
+table-fill/length = 10000    time:   [8.3621 µs 8.4482 µs 8.5706 µs]
+table-fill/length = 20000    time:   [16.122 µs 16.273 µs 16.470 µs]
+table-fill/length = 50000    time:   [39.188 µs 39.549 µs 40.048 µs]
+table-fill/length = 100000   time:   [77.644 µs 78.467 µs 79.611 µs]
+table-fill/length = 200000   time:   [154.42 µs 155.82 µs 157.70 µs]
+table-fill/length = 500000   time:   [385.25 µs 389.95 µs 396.19 µs]
+table-fill/length = 1000000  time:   [892.38 µs 900.32 µs 912.60 µs]
+table-fill/length = 2000000  time:   [1.8029 ms 1.8183 ms 1.8397 ms]
+table-fill/length = 5000000  time:   [6.1739 ms 6.2450 ms 6.3645 ms]
+table-fill/length = 9999999  time:   [12.486 ms 12.675 ms 12.889 ms]

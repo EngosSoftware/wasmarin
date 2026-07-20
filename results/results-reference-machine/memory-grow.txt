@@ -1,56 +1,11 @@
-memory-grow/length = 0  time:   [2.2375 µs 2.2588 µs 2.2782 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-memory-grow/length = 1  time:   [4.1050 µs 4.1366 µs 4.1787 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-memory-grow/length = 10 time:   [4.0380 µs 4.0770 µs 4.1215 µs]
-Found 5 outliers among 20 measurements (25.00%)
-  1 (5.00%) low mild
-  3 (15.00%) high mild
-  1 (5.00%) high severe
-memory-grow/length = 100
-                        time:   [4.0320 µs 4.0667 µs 4.1059 µs]
-Found 5 outliers among 20 measurements (25.00%)
-  1 (5.00%) low mild
-  2 (10.00%) high mild
-  2 (10.00%) high severe
-memory-grow/length = 1000
-                        time:   [4.0143 µs 4.0403 µs 4.0739 µs]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) high mild
-  1 (5.00%) high severe
-memory-grow/length = 2000
-                        time:   [4.0450 µs 4.0934 µs 4.1700 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high severe
-memory-grow/length = 5000
-                        time:   [4.0352 µs 4.0868 µs 4.1740 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-memory-grow/length = 10000
-                        time:   [4.1107 µs 4.1560 µs 4.2095 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high severe
-memory-grow/length = 20000
-                        time:   [4.0907 µs 4.1349 µs 4.1828 µs]
-Found 4 outliers among 20 measurements (20.00%)
-  1 (5.00%) low mild
-  2 (10.00%) high mild
-  1 (5.00%) high severe
-memory-grow/length = 50000
-                        time:   [4.0892 µs 4.1338 µs 4.1901 µs]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-memory-grow/length = 65535
-                        time:   [4.0925 µs 4.1359 µs 4.1903 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-
+memory-grow/length = 0      time:   [2.2375 µs 2.2588 µs 2.2782 µs]
+memory-grow/length = 1      time:   [4.1050 µs 4.1366 µs 4.1787 µs]
+memory-grow/length = 10     time:   [4.0380 µs 4.0770 µs 4.1215 µs]
+memory-grow/length = 100    time:   [4.0320 µs 4.0667 µs 4.1059 µs]
+memory-grow/length = 1000   time:   [4.0143 µs 4.0403 µs 4.0739 µs]
+memory-grow/length = 2000   time:   [4.0450 µs 4.0934 µs 4.1700 µs]
+memory-grow/length = 5000   time:   [4.0352 µs 4.0868 µs 4.1740 µs]
+memory-grow/length = 10000  time:   [4.1107 µs 4.1560 µs 4.2095 µs]
+memory-grow/length = 20000  time:   [4.0907 µs 4.1349 µs 4.1828 µs]
+memory-grow/length = 50000  time:   [4.0892 µs 4.1338 µs 4.1901 µs]
+memory-grow/length = 65535  time:   [4.0925 µs 4.1359 µs 4.1903 µs]
