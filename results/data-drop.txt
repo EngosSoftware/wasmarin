@@ -1,22 +1,23 @@
-data-drop/length = 1         time:   [178.74 ns 181.68 ns 185.35 ns]
-data-drop/length = 2         time:   [179.63 ns 180.86 ns 182.10 ns]
-data-drop/length = 5         time:   [179.85 ns 180.82 ns 181.52 ns]
-data-drop/length = 10        time:   [179.56 ns 180.33 ns 180.81 ns]
-data-drop/length = 20        time:   [177.57 ns 178.42 ns 179.31 ns]
-data-drop/length = 50        time:   [177.61 ns 178.44 ns 179.25 ns]
-data-drop/length = 100       time:   [178.63 ns 179.94 ns 181.33 ns]
-data-drop/length = 200       time:   [179.15 ns 179.95 ns 180.55 ns]
-data-drop/length = 500       time:   [188.60 ns 190.08 ns 191.11 ns]
-data-drop/length = 1000      time:   [193.09 ns 195.08 ns 197.37 ns]
-data-drop/length = 2000      time:   [184.87 ns 187.01 ns 189.01 ns]
-data-drop/length = 5000      time:   [185.90 ns 187.33 ns 188.88 ns]
-data-drop/length = 10000     time:   [186.05 ns 187.31 ns 188.66 ns]
-data-drop/length = 20000     time:   [192.90 ns 194.88 ns 196.33 ns]
-data-drop/length = 50000     time:   [205.57 ns 206.80 ns 207.66 ns]
-data-drop/length = 100000    time:   [209.10 ns 210.33 ns 212.18 ns]
-data-drop/length = 200000    time:   [212.20 ns 213.29 ns 214.23 ns]
-data-drop/length = 500000    time:   [218.86 ns 220.10 ns 221.52 ns]
-data-drop/length = 1000000   time:   [221.45 ns 222.83 ns 224.88 ns]
-data-drop/length = 2000000   time:   [243.27 ns 245.05 ns 247.35 ns]
-data-drop/length = 5000000   time:   [240.19 ns 247.71 ns 259.01 ns]
-data-drop/length = 10000000  time:   [249.32 ns 253.16 ns 256.77 ns]
+    Finished `bench` profile [optimized] target(s) in 0.10s
+     Running benches/data_drop.rs (target/release/deps/data_drop-74449df3f91fd951)
+Benchmarking data-drop/length = 1
+Benchmarking data-drop/length = 1: Warming up for 3.0000 s
+Benchmarking data-drop/length = 1: Collecting 20 samples in estimated 5.0001 s (8.5M iterations)
+Benchmarking data-drop/length = 1: Analyzing
+data-drop/length = 1    time:   [176.00 ns 176.97 ns 178.16 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+Benchmarking data-drop/length = 2
+Benchmarking data-drop/length = 2: Warming up for 3.0000 s
+Benchmarking data-drop/length = 2: Collecting 20 samples in estimated 5.0001 s (8.5M iterations)
+Benchmarking data-drop/length = 2: Analyzing
+data-drop/length = 2    time:   [177.07 ns 178.27 ns 179.13 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+Benchmarking data-drop/length = 5
+Benchmarking data-drop/length = 5: Warming up for 3.0000 s
+Benchmarking data-drop/length = 5: Collecting 20 samples in estimated 5.0001 s (8.3M iterations)
+Benchmarking data-drop/length = 5: Analyzing
+data-drop/length = 5    time:   [179.83 ns 181.20 ns 182.27 ns]
+Benchmarking data-drop/length = 10
+Benchmarking data-drop/length = 10: Warming up for 3.0000 s

@@ -14,16 +14,16 @@
   .bench-all
     .desc Executes all bulk-memory benchmarks
     .cmd rm -rf target/criterion
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-init | tee ./results/memory-init.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-grow | tee ./results/memory-grow.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-fill | tee ./results/memory-fill.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-copy | tee ./results/memory-copy.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init | tee ./results/table-init.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-grow | tee ./results/table-grow.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-fill | tee ./results/table-fill.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-copy | tee ./results/table-copy.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench data-drop | tee ./results/data-drop.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench elem-drop | tee ./results/elem-drop.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-init 2>&1 | tee ./results/memory-init.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-grow 2>&1 | tee ./results/memory-grow.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-fill 2>&1 | tee ./results/memory-fill.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-copy 2>&1 | tee ./results/memory-copy.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init 2>&1 | tee ./results/table-init.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-grow 2>&1 | tee ./results/table-grow.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-fill 2>&1 | tee ./results/table-fill.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-copy 2>&1 | tee ./results/table-copy.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench data-drop 2>&1 | tee ./results/data-drop.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench elem-drop 2>&1 | tee ./results/elem-drop.txt
 
   .bench-memory-init
     .desc Executes benchmarks for memory.init operator
