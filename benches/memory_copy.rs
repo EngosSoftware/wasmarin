@@ -2,7 +2,7 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
 #[cfg(target_os = "macos")]
-const MEASUREMENT_TIME: u64 = 20;
+const MEASUREMENT_TIME: u64 = 35;
 #[cfg(target_os = "linux")]
 const MEASUREMENT_TIME: u64 = 20;
 
@@ -46,7 +46,7 @@ const TEMPLATE: &str = r#"
 (module
   (memory 65536)
   (func (export "fun")
-    i32.const 294967295    ;; Destination offset in memory
+    i32.const 10           ;; Destination offset in memory
     i32.const 0            ;; Source offset in memory
     i32.const <LENGTH>     ;; Length in bytes to be copied
     memory.copy            ;; Execute memory copy
@@ -73,7 +73,7 @@ fn _0001(c: &mut Criterion) {
     let compiler = wasmer::sys::Singlepass::default();
     let store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
-    group.bench_with_input(format!("length = {length}"), &length, |b, _| {
+    group.bench_with_input(format!("L = {length}"), &length, |b, _| {
       b.iter_batched(
         || {
           let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());

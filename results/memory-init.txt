@@ -1,31 +1,230 @@
-memory-init/length = 0           time:   [3.9681 µs 4.0045 µs 4.0267 µs]
-memory-init/length = 1           time:   [18.110 µs 18.217 µs 18.284 µs]
-memory-init/length = 2           time:   [18.243 µs 18.322 µs 18.388 µs]
-memory-init/length = 5           time:   [18.267 µs 18.366 µs 18.438 µs]
-memory-init/length = 10          time:   [18.379 µs 18.475 µs 18.543 µs]
-memory-init/length = 20          time:   [18.492 µs 18.580 µs 18.639 µs]
-memory-init/length = 50          time:   [18.467 µs 18.563 µs 18.651 µs]
-memory-init/length = 100         time:   [18.520 µs 18.620 µs 18.727 µs]
-memory-init/length = 200         time:   [18.540 µs 18.610 µs 18.667 µs]
-memory-init/length = 500         time:   [18.594 µs 18.709 µs 18.785 µs]
-memory-init/length = 1000        time:   [18.726 µs 18.818 µs 18.917 µs]
-memory-init/length = 2000        time:   [18.650 µs 18.716 µs 18.770 µs]
-memory-init/length = 5000        time:   [18.707 µs 18.927 µs 19.145 µs]
-memory-init/length = 10000       time:   [19.107 µs 19.183 µs 19.239 µs]
-memory-init/length = 20000       time:   [19.848 µs 20.039 µs 20.189 µs]
-memory-init/length = 50000       time:   [21.339 µs 21.434 µs 21.522 µs]
-memory-init/length = 100000      time:   [23.308 µs 23.390 µs 23.450 µs]
-memory-init/length = 200000      time:   [28.440 µs 28.589 µs 28.702 µs]
-memory-init/length = 500000      time:   [41.667 µs 41.939 µs 42.202 µs]
-memory-init/length = 1000000     time:   [62.287 µs 62.517 µs 62.694 µs]
-memory-init/length = 2000000     time:   [106.54 µs 107.09 µs 107.89 µs]
-memory-init/length = 5000000     time:   [240.39 µs 241.00 µs 241.41 µs]
-memory-init/length = 10000000    time:   [468.73 µs 470.79 µs 472.27 µs]
-memory-init/length = 20000000    time:   [924.68 µs 928.61 µs 933.48 µs]
-memory-init/length = 50000000    time:   [2.3296 ms 2.3478 ms 2.3666 ms]
-memory-init/length = 100000000   time:   [4.8789 ms 4.9231 ms 4.9590 ms]
-memory-init/length = 200000000   time:   [9.6950 ms 11.963 ms 17.213 ms]
-memory-init/length = 500000000   time:   [23.847 ms 23.918 ms 24.032 ms]
-memory-init/length = 1000000000  time:   [48.061 ms 48.166 ms 48.292 ms]
-memory-init/length = 2000000000  time:   [97.568 ms 97.948 ms 98.419 ms]
-memory-init/length = 2147483647  time:   [102.01 ms 102.37 ms 102.99 ms]
+    Finished `bench` profile [optimized] target(s) in 0.10s
+     Running benches/memory_init.rs (target/release/deps/memory_init-eba47446261bf39e)
+Benchmarking memory-init/length = 0
+Benchmarking memory-init/length = 0: Warming up for 3.0000 s
+Benchmarking memory-init/length = 0: Collecting 20 samples in estimated 20.000 s (2.2M iterations)
+Benchmarking memory-init/length = 0: Analyzing
+memory-init/length = 0  time:   [3.9929 µs 4.0267 µs 4.0464 µs]
+Benchmarking memory-init/length = 1
+Benchmarking memory-init/length = 1: Warming up for 3.0000 s
+Benchmarking memory-init/length = 1: Collecting 20 samples in estimated 20.002 s (837k iterations)
+Benchmarking memory-init/length = 1: Analyzing
+memory-init/length = 1  time:   [18.926 µs 19.049 µs 19.185 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low severe
+Benchmarking memory-init/length = 2
+Benchmarking memory-init/length = 2: Warming up for 3.0000 s
+Benchmarking memory-init/length = 2: Collecting 20 samples in estimated 20.005 s (840k iterations)
+Benchmarking memory-init/length = 2: Analyzing
+memory-init/length = 2  time:   [18.891 µs 19.054 µs 19.268 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low mild
+  2 (10.00%) high mild
+Benchmarking memory-init/length = 5
+Benchmarking memory-init/length = 5: Warming up for 3.0000 s
+Benchmarking memory-init/length = 5: Collecting 20 samples in estimated 20.000 s (852k iterations)
+Benchmarking memory-init/length = 5: Analyzing
+memory-init/length = 5  time:   [18.898 µs 19.172 µs 19.392 µs]
+Benchmarking memory-init/length = 10
+Benchmarking memory-init/length = 10: Warming up for 3.0000 s
+Benchmarking memory-init/length = 10: Collecting 20 samples in estimated 20.001 s (846k iterations)
+Benchmarking memory-init/length = 10: Analyzing
+memory-init/length = 10 time:   [18.643 µs 18.760 µs 18.839 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low mild
+Benchmarking memory-init/length = 20
+Benchmarking memory-init/length = 20: Warming up for 3.0000 s
+Benchmarking memory-init/length = 20: Collecting 20 samples in estimated 20.000 s (879k iterations)
+Benchmarking memory-init/length = 20: Analyzing
+memory-init/length = 20 time:   [17.013 µs 20.963 µs 29.174 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 50
+Benchmarking memory-init/length = 50: Warming up for 3.0000 s
+Benchmarking memory-init/length = 50: Collecting 20 samples in estimated 20.003 s (927k iterations)
+Benchmarking memory-init/length = 50: Analyzing
+memory-init/length = 50 time:   [16.637 µs 16.731 µs 16.800 µs]
+Benchmarking memory-init/length = 100
+Benchmarking memory-init/length = 100: Warming up for 3.0000 s
+Benchmarking memory-init/length = 100: Collecting 20 samples in estimated 20.001 s (906k iterations)
+Benchmarking memory-init/length = 100: Analyzing
+memory-init/length = 100
+                        time:   [16.736 µs 19.878 µs 27.096 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 200
+Benchmarking memory-init/length = 200: Warming up for 3.0000 s
+Benchmarking memory-init/length = 200: Collecting 20 samples in estimated 20.003 s (922k iterations)
+Benchmarking memory-init/length = 200: Analyzing
+memory-init/length = 200
+                        time:   [16.666 µs 16.751 µs 16.812 µs]
+Benchmarking memory-init/length = 500
+Benchmarking memory-init/length = 500: Warming up for 3.0000 s
+Benchmarking memory-init/length = 500: Collecting 20 samples in estimated 20.004 s (907k iterations)
+Benchmarking memory-init/length = 500: Analyzing
+memory-init/length = 500
+                        time:   [17.233 µs 20.028 µs 26.700 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 1000
+Benchmarking memory-init/length = 1000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 1000: Collecting 20 samples in estimated 20.003 s (896k iterations)
+Benchmarking memory-init/length = 1000: Analyzing
+memory-init/length = 1000
+                        time:   [17.183 µs 17.254 µs 17.319 µs]
+Benchmarking memory-init/length = 2000
+Benchmarking memory-init/length = 2000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 2000: Collecting 20 samples in estimated 20.001 s (879k iterations)
+Benchmarking memory-init/length = 2000: Analyzing
+memory-init/length = 2000
+                        time:   [16.895 µs 18.494 µs 22.932 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 5000
+Benchmarking memory-init/length = 5000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 5000: Collecting 20 samples in estimated 20.004 s (896k iterations)
+Benchmarking memory-init/length = 5000: Analyzing
+memory-init/length = 5000
+                        time:   [17.099 µs 17.286 µs 17.528 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 10000
+Benchmarking memory-init/length = 10000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 10000: Collecting 20 samples in estimated 20.001 s (853k iterations)
+Benchmarking memory-init/length = 10000: Analyzing
+memory-init/length = 10000
+                        time:   [17.426 µs 18.528 µs 21.248 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+Benchmarking memory-init/length = 20000
+Benchmarking memory-init/length = 20000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 20000: Collecting 20 samples in estimated 20.004 s (868k iterations)
+Benchmarking memory-init/length = 20000: Analyzing
+memory-init/length = 20000
+                        time:   [18.457 µs 18.705 µs 19.032 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 50000
+Benchmarking memory-init/length = 50000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 50000: Collecting 20 samples in estimated 20.003 s (714k iterations)
+Benchmarking memory-init/length = 50000: Analyzing
+memory-init/length = 50000
+                        time:   [19.422 µs 19.586 µs 19.724 µs]
+Benchmarking memory-init/length = 100000
+Benchmarking memory-init/length = 100000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 100000: Collecting 20 samples in estimated 20.003 s (625k iterations)
+Benchmarking memory-init/length = 100000: Analyzing
+memory-init/length = 100000
+                        time:   [21.644 µs 21.909 µs 22.323 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 200000
+Benchmarking memory-init/length = 200000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 200000: Collecting 20 samples in estimated 20.005 s (497k iterations)
+Benchmarking memory-init/length = 200000: Analyzing
+memory-init/length = 200000
+                        time:   [27.679 µs 28.233 µs 28.876 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking memory-init/length = 500000
+Benchmarking memory-init/length = 500000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 500000: Collecting 20 samples in estimated 20.009 s (335k iterations)
+Benchmarking memory-init/length = 500000: Analyzing
+memory-init/length = 500000
+                        time:   [40.929 µs 41.218 µs 41.479 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 1000000
+Benchmarking memory-init/length = 1000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 1000000: Collecting 20 samples in estimated 20.002 s (208k iterations)
+Benchmarking memory-init/length = 1000000: Analyzing
+memory-init/length = 1000000
+                        time:   [62.459 µs 62.818 µs 63.357 µs]
+Benchmarking memory-init/length = 2000000
+Benchmarking memory-init/length = 2000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 2000000: Collecting 20 samples in estimated 20.018 s (122k iterations)
+Benchmarking memory-init/length = 2000000: Analyzing
+memory-init/length = 2000000
+                        time:   [106.58 µs 108.49 µs 110.29 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 5000000
+Benchmarking memory-init/length = 5000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 5000000: Collecting 20 samples in estimated 20.075 s (42k iterations)
+Benchmarking memory-init/length = 5000000: Analyzing
+memory-init/length = 5000000
+                        time:   [242.64 µs 245.45 µs 248.62 µs]
+Benchmarking memory-init/length = 10000000
+Benchmarking memory-init/length = 10000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 10000000: Collecting 20 samples in estimated 20.150 s (26k iterations)
+Benchmarking memory-init/length = 10000000: Analyzing
+memory-init/length = 10000000
+                        time:   [466.37 µs 472.26 µs 476.98 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high severe
+Benchmarking memory-init/length = 20000000
+Benchmarking memory-init/length = 20000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 20000000: Collecting 20 samples in estimated 20.215 s (13k iterations)
+Benchmarking memory-init/length = 20000000: Analyzing
+memory-init/length = 20000000
+                        time:   [942.43 µs 951.35 µs 961.90 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking memory-init/length = 50000000
+Benchmarking memory-init/length = 50000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 50000000: Collecting 20 samples in estimated 20.552 s (5040 iterations)
+Benchmarking memory-init/length = 50000000: Analyzing
+memory-init/length = 50000000
+                        time:   [2.3886 ms 2.4164 ms 2.4455 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking memory-init/length = 100000000
+Benchmarking memory-init/length = 100000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 100000000: Collecting 20 samples in estimated 20.751 s (2520 iterations)
+Benchmarking memory-init/length = 100000000: Analyzing
+memory-init/length = 100000000
+                        time:   [4.8875 ms 4.9083 ms 4.9404 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking memory-init/length = 200000000
+Benchmarking memory-init/length = 200000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 200000000: Collecting 20 samples in estimated 21.034 s (1260 iterations)
+Benchmarking memory-init/length = 200000000: Analyzing
+memory-init/length = 200000000
+                        time:   [10.108 ms 10.187 ms 10.247 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking memory-init/length = 500000000
+Benchmarking memory-init/length = 500000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 500000000: Collecting 20 samples in estimated 26.523 s (630 iterations)
+Benchmarking memory-init/length = 500000000: Analyzing
+memory-init/length = 500000000
+                        time:   [25.619 ms 25.823 ms 26.029 ms]
+Benchmarking memory-init/length = 1000000000
+Benchmarking memory-init/length = 1000000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 1000000000: Collecting 20 samples in estimated 35.651 s (420 iterations)
+Benchmarking memory-init/length = 1000000000: Analyzing
+memory-init/length = 1000000000
+                        time:   [51.569 ms 51.856 ms 52.172 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+Benchmarking memory-init/length = 2000000000
+Benchmarking memory-init/length = 2000000000: Warming up for 3.0000 s
+Benchmarking memory-init/length = 2000000000: Collecting 20 samples in estimated 20.718 s (100 iterations)
+Benchmarking memory-init/length = 2000000000: Analyzing
+memory-init/length = 2000000000
+                        time:   [104.45 ms 104.93 ms 105.45 ms]
+Benchmarking memory-init/length = 2147483647
+Benchmarking memory-init/length = 2147483647: Warming up for 3.0000 s
+
+Warning: Unable to complete 20 samples in 20.0s. You may wish to increase target time to 39.7s, enable flat sampling, or reduce sample count to 10.
+Benchmarking memory-init/length = 2147483647: Collecting 20 samples in estimated 39.671 s (210 iterations)
+Benchmarking memory-init/length = 2147483647: Analyzing
+memory-init/length = 2147483647
+                        time:   [113.00 ms 113.91 ms 114.93 ms]
+

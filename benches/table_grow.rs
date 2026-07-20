@@ -2,7 +2,7 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use std::time::Duration;
 
 #[cfg(target_os = "macos")]
-const MEASUREMENT_TIME: u64 = 2;
+const MEASUREMENT_TIME: u64 = 10;
 #[cfg(target_os = "linux")]
 const MEASUREMENT_TIME: u64 = 2;
 
@@ -93,7 +93,7 @@ fn _0001(c: &mut Criterion) {
     let compiler = wasmer::sys::Singlepass::default();
     let store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
-    group.bench_with_input(format!("length = {length}"), &length, |b, _| {
+    group.bench_with_input(format!("L = {length}"), &length, |b, _| {
       b.iter_batched(
         || {
           let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());

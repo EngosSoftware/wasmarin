@@ -1,22 +1,161 @@
-table-init/length = 1        time:   [187.30 ns 190.67 ns 193.12 ns]
-table-init/length = 2        time:   [190.02 ns 193.50 ns 196.03 ns]
-table-init/length = 5        time:   [191.89 ns 193.04 ns 193.85 ns]
-table-init/length = 10       time:   [194.00 ns 195.31 ns 196.21 ns]
-table-init/length = 20       time:   [197.49 ns 198.84 ns 200.13 ns]
-table-init/length = 50       time:   [228.14 ns 231.56 ns 233.94 ns]
-table-init/length = 100      time:   [265.13 ns 267.10 ns 269.08 ns]
-table-init/length = 200      time:   [311.88 ns 312.77 ns 313.99 ns]
-table-init/length = 500      time:   [475.33 ns 478.29 ns 481.07 ns]
-table-init/length = 1000     time:   [751.29 ns 760.28 ns 771.99 ns]
-table-init/length = 2000     time:   [1.2569 µs 1.2593 µs 1.2618 µs]
-table-init/length = 5000     time:   [2.8002 µs 2.8071 µs 2.8170 µs]
-table-init/length = 10000    time:   [5.3927 µs 5.4115 µs 5.4435 µs]
-table-init/length = 20000    time:   [10.516 µs 10.568 µs 10.632 µs]
-table-init/length = 50000    time:   [25.904 µs 25.993 µs 26.082 µs]
-table-init/length = 100000   time:   [51.490 µs 51.804 µs 52.118 µs]
-table-init/length = 200000   time:   [102.90 µs 103.27 µs 103.71 µs]
-table-init/length = 500000   time:   [254.77 µs 256.68 µs 258.87 µs]
-table-init/length = 1000000  time:   [519.49 µs 520.50 µs 522.18 µs]
-table-init/length = 2000000  time:   [1.0298 ms 1.0355 ms 1.0408 ms]
-table-init/length = 5000000  time:   [2.5869 ms 2.5955 ms 2.6020 ms]
-table-init/length = 9999999  time:   [5.1506 ms 5.1659 ms 5.1790 ms]
+    Finished `bench` profile [optimized] target(s) in 0.11s
+     Running benches/table_init.rs (target/release/deps/table_init-ba39088c71cfe50f)
+Benchmarking table-init/length = 1
+Benchmarking table-init/length = 1: Warming up for 3.0000 s
+Benchmarking table-init/length = 1: Collecting 20 samples in estimated 5.0000 s (7.0M iterations)
+Benchmarking table-init/length = 1: Analyzing
+table-init/length = 1   time:   [186.14 ns 187.46 ns 188.58 ns]
+Benchmarking table-init/length = 2
+Benchmarking table-init/length = 2: Warming up for 3.0000 s
+Benchmarking table-init/length = 2: Collecting 20 samples in estimated 5.0000 s (7.0M iterations)
+Benchmarking table-init/length = 2: Analyzing
+table-init/length = 2   time:   [192.77 ns 194.36 ns 195.71 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+Benchmarking table-init/length = 5
+Benchmarking table-init/length = 5: Warming up for 3.0000 s
+Benchmarking table-init/length = 5: Collecting 20 samples in estimated 5.0000 s (7.0M iterations)
+Benchmarking table-init/length = 5: Analyzing
+table-init/length = 5   time:   [193.33 ns 194.56 ns 195.71 ns]
+Benchmarking table-init/length = 10
+Benchmarking table-init/length = 10: Warming up for 3.0000 s
+Benchmarking table-init/length = 10: Collecting 20 samples in estimated 5.0000 s (6.9M iterations)
+Benchmarking table-init/length = 10: Analyzing
+table-init/length = 10  time:   [196.60 ns 197.39 ns 198.23 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+Benchmarking table-init/length = 20
+Benchmarking table-init/length = 20: Warming up for 3.0000 s
+Benchmarking table-init/length = 20: Collecting 20 samples in estimated 5.0000 s (6.8M iterations)
+Benchmarking table-init/length = 20: Analyzing
+table-init/length = 20  time:   [206.70 ns 207.56 ns 208.41 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+Benchmarking table-init/length = 50
+Benchmarking table-init/length = 50: Warming up for 3.0000 s
+Benchmarking table-init/length = 50: Collecting 20 samples in estimated 5.0001 s (6.3M iterations)
+Benchmarking table-init/length = 50: Analyzing
+table-init/length = 50  time:   [225.45 ns 226.96 ns 228.26 ns]
+Benchmarking table-init/length = 100
+Benchmarking table-init/length = 100: Warming up for 3.0000 s
+Benchmarking table-init/length = 100: Collecting 20 samples in estimated 5.0001 s (5.8M iterations)
+Benchmarking table-init/length = 100: Analyzing
+table-init/length = 100 time:   [257.18 ns 259.05 ns 260.12 ns]
+Benchmarking table-init/length = 200
+Benchmarking table-init/length = 200: Warming up for 3.0000 s
+Benchmarking table-init/length = 200: Collecting 20 samples in estimated 5.0001 s (5.0M iterations)
+Benchmarking table-init/length = 200: Analyzing
+table-init/length = 200 time:   [314.11 ns 316.69 ns 318.39 ns]
+Benchmarking table-init/length = 500
+Benchmarking table-init/length = 500: Warming up for 3.0000 s
+Benchmarking table-init/length = 500: Collecting 20 samples in estimated 5.0003 s (3.4M iterations)
+Benchmarking table-init/length = 500: Analyzing
+table-init/length = 500 time:   [465.23 ns 467.25 ns 468.57 ns]
+Benchmarking table-init/length = 1000
+Benchmarking table-init/length = 1000: Warming up for 3.0000 s
+Benchmarking table-init/length = 1000: Collecting 20 samples in estimated 5.0004 s (2.5M iterations)
+Benchmarking table-init/length = 1000: Analyzing
+table-init/length = 1000
+                        time:   [730.27 ns 732.33 ns 733.62 ns]
+Benchmarking table-init/length = 2000
+Benchmarking table-init/length = 2000: Warming up for 3.0000 s
+Benchmarking table-init/length = 2000: Collecting 20 samples in estimated 5.0004 s (1.6M iterations)
+Benchmarking table-init/length = 2000: Analyzing
+table-init/length = 2000
+                        time:   [1.2492 µs 1.2518 µs 1.2537 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking table-init/length = 5000
+Benchmarking table-init/length = 5000: Warming up for 3.0000 s
+Benchmarking table-init/length = 5000: Collecting 20 samples in estimated 5.0012 s (770k iterations)
+Benchmarking table-init/length = 5000: Analyzing
+table-init/length = 5000
+                        time:   [2.8415 µs 2.8446 µs 2.8473 µs]
+Benchmarking table-init/length = 10000
+Benchmarking table-init/length = 10000: Warming up for 3.0000 s
+Benchmarking table-init/length = 10000: Collecting 20 samples in estimated 5.0001 s (416k iterations)
+Benchmarking table-init/length = 10000: Analyzing
+table-init/length = 10000
+                        time:   [5.4220 µs 5.4310 µs 5.4405 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+Benchmarking table-init/length = 20000
+Benchmarking table-init/length = 20000: Warming up for 3.0000 s
+Benchmarking table-init/length = 20000: Collecting 20 samples in estimated 5.0036 s (217k iterations)
+Benchmarking table-init/length = 20000: Analyzing
+table-init/length = 20000
+                        time:   [10.575 µs 10.631 µs 10.713 µs]
+Found 5 outliers among 20 measurements (25.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+Benchmarking table-init/length = 50000
+Benchmarking table-init/length = 50000: Warming up for 3.0000 s
+Benchmarking table-init/length = 50000: Collecting 20 samples in estimated 5.0026 s (89k iterations)
+Benchmarking table-init/length = 50000: Analyzing
+table-init/length = 50000
+                        time:   [26.094 µs 26.115 µs 26.146 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking table-init/length = 100000
+Benchmarking table-init/length = 100000: Warming up for 3.0000 s
+Benchmarking table-init/length = 100000: Collecting 20 samples in estimated 5.0142 s (45k iterations)
+Benchmarking table-init/length = 100000: Analyzing
+table-init/length = 100000
+                        time:   [52.588 µs 52.849 µs 53.065 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  1 (5.00%) low mild
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+Benchmarking table-init/length = 200000
+Benchmarking table-init/length = 200000: Warming up for 3.0000 s
+Benchmarking table-init/length = 200000: Collecting 20 samples in estimated 5.0233 s (22k iterations)
+Benchmarking table-init/length = 200000: Analyzing
+table-init/length = 200000
+                        time:   [105.59 µs 105.91 µs 106.14 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+Benchmarking table-init/length = 500000
+Benchmarking table-init/length = 500000: Warming up for 3.0000 s
+Benchmarking table-init/length = 500000: Collecting 20 samples in estimated 5.0944 s (9030 iterations)
+Benchmarking table-init/length = 500000: Analyzing
+table-init/length = 500000
+                        time:   [266.57 µs 267.23 µs 268.01 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+Benchmarking table-init/length = 1000000
+Benchmarking table-init/length = 1000000: Warming up for 3.0000 s
+Benchmarking table-init/length = 1000000: Collecting 20 samples in estimated 5.2300 s (4620 iterations)
+Benchmarking table-init/length = 1000000: Analyzing
+table-init/length = 1000000
+                        time:   [533.79 µs 534.50 µs 535.24 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+Benchmarking table-init/length = 2000000
+Benchmarking table-init/length = 2000000: Warming up for 3.0000 s
+Benchmarking table-init/length = 2000000: Collecting 20 samples in estimated 5.2032 s (2310 iterations)
+Benchmarking table-init/length = 2000000: Analyzing
+table-init/length = 2000000
+                        time:   [1.0609 ms 1.0691 ms 1.0757 ms]
+Benchmarking table-init/length = 5000000
+Benchmarking table-init/length = 5000000: Warming up for 3.0000 s
+Benchmarking table-init/length = 5000000: Collecting 20 samples in estimated 5.9095 s (1050 iterations)
+Benchmarking table-init/length = 5000000: Analyzing
+table-init/length = 5000000
+                        time:   [2.6543 ms 2.6597 ms 2.6670 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+Benchmarking table-init/length = 9999999
+Benchmarking table-init/length = 9999999: Warming up for 3.0000 s
+Benchmarking table-init/length = 9999999: Collecting 20 samples in estimated 7.1344 s (630 iterations)
+Benchmarking table-init/length = 9999999: Analyzing
+table-init/length = 9999999
+                        time:   [5.3103 ms 5.3274 ms 5.3502 ms]
+
