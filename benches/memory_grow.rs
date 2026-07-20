@@ -54,13 +54,13 @@ fn precheck() {
 
 fn _0001(c: &mut Criterion) {
   precheck();
-  let mut group = c.benchmark_group("memory-grow");
+  let mut group = c.benchmark_group("m.grow");
   for length in LENGTHS {
     let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
     let store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
-    group.bench_with_input(format!("L = {length}"), &length, |b, _| {
+    group.bench_with_input(format!("{length}"), &length, |b, _| {
       b.iter_batched(
         || {
           let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());

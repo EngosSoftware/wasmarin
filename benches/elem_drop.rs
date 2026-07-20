@@ -51,7 +51,7 @@ fn precheck() {
 
 fn _0001(c: &mut Criterion) {
   precheck();
-  let mut group = c.benchmark_group("elem-drop");
+  let mut group = c.benchmark_group("e.drop");
   for length in LENGTHS {
     let wasm_bytes = wat::parse_str(wat_source(length)).unwrap();
     let compiler = wasmer::sys::Singlepass::default();
