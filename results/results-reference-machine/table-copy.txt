@@ -1,23 +1,84 @@
-table-copy/length = 0        time:   [395.03 ns 399.16 ns 404.92 ns]
-table-copy/length = 1        time:   [398.39 ns 402.46 ns 407.88 ns]
-table-copy/length = 2        time:   [398.14 ns 400.81 ns 404.42 ns]
-table-copy/length = 5        time:   [403.84 ns 408.30 ns 413.22 ns]
-table-copy/length = 10       time:   [404.48 ns 408.45 ns 413.90 ns]
-table-copy/length = 20       time:   [435.22 ns 439.11 ns 444.46 ns]
-table-copy/length = 50       time:   [445.52 ns 449.96 ns 456.44 ns]
-table-copy/length = 100      time:   [458.26 ns 462.23 ns 467.85 ns]
-table-copy/length = 200      time:   [492.25 ns 498.17 ns 505.13 ns]
-table-copy/length = 500      time:   [578.11 ns 586.57 ns 597.18 ns]
-table-copy/length = 1000     time:   [863.13 ns 873.77 ns 885.68 ns]
-table-copy/length = 2000     time:   [1.1995 µs 1.2123 µs 1.2295 µs]
-table-copy/length = 5000     time:   [2.1003 µs 2.1212 µs 2.1482 µs]
-table-copy/length = 10000    time:   [3.5051 µs 3.5369 µs 3.5785 µs]
-table-copy/length = 20000    time:   [6.6289 µs 6.7015 µs 6.7981 µs]
-table-copy/length = 50000    time:   [14.995 µs 15.165 µs 15.412 µs]
-table-copy/length = 100000   time:   [30.614 µs 31.013 µs 31.584 µs]
-table-copy/length = 200000   time:   [57.806 µs 58.557 µs 59.612 µs]
-table-copy/length = 500000   time:   [224.32 µs 235.47 µs 251.85 µs]
-table-copy/length = 1000000  time:   [985.51 µs 1.0101 ms 1.0474 ms]
-table-copy/length = 2000000  time:   [2.1185 ms 2.1594 ms 2.2216 ms]
-table-copy/length = 5000000  time:   [9.0401 ms 9.2304 ms 9.4565 ms]
-table-copy/length = 9999999  time:   [18.116 ms 18.308 ms 18.518 ms]
+table-copy/length = 0   time:   [393.58 ns 396.47 ns 398.84 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+table-copy/length = 1   time:   [396.85 ns 399.46 ns 401.83 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) high mild
+table-copy/length = 2   time:   [398.42 ns 401.36 ns 403.71 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+table-copy/length = 5   time:   [402.83 ns 405.47 ns 407.88 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+table-copy/length = 10  time:   [407.45 ns 409.64 ns 411.47 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+table-copy/length = 20  time:   [435.72 ns 438.13 ns 440.53 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+table-copy/length = 50  time:   [444.23 ns 446.26 ns 448.39 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  1 (5.00%) low severe
+  3 (15.00%) high mild
+table-copy/length = 100 time:   [457.53 ns 459.91 ns 462.57 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) high mild
+table-copy/length = 200 time:   [490.62 ns 505.02 ns 519.22 ns]
+Found 6 outliers among 20 measurements (30.00%)
+  2 (10.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+table-copy/length = 500 time:   [579.50 ns 590.66 ns 604.74 ns]
+Found 5 outliers among 20 measurements (25.00%)
+  2 (10.00%) low severe
+  1 (5.00%) low mild
+  2 (10.00%) high severe
+table-copy/length = 1000
+                        time:   [859.19 ns 868.02 ns 874.15 ns]
+table-copy/length = 2000
+                        time:   [1.1932 µs 1.2026 µs 1.2120 µs]
+Found 5 outliers among 20 measurements (25.00%)
+  3 (15.00%) low severe
+  2 (10.00%) low mild
+table-copy/length = 5000
+                        time:   [2.0879 µs 2.1005 µs 2.1130 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) low severe
+table-copy/length = 10000
+                        time:   [3.5246 µs 3.5463 µs 3.5670 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low severe
+table-copy/length = 20000
+                        time:   [6.4968 µs 6.5265 µs 6.5647 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low severe
+table-copy/length = 50000
+                        time:   [14.798 µs 14.882 µs 14.996 µs]
+table-copy/length = 100000
+                        time:   [30.249 µs 30.423 µs 30.662 µs]
+table-copy/length = 200000
+                        time:   [58.337 µs 58.775 µs 59.391 µs]
+table-copy/length = 500000
+                        time:   [202.55 µs 208.53 µs 216.86 µs]
+table-copy/length = 1000000
+                        time:   [848.34 µs 865.98 µs 892.75 µs]
+table-copy/length = 2000000
+                        time:   [1.8969 ms 1.9133 ms 1.9398 ms]
+table-copy/length = 5000000
+                        time:   [8.4550 ms 8.5353 ms 8.6290 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+table-copy/length = 9999999
+                        time:   [16.937 ms 17.061 ms 17.208 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) high mild
+  2 (10.00%) high severe
+
