@@ -17,6 +17,8 @@ fn a() {
   let (a, b) = get_line(1, 390000, 10000000, 2000000);
   println!("y = {:.3}x + {:.3}", a, b);
 
+  let (a, b) = (0.1200047, 446212.1);
+
   for (i, length) in LENGTHS.iter().enumerate() {
     let y = a * (*length as f64) + b;
     let diff = GAS[i] as f64 - y;
