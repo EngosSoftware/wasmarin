@@ -1,0 +1,180 @@
+    Finished `bench` profile [optimized] target(s) in 0.17s
+     Running benches/table_copy.rs (target/release/deps/table_copy-3eee47014b793978)
+Benchmarking t.copy/0
+Benchmarking t.copy/0: Warming up for 3.0000 s
+Benchmarking t.copy/0: Collecting 20 samples in estimated 5.0002 s (2.9M iterations)
+Benchmarking t.copy/0: Analyzing
+t.copy/0                time:   [395.53 ns 397.01 ns 398.10 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+Benchmarking t.copy/1
+Benchmarking t.copy/1: Warming up for 3.0000 s
+Benchmarking t.copy/1: Collecting 20 samples in estimated 5.0001 s (2.8M iterations)
+Benchmarking t.copy/1: Analyzing
+t.copy/1                time:   [401.69 ns 406.75 ns 414.30 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) high severe
+Benchmarking t.copy/2
+Benchmarking t.copy/2: Warming up for 3.0000 s
+Benchmarking t.copy/2: Collecting 20 samples in estimated 5.0004 s (2.8M iterations)
+Benchmarking t.copy/2: Analyzing
+t.copy/2                time:   [401.86 ns 403.15 ns 404.21 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+Benchmarking t.copy/5
+Benchmarking t.copy/5: Warming up for 3.0000 s
+Benchmarking t.copy/5: Collecting 20 samples in estimated 5.0000 s (2.8M iterations)
+Benchmarking t.copy/5: Analyzing
+t.copy/5                time:   [403.55 ns 404.87 ns 405.85 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+Benchmarking t.copy/10
+Benchmarking t.copy/10: Warming up for 3.0000 s
+Benchmarking t.copy/10: Collecting 20 samples in estimated 5.0001 s (2.7M iterations)
+Benchmarking t.copy/10: Analyzing
+t.copy/10               time:   [407.37 ns 408.73 ns 409.87 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) high mild
+Benchmarking t.copy/20
+Benchmarking t.copy/20: Warming up for 3.0000 s
+Benchmarking t.copy/20: Collecting 20 samples in estimated 5.0001 s (2.7M iterations)
+Benchmarking t.copy/20: Analyzing
+t.copy/20               time:   [437.25 ns 438.84 ns 440.07 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+Benchmarking t.copy/50
+Benchmarking t.copy/50: Warming up for 3.0000 s
+Benchmarking t.copy/50: Collecting 20 samples in estimated 5.0003 s (2.6M iterations)
+Benchmarking t.copy/50: Analyzing
+t.copy/50               time:   [447.68 ns 453.57 ns 462.23 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) high severe
+Benchmarking t.copy/100
+Benchmarking t.copy/100: Warming up for 3.0000 s
+Benchmarking t.copy/100: Collecting 20 samples in estimated 5.0003 s (2.4M iterations)
+Benchmarking t.copy/100: Analyzing
+t.copy/100              time:   [461.54 ns 463.19 ns 464.97 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  2 (10.00%) low mild
+Benchmarking t.copy/200
+Benchmarking t.copy/200: Warming up for 3.0000 s
+Benchmarking t.copy/200: Collecting 20 samples in estimated 5.0005 s (2.0M iterations)
+Benchmarking t.copy/200: Analyzing
+t.copy/200              time:   [490.12 ns 501.81 ns 522.27 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+Benchmarking t.copy/500
+Benchmarking t.copy/500: Warming up for 3.0000 s
+Benchmarking t.copy/500: Collecting 20 samples in estimated 5.0003 s (1.5M iterations)
+Benchmarking t.copy/500: Analyzing
+t.copy/500              time:   [586.61 ns 608.67 ns 637.16 ns]
+Found 6 outliers among 20 measurements (30.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+  4 (20.00%) high severe
+Benchmarking t.copy/1000
+Benchmarking t.copy/1000: Warming up for 3.0000 s
+Benchmarking t.copy/1000: Collecting 20 samples in estimated 5.0005 s (990k iterations)
+Benchmarking t.copy/1000: Analyzing
+t.copy/1000             time:   [861.29 ns 867.24 ns 873.02 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) low severe
+Benchmarking t.copy/2000
+Benchmarking t.copy/2000: Warming up for 3.0000 s
+Benchmarking t.copy/2000: Collecting 20 samples in estimated 5.0004 s (636k iterations)
+Benchmarking t.copy/2000: Analyzing
+t.copy/2000             time:   [1.1968 µs 1.2011 µs 1.2058 µs]
+Found 6 outliers among 20 measurements (30.00%)
+  3 (15.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.copy/5000
+Benchmarking t.copy/5000: Warming up for 3.0000 s
+Benchmarking t.copy/5000: Collecting 20 samples in estimated 5.0004 s (300k iterations)
+Benchmarking t.copy/5000: Analyzing
+t.copy/5000             time:   [2.0788 µs 2.0887 µs 2.0943 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+Benchmarking t.copy/10000
+Benchmarking t.copy/10000: Warming up for 3.0000 s
+Benchmarking t.copy/10000: Collecting 20 samples in estimated 5.0039 s (161k iterations)
+Benchmarking t.copy/10000: Analyzing
+t.copy/10000            time:   [3.5178 µs 3.5370 µs 3.5479 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+Benchmarking t.copy/20000
+Benchmarking t.copy/20000: Warming up for 3.0000 s
+Benchmarking t.copy/20000: Collecting 20 samples in estimated 5.0027 s (84k iterations)
+Benchmarking t.copy/20000: Analyzing
+t.copy/20000            time:   [6.4282 µs 6.4539 µs 6.4716 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low severe
+Benchmarking t.copy/50000
+Benchmarking t.copy/50000: Warming up for 3.0000 s
+Benchmarking t.copy/50000: Collecting 20 samples in estimated 5.0117 s (33k iterations)
+Benchmarking t.copy/50000: Analyzing
+t.copy/50000            time:   [14.914 µs 14.927 µs 14.943 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+Benchmarking t.copy/100000
+Benchmarking t.copy/100000: Warming up for 3.0000 s
+Benchmarking t.copy/100000: Collecting 20 samples in estimated 5.0125 s (16k iterations)
+Benchmarking t.copy/100000: Analyzing
+t.copy/100000           time:   [29.743 µs 29.770 µs 29.805 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+Benchmarking t.copy/200000
+Benchmarking t.copy/200000: Warming up for 3.0000 s
+Benchmarking t.copy/200000: Collecting 20 samples in estimated 5.1211 s (8190 iterations)
+Benchmarking t.copy/200000: Analyzing
+t.copy/200000           time:   [57.316 µs 57.362 µs 57.423 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.copy/500000
+Benchmarking t.copy/500000: Warming up for 3.0000 s
+Benchmarking t.copy/500000: Collecting 20 samples in estimated 5.2981 s (3360 iterations)
+Benchmarking t.copy/500000: Analyzing
+t.copy/500000           time:   [210.53 µs 211.74 µs 213.40 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+Benchmarking t.copy/1000000
+Benchmarking t.copy/1000000: Warming up for 3.0000 s
+Benchmarking t.copy/1000000: Collecting 20 samples in estimated 5.3163 s (1470 iterations)
+Benchmarking t.copy/1000000: Analyzing
+t.copy/1000000          time:   [870.98 µs 873.78 µs 876.82 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+Benchmarking t.copy/2000000
+Benchmarking t.copy/2000000: Warming up for 3.0000 s
+Benchmarking t.copy/2000000: Collecting 20 samples in estimated 6.1361 s (840 iterations)
+Benchmarking t.copy/2000000: Analyzing
+t.copy/2000000          time:   [1.8985 ms 1.9009 ms 1.9038 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+Benchmarking t.copy/5000000
+Benchmarking t.copy/5000000: Warming up for 3.0000 s
+Benchmarking t.copy/5000000: Collecting 20 samples in estimated 5.9146 s (100 iterations)
+Benchmarking t.copy/5000000: Analyzing
+t.copy/5000000          time:   [8.4020 ms 8.4122 ms 8.4240 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking t.copy/9999999
+Benchmarking t.copy/9999999: Warming up for 3.0000 s
+Benchmarking t.copy/9999999: Collecting 20 samples in estimated 7.0693 s (60 iterations)
+Benchmarking t.copy/9999999: Analyzing
+t.copy/9999999          time:   [16.902 ms 16.992 ms 17.108 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+

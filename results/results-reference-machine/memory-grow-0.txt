@@ -1,0 +1,133 @@
+    Finished `bench` profile [optimized] target(s) in 0.19s
+     Running benches/memory_grow.rs (target/release/deps/memory_grow-55219a7d39624679)
+Benchmarking m.grow/0
+Benchmarking m.grow/0: Warming up for 3.0000 s
+Benchmarking m.grow/0: Collecting 20 samples in estimated 1.0002 s (207k iterations)
+Benchmarking m.grow/0: Analyzing
+m.grow/0                time:   [2.1959 µs 2.2380 µs 2.3207 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+Benchmarking m.grow/1
+Benchmarking m.grow/1: Warming up for 3.0000 s
+Benchmarking m.grow/1: Collecting 20 samples in estimated 1.0003 s (151k iterations)
+Benchmarking m.grow/1: Analyzing
+m.grow/1                time:   [3.9592 µs 3.9733 µs 3.9941 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  3 (15.00%) high mild
+  1 (5.00%) high severe
+Benchmarking m.grow/2
+Benchmarking m.grow/2: Warming up for 3.0000 s
+Benchmarking m.grow/2: Collecting 20 samples in estimated 1.0005 s (152k iterations)
+Benchmarking m.grow/2: Analyzing
+m.grow/2                time:   [3.9904 µs 4.0000 µs 4.0156 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+Benchmarking m.grow/5
+Benchmarking m.grow/5: Warming up for 3.0000 s
+Benchmarking m.grow/5: Collecting 20 samples in estimated 1.0010 s (151k iterations)
+Benchmarking m.grow/5: Analyzing
+m.grow/5                time:   [3.9990 µs 4.0144 µs 4.0369 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+Benchmarking m.grow/10
+Benchmarking m.grow/10: Warming up for 3.0000 s
+Benchmarking m.grow/10: Collecting 20 samples in estimated 1.0014 s (151k iterations)
+Benchmarking m.grow/10: Analyzing
+m.grow/10               time:   [3.9914 µs 4.0097 µs 4.0371 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking m.grow/20
+Benchmarking m.grow/20: Warming up for 3.0000 s
+Benchmarking m.grow/20: Collecting 20 samples in estimated 1.0008 s (151k iterations)
+Benchmarking m.grow/20: Analyzing
+m.grow/20               time:   [3.9894 µs 4.0512 µs 4.1642 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+Benchmarking m.grow/50
+Benchmarking m.grow/50: Warming up for 3.0000 s
+Benchmarking m.grow/50: Collecting 20 samples in estimated 1.0003 s (152k iterations)
+Benchmarking m.grow/50: Analyzing
+m.grow/50               time:   [3.9332 µs 3.9450 µs 3.9625 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) high mild
+  2 (10.00%) high severe
+Benchmarking m.grow/100
+Benchmarking m.grow/100: Warming up for 3.0000 s
+Benchmarking m.grow/100: Collecting 20 samples in estimated 1.0007 s (151k iterations)
+Benchmarking m.grow/100: Analyzing
+m.grow/100              time:   [3.9953 µs 4.0128 µs 4.0381 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking m.grow/200
+Benchmarking m.grow/200: Warming up for 3.0000 s
+Benchmarking m.grow/200: Collecting 20 samples in estimated 1.0014 s (151k iterations)
+Benchmarking m.grow/200: Analyzing
+m.grow/200              time:   [3.9772 µs 3.9916 µs 4.0151 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+Benchmarking m.grow/500
+Benchmarking m.grow/500: Warming up for 3.0000 s
+Benchmarking m.grow/500: Collecting 20 samples in estimated 1.0004 s (151k iterations)
+Benchmarking m.grow/500: Analyzing
+m.grow/500              time:   [3.9753 µs 3.9908 µs 4.0139 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking m.grow/1000
+Benchmarking m.grow/1000: Warming up for 3.0000 s
+Benchmarking m.grow/1000: Collecting 20 samples in estimated 1.0006 s (151k iterations)
+Benchmarking m.grow/1000: Analyzing
+m.grow/1000             time:   [3.9677 µs 4.0359 µs 4.1658 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+Benchmarking m.grow/2000
+Benchmarking m.grow/2000: Warming up for 3.0000 s
+Benchmarking m.grow/2000: Collecting 20 samples in estimated 1.0010 s (153k iterations)
+Benchmarking m.grow/2000: Analyzing
+m.grow/2000             time:   [3.9195 µs 3.9364 µs 3.9586 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+Benchmarking m.grow/5000
+Benchmarking m.grow/5000: Warming up for 3.0000 s
+Benchmarking m.grow/5000: Collecting 20 samples in estimated 1.0010 s (152k iterations)
+Benchmarking m.grow/5000: Analyzing
+m.grow/5000             time:   [3.9861 µs 4.0016 µs 4.0271 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking m.grow/10000
+Benchmarking m.grow/10000: Warming up for 3.0000 s
+Benchmarking m.grow/10000: Collecting 20 samples in estimated 1.0004 s (150k iterations)
+Benchmarking m.grow/10000: Analyzing
+m.grow/10000            time:   [4.0047 µs 4.0196 µs 4.0411 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+Benchmarking m.grow/20000
+Benchmarking m.grow/20000: Warming up for 3.0000 s
+Benchmarking m.grow/20000: Collecting 20 samples in estimated 1.0007 s (151k iterations)
+Benchmarking m.grow/20000: Analyzing
+m.grow/20000            time:   [3.9823 µs 4.0023 µs 4.0332 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+Benchmarking m.grow/50000
+Benchmarking m.grow/50000: Warming up for 3.0000 s
+Benchmarking m.grow/50000: Collecting 20 samples in estimated 1.0014 s (149k iterations)
+Benchmarking m.grow/50000: Analyzing
+m.grow/50000            time:   [3.9854 µs 4.0548 µs 4.1844 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+Benchmarking m.grow/65535
+Benchmarking m.grow/65535: Warming up for 3.0000 s
+Benchmarking m.grow/65535: Collecting 20 samples in estimated 1.0001 s (151k iterations)
+Benchmarking m.grow/65535: Analyzing
+m.grow/65535            time:   [3.9788 µs 3.9934 µs 4.0172 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+

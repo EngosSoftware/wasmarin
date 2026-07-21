@@ -1,0 +1,174 @@
+    Finished `bench` profile [optimized] target(s) in 0.19s
+     Running benches/table_fill.rs (target/release/deps/table_fill-fdc7be18b6f5564c)
+Benchmarking t.fill/0
+Benchmarking t.fill/0: Warming up for 3.0000 s
+Benchmarking t.fill/0: Collecting 20 samples in estimated 5.0002 s (2.9M iterations)
+Benchmarking t.fill/0: Analyzing
+t.fill/0                time:   [406.42 ns 407.88 ns 408.85 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  2 (10.00%) low mild
+Benchmarking t.fill/1
+Benchmarking t.fill/1: Warming up for 3.0000 s
+Benchmarking t.fill/1: Collecting 20 samples in estimated 5.0003 s (2.9M iterations)
+Benchmarking t.fill/1: Analyzing
+t.fill/1                time:   [406.78 ns 408.84 ns 410.46 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low severe
+Benchmarking t.fill/2
+Benchmarking t.fill/2: Warming up for 3.0000 s
+Benchmarking t.fill/2: Collecting 20 samples in estimated 5.0002 s (2.9M iterations)
+Benchmarking t.fill/2: Analyzing
+t.fill/2                time:   [407.14 ns 409.67 ns 411.53 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low severe
+Benchmarking t.fill/5
+Benchmarking t.fill/5: Warming up for 3.0000 s
+Benchmarking t.fill/5: Collecting 20 samples in estimated 5.0001 s (2.9M iterations)
+Benchmarking t.fill/5: Analyzing
+t.fill/5                time:   [408.78 ns 411.54 ns 415.85 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+Benchmarking t.fill/10
+Benchmarking t.fill/10: Warming up for 3.0000 s
+Benchmarking t.fill/10: Collecting 20 samples in estimated 5.0003 s (2.9M iterations)
+Benchmarking t.fill/10: Analyzing
+t.fill/10               time:   [410.29 ns 411.97 ns 413.40 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+Benchmarking t.fill/20
+Benchmarking t.fill/20: Warming up for 3.0000 s
+Benchmarking t.fill/20: Collecting 20 samples in estimated 5.0000 s (2.9M iterations)
+Benchmarking t.fill/20: Analyzing
+t.fill/20               time:   [427.56 ns 428.79 ns 429.53 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low severe
+Benchmarking t.fill/50
+Benchmarking t.fill/50: Warming up for 3.0000 s
+Benchmarking t.fill/50: Collecting 20 samples in estimated 5.0003 s (2.8M iterations)
+Benchmarking t.fill/50: Analyzing
+t.fill/50               time:   [449.40 ns 450.61 ns 451.34 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) high mild
+Benchmarking t.fill/100
+Benchmarking t.fill/100: Warming up for 3.0000 s
+Benchmarking t.fill/100: Collecting 20 samples in estimated 5.0003 s (2.7M iterations)
+Benchmarking t.fill/100: Analyzing
+t.fill/100              time:   [496.23 ns 497.14 ns 497.72 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+Benchmarking t.fill/200
+Benchmarking t.fill/200: Warming up for 3.0000 s
+Benchmarking t.fill/200: Collecting 20 samples in estimated 5.0002 s (2.5M iterations)
+Benchmarking t.fill/200: Analyzing
+t.fill/200              time:   [575.64 ns 579.28 ns 584.50 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+Benchmarking t.fill/500
+Benchmarking t.fill/500: Warming up for 3.0000 s
+Benchmarking t.fill/500: Collecting 20 samples in estimated 5.0003 s (2.1M iterations)
+Benchmarking t.fill/500: Analyzing
+t.fill/500              time:   [809.65 ns 814.87 ns 819.43 ns]
+Found 6 outliers among 20 measurements (30.00%)
+  2 (10.00%) low severe
+  1 (5.00%) low mild
+  3 (15.00%) high mild
+Benchmarking t.fill/1000
+Benchmarking t.fill/1000: Warming up for 3.0000 s
+Benchmarking t.fill/1000: Collecting 20 samples in estimated 5.0003 s (1.6M iterations)
+Benchmarking t.fill/1000: Analyzing
+t.fill/1000             time:   [1.2225 µs 1.2521 µs 1.2870 µs]
+Benchmarking t.fill/2000
+Benchmarking t.fill/2000: Warming up for 3.0000 s
+Benchmarking t.fill/2000: Collecting 20 samples in estimated 5.0005 s (1.3M iterations)
+Benchmarking t.fill/2000: Analyzing
+t.fill/2000             time:   [2.1141 µs 2.1183 µs 2.1212 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) low severe
+Benchmarking t.fill/5000
+Benchmarking t.fill/5000: Warming up for 3.0000 s
+Benchmarking t.fill/5000: Collecting 20 samples in estimated 5.0015 s (696k iterations)
+Benchmarking t.fill/5000: Analyzing
+t.fill/5000             time:   [4.4935 µs 4.4975 µs 4.5011 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) low severe
+  1 (5.00%) low mild
+Benchmarking t.fill/10000
+Benchmarking t.fill/10000: Warming up for 3.0000 s
+Benchmarking t.fill/10000: Collecting 20 samples in estimated 5.0011 s (407k iterations)
+Benchmarking t.fill/10000: Analyzing
+t.fill/10000            time:   [8.3304 µs 8.3400 µs 8.3488 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+Benchmarking t.fill/20000
+Benchmarking t.fill/20000: Warming up for 3.0000 s
+Benchmarking t.fill/20000: Collecting 20 samples in estimated 5.0010 s (213k iterations)
+Benchmarking t.fill/20000: Analyzing
+t.fill/20000            time:   [16.006 µs 16.025 µs 16.039 µs]
+Benchmarking t.fill/50000
+Benchmarking t.fill/50000: Warming up for 3.0000 s
+Benchmarking t.fill/50000: Collecting 20 samples in estimated 5.0049 s (94k iterations)
+Benchmarking t.fill/50000: Analyzing
+t.fill/50000            time:   [38.881 µs 39.024 µs 39.292 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) low mild
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.fill/100000
+Benchmarking t.fill/100000: Warming up for 3.0000 s
+Benchmarking t.fill/100000: Collecting 20 samples in estimated 5.0001 s (49k iterations)
+Benchmarking t.fill/100000: Analyzing
+t.fill/100000           time:   [76.969 µs 77.030 µs 77.096 µs]
+Benchmarking t.fill/200000
+Benchmarking t.fill/200000: Warming up for 3.0000 s
+Benchmarking t.fill/200000: Collecting 20 samples in estimated 5.0211 s (25k iterations)
+Benchmarking t.fill/200000: Analyzing
+t.fill/200000           time:   [153.26 µs 153.39 µs 153.53 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.fill/500000
+Benchmarking t.fill/500000: Warming up for 3.0000 s
+Benchmarking t.fill/500000: Collecting 20 samples in estimated 5.0076 s (9450 iterations)
+Benchmarking t.fill/500000: Analyzing
+t.fill/500000           time:   [382.21 µs 382.54 µs 382.91 µs]
+Benchmarking t.fill/1000000
+Benchmarking t.fill/1000000: Warming up for 3.0000 s
+Benchmarking t.fill/1000000: Collecting 20 samples in estimated 5.1393 s (4620 iterations)
+Benchmarking t.fill/1000000: Analyzing
+t.fill/1000000          time:   [817.52 µs 818.11 µs 818.87 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+Benchmarking t.fill/2000000
+Benchmarking t.fill/2000000: Warming up for 3.0000 s
+Benchmarking t.fill/2000000: Collecting 20 samples in estimated 5.2348 s (840 iterations)
+Benchmarking t.fill/2000000: Analyzing
+t.fill/2000000          time:   [1.6399 ms 1.6417 ms 1.6437 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking t.fill/5000000
+Benchmarking t.fill/5000000: Warming up for 3.0000 s
+
+Warning: Unable to complete 20 samples in 5.0s. You may wish to increase target time to 5.4s, enable flat sampling, or reduce sample count to 10.
+Benchmarking t.fill/5000000: Collecting 20 samples in estimated 5.3857 s (210 iterations)
+Benchmarking t.fill/5000000: Analyzing
+t.fill/5000000          time:   [5.7668 ms 5.7732 ms 5.7811 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.fill/9999999
+Benchmarking t.fill/9999999: Warming up for 3.0000 s
+Benchmarking t.fill/9999999: Collecting 20 samples in estimated 5.1304 s (100 iterations)
+Benchmarking t.fill/9999999: Analyzing
+t.fill/9999999          time:   [11.555 ms 11.635 ms 11.749 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+

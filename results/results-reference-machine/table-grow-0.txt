@@ -1,0 +1,223 @@
+    Finished `bench` profile [optimized] target(s) in 0.16s
+     Running benches/table_grow.rs (target/release/deps/table_grow-733481142198c4f6)
+Benchmarking t.grow/0
+Benchmarking t.grow/0: Warming up for 3.0000 s
+Benchmarking t.grow/0: Collecting 20 samples in estimated 2.5835 s (60 iterations)
+Benchmarking t.grow/0: Analyzing
+t.grow/0                time:   [3.3425 ms 3.3592 ms 3.3786 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.grow/1
+Benchmarking t.grow/1: Warming up for 3.0000 s
+Benchmarking t.grow/1: Collecting 20 samples in estimated 2.6017 s (60 iterations)
+Benchmarking t.grow/1: Analyzing
+t.grow/1                time:   [3.5372 ms 3.5464 ms 3.5590 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+Benchmarking t.grow/2
+Benchmarking t.grow/2: Warming up for 3.0000 s
+Benchmarking t.grow/2: Collecting 20 samples in estimated 2.5949 s (60 iterations)
+Benchmarking t.grow/2: Analyzing
+t.grow/2                time:   [3.5423 ms 3.5491 ms 3.5569 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking t.grow/5
+Benchmarking t.grow/5: Warming up for 3.0000 s
+Benchmarking t.grow/5: Collecting 20 samples in estimated 2.5952 s (60 iterations)
+Benchmarking t.grow/5: Analyzing
+t.grow/5                time:   [3.5373 ms 3.5524 ms 3.5749 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.grow/10
+Benchmarking t.grow/10: Warming up for 3.0000 s
+Benchmarking t.grow/10: Collecting 20 samples in estimated 2.6039 s (60 iterations)
+Benchmarking t.grow/10: Analyzing
+t.grow/10               time:   [3.5477 ms 3.5547 ms 3.5631 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking t.grow/20
+Benchmarking t.grow/20: Warming up for 3.0000 s
+Benchmarking t.grow/20: Collecting 20 samples in estimated 2.5944 s (60 iterations)
+Benchmarking t.grow/20: Analyzing
+t.grow/20               time:   [3.5372 ms 3.5485 ms 3.5642 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+Benchmarking t.grow/50
+Benchmarking t.grow/50: Warming up for 3.0000 s
+Benchmarking t.grow/50: Collecting 20 samples in estimated 2.5970 s (60 iterations)
+Benchmarking t.grow/50: Analyzing
+t.grow/50               time:   [3.5326 ms 3.5398 ms 3.5486 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.grow/100
+Benchmarking t.grow/100: Warming up for 3.0000 s
+Benchmarking t.grow/100: Collecting 20 samples in estimated 2.6115 s (60 iterations)
+Benchmarking t.grow/100: Analyzing
+t.grow/100              time:   [3.5430 ms 3.5512 ms 3.5609 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+Benchmarking t.grow/200
+Benchmarking t.grow/200: Warming up for 3.0000 s
+Benchmarking t.grow/200: Collecting 20 samples in estimated 2.5963 s (60 iterations)
+Benchmarking t.grow/200: Analyzing
+t.grow/200              time:   [3.5404 ms 3.5492 ms 3.5597 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.grow/500
+Benchmarking t.grow/500: Warming up for 3.0000 s
+Benchmarking t.grow/500: Collecting 20 samples in estimated 2.5960 s (60 iterations)
+Benchmarking t.grow/500: Analyzing
+t.grow/500              time:   [3.5459 ms 3.5826 ms 3.6451 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high severe
+Benchmarking t.grow/1000
+Benchmarking t.grow/1000: Warming up for 3.0000 s
+Benchmarking t.grow/1000: Collecting 20 samples in estimated 2.5969 s (60 iterations)
+Benchmarking t.grow/1000: Analyzing
+t.grow/1000             time:   [3.5442 ms 3.5532 ms 3.5643 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+Benchmarking t.grow/2000
+Benchmarking t.grow/2000: Warming up for 3.0000 s
+Benchmarking t.grow/2000: Collecting 20 samples in estimated 2.5979 s (60 iterations)
+Benchmarking t.grow/2000: Analyzing
+t.grow/2000             time:   [3.5600 ms 3.5753 ms 3.5955 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.grow/5000
+Benchmarking t.grow/5000: Warming up for 3.0000 s
+Benchmarking t.grow/5000: Collecting 20 samples in estimated 2.6050 s (60 iterations)
+Benchmarking t.grow/5000: Analyzing
+t.grow/5000             time:   [3.5634 ms 3.5745 ms 3.5889 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.grow/10000
+Benchmarking t.grow/10000: Warming up for 3.0000 s
+Benchmarking t.grow/10000: Collecting 20 samples in estimated 2.5986 s (60 iterations)
+Benchmarking t.grow/10000: Analyzing
+t.grow/10000            time:   [3.5779 ms 3.5890 ms 3.6024 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) high mild
+  2 (10.00%) high severe
+Benchmarking t.grow/20000
+Benchmarking t.grow/20000: Warming up for 3.0000 s
+Benchmarking t.grow/20000: Collecting 20 samples in estimated 2.6007 s (60 iterations)
+Benchmarking t.grow/20000: Analyzing
+t.grow/20000            time:   [3.6096 ms 3.6228 ms 3.6387 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) low severe
+  2 (10.00%) high severe
+Benchmarking t.grow/50000
+Benchmarking t.grow/50000: Warming up for 3.0000 s
+Benchmarking t.grow/50000: Collecting 20 samples in estimated 2.6225 s (60 iterations)
+Benchmarking t.grow/50000: Analyzing
+t.grow/50000            time:   [3.7273 ms 3.7391 ms 3.7549 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+Benchmarking t.grow/100000
+Benchmarking t.grow/100000: Warming up for 3.0000 s
+Benchmarking t.grow/100000: Collecting 20 samples in estimated 2.6198 s (60 iterations)
+Benchmarking t.grow/100000: Analyzing
+t.grow/100000           time:   [3.9125 ms 3.9218 ms 3.9325 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking t.grow/200000
+Benchmarking t.grow/200000: Warming up for 3.0000 s
+Benchmarking t.grow/200000: Collecting 20 samples in estimated 2.6404 s (60 iterations)
+Benchmarking t.grow/200000: Analyzing
+t.grow/200000           time:   [4.2891 ms 4.2992 ms 4.3104 ms]
+Benchmarking t.grow/500000
+Benchmarking t.grow/500000: Warming up for 3.0000 s
+Benchmarking t.grow/500000: Collecting 20 samples in estimated 2.7288 s (60 iterations)
+Benchmarking t.grow/500000: Analyzing
+t.grow/500000           time:   [5.4755 ms 5.4932 ms 5.5141 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.grow/1000000
+Benchmarking t.grow/1000000: Warming up for 3.0000 s
+Benchmarking t.grow/1000000: Collecting 20 samples in estimated 2.8408 s (60 iterations)
+Benchmarking t.grow/1000000: Analyzing
+t.grow/1000000          time:   [7.6074 ms 7.6287 ms 7.6520 ms]
+Benchmarking t.grow/2000000
+Benchmarking t.grow/2000000: Warming up for 3.0000 s
+Benchmarking t.grow/2000000: Collecting 20 samples in estimated 2.0589 s (40 iterations)
+Benchmarking t.grow/2000000: Analyzing
+t.grow/2000000          time:   [11.720 ms 11.741 ms 11.765 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+Benchmarking t.grow/5000000
+Benchmarking t.grow/5000000: Warming up for 3.0000 s
+Benchmarking t.grow/5000000: Collecting 20 samples in estimated 2.5344 s (40 iterations)
+Benchmarking t.grow/5000000: Analyzing
+t.grow/5000000          time:   [23.053 ms 23.093 ms 23.139 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.grow/10000000
+Benchmarking t.grow/10000000: Warming up for 3.0000 s
+Benchmarking t.grow/10000000: Collecting 20 samples in estimated 3.2737 s (40 iterations)
+Benchmarking t.grow/10000000: Analyzing
+t.grow/10000000         time:   [42.130 ms 42.204 ms 42.292 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+Benchmarking t.grow/20000000
+Benchmarking t.grow/20000000: Warming up for 3.0000 s
+
+Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.4s, or reduce sample count to 10.
+Benchmarking t.grow/20000000: Collecting 20 samples in estimated 2.4011 s (20 iterations)
+Benchmarking t.grow/20000000: Analyzing
+t.grow/20000000         time:   [80.143 ms 80.317 ms 80.493 ms]
+Benchmarking t.grow/50000000
+Benchmarking t.grow/50000000: Warming up for 3.0000 s
+
+Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 4.7s, or reduce sample count to 10.
+Benchmarking t.grow/50000000: Collecting 20 samples in estimated 4.7077 s (20 iterations)
+Benchmarking t.grow/50000000: Analyzing
+t.grow/50000000         time:   [193.74 ms 193.96 ms 194.21 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+Benchmarking t.grow/100000000
+Benchmarking t.grow/100000000: Warming up for 3.0000 s
+
+Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 8.6s, or reduce sample count to 10.
+Benchmarking t.grow/100000000: Collecting 20 samples in estimated 8.6053 s (20 iterations)
+Benchmarking t.grow/100000000: Analyzing
+t.grow/100000000        time:   [389.50 ms 389.84 ms 390.20 ms]
+Benchmarking t.grow/200000000
+Benchmarking t.grow/200000000: Warming up for 3.0000 s
+
+Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 16.4s, or reduce sample count to 10.
+Benchmarking t.grow/200000000: Collecting 20 samples in estimated 16.418 s (20 iterations)
+Benchmarking t.grow/200000000: Analyzing
+t.grow/200000000        time:   [777.85 ms 778.47 ms 779.08 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+Benchmarking t.grow/500000000
+Benchmarking t.grow/500000000: Warming up for 3.0000 s
+
+Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 39.8s, or reduce sample count to 10.
+Benchmarking t.grow/500000000: Collecting 20 samples in estimated 39.773 s (20 iterations)
+Benchmarking t.grow/500000000: Analyzing
+t.grow/500000000        time:   [1.9482 s 1.9522 s 1.9556 s]
+Found 4 outliers among 20 measurements (20.00%)
+  3 (15.00%) low severe
+  1 (5.00%) high mild
+Benchmarking t.grow/1000000000
+Benchmarking t.grow/1000000000: Warming up for 3.0000 s
+
+Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 78.4s, or reduce sample count to 10.
+Benchmarking t.grow/1000000000: Collecting 20 samples in estimated 78.409 s (20 iterations)
+Benchmarking t.grow/1000000000: Analyzing
+t.grow/1000000000       time:   [3.8838 s 3.8883 s 3.8930 s]
+
