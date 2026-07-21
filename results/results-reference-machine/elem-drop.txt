@@ -1,80 +1,22 @@
-elem-drop/length = 1    time:   [378.14 ns 380.81 ns 383.92 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-elem-drop/length = 2    time:   [377.43 ns 379.85 ns 382.65 ns]
-Found 5 outliers among 20 measurements (25.00%)
-  2 (10.00%) low mild
-  3 (15.00%) high mild
-elem-drop/length = 5    time:   [378.79 ns 380.79 ns 383.01 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) low severe
-elem-drop/length = 10   time:   [380.53 ns 382.35 ns 384.22 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low mild
-  1 (5.00%) high mild
-elem-drop/length = 20   time:   [391.14 ns 393.43 ns 396.33 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low severe
-  1 (5.00%) low mild
-elem-drop/length = 50   time:   [395.25 ns 397.19 ns 399.25 ns]
-Found 5 outliers among 20 measurements (25.00%)
-  2 (10.00%) low severe
-  1 (5.00%) low mild
-  2 (10.00%) high mild
-elem-drop/length = 100  time:   [397.32 ns 399.53 ns 402.57 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low severe
-  1 (5.00%) low mild
-elem-drop/length = 200  time:   [400.68 ns 403.78 ns 406.68 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low severe
-  1 (5.00%) low mild
-elem-drop/length = 500  time:   [407.31 ns 422.38 ns 442.85 ns]
-Found 4 outliers among 20 measurements (20.00%)
-  1 (5.00%) low severe
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-elem-drop/length = 1000 time:   [475.76 ns 492.86 ns 505.71 ns]
-elem-drop/length = 2000 time:   [532.78 ns 537.14 ns 542.12 ns]
-Found 6 outliers among 20 measurements (30.00%)
-  4 (20.00%) low severe
-  2 (10.00%) high mild
-elem-drop/length = 5000 time:   [554.15 ns 559.10 ns 564.11 ns]
-Found 4 outliers among 20 measurements (20.00%)
-  2 (10.00%) low severe
-  2 (10.00%) low mild
-elem-drop/length = 10000
-                        time:   [544.43 ns 553.78 ns 559.44 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) low mild
-elem-drop/length = 20000
-                        time:   [493.45 ns 508.15 ns 516.34 ns]
-elem-drop/length = 50000
-                        time:   [416.29 ns 427.19 ns 435.71 ns]
-elem-drop/length = 100000
-                        time:   [387.67 ns 393.17 ns 397.15 ns]
-elem-drop/length = 200000
-                        time:   [373.29 ns 376.46 ns 379.69 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) high mild
-  1 (5.00%) high severe
-elem-drop/length = 500000
-                        time:   [417.20 ns 425.01 ns 435.91 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-elem-drop/length = 1000000
-                        time:   [662.87 ns 685.20 ns 710.22 ns]
-elem-drop/length = 2000000
-                        time:   [950.84 ns 964.79 ns 981.98 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-elem-drop/length = 5000000
-                        time:   [1.7545 ms 1.7652 ms 1.7829 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-elem-drop/length = 10000000
-                        time:   [3.4509 ms 3.4841 ms 3.5327 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high severe
-
+e.drop/L = 1            time:   [374.90 ns 376.96 ns 378.46 ns]
+e.drop/L = 2            time:   [375.24 ns 379.60 ns 385.57 ns]
+e.drop/L = 5            time:   [375.58 ns 376.56 ns 377.11 ns]
+e.drop/L = 10           time:   [377.97 ns 380.10 ns 382.11 ns]
+e.drop/L = 20           time:   [388.13 ns 389.72 ns 392.29 ns]
+e.drop/L = 50           time:   [391.46 ns 392.45 ns 393.02 ns]
+e.drop/L = 100          time:   [392.96 ns 394.01 ns 394.65 ns]
+e.drop/L = 200          time:   [395.80 ns 396.84 ns 397.76 ns]
+e.drop/L = 500          time:   [399.85 ns 417.38 ns 445.48 ns]
+e.drop/L = 1000         time:   [446.53 ns 476.91 ns 499.40 ns]
+e.drop/L = 2000         time:   [527.55 ns 532.63 ns 535.31 ns]
+e.drop/L = 5000         time:   [551.85 ns 557.17 ns 563.56 ns]
+e.drop/L = 10000        time:   [542.99 ns 552.38 ns 557.39 ns]
+e.drop/L = 20000        time:   [495.89 ns 510.50 ns 518.54 ns]
+e.drop/L = 50000        time:   [410.57 ns 425.78 ns 436.31 ns]
+e.drop/L = 100000       time:   [381.25 ns 393.40 ns 402.39 ns]
+e.drop/L = 200000       time:   [372.85 ns 393.46 ns 420.27 ns]
+e.drop/L = 500000       time:   [484.21 ns 489.07 ns 493.23 ns]
+e.drop/L = 1000000      time:   [674.21 ns 684.07 ns 698.19 ns]
+e.drop/L = 2000000      time:   [797.60 ns 818.66 ns 852.72 ns]
+e.drop/L = 5000000      time:   [1.9145 ms 1.9188 ms 1.9240 ms]
+e.drop/L = 10000000     time:   [3.7368 ms 3.7590 ms 3.7814 ms]

@@ -1,85 +1,17 @@
-memory-grow/length = 0  time:   [3.5870 µs 3.6077 µs 3.6199 µs]
-memory-grow/length = 1  time:   [3.8654 µs 3.8979 µs 3.9175 µs]
-memory-grow/length = 2  time:   [4.3266 µs 4.4383 µs 4.5075 µs]
-Benchmarking memory-grow/length = 5
-Benchmarking memory-grow/length = 5: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 5: Collecting 20 samples in estimated 1.0003 s (108k iterations)
-Benchmarking memory-grow/length = 5: Analyzing
-memory-grow/length = 5  time:   [4.3166 µs 4.4253 µs 4.4937 µs]
-Benchmarking memory-grow/length = 10
-Benchmarking memory-grow/length = 10: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 10: Collecting 20 samples in estimated 1.0008 s (108k iterations)
-Benchmarking memory-grow/length = 10: Analyzing
-memory-grow/length = 10 time:   [4.3357 µs 4.4437 µs 4.5096 µs]
-Benchmarking memory-grow/length = 20
-Benchmarking memory-grow/length = 20: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 20: Collecting 20 samples in estimated 1.0016 s (107k iterations)
-Benchmarking memory-grow/length = 20: Analyzing
-memory-grow/length = 20 time:   [4.3457 µs 4.4572 µs 4.5249 µs]
-Benchmarking memory-grow/length = 50
-Benchmarking memory-grow/length = 50: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 50: Collecting 20 samples in estimated 1.0013 s (108k iterations)
-Benchmarking memory-grow/length = 50: Analyzing
-memory-grow/length = 50 time:   [4.3383 µs 4.4499 µs 4.5174 µs]
-Benchmarking memory-grow/length = 100
-Benchmarking memory-grow/length = 100: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 100: Collecting 20 samples in estimated 1.0015 s (107k iterations)
-Benchmarking memory-grow/length = 100: Analyzing
-memory-grow/length = 100
-                        time:   [4.3351 µs 4.4442 µs 4.5132 µs]
-Benchmarking memory-grow/length = 200
-Benchmarking memory-grow/length = 200: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 200: Collecting 20 samples in estimated 1.0002 s (107k iterations)
-Benchmarking memory-grow/length = 200: Analyzing
-memory-grow/length = 200
-                        time:   [4.3235 µs 4.4318 µs 4.4969 µs]
-Benchmarking memory-grow/length = 500
-Benchmarking memory-grow/length = 500: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 500: Collecting 20 samples in estimated 1.0005 s (107k iterations)
-Benchmarking memory-grow/length = 500: Analyzing
-memory-grow/length = 500
-                        time:   [4.3443 µs 4.5688 µs 4.8337 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-Benchmarking memory-grow/length = 1000
-Benchmarking memory-grow/length = 1000: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 1000: Collecting 20 samples in estimated 1.0018 s (107k iterations)
-Benchmarking memory-grow/length = 1000: Analyzing
-memory-grow/length = 1000
-                        time:   [4.3343 µs 4.4406 µs 4.5057 µs]
-Benchmarking memory-grow/length = 2000
-Benchmarking memory-grow/length = 2000: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 2000: Collecting 20 samples in estimated 1.0016 s (107k iterations)
-Benchmarking memory-grow/length = 2000: Analyzing
-memory-grow/length = 2000
-                        time:   [4.3541 µs 4.4572 µs 4.5199 µs]
-Benchmarking memory-grow/length = 5000
-Benchmarking memory-grow/length = 5000: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 5000: Collecting 20 samples in estimated 1.0005 s (106k iterations)
-Benchmarking memory-grow/length = 5000: Analyzing
-memory-grow/length = 5000
-                        time:   [4.4175 µs 4.5254 µs 4.5932 µs]
-Benchmarking memory-grow/length = 10000
-Benchmarking memory-grow/length = 10000: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 10000: Collecting 20 samples in estimated 1.0016 s (105k iterations)
-Benchmarking memory-grow/length = 10000: Analyzing
-memory-grow/length = 10000
-                        time:   [4.4538 µs 4.5608 µs 4.6249 µs]
-Benchmarking memory-grow/length = 20000
-Benchmarking memory-grow/length = 20000: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 20000: Collecting 20 samples in estimated 1.0001 s (103k iterations)
-Benchmarking memory-grow/length = 20000: Analyzing
-memory-grow/length = 20000
-                        time:   [4.6681 µs 4.8571 µs 5.0632 µs]
-Benchmarking memory-grow/length = 50000
-Benchmarking memory-grow/length = 50000: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 50000: Collecting 20 samples in estimated 1.0003 s (98k iterations)
-Benchmarking memory-grow/length = 50000: Analyzing
-memory-grow/length = 50000
-                        time:   [5.2008 µs 5.3016 µs 5.3665 µs]
-Benchmarking memory-grow/length = 65535
-Benchmarking memory-grow/length = 65535: Warming up for 3.0000 s
-Benchmarking memory-grow/length = 65535: Collecting 20 samples in estimated 1.0011 s (95k iterations)
-Benchmarking memory-grow/length = 65535: Analyzing
-memory-grow/length = 65535
-                        time:   [5.4807 µs 5.5815 µs 5.6487 µs]
+m.grow/0                time:   [3.5264 µs 3.5792 µs 3.6144 µs]
+m.grow/1                time:   [3.8093 µs 3.8666 µs 3.9030 µs]
+m.grow/2                time:   [4.2471 µs 4.3816 µs 4.4642 µs]
+m.grow/5                time:   [4.2468 µs 4.3881 µs 4.4703 µs]
+m.grow/10               time:   [3.7260 µs 3.8439 µs 3.9189 µs]
+m.grow/20               time:   [3.9860 µs 4.0958 µs 4.1622 µs]
+m.grow/50               time:   [3.9926 µs 4.0869 µs 4.1444 µs]
+m.grow/100              time:   [4.0013 µs 4.1021 µs 4.1652 µs]
+m.grow/200              time:   [4.0279 µs 4.1262 µs 4.1855 µs]
+m.grow/500              time:   [4.0292 µs 4.1277 µs 4.1866 µs]
+m.grow/1000             time:   [4.0770 µs 4.1780 µs 4.2414 µs]
+m.grow/2000             time:   [4.0833 µs 4.1691 µs 4.2187 µs]
+m.grow/5000             time:   [4.1657 µs 4.2638 µs 4.3231 µs]
+m.grow/10000            time:   [3.9470 µs 4.0533 µs 4.1134 µs]
+m.grow/20000            time:   [4.3379 µs 4.4229 µs 4.4729 µs]
+m.grow/50000            time:   [4.8567 µs 4.9416 µs 4.9954 µs]
+m.grow/65535            time:   [5.0856 µs 5.1701 µs 5.2240 µs]

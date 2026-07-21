@@ -1,74 +1,29 @@
-table-grow/length = 0   time:   [3.3656 ms 3.3980 ms 3.4350 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-grow/length = 1   time:   [3.5944 ms 3.6281 ms 3.6674 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-grow/length = 2   time:   [3.5845 ms 3.6135 ms 3.6437 ms]
-table-grow/length = 5   time:   [3.5923 ms 3.6291 ms 3.6679 ms]
-table-grow/length = 10  time:   [3.6094 ms 3.6523 ms 3.6983 ms]
-table-grow/length = 20  time:   [3.6085 ms 3.6583 ms 3.7159 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-grow/length = 50  time:   [3.5916 ms 3.6274 ms 3.6680 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-grow/length = 100 time:   [3.6010 ms 3.6472 ms 3.6975 ms]
-table-grow/length = 200 time:   [3.5925 ms 3.6542 ms 3.7304 ms]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-table-grow/length = 500 time:   [3.5974 ms 3.6346 ms 3.6749 ms]
-table-grow/length = 1000
-                        time:   [3.5859 ms 3.6189 ms 3.6558 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-grow/length = 2000
-                        time:   [3.5909 ms 3.6337 ms 3.6819 ms]
-table-grow/length = 5000
-                        time:   [3.6287 ms 3.6682 ms 3.7114 ms]
-table-grow/length = 10000
-                        time:   [3.6685 ms 3.7185 ms 3.7704 ms]
-table-grow/length = 20000
-                        time:   [3.6731 ms 3.7156 ms 3.7618 ms]
-table-grow/length = 50000
-                        time:   [3.7872 ms 3.8351 ms 3.8920 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-grow/length = 100000
-                        time:   [4.0086 ms 4.0629 ms 4.1197 ms]
-table-grow/length = 200000
-                        time:   [4.3821 ms 4.4380 ms 4.4953 ms]
-table-grow/length = 500000
-                        time:   [5.5348 ms 5.6019 ms 5.6725 ms]
-table-grow/length = 1000000
-                        time:   [7.4248 ms 7.5285 ms 7.6450 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-grow/length = 2000000
-                        time:   [11.372 ms 11.468 ms 11.569 ms]
-table-grow/length = 5000000
-                        time:   [22.874 ms 23.027 ms 23.197 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-grow/length = 10000000
-                        time:   [42.043 ms 42.341 ms 42.635 ms]
-table-grow/length = 20000000
-                        time:   [80.381 ms 80.927 ms 81.467 ms]
-table-grow/length = 50000000
-                        time:   [194.59 ms 195.97 ms 197.44 ms]
-table-grow/length = 100000000
-                        time:   [390.51 ms 392.41 ms 394.66 ms]
-Found 4 outliers among 20 measurements (20.00%)
-  1 (5.00%) high mild
-  3 (15.00%) high severe
-table-grow/length = 200000000
-                        time:   [780.23 ms 782.80 ms 786.22 ms]
-Found 3 outliers among 20 measurements (15.00%)
-  3 (15.00%) high severe
-table-grow/length = 500000000
-                        time:   [1.9334 s 1.9366 s 1.9404 s]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high severe
-table-grow/length = 1000000000
-                        time:   [3.8736 s 3.8800 s 3.8866 s]
-
+t.grow/0                time:   [3.3331 ms 3.3552 ms 3.3838 ms]
+t.grow/1                time:   [3.5342 ms 3.5490 ms 3.5685 ms]
+t.grow/2                time:   [3.5393 ms 3.5497 ms 3.5606 ms]
+t.grow/5                time:   [3.5483 ms 3.5663 ms 3.5872 ms]
+t.grow/10               time:   [3.5511 ms 3.5865 ms 3.6330 ms]
+t.grow/20               time:   [3.5350 ms 3.5441 ms 3.5536 ms]
+t.grow/50               time:   [3.5460 ms 3.5601 ms 3.5789 ms]
+t.grow/100              time:   [3.5470 ms 3.5559 ms 3.5662 ms]
+t.grow/200              time:   [3.5483 ms 3.6156 ms 3.7087 ms]
+t.grow/500              time:   [3.5455 ms 3.5561 ms 3.5703 ms]
+t.grow/1000             time:   [3.5510 ms 3.5716 ms 3.6029 ms]
+t.grow/2000             time:   [3.5386 ms 3.5552 ms 3.5754 ms]
+t.grow/5000             time:   [3.5616 ms 3.5707 ms 3.5815 ms]
+t.grow/10000            time:   [3.5765 ms 3.5886 ms 3.6047 ms]
+t.grow/20000            time:   [3.6153 ms 3.6546 ms 3.7107 ms]
+t.grow/50000            time:   [3.7235 ms 3.7390 ms 3.7619 ms]
+t.grow/100000           time:   [3.9084 ms 3.9172 ms 3.9279 ms]
+t.grow/200000           time:   [4.2835 ms 4.2962 ms 4.3104 ms]
+t.grow/500000           time:   [5.4734 ms 5.4955 ms 5.5249 ms]
+t.grow/1000000          time:   [7.5431 ms 7.6081 ms 7.7170 ms]
+t.grow/2000000          time:   [11.601 ms 11.631 ms 11.664 ms]
+t.grow/5000000          time:   [23.198 ms 23.239 ms 23.286 ms]
+t.grow/10000000         time:   [42.020 ms 42.066 ms 42.117 ms]
+t.grow/20000000         time:   [80.170 ms 80.470 ms 80.830 ms]
+t.grow/50000000         time:   [194.13 ms 194.33 ms 194.54 ms]
+t.grow/100000000        time:   [386.55 ms 388.73 ms 392.43 ms]
+t.grow/200000000        time:   [778.65 ms 780.44 ms 783.55 ms]
+t.grow/500000000        time:   [1.9419 s 1.9451 s 1.9483 s]
+t.grow/1000000000       time:   [3.8887 s 3.8945 s 3.9004 s]

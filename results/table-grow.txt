@@ -1,252 +1,29 @@
-    Finished `bench` profile [optimized] target(s) in 0.11s
-     Running benches/table_grow.rs (target/release/deps/table_grow-820fd396330d1089)
-Benchmarking table-grow/length = 0
-Benchmarking table-grow/length = 0: Warming up for 3.0000 s
-Benchmarking table-grow/length = 0: Collecting 20 samples in estimated 2.0004 s (5040 iterations)
-Benchmarking table-grow/length = 0: Analyzing
-table-grow/length = 0   time:   [309.30 ns 312.13 ns 316.09 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high severe
-Benchmarking table-grow/length = 1
-Benchmarking table-grow/length = 1: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.1s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 1: Collecting 20 samples in estimated 2.0809 s (210 iterations)
-Benchmarking table-grow/length = 1: Analyzing
-table-grow/length = 1   time:   [289.83 µs 347.77 µs 506.49 µs]
-Found 4 outliers among 20 measurements (20.00%)
-  4 (20.00%) high severe
-Benchmarking table-grow/length = 2
-Benchmarking table-grow/length = 2: Warming up for 3.0000 s
-Benchmarking table-grow/length = 2: Collecting 20 samples in estimated 3.5298 s (420 iterations)
-Benchmarking table-grow/length = 2: Analyzing
-table-grow/length = 2   time:   [289.62 µs 290.95 µs 292.34 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high severe
-Benchmarking table-grow/length = 5
-Benchmarking table-grow/length = 5: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 5: Collecting 20 samples in estimated 2.2210 s (210 iterations)
-Benchmarking table-grow/length = 5: Analyzing
-table-grow/length = 5   time:   [671.77 µs 680.92 µs 690.97 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-Benchmarking table-grow/length = 10
-Benchmarking table-grow/length = 10: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.1s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 10: Collecting 20 samples in estimated 2.1370 s (210 iterations)
-Benchmarking table-grow/length = 10: Analyzing
-table-grow/length = 10  time:   [449.71 µs 513.82 µs 560.68 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-Benchmarking table-grow/length = 20
-Benchmarking table-grow/length = 20: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.1s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 20: Collecting 20 samples in estimated 2.1084 s (210 iterations)
-Benchmarking table-grow/length = 20: Analyzing
-table-grow/length = 20  time:   [561.15 µs 615.68 µs 649.17 µs]
-Benchmarking table-grow/length = 50
-Benchmarking table-grow/length = 50: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 50: Collecting 20 samples in estimated 2.1861 s (210 iterations)
-Benchmarking table-grow/length = 50: Analyzing
-table-grow/length = 50  time:   [480.37 µs 566.90 µs 622.46 µs]
-Benchmarking table-grow/length = 100
-Benchmarking table-grow/length = 100: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.1s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 100: Collecting 20 samples in estimated 2.1307 s (210 iterations)
-Benchmarking table-grow/length = 100: Analyzing
-table-grow/length = 100 time:   [485.37 µs 570.60 µs 629.27 µs]
-Found 5 outliers among 20 measurements (25.00%)
-  5 (25.00%) high mild
-Benchmarking table-grow/length = 200
-Benchmarking table-grow/length = 200: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.6s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 200: Collecting 20 samples in estimated 2.5575 s (210 iterations)
-Benchmarking table-grow/length = 200: Analyzing
-table-grow/length = 200 time:   [596.54 µs 634.14 µs 658.93 µs]
-Benchmarking table-grow/length = 500
-Benchmarking table-grow/length = 500: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 500: Collecting 20 samples in estimated 2.1791 s (210 iterations)
-Benchmarking table-grow/length = 500: Analyzing
-table-grow/length = 500 time:   [595.64 µs 606.62 µs 615.32 µs]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low severe
-  1 (5.00%) low mild
-Benchmarking table-grow/length = 1000
-Benchmarking table-grow/length = 1000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 1000: Collecting 20 samples in estimated 2.1609 s (210 iterations)
-Benchmarking table-grow/length = 1000: Analyzing
-table-grow/length = 1000
-                        time:   [585.39 µs 628.28 µs 663.15 µs]
-Found 6 outliers among 20 measurements (30.00%)
-  1 (5.00%) low severe
-  3 (15.00%) low mild
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-Benchmarking table-grow/length = 2000
-Benchmarking table-grow/length = 2000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.1s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 2000: Collecting 20 samples in estimated 2.1329 s (210 iterations)
-Benchmarking table-grow/length = 2000: Analyzing
-table-grow/length = 2000
-                        time:   [506.18 µs 513.45 µs 524.34 µs]
-Benchmarking table-grow/length = 5000
-Benchmarking table-grow/length = 5000: Warming up for 3.0000 s
-Benchmarking table-grow/length = 5000: Collecting 20 samples in estimated 3.9998 s (420 iterations)
-Benchmarking table-grow/length = 5000: Analyzing
-table-grow/length = 5000
-                        time:   [322.14 µs 345.19 µs 372.30 µs]
-Benchmarking table-grow/length = 10000
-Benchmarking table-grow/length = 10000: Warming up for 3.0000 s
-Benchmarking table-grow/length = 10000: Collecting 20 samples in estimated 3.8014 s (420 iterations)
-Benchmarking table-grow/length = 10000: Analyzing
-table-grow/length = 10000
-                        time:   [338.21 µs 361.06 µs 386.90 µs]
-Benchmarking table-grow/length = 20000
-Benchmarking table-grow/length = 20000: Warming up for 3.0000 s
-Benchmarking table-grow/length = 20000: Collecting 20 samples in estimated 3.9066 s (420 iterations)
-Benchmarking table-grow/length = 20000: Analyzing
-table-grow/length = 20000
-                        time:   [436.33 µs 463.38 µs 482.74 µs]
-Benchmarking table-grow/length = 50000
-Benchmarking table-grow/length = 50000: Warming up for 3.0000 s
-Benchmarking table-grow/length = 50000: Collecting 20 samples in estimated 3.9844 s (420 iterations)
-Benchmarking table-grow/length = 50000: Analyzing
-table-grow/length = 50000
-                        time:   [411.85 µs 433.96 µs 455.73 µs]
-Benchmarking table-grow/length = 100000
-Benchmarking table-grow/length = 100000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 100000: Collecting 20 samples in estimated 2.1810 s (210 iterations)
-Benchmarking table-grow/length = 100000: Analyzing
-table-grow/length = 100000
-                        time:   [498.28 µs 550.80 µs 587.88 µs]
-Found 4 outliers among 20 measurements (20.00%)
-  4 (20.00%) high mild
-Benchmarking table-grow/length = 200000
-Benchmarking table-grow/length = 200000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 200000: Collecting 20 samples in estimated 2.1901 s (210 iterations)
-Benchmarking table-grow/length = 200000: Analyzing
-table-grow/length = 200000
-                        time:   [612.78 µs 654.01 µs 681.98 µs]
-Benchmarking table-grow/length = 500000
-Benchmarking table-grow/length = 500000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 500000: Collecting 20 samples in estimated 2.2410 s (210 iterations)
-Benchmarking table-grow/length = 500000: Analyzing
-table-grow/length = 500000
-                        time:   [531.90 µs 590.26 µs 633.67 µs]
-Found 3 outliers among 20 measurements (15.00%)
-  3 (15.00%) high mild
-Benchmarking table-grow/length = 1000000
-Benchmarking table-grow/length = 1000000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 1000000: Collecting 20 samples in estimated 2.2295 s (210 iterations)
-Benchmarking table-grow/length = 1000000: Analyzing
-table-grow/length = 1000000
-                        time:   [599.63 µs 627.30 µs 652.73 µs]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low mild
-  1 (5.00%) high mild
-Benchmarking table-grow/length = 2000000
-Benchmarking table-grow/length = 2000000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 2000000: Collecting 20 samples in estimated 2.1921 s (210 iterations)
-Benchmarking table-grow/length = 2000000: Analyzing
-table-grow/length = 2000000
-                        time:   [661.75 µs 728.16 µs 767.87 µs]
-Benchmarking table-grow/length = 5000000
-Benchmarking table-grow/length = 5000000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 5000000: Collecting 20 samples in estimated 2.1850 s (210 iterations)
-Benchmarking table-grow/length = 5000000: Analyzing
-table-grow/length = 5000000
-                        time:   [694.35 µs 734.85 µs 772.52 µs]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) high mild
-  2 (10.00%) high severe
-Benchmarking table-grow/length = 10000000
-Benchmarking table-grow/length = 10000000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.2s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 10000000: Collecting 20 samples in estimated 2.2106 s (210 iterations)
-Benchmarking table-grow/length = 10000000: Analyzing
-table-grow/length = 10000000
-                        time:   [1.0820 ms 1.1413 ms 1.1815 ms]
-Found 3 outliers among 20 measurements (15.00%)
-  3 (15.00%) high mild
-Benchmarking table-grow/length = 20000000
-Benchmarking table-grow/length = 20000000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.4s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 20000000: Collecting 20 samples in estimated 2.3987 s (210 iterations)
-Benchmarking table-grow/length = 20000000: Analyzing
-table-grow/length = 20000000
-                        time:   [1.8433 ms 1.8909 ms 1.9445 ms]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low mild
-  1 (5.00%) high severe
-Benchmarking table-grow/length = 50000000
-Benchmarking table-grow/length = 50000000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 2.9s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 50000000: Collecting 20 samples in estimated 2.9318 s (210 iterations)
-Benchmarking table-grow/length = 50000000: Analyzing
-table-grow/length = 50000000
-                        time:   [3.8025 ms 3.8226 ms 3.8441 ms]
-Benchmarking table-grow/length = 100000000
-Benchmarking table-grow/length = 100000000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 3.5s, enable flat sampling, or reduce sample count to 10.
-Benchmarking table-grow/length = 100000000: Collecting 20 samples in estimated 3.5337 s (210 iterations)
-Benchmarking table-grow/length = 100000000: Analyzing
-table-grow/length = 100000000
-                        time:   [6.7825 ms 6.8340 ms 6.8842 ms]
-Benchmarking table-grow/length = 200000000
-Benchmarking table-grow/length = 200000000: Warming up for 3.0000 s
-Benchmarking table-grow/length = 200000000: Collecting 20 samples in estimated 2.4500 s (100 iterations)
-Benchmarking table-grow/length = 200000000: Analyzing
-table-grow/length = 200000000
-                        time:   [13.364 ms 13.400 ms 13.433 ms]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low mild
-  1 (5.00%) high mild
-Benchmarking table-grow/length = 500000000
-Benchmarking table-grow/length = 500000000: Warming up for 3.0000 s
-Benchmarking table-grow/length = 500000000: Collecting 20 samples in estimated 2.6734 s (60 iterations)
-Benchmarking table-grow/length = 500000000: Analyzing
-table-grow/length = 500000000
-                        time:   [32.374 ms 32.451 ms 32.524 ms]
-Benchmarking table-grow/length = 1000000000
-Benchmarking table-grow/length = 1000000000: Warming up for 3.0000 s
-
-Warning: Unable to complete 20 samples in 2.0s. You may wish to increase target time to 8.4s, or reduce sample count to 10.
-Benchmarking table-grow/length = 1000000000: Collecting 20 samples in estimated 8.3665 s (20 iterations)
-Benchmarking table-grow/length = 1000000000: Analyzing
-table-grow/length = 1000000000
-                        time:   [414.51 ms 416.29 ms 418.70 ms]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-
+t.grow/0                time:   [234.17 ns 237.40 ns 241.67 ns]
+t.grow/1                time:   [221.44 µs 238.21 µs 269.47 µs]
+t.grow/2                time:   [225.57 µs 231.70 µs 239.03 µs]
+t.grow/5                time:   [222.06 µs 223.60 µs 225.01 µs]
+t.grow/10               time:   [225.36 µs 226.08 µs 226.97 µs]
+t.grow/20               time:   [223.81 µs 224.81 µs 226.17 µs]
+t.grow/50               time:   [221.11 µs 222.93 µs 225.35 µs]
+t.grow/100              time:   [223.80 µs 224.68 µs 225.75 µs]
+t.grow/200              time:   [226.18 µs 227.24 µs 228.67 µs]
+t.grow/500              time:   [221.81 µs 227.99 µs 238.68 µs]
+t.grow/1000             time:   [213.19 µs 216.17 µs 218.98 µs]
+t.grow/2000             time:   [211.22 µs 212.10 µs 213.13 µs]
+t.grow/5000             time:   [210.94 µs 212.73 µs 215.06 µs]
+t.grow/10000            time:   [215.59 µs 216.15 µs 216.79 µs]
+t.grow/20000            time:   [223.74 µs 230.98 µs 235.95 µs]
+t.grow/50000            time:   [237.27 µs 239.52 µs 241.15 µs]
+t.grow/100000           time:   [244.98 µs 247.76 µs 250.18 µs]
+t.grow/200000           time:   [256.81 µs 257.58 µs 258.22 µs]
+t.grow/500000           time:   [275.31 µs 276.08 µs 277.00 µs]
+t.grow/1000000          time:   [304.49 µs 307.51 µs 309.60 µs]
+t.grow/2000000          time:   [365.71 µs 368.87 µs 371.52 µs]
+t.grow/5000000          time:   [559.24 µs 560.44 µs 561.53 µs]
+t.grow/10000000         time:   [869.85 µs 873.20 µs 875.19 µs]
+t.grow/20000000         time:   [1.4979 ms 1.4987 ms 1.4996 ms]
+t.grow/50000000         time:   [3.3857 ms 3.3905 ms 3.3955 ms]
+t.grow/100000000        time:   [6.5303 ms 6.5382 ms 6.5436 ms]
+t.grow/200000000        time:   [13.057 ms 13.090 ms 13.140 ms]
+t.grow/500000000        time:   [32.067 ms 32.536 ms 33.693 ms]
+t.grow/1000000000       time:   [404.71 ms 410.44 ms 416.00 ms]

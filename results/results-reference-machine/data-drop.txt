@@ -1,64 +1,22 @@
-data-drop/length = 1    time:   [386.82 ns 389.45 ns 392.53 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-data-drop/length = 2    time:   [387.56 ns 389.47 ns 391.12 ns]
-data-drop/length = 5    time:   [387.28 ns 389.34 ns 391.85 ns]
-data-drop/length = 10   time:   [389.15 ns 391.86 ns 394.93 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-data-drop/length = 20   time:   [390.30 ns 394.32 ns 399.05 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-data-drop/length = 50   time:   [409.94 ns 412.21 ns 415.01 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low mild
-  1 (5.00%) high severe
-data-drop/length = 100  time:   [419.23 ns 430.75 ns 446.05 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low mild
-  1 (5.00%) high severe
-data-drop/length = 200  time:   [423.79 ns 427.28 ns 431.66 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low severe
-data-drop/length = 500  time:   [421.33 ns 428.92 ns 437.34 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-data-drop/length = 1000 time:   [410.11 ns 413.98 ns 417.48 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) low severe
-data-drop/length = 2000 time:   [434.52 ns 475.82 ns 505.25 ns]
-Found 5 outliers among 20 measurements (25.00%)
-  5 (25.00%) high mild
-data-drop/length = 5000 time:   [486.79 ns 509.37 ns 522.51 ns]
-data-drop/length = 10000
-                        time:   [515.64 ns 522.50 ns 530.43 ns]
-Found 5 outliers among 20 measurements (25.00%)
-  1 (5.00%) low severe
-  4 (20.00%) low mild
-data-drop/length = 20000
-                        time:   [540.41 ns 544.65 ns 550.02 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low severe
-  1 (5.00%) low mild
-data-drop/length = 50000
-                        time:   [552.13 ns 557.06 ns 562.54 ns]
-Found 4 outliers among 20 measurements (20.00%)
-  3 (15.00%) low severe
-  1 (5.00%) low mild
-data-drop/length = 100000
-                        time:   [548.72 ns 553.83 ns 558.45 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  3 (15.00%) low severe
-data-drop/length = 200000
-                        time:   [523.69 ns 540.22 ns 550.06 ns]
-data-drop/length = 500000
-                        time:   [437.35 ns 468.50 ns 488.85 ns]
-data-drop/length = 1000000
-                        time:   [476.29 ns 528.49 ns 563.05 ns]
-data-drop/length = 2000000
-                        time:   [928.12 ns 1.1042 µs 1.2489 µs]
-data-drop/length = 5000000
-                        time:   [699.19 ns 730.42 ns 769.41 ns]
-data-drop/length = 10000000
-                        time:   [1.7594 µs 1.8567 µs 1.9273 µs]
-
+d.drop/1                time:   [387.72 ns 389.04 ns 389.87 ns]
+d.drop/2                time:   [387.12 ns 390.11 ns 394.83 ns]
+d.drop/5                time:   [388.26 ns 391.36 ns 395.08 ns]
+d.drop/10               time:   [388.92 ns 390.70 ns 392.65 ns]
+d.drop/20               time:   [388.74 ns 390.10 ns 391.41 ns]
+d.drop/50               time:   [393.14 ns 394.81 ns 396.32 ns]
+d.drop/100              time:   [397.92 ns 420.26 ns 440.68 ns]
+d.drop/200              time:   [405.63 ns 407.55 ns 408.87 ns]
+d.drop/500              time:   [406.24 ns 407.23 ns 408.11 ns]
+d.drop/1000             time:   [406.56 ns 410.18 ns 414.87 ns]
+d.drop/2000             time:   [420.00 ns 460.79 ns 495.60 ns]
+d.drop/5000             time:   [497.50 ns 517.06 ns 527.79 ns]
+d.drop/10000            time:   [512.90 ns 517.93 ns 521.42 ns]
+d.drop/20000            time:   [537.04 ns 539.10 ns 541.13 ns]
+d.drop/50000            time:   [553.09 ns 555.26 ns 556.87 ns]
+d.drop/100000           time:   [553.82 ns 559.37 ns 562.42 ns]
+d.drop/200000           time:   [519.67 ns 539.50 ns 553.18 ns]
+d.drop/500000           time:   [431.07 ns 462.76 ns 485.92 ns]
+d.drop/1000000          time:   [558.83 ns 600.48 ns 626.70 ns]
+d.drop/2000000          time:   [796.98 ns 947.31 ns 1.0772 µs]
+d.drop/5000000          time:   [532.94 ns 559.62 ns 585.19 ns]
+d.drop/10000000         time:   [1.6960 µs 1.8329 µs 1.9695 µs]

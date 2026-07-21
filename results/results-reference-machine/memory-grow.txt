@@ -1,34 +1,17 @@
-memory-grow/length = 0  time:   [2.1274 µs 2.1359 µs 2.1415 µs]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) low severe
-  2 (10.00%) low mild
-memory-grow/length = 1  time:   [3.9467 µs 3.9645 µs 3.9830 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) low mild
-memory-grow/length = 10 time:   [3.9455 µs 3.9749 µs 4.0036 µs]
-memory-grow/length = 100
-                        time:   [3.9592 µs 3.9816 µs 4.0022 µs]
-memory-grow/length = 1000
-                        time:   [3.9746 µs 4.0567 µs 4.1822 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high severe
-memory-grow/length = 2000
-                        time:   [3.9630 µs 3.9847 µs 4.0062 µs]
-memory-grow/length = 5000
-                        time:   [3.9544 µs 3.9859 µs 4.0176 µs]
-memory-grow/length = 10000
-                        time:   [3.9633 µs 3.9995 µs 4.0384 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-memory-grow/length = 20000
-                        time:   [3.9833 µs 4.0105 µs 4.0396 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-memory-grow/length = 50000
-                        time:   [4.0030 µs 4.0392 µs 4.0817 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-memory-grow/length = 65535
-                        time:   [3.9886 µs 4.0179 µs 4.0475 µs]
-
+m.grow/0                time:   [2.3415 µs 2.3801 µs 2.4313 µs]
+m.grow/1                time:   [4.1537 µs 4.2277 µs 4.3300 µs]
+m.grow/2                time:   [4.1676 µs 4.2437 µs 4.3434 µs]
+m.grow/5                time:   [4.1874 µs 4.2629 µs 4.3632 µs]
+m.grow/10               time:   [4.0296 µs 4.0453 µs 4.0725 µs]
+m.grow/20               time:   [4.0416 µs 4.0646 µs 4.0954 µs]
+m.grow/50               time:   [4.2308 µs 4.2723 µs 4.3499 µs]
+m.grow/100              time:   [4.1333 µs 4.1944 µs 4.2734 µs]
+m.grow/200              time:   [4.1464 µs 4.2140 µs 4.2977 µs]
+m.grow/500              time:   [4.1326 µs 4.1716 µs 4.2294 µs]
+m.grow/1000             time:   [4.1410 µs 4.1962 µs 4.2697 µs]
+m.grow/2000             time:   [4.1485 µs 4.2033 µs 4.2745 µs]
+m.grow/5000             time:   [4.0686 µs 4.1090 µs 4.1575 µs]
+m.grow/10000            time:   [4.0754 µs 4.1011 µs 4.1407 µs]
+m.grow/20000            time:   [4.0746 µs 4.0986 µs 4.1386 µs]
+m.grow/50000            time:   [4.0837 µs 4.1063 µs 4.1433 µs]
+m.grow/65535            time:   [4.0830 µs 4.1044 µs 4.1407 µs]

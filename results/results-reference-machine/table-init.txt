@@ -1,66 +1,22 @@
-table-init/length = 1   time:   [417.62 ns 419.75 ns 422.34 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low severe
-table-init/length = 2   time:   [416.07 ns 418.63 ns 422.09 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) low severe
-  2 (10.00%) high mild
-table-init/length = 5   time:   [422.14 ns 425.38 ns 427.96 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-table-init/length = 10  time:   [424.72 ns 427.10 ns 429.34 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-table-init/length = 20  time:   [458.76 ns 461.01 ns 463.76 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-init/length = 50  time:   [486.78 ns 489.11 ns 492.20 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-table-init/length = 100 time:   [534.69 ns 537.18 ns 540.82 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-table-init/length = 200 time:   [619.05 ns 623.63 ns 628.73 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-table-init/length = 500 time:   [889.56 ns 907.58 ns 929.69 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high severe
-table-init/length = 1000
-                        time:   [1.4567 µs 1.4734 µs 1.4856 µs]
-table-init/length = 2000
-                        time:   [2.3561 µs 2.3691 µs 2.3830 µs]
-Found 4 outliers among 20 measurements (20.00%)
-  1 (5.00%) low severe
-  3 (15.00%) low mild
-table-init/length = 5000
-                        time:   [4.9454 µs 4.9719 µs 5.0051 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) low mild
-table-init/length = 10000
-                        time:   [9.1350 µs 9.1974 µs 9.2729 µs]
-table-init/length = 20000
-                        time:   [17.470 µs 17.548 µs 17.646 µs]
-table-init/length = 50000
-                        time:   [42.412 µs 42.693 µs 43.078 µs]
-table-init/length = 100000
-                        time:   [84.049 µs 84.410 µs 84.893 µs]
-table-init/length = 200000
-                        time:   [168.52 µs 172.94 µs 177.22 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-table-init/length = 500000
-                        time:   [482.32 µs 488.15 µs 496.58 µs]
-table-init/length = 1000000
-                        time:   [1.0089 ms 1.0186 ms 1.0340 ms]
-table-init/length = 2000000
-                        time:   [2.1420 ms 2.1610 ms 2.1896 ms]
-table-init/length = 5000000
-                        time:   [9.3780 ms 9.4714 ms 9.5756 ms]
-table-init/length = 9999999
-                        time:   [18.264 ms 18.403 ms 18.564 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-
+t.init/1                time:   [415.96 ns 418.29 ns 419.95 ns]
+t.init/2                time:   [413.90 ns 416.08 ns 417.70 ns]
+t.init/5                time:   [417.93 ns 420.61 ns 422.96 ns]
+t.init/10               time:   [422.67 ns 423.99 ns 424.72 ns]
+t.init/20               time:   [455.24 ns 458.04 ns 460.92 ns]
+t.init/50               time:   [484.16 ns 485.35 ns 486.10 ns]
+t.init/100              time:   [531.81 ns 532.84 ns 533.62 ns]
+t.init/200              time:   [615.06 ns 617.78 ns 620.67 ns]
+t.init/500              time:   [878.13 ns 887.10 ns 897.17 ns]
+t.init/1000             time:   [1.4584 µs 1.4735 µs 1.4809 µs]
+t.init/2000             time:   [2.3442 µs 2.3491 µs 2.3516 µs]
+t.init/5000             time:   [4.9154 µs 4.9639 µs 5.0389 µs]
+t.init/10000            time:   [9.0763 µs 9.0969 µs 9.1097 µs]
+t.init/20000            time:   [17.411 µs 17.442 µs 17.467 µs]
+t.init/50000            time:   [42.187 µs 42.249 µs 42.317 µs]
+t.init/100000           time:   [83.779 µs 83.848 µs 83.933 µs]
+t.init/200000           time:   [167.72 µs 170.19 µs 173.30 µs]
+t.init/500000           time:   [478.67 µs 479.63 µs 481.00 µs]
+t.init/1000000          time:   [994.19 µs 995.32 µs 996.80 µs]
+t.init/2000000          time:   [2.1134 ms 2.1172 ms 2.1220 ms]
+t.init/5000000          time:   [9.5538 ms 9.5850 ms 9.6137 ms]
+t.init/9999999          time:   [19.042 ms 19.088 ms 19.145 ms]

@@ -1,87 +1,30 @@
-memory-fill/length = 1  time:   [9.7885 µs 9.8230 µs 9.8655 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-fill/length = 2  time:   [9.7349 µs 9.7720 µs 9.8387 µs]
-memory-fill/length = 5  time:   [9.7545 µs 9.7931 µs 9.8529 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-fill/length = 10 time:   [9.7633 µs 9.7943 µs 9.8376 µs]
-Found 5 outliers among 20 measurements (25.00%)
-  1 (5.00%) low mild
-  4 (20.00%) high mild
-memory-fill/length = 20 time:   [9.7511 µs 9.7841 µs 9.8312 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high severe
-memory-fill/length = 50 time:   [9.7720 µs 9.8006 µs 9.8445 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high severe
-memory-fill/length = 100
-                        time:   [9.7499 µs 9.7856 µs 9.8381 µs]
-memory-fill/length = 200
-                        time:   [9.5820 µs 9.6387 µs 9.7143 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-fill/length = 500
-                        time:   [9.6871 µs 9.7342 µs 9.7837 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-fill/length = 1000
-                        time:   [9.6360 µs 9.6923 µs 9.7718 µs]
-memory-fill/length = 2000
-                        time:   [9.6556 µs 9.7228 µs 9.8066 µs]
-memory-fill/length = 5000
-                        time:   [11.761 µs 11.829 µs 11.919 µs]
-memory-fill/length = 10000
-                        time:   [13.830 µs 13.895 µs 13.985 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-memory-fill/length = 20000
-                        time:   [17.731 µs 17.830 µs 17.998 µs]
-memory-fill/length = 50000
-                        time:   [33.890 µs 34.002 µs 34.172 µs]
-memory-fill/length = 100000
-                        time:   [58.113 µs 58.277 µs 58.582 µs]
-memory-fill/length = 200000
-                        time:   [106.80 µs 108.45 µs 110.74 µs]
-memory-fill/length = 500000
-                        time:   [250.55 µs 250.98 µs 251.73 µs]
-memory-fill/length = 1000000
-                        time:   [496.49 µs 497.49 µs 499.16 µs]
-memory-fill/length = 2000000
-                        time:   [971.58 µs 975.86 µs 982.16 µs]
-memory-fill/length = 5000000
-                        time:   [2.7202 ms 2.7257 ms 2.7361 ms]
-memory-fill/length = 10000000
-                        time:   [5.4444 ms 5.4531 ms 5.4699 ms]
-memory-fill/length = 20000000
-                        time:   [10.816 ms 10.833 ms 10.861 ms]
-memory-fill/length = 50000000
-                        time:   [26.928 ms 26.970 ms 27.046 ms]
-memory-fill/length = 100000000
-                        time:   [53.767 ms 53.838 ms 53.972 ms]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-memory-fill/length = 200000000
-                        time:   [107.54 ms 107.86 ms 108.26 ms]
-Found 4 outliers among 20 measurements (20.00%)
-  2 (10.00%) high mild
-  2 (10.00%) high severe
-memory-fill/length = 500000000
-                        time:   [269.64 ms 270.54 ms 271.68 ms]
-Found 3 outliers among 20 measurements (15.00%)
-  3 (15.00%) high severe
-memory-fill/length = 1000000000
-                        time:   [549.42 ms 551.11 ms 553.14 ms]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
-memory-fill/length = 2000000000
-                        time:   [1.1052 s 1.1069 s 1.1093 s]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) high mild
-  2 (10.00%) high severe
-memory-fill/length = 4000000000
-                        time:   [2.2187 s 2.2212 s 2.2245 s]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) high mild
-  2 (10.00%) high severe
-
+m.fill/1                time:   [9.9013 µs 9.9266 µs 9.9521 µs]
+m.fill/2                time:   [9.9169 µs 9.9412 µs 9.9574 µs]
+m.fill/5                time:   [9.9687 µs 10.020 µs 10.097 µs]
+m.fill/10               time:   [9.9571 µs 9.9796 µs 9.9974 µs]
+m.fill/20               time:   [9.9690 µs 10.027 µs 10.097 µs]
+m.fill/50               time:   [9.9727 µs 10.001 µs 10.033 µs]
+m.fill/100              time:   [9.9565 µs 9.9829 µs 10.004 µs]
+m.fill/200              time:   [9.9424 µs 10.005 µs 10.107 µs]
+m.fill/500              time:   [9.9926 µs 10.018 µs 10.042 µs]
+m.fill/1000             time:   [9.9684 µs 9.9958 µs 10.016 µs]
+m.fill/2000             time:   [10.045 µs 10.083 µs 10.134 µs]
+m.fill/5000             time:   [12.139 µs 12.156 µs 12.170 µs]
+m.fill/10000            time:   [14.090 µs 14.122 µs 14.149 µs]
+m.fill/20000            time:   [18.030 µs 18.143 µs 18.331 µs]
+m.fill/50000            time:   [34.169 µs 34.188 µs 34.213 µs]
+m.fill/100000           time:   [58.098 µs 58.288 µs 58.729 µs]
+m.fill/200000           time:   [105.36 µs 105.45 µs 105.52 µs]
+m.fill/500000           time:   [249.90 µs 250.39 µs 250.96 µs]
+m.fill/1000000          time:   [489.14 µs 490.74 µs 491.92 µs]
+m.fill/2000000          time:   [967.64 µs 968.01 µs 968.37 µs]
+m.fill/5000000          time:   [2.7086 ms 2.7131 ms 2.7174 ms]
+m.fill/10000000         time:   [5.4438 ms 5.4584 ms 5.4800 ms]
+m.fill/20000000         time:   [10.804 ms 10.811 ms 10.817 ms]
+m.fill/50000000         time:   [26.919 ms 26.934 ms 26.950 ms]
+m.fill/100000000        time:   [53.788 ms 53.948 ms 54.290 ms]
+m.fill/200000000        time:   [107.64 ms 107.70 ms 107.78 ms]
+m.fill/500000000        time:   [271.10 ms 271.24 ms 271.40 ms]
+m.fill/1000000000       time:   [549.05 ms 550.20 ms 552.10 ms]
+m.fill/2000000000       time:   [1.1055 s 1.1075 s 1.1107 s]
+m.fill/4000000000       time:   [2.2198 s 2.2222 s 2.2257 s]

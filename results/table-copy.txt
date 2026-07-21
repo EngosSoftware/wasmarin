@@ -1,174 +1,23 @@
-    Finished `bench` profile [optimized] target(s) in 0.11s
-     Running benches/table_copy.rs (target/release/deps/table_copy-c55fa2f63864fa48)
-Benchmarking table-copy/length = 0
-Benchmarking table-copy/length = 0: Warming up for 3.0000 s
-Benchmarking table-copy/length = 0: Collecting 20 samples in estimated 5.0000 s (6.6M iterations)
-Benchmarking table-copy/length = 0: Analyzing
-table-copy/length = 0   time:   [169.29 ns 172.89 ns 175.59 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-Benchmarking table-copy/length = 1
-Benchmarking table-copy/length = 1: Warming up for 3.0000 s
-Benchmarking table-copy/length = 1: Collecting 20 samples in estimated 5.0000 s (6.8M iterations)
-Benchmarking table-copy/length = 1: Analyzing
-table-copy/length = 1   time:   [167.88 ns 171.12 ns 173.49 ns]
-Benchmarking table-copy/length = 2
-Benchmarking table-copy/length = 2: Warming up for 3.0000 s
-Benchmarking table-copy/length = 2: Collecting 20 samples in estimated 5.0001 s (6.8M iterations)
-Benchmarking table-copy/length = 2: Analyzing
-table-copy/length = 2   time:   [174.18 ns 177.84 ns 180.22 ns]
-Benchmarking table-copy/length = 5
-Benchmarking table-copy/length = 5: Warming up for 3.0000 s
-Benchmarking table-copy/length = 5: Collecting 20 samples in estimated 5.0001 s (6.6M iterations)
-Benchmarking table-copy/length = 5: Analyzing
-table-copy/length = 5   time:   [176.68 ns 179.36 ns 181.23 ns]
-Benchmarking table-copy/length = 10
-Benchmarking table-copy/length = 10: Warming up for 3.0000 s
-Benchmarking table-copy/length = 10: Collecting 20 samples in estimated 5.0001 s (6.6M iterations)
-Benchmarking table-copy/length = 10: Analyzing
-table-copy/length = 10  time:   [176.24 ns 178.11 ns 179.49 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) low mild
-Benchmarking table-copy/length = 20
-Benchmarking table-copy/length = 20: Warming up for 3.0000 s
-Benchmarking table-copy/length = 20: Collecting 20 samples in estimated 5.0000 s (6.5M iterations)
-Benchmarking table-copy/length = 20: Analyzing
-table-copy/length = 20  time:   [182.26 ns 185.01 ns 186.91 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-Benchmarking table-copy/length = 50
-Benchmarking table-copy/length = 50: Warming up for 3.0000 s
-Benchmarking table-copy/length = 50: Collecting 20 samples in estimated 5.0001 s (6.2M iterations)
-Benchmarking table-copy/length = 50: Analyzing
-table-copy/length = 50  time:   [189.97 ns 193.73 ns 196.46 ns]
-Benchmarking table-copy/length = 100
-Benchmarking table-copy/length = 100: Warming up for 3.0000 s
-Benchmarking table-copy/length = 100: Collecting 20 samples in estimated 5.0001 s (5.6M iterations)
-Benchmarking table-copy/length = 100: Analyzing
-table-copy/length = 100 time:   [203.31 ns 205.21 ns 207.23 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-Benchmarking table-copy/length = 200
-Benchmarking table-copy/length = 200: Warming up for 3.0000 s
-Benchmarking table-copy/length = 200: Collecting 20 samples in estimated 5.0002 s (4.9M iterations)
-Benchmarking table-copy/length = 200: Analyzing
-table-copy/length = 200 time:   [217.12 ns 219.44 ns 222.26 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-Benchmarking table-copy/length = 500
-Benchmarking table-copy/length = 500: Warming up for 3.0000 s
-Benchmarking table-copy/length = 500: Collecting 20 samples in estimated 5.0001 s (3.6M iterations)
-Benchmarking table-copy/length = 500: Analyzing
-table-copy/length = 500 time:   [276.12 ns 279.66 ns 281.97 ns]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-Benchmarking table-copy/length = 1000
-Benchmarking table-copy/length = 1000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 1000: Collecting 20 samples in estimated 5.0003 s (2.6M iterations)
-Benchmarking table-copy/length = 1000: Analyzing
-table-copy/length = 1000
-                        time:   [341.57 ns 342.45 ns 343.22 ns]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low severe
-  1 (5.00%) low mild
-Benchmarking table-copy/length = 2000
-Benchmarking table-copy/length = 2000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 2000: Collecting 20 samples in estimated 5.0005 s (1.7M iterations)
-Benchmarking table-copy/length = 2000: Analyzing
-table-copy/length = 2000
-                        time:   [492.32 ns 493.12 ns 493.70 ns]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low severe
-  1 (5.00%) low mild
-Benchmarking table-copy/length = 5000
-Benchmarking table-copy/length = 5000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 5000: Collecting 20 samples in estimated 5.0010 s (844k iterations)
-Benchmarking table-copy/length = 5000: Analyzing
-table-copy/length = 5000
-                        time:   [963.72 ns 968.80 ns 979.17 ns]
-Found 4 outliers among 20 measurements (20.00%)
-  2 (10.00%) low mild
-  1 (5.00%) high mild
-  1 (5.00%) high severe
-Benchmarking table-copy/length = 10000
-Benchmarking table-copy/length = 10000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 10000: Collecting 20 samples in estimated 5.0004 s (459k iterations)
-Benchmarking table-copy/length = 10000: Analyzing
-table-copy/length = 10000
-                        time:   [1.6219 µs 1.6252 µs 1.6303 µs]
-Benchmarking table-copy/length = 20000
-Benchmarking table-copy/length = 20000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 20000: Collecting 20 samples in estimated 5.0023 s (245k iterations)
-Benchmarking table-copy/length = 20000: Analyzing
-table-copy/length = 20000
-                        time:   [2.9589 µs 2.9625 µs 2.9648 µs]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) low severe
-  2 (10.00%) low mild
-Benchmarking table-copy/length = 50000
-Benchmarking table-copy/length = 50000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 50000: Collecting 20 samples in estimated 5.0066 s (101k iterations)
-Benchmarking table-copy/length = 50000: Analyzing
-table-copy/length = 50000
-                        time:   [6.9052 µs 6.9150 µs 6.9241 µs]
-Benchmarking table-copy/length = 100000
-Benchmarking table-copy/length = 100000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 100000: Collecting 20 samples in estimated 5.0094 s (52k iterations)
-Benchmarking table-copy/length = 100000: Analyzing
-table-copy/length = 100000
-                        time:   [13.594 µs 13.665 µs 13.791 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high severe
-Benchmarking table-copy/length = 200000
-Benchmarking table-copy/length = 200000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 200000: Collecting 20 samples in estimated 5.0337 s (26k iterations)
-Benchmarking table-copy/length = 200000: Analyzing
-table-copy/length = 200000
-                        time:   [26.756 µs 26.799 µs 26.836 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-Benchmarking table-copy/length = 500000
-Benchmarking table-copy/length = 500000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 500000: Collecting 20 samples in estimated 5.0829 s (10k iterations)
-Benchmarking table-copy/length = 500000: Analyzing
-table-copy/length = 500000
-                        time:   [67.069 µs 67.157 µs 67.223 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
-Benchmarking table-copy/length = 1000000
-Benchmarking table-copy/length = 1000000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 1000000: Collecting 20 samples in estimated 5.0519 s (5250 iterations)
-Benchmarking table-copy/length = 1000000: Analyzing
-table-copy/length = 1000000
-                        time:   [135.60 µs 135.83 µs 136.05 µs]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
-Benchmarking table-copy/length = 2000000
-Benchmarking table-copy/length = 2000000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 2000000: Collecting 20 samples in estimated 5.3269 s (2730 iterations)
-Benchmarking table-copy/length = 2000000: Analyzing
-table-copy/length = 2000000
-                        time:   [275.23 µs 276.10 µs 277.16 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-Benchmarking table-copy/length = 5000000
-Benchmarking table-copy/length = 5000000: Warming up for 3.0000 s
-Benchmarking table-copy/length = 5000000: Collecting 20 samples in estimated 5.0984 s (1050 iterations)
-Benchmarking table-copy/length = 5000000: Analyzing
-table-copy/length = 5000000
-                        time:   [702.55 µs 706.80 µs 711.87 µs]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-Benchmarking table-copy/length = 9999999
-Benchmarking table-copy/length = 9999999: Warming up for 3.0000 s
-Benchmarking table-copy/length = 9999999: Collecting 20 samples in estimated 6.1456 s (630 iterations)
-Benchmarking table-copy/length = 9999999: Analyzing
-table-copy/length = 9999999
-                        time:   [1.4294 ms 1.4403 ms 1.4571 ms]
-Found 3 outliers among 20 measurements (15.00%)
-  2 (10.00%) low mild
-  1 (5.00%) high severe
-
+t.copy/0                time:   [171.25 ns 173.25 ns 174.68 ns]
+t.copy/1                time:   [169.81 ns 171.74 ns 173.16 ns]
+t.copy/2                time:   [173.62 ns 175.91 ns 177.54 ns]
+t.copy/5                time:   [174.87 ns 178.06 ns 181.01 ns]
+t.copy/10               time:   [174.19 ns 175.76 ns 176.96 ns]
+t.copy/20               time:   [180.38 ns 182.97 ns 184.74 ns]
+t.copy/50               time:   [186.79 ns 190.89 ns 194.04 ns]
+t.copy/100              time:   [202.60 ns 204.74 ns 206.66 ns]
+t.copy/200              time:   [211.94 ns 212.94 ns 213.52 ns]
+t.copy/500              time:   [271.57 ns 273.70 ns 274.94 ns]
+t.copy/1000             time:   [338.09 ns 338.81 ns 339.28 ns]
+t.copy/2000             time:   [484.16 ns 485.31 ns 486.26 ns]
+t.copy/5000             time:   [951.09 ns 952.22 ns 953.58 ns]
+t.copy/10000            time:   [1.6068 µs 1.6116 µs 1.6176 µs]
+t.copy/20000            time:   [2.9406 µs 2.9438 µs 2.9488 µs]
+t.copy/50000            time:   [6.8802 µs 6.8881 µs 6.8942 µs]
+t.copy/100000           time:   [13.496 µs 13.509 µs 13.526 µs]
+t.copy/200000           time:   [26.769 µs 26.783 µs 26.798 µs]
+t.copy/500000           time:   [67.036 µs 67.059 µs 67.080 µs]
+t.copy/1000000          time:   [133.91 µs 134.11 µs 134.26 µs]
+t.copy/2000000          time:   [268.13 µs 268.68 µs 269.56 µs]
+t.copy/5000000          time:   [790.11 µs 797.66 µs 811.76 µs]
+t.copy/9999999          time:   [1.4988 ms 1.5005 ms 1.5036 ms]
