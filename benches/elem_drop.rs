@@ -64,8 +64,7 @@ fn _0001(c: &mut Criterion) {
     group.bench_with_input(format!("L = {length}"), &length, |b, _| {
       b.iter_batched_ref(
         || {
-          let compiler = wasmer::sys::Singlepass::default();
-          let mut store = wasmer::Store::new(compiler);
+          let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());
           let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
           let warm = instance.exports.get_typed_function::<(), ()>(&store, "warm").unwrap();
           warm.call(&mut store).unwrap();
