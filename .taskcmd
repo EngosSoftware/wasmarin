@@ -62,7 +62,7 @@
   .bench-table-init
     .desc Executes benchmarks for table.init operator
     .cmd rm -rf target/criterion
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init | tee ./results/table-init.txt
 
   .bench-table-grow
     .desc Executes benchmarks for table.grow operator

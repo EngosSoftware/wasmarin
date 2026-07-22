@@ -10,15 +10,17 @@ const SAMPLE_SIZE: usize = 20;
 
 /// Lengths used for benchmarking.
 /// In wasmparser, in the limits.rs file, the maximum number of table entries is set to 10_000_000.
-const LENGTHS: [usize; 22] = [
-  1, 2, 5, 10, 20, 50, 100, 200, 500, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 100_000, 200_000, 500_000, 1_000_000, 2_000_000, 5_000_000, 9_999_999,
-];
+// const LENGTHS: [usize; 22] = [
+//   1, 2, 5, 10, 20, 50, 100, 200, 500, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 100_000, 200_000, 500_000, 1_000_000, 2_000_000, 5_000_000, 9_999_999,
+// ];
+const LENGTHS: [usize; 8] = [1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 9_999_999];
 
 const TEMPLATE: &str = r#"
 (module
   (table (export "tab") <TABLE-LENGTH> funcref)
   (elem func <ELEMENTS>)
   (func $f1)
+  (func (export "warm"))
   (func (export "fun")
     i32.const 0         ;; Destination offset in the table
     i32.const 0         ;; Source offset in the elements
@@ -73,17 +75,19 @@ fn _0001(c: &mut Criterion) {
     let store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
     group.bench_with_input(format!("{length}"), &length, |b, _| {
-      b.iter_batched(
+      b.iter_batched_ref(
         || {
           let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());
           let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
+          let warm = instance.exports.get_typed_function::<(), ()>(&store, "warm").unwrap();
+          warm.call(&mut store).unwrap();
           let fun = instance.exports.get_typed_function::<(), ()>(&store, "fun").unwrap();
           (store, fun)
         },
-        |(mut store, fun)| {
-          fun.call(&mut store).unwrap();
+        |(store, fun)| {
+          fun.call(store).unwrap();
         },
-        criterion::BatchSize::LargeInput,
+        criterion::BatchSize::SmallInput,
       );
     });
   }
