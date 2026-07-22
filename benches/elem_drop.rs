@@ -1,4 +1,5 @@
 use criterion::{criterion_group, criterion_main, Criterion};
+use std::hint::black_box;
 use std::time::Duration;
 
 #[cfg(target_os = "macos")]
@@ -73,7 +74,7 @@ fn _0001(c: &mut Criterion) {
           (store, fun)
         },
         |(store, fun)| {
-          fun.call(store).unwrap();
+          fun.call(black_box(store)).unwrap();
         },
         criterion::BatchSize::SmallInput,
       );
