@@ -8,10 +8,12 @@ model <- lm(y ~ x)
 # Print coefficients
 print(coef(model))
 
+# Estimating function
 f <- function(x) {
   400000 + (((x + 2048 - 1) / 2048) * 360)
 }
 
+# Estimated values
 x1 <- seq(1, 10000000, by = 1000)
 y1 <- f(x1)
 
@@ -19,5 +21,4 @@ png("data-drop.png")
 plot(x, y)
 abline(model, col = "blue")
 lines(x1, y1, type = "s", col = "red")
-
 dev.off()
