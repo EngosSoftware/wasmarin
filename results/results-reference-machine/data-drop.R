@@ -7,3 +7,16 @@ model <- lm(y ~ x)
 
 # Print coefficients
 print(coef(model))
+
+f <- function(x) {
+  400000 + (((x + 2048 - 1) / 2048) * 248)
+}
+
+x1 <- seq(1, 10000000, by = 100)
+y1 <- f(x1)
+
+# Plot
+png("data-drop.png")
+plot(x, y)
+plot(x1, y1, type = "s", lwd = 2, col = "red")
+abline(model, col = "blue")
