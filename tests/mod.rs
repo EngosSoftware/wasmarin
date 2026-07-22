@@ -1,3 +1,4 @@
+mod bulk_memory_estimations;
 mod estimations;
 mod metering;
 mod round_trip;
