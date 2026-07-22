@@ -67,7 +67,7 @@
   .bench-table-grow
     .desc Executes benchmarks for table.grow operator
     .cmd rm -rf target/criterion
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-grow
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-grow | tee ./results/table-grow.txt
 
   .bench-table-fill
     .desc Executes benchmarks for table.fill operator
