@@ -82,12 +82,12 @@
   .bench-data-drop
     .desc Executes benchmarks for data.drop operator
     .cmd rm -rf target/criterion
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench data-drop
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench data-drop | tee ./results/data-drop.txt
 
   .bench-elem-drop
-      .desc Executes benchmarks for elem.drop operator
-      .cmd rm -rf target/criterion
-      .cmd cargo {{BENCH_TOOLKIT}} bench --bench elem-drop
+    .desc Executes benchmarks for elem.drop operator
+    .cmd rm -rf target/criterion
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench elem-drop | tee ./results/elem-drop.txt
 
   .clean
     .desc Cleans all targets
