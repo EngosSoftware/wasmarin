@@ -10,13 +10,27 @@ const BASE: usize = 400000;
 const UNIT_COST: usize = 2048;
 const UNIT_SIZE: usize = 248;
 
-fn calc(length: usize) -> usize {
+fn estimated(length: usize) -> usize {
   BASE + length.div_ceil(UNIT_SIZE) * UNIT_COST
+}
+
+fn regression(length: usize) -> usize {
+  ((length as f64 * 1.200047e-01) + 4.462121e+05).round() as usize
 }
 
 #[test]
 fn a() {
   for (i, length) in LENGTHS.iter().enumerate() {
-    println!("{:12.1}    {:12.1}", GAS[i], calc(*length))
+    let gas_measured = GAS[i];
+    let gas_regression = regression(*length);
+    let gas_regression_diff = gas_regression as isize - gas_measured as isize;
+    let gas_regression_diff_perc = (gas_regression_diff as f64 / gas_measured as f64) * 100.0;
+    let gas_estimated = estimated(*length);
+    let gas_estimated_diff = gas_estimated as isize - gas_measured as isize;
+    let gas_estimated_diff_perc = (gas_estimated_diff as f64 / gas_measured as f64) * 100.0;
+    println!(
+      "{:12} {:12} {:12} {:12} [{:5.1}] {:12} [{:5.1}]",
+      gas_measured, gas_regression, gas_estimated, gas_regression_diff, gas_regression_diff_perc, gas_estimated_diff, gas_estimated_diff_perc
+    );
   }
 }
