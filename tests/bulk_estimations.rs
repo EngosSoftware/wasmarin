@@ -10,8 +10,8 @@ const GAS: &[usize] = &[
 ];
 
 const BASE: usize = 400000;
-const UNIT_SIZE: usize = 1024;
-const UNIT_COST: usize = 144;
+const UNIT_SIZE: usize = 2048;
+const UNIT_COST: usize = 360;
 
 fn estimated(length: usize) -> usize {
   BASE + length.div_ceil(UNIT_SIZE) * UNIT_COST
