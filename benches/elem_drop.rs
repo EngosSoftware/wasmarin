@@ -74,7 +74,7 @@ fn _0001(c: &mut Criterion) {
         |(store, fun)| {
           fun.call(black_box(store)).unwrap();
         },
-        criterion::BatchSize::SmallInput,
+        criterion::BatchSize::LargeInput,
       );
     });
   }

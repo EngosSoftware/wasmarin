@@ -163,7 +163,7 @@ fn _0001(c: &mut Criterion) {
         |(store, fun)| {
           fun.call(store).unwrap();
         },
-        criterion::BatchSize::SmallInput,
+        criterion::BatchSize::LargeInput,
       );
     });
   }
