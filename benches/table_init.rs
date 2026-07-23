@@ -10,10 +10,9 @@ const SAMPLE_SIZE: usize = 20;
 
 /// Lengths used for benchmarking.
 /// In wasmparser, in the limits.rs file, the maximum number of table entries is set to 10_000_000.
-// const LENGTHS: [usize; 22] = [
-//   1, 2, 5, 10, 20, 50, 100, 200, 500, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 100_000, 200_000, 500_000, 1_000_000, 2_000_000, 5_000_000, 9_999_999,
-// ];
-const LENGTHS: [usize; 8] = [1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 9_999_999];
+const LENGTHS: [usize; 22] = [
+  1, 2, 5, 10, 20, 50, 100, 200, 500, 1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 100_000, 200_000, 500_000, 1_000_000, 2_000_000, 5_000_000, 9_999_999,
+];
 
 const TEMPLATE: &str = r#"
 (module

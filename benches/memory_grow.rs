@@ -17,6 +17,7 @@ const WASM_PAGE_SIZE: usize = 65_536;
 const TEMPLATE: &str = r#"
 (module
   (memory (export "mem") 0)
+  (func (export "warm"))
   (func (export "fun") (result i32)
     i32.const <PAGES>  ;; Number of pages to grow the memory
     memory.grow        ;; Execute memory growing
@@ -61,17 +62,19 @@ fn _0001(c: &mut Criterion) {
     let store = wasmer::Store::new(compiler);
     let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
     group.bench_with_input(format!("{length}"), &length, |b, _| {
-      b.iter_batched(
+      b.iter_batched_ref(
         || {
           let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());
           let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
+          let warm = instance.exports.get_typed_function::<(), ()>(&store, "warm").unwrap();
+          warm.call(&mut store).unwrap();
           let fun = instance.exports.get_typed_function::<(), i32>(&store, "fun").unwrap();
           (store, fun)
         },
-        |(mut store, fun)| {
-          fun.call(&mut store).unwrap();
+        |(store, fun)| {
+          fun.call(store).unwrap();
         },
-        criterion::BatchSize::LargeInput,
+        criterion::BatchSize::SmallInput,
       );
     });
   }
