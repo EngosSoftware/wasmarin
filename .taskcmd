@@ -14,40 +14,28 @@
   .bench-all
     .desc Executes all bulk-memory benchmarks
     .cmd rm -rf target/criterion
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-init 2>&1 | tee ./results/memory-init-0.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-grow 2>&1 | tee ./results/memory-grow-0.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-fill 2>&1 | tee ./results/memory-fill-0.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-copy 2>&1 | tee ./results/memory-copy-0.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init 2>&1 | tee ./results/table-init-0.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-grow 2>&1 | tee ./results/table-grow-0.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-fill 2>&1 | tee ./results/table-fill-0.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-copy 2>&1 | tee ./results/table-copy-0.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench data-drop 2>&1 | tee ./results/data-drop-0.txt
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench elem-drop 2>&1 | tee ./results/elem-drop-0.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-init 2>&1 | tee ./results/memory-init.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-grow 2>&1 | tee ./results/memory-grow.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-fill 2>&1 | tee ./results/memory-fill.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench memory-copy 2>&1 | tee ./results/memory-copy.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init 2>&1 | tee ./results/table-init.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-grow 2>&1 | tee ./results/table-grow.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-fill 2>&1 | tee ./results/table-fill.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-copy 2>&1 | tee ./results/table-copy.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench data-drop 2>&1 | tee ./results/data-drop.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench elem-drop 2>&1 | tee ./results/elem-drop.txt
 
   .bench-clean-results
-    .cmd cat ./results/elem-drop-0.txt   | grep -E '^e.drop' > ./results/elem-drop.txt
-    .cmd cat ./results/data-drop-0.txt   | grep -E '^d.drop' > ./results/data-drop.txt
-    .cmd cat ./results/memory-copy-0.txt | grep -E '^m.copy' > ./results/memory-copy.txt
-    .cmd cat ./results/memory-fill-0.txt | grep -E '^m.fill' > ./results/memory-fill.txt
-    .cmd cat ./results/memory-grow-0.txt | grep -E '^m.grow' > ./results/memory-grow.txt
-    .cmd cat ./results/memory-init-0.txt | grep -E '^m.init' > ./results/memory-init.txt
-    .cmd cat ./results/table-copy-0.txt  | grep -E '^t.copy' > ./results/table-copy.txt
-    .cmd cat ./results/table-fill-0.txt  | grep -E '^t.fill' > ./results/table-fill.txt
-    .cmd cat ./results/table-grow-0.txt  | grep -E '^t.grow' > ./results/table-grow.txt
-    .cmd cat ./results/table-init-0.txt  | grep -E '^t.init' > ./results/table-init.txt
-
-  .bench-clean-results-reference
-    .cmd cat ./results/results-reference-machine/data-drop-0.txt   | grep -E '^d.drop' > ./results/results-reference-machine/data-drop-1.txt
-    .cmd cat ./results/results-reference-machine/elem-drop-0.txt   | grep -E '^e.drop' > ./results/results-reference-machine/elem-drop-1.txt
-    .cmd cat ./results/results-reference-machine/memory-copy-0.txt | grep -E '^m.copy' > ./results/results-reference-machine/memory-copy-1.txt
-    .cmd cat ./results/results-reference-machine/memory-fill-0.txt | grep -E '^m.fill' > ./results/results-reference-machine/memory-fill-1.txt
-    .cmd cat ./results/results-reference-machine/memory-grow-0.txt | grep -E '^m.grow' > ./results/results-reference-machine/memory-grow-1.txt
-    .cmd cat ./results/results-reference-machine/memory-init-0.txt | grep -E '^m.init' > ./results/results-reference-machine/memory-init-1.txt
-    .cmd cat ./results/results-reference-machine/table-copy-0.txt  | grep -E '^t.copy' > ./results/results-reference-machine/table-copy-1.txt
-    .cmd cat ./results/results-reference-machine/table-fill-0.txt  | grep -E '^t.fill' > ./results/results-reference-machine/table-fill-1.txt
-    .cmd cat ./results/results-reference-machine/table-grow-0.txt  | grep -E '^t.grow' > ./results/results-reference-machine/table-grow-1.txt
-    .cmd cat ./results/results-reference-machine/table-init-0.txt  | grep -E '^t.init' > ./results/results-reference-machine/table-init-1.txt
+    .cmd cat ./results/elem-drop.txt   | grep -E '^e.drop' > ./results/elem-drop-1.txt
+    .cmd cat ./results/data-drop.txt   | grep -E '^d.drop' > ./results/data-drop-1.txt
+    .cmd cat ./results/memory-copy.txt | grep -E '^m.copy' > ./results/memory-copy-1.txt
+    .cmd cat ./results/memory-fill.txt | grep -E '^m.fill' > ./results/memory-fill-1.txt
+    .cmd cat ./results/memory-grow.txt | grep -E '^m.grow' > ./results/memory-grow-1.txt
+    .cmd cat ./results/memory-init.txt | grep -E '^m.init' > ./results/memory-init-1.txt
+    .cmd cat ./results/table-copy.txt  | grep -E '^t.copy' > ./results/table-copy-1.txt
+    .cmd cat ./results/table-fill.txt  | grep -E '^t.fill' > ./results/table-fill-1.txt
+    .cmd cat ./results/table-grow.txt  | grep -E '^t.grow' > ./results/table-grow-1.txt
+    .cmd cat ./results/table-init.txt  | grep -E '^t.init' > ./results/table-init-1.txt
 
   .bench-memory-fill
     .desc Executes benchmarks for memory.fill operator
@@ -62,12 +50,12 @@
   .bench-table-init
     .desc Executes benchmarks for table.init operator
     .cmd rm -rf target/criterion
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init | tee ./results/table-init.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-init
 
   .bench-table-grow
     .desc Executes benchmarks for table.grow operator
     .cmd rm -rf target/criterion
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-grow | tee ./results/table-grow.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench table-grow
 
   .bench-table-fill
     .desc Executes benchmarks for table.fill operator
@@ -82,12 +70,12 @@
   .bench-data-drop
     .desc Executes benchmarks for data.drop operator
     .cmd rm -rf target/criterion
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench data-drop | tee ./results/data-drop.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench data-drop
 
   .bench-elem-drop
     .desc Executes benchmarks for elem.drop operator
     .cmd rm -rf target/criterion
-    .cmd cargo {{BENCH_TOOLKIT}} bench --bench elem-drop | tee ./results/elem-drop.txt
+    .cmd cargo {{BENCH_TOOLKIT}} bench --bench elem-drop
 
   .clean
     .desc Cleans all targets
