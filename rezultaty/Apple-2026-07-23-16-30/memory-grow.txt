@@ -1,0 +1,47 @@
+m.grow/0                time:   [37.145 ns 37.437 ns 37.966 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.grow/1                time:   [287.53 ns 288.30 ns 288.87 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low severe
+m.grow/2                time:   [288.15 ns 289.04 ns 289.81 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low severe
+m.grow/5                time:   [287.18 ns 287.75 ns 288.24 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) low severe
+  1 (5.00%) high mild
+m.grow/10               time:   [284.85 ns 286.00 ns 287.37 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low severe
+  1 (5.00%) high mild
+m.grow/20               time:   [284.67 ns 286.44 ns 288.55 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low mild
+m.grow/50               time:   [284.18 ns 285.07 ns 286.32 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) low mild
+  2 (10.00%) high mild
+m.grow/100              time:   [282.41 ns 283.49 ns 284.82 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low mild
+m.grow/200              time:   [283.68 ns 284.24 ns 284.90 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) low severe
+  1 (5.00%) high mild
+m.grow/500              time:   [283.40 ns 284.81 ns 286.91 ns]
+m.grow/1000             time:   [284.93 ns 286.06 ns 287.52 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+m.grow/2000             time:   [296.76 ns 297.93 ns 299.75 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+m.grow/5000             time:   [360.65 ns 362.30 ns 364.82 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) high mild
+  2 (10.00%) high severe
+m.grow/10000            time:   [440.89 ns 442.98 ns 446.68 ns]
+m.grow/20000            time:   [629.55 ns 633.65 ns 640.79 ns]
+m.grow/50000            time:   [1.1435 µs 1.1532 µs 1.1696 µs]
+m.grow/65535            time:   [1.4031 µs 1.4169 µs 1.4410 µs]
+

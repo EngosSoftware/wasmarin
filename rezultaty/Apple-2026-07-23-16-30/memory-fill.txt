@@ -1,0 +1,95 @@
+m.fill/1                time:   [1.5769 µs 1.5813 µs 1.5860 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+m.fill/2                time:   [1.5850 µs 1.5913 µs 1.5978 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+m.fill/5                time:   [1.5910 µs 1.6023 µs 1.6124 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+m.fill/10               time:   [1.5816 µs 1.5918 µs 1.6038 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+m.fill/20               time:   [1.5842 µs 1.5881 µs 1.5951 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+m.fill/50               time:   [1.5919 µs 1.5959 µs 1.6019 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+m.fill/100              time:   [1.5900 µs 1.6042 µs 1.6230 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+m.fill/200              time:   [1.6014 µs 1.6043 µs 1.6090 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+m.fill/500              time:   [1.6161 µs 1.6250 µs 1.6345 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+m.fill/1000             time:   [1.6452 µs 1.6606 µs 1.6845 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.fill/2000             time:   [1.6641 µs 1.6710 µs 1.6786 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high severe
+m.fill/5000             time:   [1.7172 µs 1.7232 µs 1.7316 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+m.fill/10000            time:   [1.8136 µs 1.8334 µs 1.8531 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.fill/20000            time:   [2.3836 µs 2.3960 µs 2.4121 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  1 (5.00%) high mild
+  3 (15.00%) high severe
+m.fill/50000            time:   [3.5093 µs 3.5187 µs 3.5307 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+m.fill/100000           time:   [5.3212 µs 5.3311 µs 5.3423 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+m.fill/200000           time:   [9.0367 µs 9.0542 µs 9.0677 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+m.fill/500000           time:   [19.976 µs 20.064 µs 20.135 µs]
+m.fill/1000000          time:   [38.449 µs 38.474 µs 38.506 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+m.fill/2000000          time:   [74.971 µs 75.079 µs 75.163 µs]
+m.fill/5000000          time:   [184.57 µs 184.75 µs 184.88 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+m.fill/10000000         time:   [366.50 µs 367.20 µs 368.20 µs]
+m.fill/20000000         time:   [730.30 µs 731.50 µs 733.18 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+m.fill/50000000         time:   [1.8249 ms 1.8270 ms 1.8303 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.fill/100000000        time:   [3.6608 ms 3.6646 ms 3.6693 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+m.fill/200000000        time:   [7.3717 ms 7.3837 ms 7.3950 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+m.fill/500000000        time:   [18.512 ms 18.574 ms 18.629 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.fill/1000000000       time:   [37.569 ms 37.636 ms 37.728 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+m.fill/2000000000       time:   [77.675 ms 77.906 ms 78.151 ms]
+m.fill/4000000000       time:   [157.71 ms 158.05 ms 158.45 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+
