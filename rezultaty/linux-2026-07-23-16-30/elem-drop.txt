@@ -1,0 +1,137 @@
+e.drop/L = 1            time:   [118.18 ns 119.00 ns 120.02 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+e.drop/L = 2            time:   [119.39 ns 120.05 ns 120.86 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+e.drop/L = 5            time:   [119.59 ns 120.38 ns 121.26 ns]
+e.drop/L = 10           time:   [117.76 ns 118.64 ns 119.29 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low severe
+e.drop/L = 20           time:   [127.56 ns 132.08 ns 135.45 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  1 (5.00%) low severe
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+e.drop/L = 50           time:   [129.94 ns 134.28 ns 137.52 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  2 (10.00%) high mild
+e.drop/L = 100          time:   [132.74 ns 139.60 ns 146.58 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+e.drop/L = 200          time:   [134.83 ns 140.18 ns 144.08 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+e.drop/L = 300          time:   [137.07 ns 142.41 ns 146.29 ns]
+e.drop/L = 400          time:   [140.52 ns 145.51 ns 149.12 ns]
+e.drop/L = 500          time:   [144.08 ns 148.76 ns 152.11 ns]
+e.drop/L = 600          time:   [148.06 ns 151.57 ns 154.12 ns]
+e.drop/L = 700          time:   [148.97 ns 152.57 ns 155.15 ns]
+e.drop/L = 800          time:   [147.94 ns 150.81 ns 152.90 ns]
+e.drop/L = 900          time:   [149.41 ns 152.34 ns 154.46 ns]
+e.drop/L = 1000         time:   [151.09 ns 154.13 ns 156.34 ns]
+e.drop/L = 2000         time:   [157.42 ns 158.56 ns 159.55 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) low severe
+  1 (5.00%) low mild
+e.drop/L = 3000         time:   [158.88 ns 160.21 ns 161.35 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) low severe
+  2 (10.00%) low mild
+e.drop/L = 4000         time:   [162.75 ns 164.22 ns 165.32 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) low severe
+  1 (5.00%) low mild
+e.drop/L = 5000         time:   [163.52 ns 165.71 ns 169.63 ns]
+Found 5 outliers among 20 measurements (25.00%)
+  1 (5.00%) low severe
+  2 (10.00%) low mild
+  2 (10.00%) high severe
+e.drop/L = 6000         time:   [163.96 ns 165.46 ns 166.63 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low severe
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+e.drop/L = 7000         time:   [166.03 ns 167.48 ns 168.66 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) low mild
+e.drop/L = 8000         time:   [168.12 ns 169.59 ns 170.87 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
+e.drop/L = 9000         time:   [171.29 ns 172.03 ns 172.60 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) low severe
+e.drop/L = 10000        time:   [168.81 ns 170.39 ns 171.53 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+e.drop/L = 20000        time:   [179.09 ns 182.14 ns 185.55 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low mild
+  2 (10.00%) high mild
+e.drop/L = 30000        time:   [182.42 ns 184.11 ns 186.91 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+e.drop/L = 40000        time:   [177.82 ns 179.18 ns 180.38 ns]
+e.drop/L = 50000        time:   [191.23 ns 197.16 ns 203.99 ns]
+e.drop/L = 60000        time:   [181.50 ns 183.29 ns 186.02 ns]
+e.drop/L = 70000        time:   [187.77 ns 195.01 ns 205.96 ns]
+e.drop/L = 80000        time:   [191.38 ns 196.55 ns 201.63 ns]
+e.drop/L = 90000        time:   [175.31 ns 181.32 ns 191.33 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+e.drop/L = 100000       time:   [199.76 ns 206.94 ns 211.70 ns]
+e.drop/L = 200000       time:   [163.76 ns 171.00 ns 183.86 ns]
+Found 4 outliers among 20 measurements (20.00%)
+  1 (5.00%) low mild
+  3 (15.00%) high severe
+e.drop/L = 300000       time:   [168.15 ns 170.53 ns 174.63 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+e.drop/L = 400000       time:   [164.78 ns 172.83 ns 190.79 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+e.drop/L = 500000       time:   [164.87 ns 166.99 ns 169.68 ns]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+e.drop/L = 600000       time:   [165.25 ns 169.07 ns 172.17 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+e.drop/L = 700000       time:   [195.32 ns 200.39 ns 205.16 ns]
+e.drop/L = 800000       time:   [184.03 ns 190.41 ns 197.83 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+e.drop/L = 900000       time:   [192.25 ns 208.06 ns 227.29 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+e.drop/L = 1000000      time:   [192.72 ns 200.42 ns 206.51 ns]
+e.drop/L = 2000000      time:   [241.77 ns 274.78 ns 318.38 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+e.drop/L = 3000000      time:   [260.93 ns 274.62 ns 289.62 ns]
+e.drop/L = 4000000      time:   [251.93 ns 261.79 ns 270.48 ns]
+e.drop/L = 5000000      time:   [1.7345 ms 1.7536 ms 1.7835 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+e.drop/L = 6000000      time:   [2.0777 ms 2.0878 ms 2.1006 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+e.drop/L = 7000000      time:   [2.4090 ms 2.4155 ms 2.4230 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+e.drop/L = 8000000      time:   [2.8366 ms 2.8497 ms 2.8650 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+e.drop/L = 9000000      time:   [3.2566 ms 3.2677 ms 3.2820 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+e.drop/L = 10000000     time:   [3.4982 ms 3.5079 ms 3.5179 ms]
+
