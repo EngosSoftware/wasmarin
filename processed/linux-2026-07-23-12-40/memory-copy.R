@@ -11,18 +11,18 @@ print(coefs)
 
 # Estimating function
 fe <- function(x) {
-  160000 + (((x + 8192 - 1) / 8192) * 250)
+  4600000 + (((x + 132 - 1) / 132) * 16384)
 }
 
 # Estimated values
-xe <- seq(1, 10000000, by = 1000)
+xe <- seq(1, 40000000000, by = 10000)
 ye <- fe(xe)
 
 png("memory-copy-reg.png")
 plot(x, y, main = "memory.copy reg Linux")
 abline(model, col = "blue")
 lines(xe, ye, col = "magenta")
-legend("bottomright", legend = sprintf("y = %.0f + %.5f x", coefs[1], coefs[2]), bty = "n")
+legend("bottomright", legend = sprintf("y = %.0f + %.2f x", coefs[1], coefs[2]), bty = "n")
 
 png("memory-copy-log.png")
 plot(x, y, log = "x", main = "memory.copy log Linux")
