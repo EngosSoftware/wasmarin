@@ -5,7 +5,7 @@ y <- c(136370,136660,138160,137930,138450,139710,140050,149920,150070,150500,152
 # Linear regression
 model <- lm(y ~ x)
 
-# Print coefficients
+# Print regression coefficients
 print(coef(model))
 
 # Estimating function
@@ -17,8 +17,11 @@ f <- function(x) {
 x1 <- seq(1, 10000000, by = 1000)
 y1 <- f(x1)
 
-png("data-drop.png")
-# plot(x, y)
- plot(x, y, log = "x")
+png("data-drop-a.png")
+plot(x, y)
 abline(model, col = "blue")
+lines(x1, y1, col = "red")
+
+png("data-drop-b.png")
+plot(x, y, log = "x")
 lines(x1, y1, col = "red")
