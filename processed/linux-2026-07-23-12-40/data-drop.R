@@ -4,9 +4,10 @@ y <- c(136370,136660,138160,137930,138450,139710,140050,149920,150070,150500,152
 
 # Linear regression
 model <- lm(y ~ x)
+coefs <- coef(model)
 
 # Print regression coefficients
-print(coef(model))
+print(coefs)
 
 # Estimating function
 fe <- function(x) {
@@ -18,10 +19,11 @@ xe <- seq(1, 10000000, by = 1000)
 ye <- fe(xe)
 
 png("data-drop-reg.png")
-plot(x, y, main = "data.drop reg linux")
+plot(x, y, main = "data.drop reg Linux")
 abline(model, col = "blue")
 lines(xe, ye, col = "magenta")
+legend("bottomright", legend = sprintf("y = %.0f + %.5f x", coefs[1], coefs[2]), bty = "n")
 
 png("data-drop-log.png")
-plot(x, y, log = "x", main = "data.drop log linux")
+plot(x, y, log = "x", main = "data.drop log Linux")
 lines(xe, ye, col = "magenta")
