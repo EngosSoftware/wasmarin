@@ -9,19 +9,19 @@ model <- lm(y ~ x)
 print(coef(model))
 
 # Estimating function
-f <- function(x) {
+fe <- function(x) {
   160000 + (((x + 8192 - 1) / 8192) * 250)
 }
 
 # Estimated values
-x1 <- seq(1, 10000000, by = 1000)
-y1 <- f(x1)
+xe <- seq(1, 10000000, by = 1000)
+ye <- fe(xe)
 
-png("data-drop-a.png")
-plot(x, y)
+png("data-drop-reg.png")
+plot(x, y, main = "data.drop reg linux")
 abline(model, col = "blue")
-lines(x1, y1, col = "red")
+lines(xe, ye, col = "magenta")
 
-png("data-drop-b.png")
-plot(x, y, log = "x")
-lines(x1, y1, col = "red")
+png("data-drop-log.png")
+plot(x, y, log = "x", main = "data.drop log linux")
+lines(xe, ye, col = "magenta")
