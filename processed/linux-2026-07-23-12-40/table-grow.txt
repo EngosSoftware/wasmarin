@@ -1,0 +1,191 @@
+t.grow/0                time:   [354.12 ns 450.63 ns 560.92 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+t.grow/1                time:   [179.98 µs 186.25 µs 193.00 µs]
+t.grow/2                time:   [180.36 µs 187.68 µs 196.64 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+t.grow/5                time:   [179.91 µs 185.74 µs 191.95 µs]
+t.grow/10               time:   [180.28 µs 185.59 µs 191.61 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/20               time:   [179.26 µs 184.08 µs 189.24 µs]
+t.grow/30               time:   [181.46 µs 188.81 µs 197.42 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+t.grow/50               time:   [181.01 µs 186.56 µs 192.59 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/60               time:   [180.22 µs 187.07 µs 195.06 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/70               time:   [178.44 µs 184.71 µs 192.67 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+t.grow/80               time:   [180.21 µs 187.07 µs 195.23 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+t.grow/90               time:   [181.42 µs 189.43 µs 199.48 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+t.grow/100              time:   [183.50 µs 193.36 µs 204.66 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+t.grow/200              time:   [179.94 µs 186.89 µs 194.87 µs]
+t.grow/300              time:   [182.97 µs 191.01 µs 199.81 µs]
+t.grow/400              time:   [182.90 µs 189.45 µs 196.69 µs]
+t.grow/500              time:   [181.23 µs 191.56 µs 206.85 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+t.grow/600              time:   [182.30 µs 189.84 µs 198.84 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+t.grow/700              time:   [183.44 µs 190.03 µs 197.79 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/800              time:   [182.50 µs 191.47 µs 203.84 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+t.grow/900              time:   [188.64 µs 198.14 µs 208.69 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/1000             time:   [182.68 µs 187.45 µs 192.75 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/2000             time:   [193.11 µs 203.89 µs 215.72 µs]
+t.grow/3000             time:   [191.70 µs 199.51 µs 209.08 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/4000             time:   [196.15 µs 205.98 µs 217.09 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+t.grow/5000             time:   [197.52 µs 202.41 µs 208.06 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+t.grow/6000             time:   [202.71 µs 211.46 µs 221.06 µs]
+t.grow/7000             time:   [204.08 µs 211.37 µs 219.64 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/8000             time:   [208.74 µs 216.07 µs 224.30 µs]
+t.grow/9000             time:   [209.84 µs 216.61 µs 224.48 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+t.grow/10000            time:   [214.90 µs 222.53 µs 230.71 µs]
+t.grow/20000            time:   [251.49 µs 260.36 µs 270.48 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/30000            time:   [284.10 µs 291.56 µs 299.67 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/40000            time:   [325.11 µs 335.43 µs 347.16 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/50000            time:   [354.88 µs 366.17 µs 381.27 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+t.grow/60000            time:   [387.94 µs 396.02 µs 404.61 µs]
+t.grow/70000            time:   [425.38 µs 436.79 µs 449.67 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/80000            time:   [461.05 µs 473.96 µs 489.72 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) high mild
+  2 (10.00%) high severe
+t.grow/90000            time:   [492.54 µs 506.32 µs 522.42 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+t.grow/100000           time:   [534.80 µs 548.60 µs 564.06 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.grow/200000           time:   [891.14 µs 918.26 µs 949.45 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+t.grow/300000           time:   [1.2497 ms 1.2882 ms 1.3344 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+t.grow/400000           time:   [1.5786 ms 1.6062 ms 1.6392 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+t.grow/500000           time:   [1.9280 ms 1.9690 ms 2.0185 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high severe
+t.grow/600000           time:   [2.3164 ms 2.4035 ms 2.5039 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+t.grow/700000           time:   [2.6147 ms 2.6633 ms 2.7212 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) high mild
+  2 (10.00%) high severe
+t.grow/800000           time:   [2.9661 ms 3.0436 ms 3.1322 ms]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high mild
+t.grow/900000           time:   [3.3080 ms 3.3746 ms 3.4542 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) high mild
+  2 (10.00%) high severe
+t.grow/1000000          time:   [3.6172 ms 3.6819 ms 3.7599 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  1 (5.00%) high mild
+  3 (15.00%) high severe
+t.grow/2000000          time:   [7.1643 ms 7.2848 ms 7.4158 ms]
+t.grow/3000000          time:   [10.746 ms 10.904 ms 11.062 ms]
+t.grow/4000000          time:   [14.271 ms 14.491 ms 14.719 ms]
+t.grow/5000000          time:   [17.910 ms 18.155 ms 18.403 ms]
+t.grow/6000000          time:   [21.272 ms 21.581 ms 21.892 ms]
+t.grow/7000000          time:   [24.923 ms 25.187 ms 25.451 ms]
+t.grow/8000000          time:   [28.245 ms 28.622 ms 29.006 ms]
+t.grow/9000000          time:   [32.288 ms 32.676 ms 33.060 ms]
+t.grow/10000000         time:   [35.875 ms 36.301 ms 36.737 ms]
+t.grow/20000000         time:   [71.329 ms 72.338 ms 73.367 ms]
+t.grow/30000000         time:   [106.47 ms 107.84 ms 109.20 ms]
+t.grow/40000000         time:   [140.92 ms 142.58 ms 144.33 ms]
+t.grow/50000000         time:   [174.68 ms 176.54 ms 178.53 ms]
+t.grow/60000000         time:   [211.25 ms 213.54 ms 216.09 ms]
+t.grow/70000000         time:   [247.51 ms 249.87 ms 252.53 ms]
+t.grow/80000000         time:   [281.92 ms 284.50 ms 287.51 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  3 (15.00%) high mild
+  1 (5.00%) high severe
+t.grow/90000000         time:   [316.89 ms 319.45 ms 322.51 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high severe
+t.grow/100000000        time:   [352.37 ms 355.65 ms 359.63 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high severe
+t.grow/200000000        time:   [704.07 ms 707.92 ms 713.17 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high severe
+t.grow/300000000        time:   [1.0560 s 1.0601 s 1.0657 s]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high severe
+t.grow/400000000        time:   [1.3930 s 1.3969 s 1.4022 s]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+t.grow/500000000        time:   [1.7467 s 1.7528 s 1.7609 s]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+t.grow/600000000        time:   [2.1153 s 2.1198 s 2.1267 s]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+t.grow/700000000        time:   [2.4433 s 2.4502 s 2.4607 s]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+t.grow/800000000        time:   [2.7967 s 2.8038 s 2.8146 s]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+t.grow/900000000        time:   [3.1409 s 3.1475 s 3.1570 s]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+t.grow/1000000000       time:   [3.4993 s 3.5052 s 3.5142 s]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high severe
+

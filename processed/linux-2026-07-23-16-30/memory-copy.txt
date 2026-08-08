@@ -1,0 +1,41 @@
+m.copy/1                time:   [4.4071 µs 4.4473 µs 4.4750 µs]
+m.copy/2                time:   [4.4050 µs 4.4436 µs 4.4705 µs]
+m.copy/5                time:   [4.4179 µs 4.4585 µs 4.4849 µs]
+m.copy/10               time:   [4.4175 µs 4.4528 µs 4.4771 µs]
+m.copy/20               time:   [4.4036 µs 4.4461 µs 4.4724 µs]
+m.copy/50               time:   [4.3990 µs 4.4437 µs 4.4771 µs]
+m.copy/100              time:   [4.4163 µs 4.4569 µs 4.4825 µs]
+m.copy/200              time:   [4.4146 µs 4.4530 µs 4.4803 µs]
+m.copy/500              time:   [4.4389 µs 4.4765 µs 4.5011 µs]
+m.copy/1000             time:   [4.4503 µs 4.4899 µs 4.5148 µs]
+m.copy/2000             time:   [4.4665 µs 4.5083 µs 4.5362 µs]
+m.copy/5000             time:   [7.7554 µs 7.8115 µs 7.8476 µs]
+m.copy/10000            time:   [10.952 µs 11.023 µs 11.068 µs]
+m.copy/20000            time:   [17.290 µs 17.365 µs 17.411 µs]
+m.copy/50000            time:   [42.550 µs 42.743 µs 42.856 µs]
+m.copy/100000           time:   [79.949 µs 80.477 µs 80.804 µs]
+m.copy/200000           time:   [154.39 µs 155.46 µs 156.13 µs]
+m.copy/500000           time:   [382.99 µs 384.84 µs 386.10 µs]
+m.copy/1000000          time:   [763.31 µs 766.81 µs 769.62 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.copy/2000000          time:   [1.5218 ms 1.5292 ms 1.5341 ms]
+m.copy/5000000          time:   [3.8077 ms 3.8192 ms 3.8280 ms]
+m.copy/10000000         time:   [7.6749 ms 7.6978 ms 7.7137 ms]
+m.copy/20000000         time:   [15.410 ms 15.439 ms 15.475 ms]
+m.copy/50000000         time:   [38.549 ms 38.655 ms 38.790 ms]
+m.copy/100000000        time:   [77.115 ms 77.372 ms 77.569 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.copy/200000000        time:   [154.21 ms 154.62 ms 155.09 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+m.copy/500000000        time:   [385.31 ms 386.50 ms 387.48 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.copy/1000000000       time:   [772.53 ms 774.72 ms 777.07 ms]
+m.copy/2000000000       time:   [1.5499 s 1.5545 s 1.5590 s]
+m.copy/4000000000       time:   [3.1092 s 3.1156 s 3.1227 s]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high mild
+

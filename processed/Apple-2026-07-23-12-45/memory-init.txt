@@ -1,0 +1,67 @@
+m.init/0                time:   [35.841 ns 36.063 ns 36.424 ns]
+m.init/1                time:   [1.6251 µs 1.6323 µs 1.6415 µs]
+m.init/2                time:   [1.6354 µs 1.6435 µs 1.6515 µs]
+m.init/5                time:   [1.6560 µs 1.6694 µs 1.6869 µs]
+m.init/10               time:   [1.6810 µs 1.7055 µs 1.7419 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.init/20               time:   [1.6976 µs 1.7287 µs 1.7513 µs]
+m.init/50               time:   [1.6806 µs 1.7360 µs 1.8038 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low mild
+  2 (10.00%) high severe
+m.init/100              time:   [1.6079 µs 1.6196 µs 1.6337 µs]
+m.init/200              time:   [1.6532 µs 1.6932 µs 1.7514 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  3 (15.00%) high severe
+m.init/500              time:   [1.6697 µs 1.6938 µs 1.7139 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.init/1000             time:   [1.8061 µs 1.8366 µs 1.8542 µs]
+m.init/2000             time:   [1.8477 µs 1.8678 µs 1.8968 µs]
+m.init/5000             time:   [1.8855 µs 1.8937 µs 1.9037 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+m.init/10000            time:   [1.9925 µs 1.9984 µs 2.0080 µs]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+m.init/20000            time:   [2.5389 µs 2.5509 µs 2.5600 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.init/50000            time:   [3.9525 µs 3.9697 µs 3.9845 µs]
+m.init/100000           time:   [6.1690 µs 6.2256 µs 6.2715 µs]
+m.init/200000           time:   [10.578 µs 10.626 µs 10.670 µs]
+m.init/500000           time:   [23.180 µs 23.267 µs 23.375 µs]
+m.init/1000000          time:   [44.736 µs 45.114 µs 45.383 µs]
+m.init/2000000          time:   [86.246 µs 86.366 µs 86.448 µs]
+Found 4 outliers among 20 measurements (20.00%)
+  1 (5.00%) low mild
+  2 (10.00%) high mild
+  1 (5.00%) high severe
+m.init/5000000          time:   [213.08 µs 213.38 µs 213.63 µs]
+m.init/10000000         time:   [422.93 µs 424.35 µs 425.57 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+m.init/20000000         time:   [849.26 µs 853.09 µs 857.24 µs]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low mild
+  2 (10.00%) high mild
+m.init/50000000         time:   [2.1727 ms 2.1925 ms 2.2050 ms]
+m.init/100000000        time:   [4.4668 ms 4.4722 ms 4.4783 ms]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+m.init/200000000        time:   [8.9825 ms 9.0135 ms 9.0470 ms]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high severe
+m.init/500000000        time:   [22.338 ms 22.464 ms 22.661 ms]
+m.init/1000000000       time:   [45.750 ms 45.904 ms 46.021 ms]
+m.init/2000000000       time:   [90.368 ms 90.547 ms 90.796 ms]
+m.init/2147483647       time:   [97.815 ms 98.230 ms 98.818 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  2 (10.00%) low mild
+  1 (5.00%) high mild
+  1 (5.00%) high severe
+

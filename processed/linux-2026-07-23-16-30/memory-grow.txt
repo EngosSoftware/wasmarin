@@ -1,0 +1,20 @@
+m.grow/0                time:   [106.99 ns 107.91 ns 108.86 ns]
+Found 2 outliers among 20 measurements (10.00%)
+  2 (10.00%) high severe
+m.grow/1                time:   [2.2605 µs 2.3126 µs 2.3519 µs]
+m.grow/2                time:   [2.2577 µs 2.3170 µs 2.3650 µs]
+m.grow/5                time:   [2.2606 µs 2.3120 µs 2.3514 µs]
+m.grow/10               time:   [2.2630 µs 2.3222 µs 2.3703 µs]
+m.grow/20               time:   [2.2664 µs 2.3204 µs 2.3627 µs]
+m.grow/50               time:   [2.2760 µs 2.3373 µs 2.3922 µs]
+m.grow/100              time:   [2.2470 µs 2.3094 µs 2.3610 µs]
+m.grow/200              time:   [2.2553 µs 2.3104 µs 2.3541 µs]
+m.grow/500              time:   [2.2702 µs 2.3244 µs 2.3687 µs]
+m.grow/1000             time:   [2.2395 µs 2.2959 µs 2.3400 µs]
+m.grow/2000             time:   [2.2589 µs 2.3112 µs 2.3510 µs]
+m.grow/5000             time:   [2.2421 µs 2.3020 µs 2.3479 µs]
+m.grow/10000            time:   [2.2444 µs 2.3012 µs 2.3425 µs]
+m.grow/20000            time:   [2.2337 µs 2.2880 µs 2.3288 µs]
+m.grow/50000            time:   [2.2706 µs 2.3251 µs 2.3676 µs]
+m.grow/65535            time:   [2.2793 µs 2.3439 µs 2.3989 µs]
+

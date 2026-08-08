@@ -1,0 +1,29 @@
+t.init/1                time:   [108.71 ns 109.98 ns 111.19 ns]
+t.init/2                time:   [109.79 ns 111.03 ns 112.05 ns]
+t.init/5                time:   [115.63 ns 116.86 ns 117.99 ns]
+t.init/10               time:   [121.58 ns 123.17 ns 124.30 ns]
+t.init/20               time:   [134.00 ns 135.74 ns 137.20 ns]
+t.init/50               time:   [173.52 ns 175.10 ns 176.84 ns]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.init/100              time:   [249.40 ns 251.60 ns 254.71 ns]
+t.init/200              time:   [375.52 ns 378.33 ns 382.26 ns]
+t.init/500              time:   [762.32 ns 769.23 ns 779.50 ns]
+t.init/1000             time:   [1.4020 µs 1.4146 µs 1.4334 µs]
+t.init/2000             time:   [2.6881 µs 2.7150 µs 2.7553 µs]
+t.init/5000             time:   [6.5247 µs 6.5894 µs 6.6828 µs]
+t.init/10000            time:   [12.923 µs 13.064 µs 13.262 µs]
+t.init/20000            time:   [25.716 µs 25.967 µs 26.322 µs]
+t.init/50000            time:   [63.720 µs 64.378 µs 65.293 µs]
+t.init/100000           time:   [127.52 µs 129.12 µs 131.32 µs]
+t.init/200000           time:   [255.39 µs 258.34 µs 262.44 µs]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
+t.init/500000           time:   [722.89 µs 736.94 µs 757.07 µs]
+t.init/1000000          time:   [1.5215 ms 1.5424 ms 1.5733 ms]
+t.init/2000000          time:   [3.1390 ms 3.1737 ms 3.2257 ms]
+t.init/5000000          time:   [7.9768 ms 8.0809 ms 8.1995 ms]
+t.init/9999999          time:   [16.044 ms 16.240 ms 16.467 ms]
+Found 4 outliers among 20 measurements (20.00%)
+  4 (20.00%) high mild
+
