@@ -262,3 +262,17 @@ i64.mul
 global.get $scratch          ;; TOS = length
 memory.fill                  ;; original instruction
 ```
+## Estimation function parameters
+
+| Operation     |      base | unitSize | unitCost |
+|---------------|----------:|---------:|---------:|
+| `memory.init` |   3100000 |       64 |    32768 |
+| `memory.grow` |   2300000 |     8192 |       32 |
+| `memory.fill` |   2900000 |       64 |    32768 |
+| `memory.copy` |   4500000 |       64 |    50176 |
+| `table.init`  |     70000 |       32 |    52224 |
+| `table.grow`  | 200000000 |       16 |    57344 |
+| `table.fill`  |     80000 |       64 |    45056 |
+| `table.copy`  |     70000 |       32 |    34816 |
+| `data.drop`   |    150000 |     8192 |      250 |
+| `elem.drop`   |    120000 |     1024 |      384 |
