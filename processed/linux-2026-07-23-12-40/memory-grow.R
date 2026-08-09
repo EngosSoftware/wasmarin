@@ -10,8 +10,11 @@ coefs <- coef(model)
 print(coefs)
 
 # Estimating function
+base <- 2300000
+size <- 8192
+cost <- 32
 fe <- function(x) {
-  2300000 + (((x + 8192 - 1) / 8192) * 32)
+  base + (((x + size - 1) / size) * cost)
 }
 
 # Estimated values
@@ -27,3 +30,4 @@ legend("bottomright", legend = sprintf("y = %.0f + %.5f x", coefs[1], coefs[2]),
 png("memory-grow-log.png")
 plot(x, y, log = "x", main = "memory.grow log Linux")
 lines(xe, ye, col = "magenta")
+legend("topleft", legend = sprintf(" base = %i\n size = %i\n cost = %i", base, size, cost), bty = "n")
