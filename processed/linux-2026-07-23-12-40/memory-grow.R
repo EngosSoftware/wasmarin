@@ -11,7 +11,7 @@ print(coefs)
 
 # Estimating function
 fe <- function(x) {
-  4600000 + (((x + 132 - 1) / 132) * 16384)
+  2300000 + (((x + 8192 - 1) / 8192) * 32)
 }
 
 # Estimated values
