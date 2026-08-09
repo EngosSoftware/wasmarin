@@ -13,11 +13,9 @@ const ELEM_DROP: BenchmarkData = BenchmarkData {
   base: 400000,
   unit_size: 2048,
   unit_cost: 360,
-  r_a: 1.450275e-01,
-  r_b: 4.749930e+05,
 };
 
 #[test]
-fn estimate_data_drop() {
+fn estimate() {
   values(&ELEM_DROP);
 }
