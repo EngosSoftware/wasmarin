@@ -22,7 +22,7 @@ png("memory-grow-reg.png")
 plot(x, y, main = "memory.grow reg Linux")
 abline(model, col = "blue")
 lines(xe, ye, col = "magenta")
-legend("bottomright", legend = sprintf("y = %.0f + %.2f x", coefs[1], coefs[2]), bty = "n")
+legend("bottomright", legend = sprintf("y = %.0f + %.5f x", coefs[1], coefs[2]), bty = "n")
 
 png("memory-grow-log.png")
 plot(x, y, log = "x", main = "memory.grow log Linux")
