@@ -1,5 +1,6 @@
 mod data_drop;
 mod elem_drop;
+mod memory_copy;
 mod memory_fill;
 mod memory_grow;
 mod memory_init;
