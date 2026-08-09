@@ -1,5 +1,6 @@
 mod data_drop;
 mod elem_drop;
+mod memory_init;
 
 struct BenchmarkData {
   lengths: &'static [usize],
