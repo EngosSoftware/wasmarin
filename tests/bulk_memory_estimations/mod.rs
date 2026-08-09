@@ -1,5 +1,6 @@
 mod data_drop;
 mod elem_drop;
+mod memory_grow;
 mod memory_init;
 
 struct BenchmarkData {
