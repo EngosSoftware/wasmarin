@@ -4,6 +4,7 @@ mod memory_copy;
 mod memory_fill;
 mod memory_grow;
 mod memory_init;
+mod table_init;
 
 struct BenchmarkData {
   lengths: &'static [usize],
