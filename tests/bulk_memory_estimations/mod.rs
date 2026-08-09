@@ -1,5 +1,5 @@
-mod estimate_data_drop;
-mod estimate_elem_drop;
+mod data_drop;
+mod elem_drop;
 
 struct BenchmarkData {
   lengths: &'static [usize],
