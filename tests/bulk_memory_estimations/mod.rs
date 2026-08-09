@@ -4,6 +4,7 @@ mod memory_copy;
 mod memory_fill;
 mod memory_grow;
 mod memory_init;
+mod table_copy;
 mod table_fill;
 mod table_grow;
 mod table_init;
