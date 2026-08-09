@@ -15,7 +15,7 @@ fe <- function(x) {
 }
 
 # Estimated values
-xe <- seq(1, 40000000000, by = 10000)
+xe <- seq(1, 2147483647, by = 10000)
 ye <- fe(xe)
 
 png("memory-init-reg.png")
