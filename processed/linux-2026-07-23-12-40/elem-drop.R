@@ -10,8 +10,11 @@ coefs <- coef(model)
 print(coefs)
 
 # Estimating function
+base <- 120000
+size <- 1024
+cost <- 384
 fe <- function(x) {
-  120000 + (((x + 1024 - 1) / 1024) * 384)
+  base + (((x + size - 1) / size) * cost)
 }
 
 # Estimated values
@@ -27,3 +30,4 @@ legend("bottomright", legend = sprintf("y = %.0f + %.5f x", coefs[1], coefs[2]),
 png("elem-drop-log.png")
 plot(x, y, log = "x", main = "elem.drop log linux")
 lines(xe, ye, col = "magenta")
+legend("topleft", legend = sprintf(" base = %i\n size = %i\n cost = %i", base, size, cost), bty = "n")
