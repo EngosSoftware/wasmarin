@@ -14,9 +14,12 @@ const LENGTHS: [usize; 17] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1_000, 2_00
 /// Page size of the Wasm memory.
 const WASM_PAGE_SIZE: usize = 65_536;
 
+/// Initial size of the benchmarked memory in pages.
+const INITIAL: usize = 0;
+
 const TEMPLATE: &str = r#"
 (module
-  (memory (export "mem") 0)
+  (memory (export "mem") <INITIAL>)
   (func (export "warm"))
   (func (export "fun") (result i32)
     i32.const <PAGES>  ;; Number of pages to grow the memory
@@ -26,7 +29,7 @@ const TEMPLATE: &str = r#"
 "#;
 
 fn wat_source(pages: usize) -> String {
-  TEMPLATE.replace("<PAGES>", &pages.to_string())
+  TEMPLATE.replace("<INITIAL>", &INITIAL.to_string()).replace("<PAGES>", &pages.to_string())
 }
 
 fn make_config() -> Criterion {
@@ -47,9 +50,9 @@ fn precheck() {
     let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
     let memory = instance.exports.get_memory("mem").unwrap();
     let fun = instance.exports.get_typed_function::<(), i32>(&store, "fun").unwrap();
-    assert_eq!(0, fun.call(&mut store).unwrap());
-    assert_eq!(lengths, memory.view(&store).size().0 as usize);
-    assert_eq!(lengths * WASM_PAGE_SIZE, memory.view(&store).data_size() as usize);
+    assert_eq!(INITIAL, fun.call(&mut store).unwrap() as usize);
+    assert_eq!(INITIAL + lengths, memory.view(&store).size().0 as usize);
+    assert_eq!((INITIAL + lengths) * WASM_PAGE_SIZE, memory.view(&store).data_size() as usize);
   }
 }
 
