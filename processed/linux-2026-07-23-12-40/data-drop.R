@@ -10,24 +10,24 @@ coefs <- coef(model)
 print(coefs)
 
 # Estimating function
-base <- 150000
-size <- 8192
-cost <- 250
+a <- 0.043
+b <- 150000.0
 fe <- function(x) {
-  base + (((x + size - 1) / size) * cost)
+  a*x + b
 }
 
 # Estimated values
-xe <- seq(1, 10000000, by = 1000)
+xe <- seq(1, 10000000, by = 10000)
 ye <- fe(xe)
 
 png("data-drop-reg.png")
 plot(x, y, main = "data.drop reg Linux")
 abline(model, col = "blue")
 lines(xe, ye, col = "magenta")
-legend("bottomright", legend = sprintf("y = %.0f + %.5f x", coefs[1], coefs[2]), bty = "n")
+legend("bottomright", legend = sprintf("r = %.5f x + %.0f", coefs[2], coefs[1]), bty = "n")
+legend("topleft", legend = sprintf("y = %.3f x + %.0f", a, b), bty = "n")
 
 png("data-drop-log.png")
 plot(x, y, log = "x", main = "data.drop log Linux")
 lines(xe, ye, col = "magenta")
-legend("topleft", legend = sprintf(" base = %i\n size = %i\n cost = %i", base, size, cost), bty = "n")
+legend("topleft", legend = sprintf("y = %.3f x + %.0f", a, b), bty = "n")
