@@ -165,16 +165,3 @@ fn _0001(c: &mut Criterion) {
 
 criterion_group!(name = table_grow; config = make_config(); targets = _0001);
 criterion_main!(table_grow);
-
-/*
-
-
-unsafe {
-    let mut aux = 0u32;
-    let start = core::arch::x86_64::__rdtscp(&mut aux);
-    // call into instance.table.grow(...)
-    let end = core::arch::x86_64::__rdtscp(&mut aux);
-    end - start
-}
-
-*/
