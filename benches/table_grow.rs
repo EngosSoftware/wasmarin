@@ -1,8 +1,9 @@
 use criterion::{criterion_group, criterion_main, Criterion};
+use std::hint::black_box;
 use std::time::Duration;
 
 #[cfg(target_os = "macos")]
-const MEASUREMENT_TIME: u64 = 5;
+const MEASUREMENT_TIME: u64 = 10;
 #[cfg(target_os = "linux")]
 const MEASUREMENT_TIME: u64 = 10;
 
@@ -94,24 +95,18 @@ const INITIALS: &[usize] = &[1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_0
 const TEMPLATE: &str = r#"
 (module
   (table (export "tab") <INITIAL> funcref)
-  (elem func $f1 $f2)
+  (elem func $f1)
   (func $f1)
-  (func $f2)
-  (func (export "warm"))
   (func (export "fun") (result i32)
-    ref.func <FUN>
+    ref.func $f1
     i32.const <GROW>
     table.grow 0
   )
 )
 "#;
 
-fn wat_source(initial: usize, grow: usize, fun: bool) -> String {
-  let fun = if fun { "$f1" } else { "$f2" };
-  TEMPLATE
-    .replace("<INITIAL>", &initial.to_string())
-    .replace("<GROW>", &grow.to_string())
-    .replace("<FUN>", fun)
+fn wat_source(initial: usize, grow: usize) -> String {
+  TEMPLATE.replace("<INITIAL>", &initial.to_string()).replace("<GROW>", &grow.to_string())
 }
 
 fn make_config() -> Criterion {
@@ -124,11 +119,9 @@ fn make_config() -> Criterion {
 
 /// Checks if the benchmarked Wasm code works.
 fn precheck() {
-  let mut fun_switch = false;
   for initial in INITIALS.iter().rev().take(2) {
     for length in LENGTHS {
-      let wasm_bytes = wat::parse_str(wat_source(*initial, *length, fun_switch)).unwrap();
-      fun_switch = !fun_switch;
+      let wasm_bytes = wat::parse_str(wat_source(*initial, *length)).unwrap();
       let compiler = wasmer::sys::Singlepass::default();
       let mut store = wasmer::Store::new(compiler);
       let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
@@ -143,13 +136,11 @@ fn precheck() {
 }
 
 fn _0001(c: &mut Criterion) {
-  precheck();
-  let mut group = c.benchmark_group("t.g");
-  let mut fun_switch = false;
+  // precheck();
+  let mut group = c.benchmark_group("tg");
   for initial in INITIALS {
-    for length in LENGTHS {
-      let wasm_bytes = wat::parse_str(wat_source(*initial, *length, fun_switch)).unwrap();
-      fun_switch = !fun_switch;
+    for length in LENGTHS.iter().rev() {
+      let wasm_bytes = wat::parse_str(wat_source(*initial, *length)).unwrap();
       let compiler = wasmer::sys::Singlepass::default();
       let store = wasmer::Store::new(compiler);
       let module = wasmer::Module::from_binary(&store, &wasm_bytes).unwrap();
@@ -158,15 +149,14 @@ fn _0001(c: &mut Criterion) {
           || {
             let mut store = wasmer::Store::new(wasmer::sys::Singlepass::default());
             let instance = wasmer::Instance::new(&mut store, &module, &wasmer::imports! {}).unwrap();
-            let warm = instance.exports.get_typed_function::<(), ()>(&store, "warm").unwrap();
-            warm.call(&mut store).unwrap();
             let fun = instance.exports.get_typed_function::<(), i32>(&store, "fun").unwrap();
             (store, fun)
           },
           |(store, fun)| {
-            fun.call(store).unwrap();
+            _ = black_box(fun.call(store));
+            //assert_eq!(*initial as i32, fun.call(store).unwrap());
           },
-          criterion::BatchSize::LargeInput,
+          criterion::BatchSize::SmallInput,
         );
       });
     }
@@ -175,3 +165,16 @@ fn _0001(c: &mut Criterion) {
 
 criterion_group!(name = table_grow; config = make_config(); targets = _0001);
 criterion_main!(table_grow);
+
+/*
+
+
+unsafe {
+    let mut aux = 0u32;
+    let start = core::arch::x86_64::__rdtscp(&mut aux);
+    // call into instance.table.grow(...)
+    let end = core::arch::x86_64::__rdtscp(&mut aux);
+    end - start
+}
+
+*/
