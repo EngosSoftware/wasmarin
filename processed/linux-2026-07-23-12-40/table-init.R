@@ -9,25 +9,38 @@ coefs <- coef(model)
 # Print regression coefficients
 print(coefs)
 
-# Estimating function
+# Estimating linear function
+a <- 1632.0
+b <- 70000.0
+fl <- function(x) {
+  a*x + b
+}
+
+# Estimated linear values
+xl <- seq(1, 9999999, by = 1000)
+yl <- fl(xl)
+
+# Estimating staircase function
 base <- 70000
 size <- 32
 cost <- 52224
-fe <- function(x) {
+fs <- function(x) {
   base + (((x + size - 1) / size) * cost)
 }
 
-# Estimated values
-xe <- seq(1, 9999999, by = 1000)
-ye <- fe(xe)
+# Estimated staircase values
+xs <- seq(1, 9999999, by = 1000)
+ys <- fs(xs)
 
 png("table-init-reg.png")
 plot(x, y, main = "table.init reg Linux")
 abline(model, col = "blue")
-lines(xe, ye, col = "magenta")
+lines(xl, yl, col = "magenta")
+lines(xs, ys, col = "green", lty = 2)
 legend("bottomright", legend = sprintf("y = %.0f + %.2f x", coefs[1], coefs[2]), bty = "n")
 
 png("table-init-log.png")
 plot(x, y, log = "x", main = "table.init log Linux")
-lines(xe, ye, col = "magenta")
+lines(xl, yl, col = "magenta")
+lines(xs, ys, col = "green", lty = 2)
 legend("topleft", legend = sprintf(" base = %i\n size = %i\n cost = %i", base, size, cost), bty = "n")
