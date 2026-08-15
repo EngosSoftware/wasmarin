@@ -9,7 +9,7 @@ coefs <- coef(model)
 # Print regression coefficients
 print(coefs)
 
-# Estimating line function
+# Estimating linear function
 a <- 0.043
 b <- 150000.0
 fe <- function(x) {
@@ -24,7 +24,7 @@ fs <- function(x) {
   (((x + size - 1) / size) * cost) + base
 }
 
-# Estimated line values
+# Estimated linear values
 xe <- seq(1, 10000000, by = 10000)
 ye <- fe(xe)
 
