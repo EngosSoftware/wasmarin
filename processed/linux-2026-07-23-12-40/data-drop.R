@@ -9,25 +9,39 @@ coefs <- coef(model)
 # Print regression coefficients
 print(coefs)
 
-# Estimating function
+# Estimating line function
 a <- 0.043
 b <- 150000.0
 fe <- function(x) {
   a*x + b
 }
 
-# Estimated values
+# Estimating staircase function
+base <- 150000
+size <- 8192
+cost <- 250
+fs <- function(x) {
+  (((x + size - 1) / size) * cost) + base
+}
+
+# Estimated line values
 xe <- seq(1, 10000000, by = 10000)
 ye <- fe(xe)
+
+# Estimated staircase values
+xs <- seq(1, 10000000, by = 10000)
+ys <- fs(xs)
 
 png("data-drop-reg.png")
 plot(x, y, main = "data.drop reg Linux")
 abline(model, col = "blue")
 lines(xe, ye, col = "magenta")
+lines(xs, ys, col = "green")
 legend("bottomright", legend = sprintf("r = %.5f x + %.0f", coefs[2], coefs[1]), bty = "n")
 legend("topleft", legend = sprintf("y = %.3f x + %.0f", a, b), bty = "n")
 
 png("data-drop-log.png")
 plot(x, y, log = "x", main = "data.drop log Linux")
 lines(xe, ye, col = "magenta")
+lines(xe, ye, col = "green")
 legend("topleft", legend = sprintf("y = %.3f x + %.0f", a, b), bty = "n")
