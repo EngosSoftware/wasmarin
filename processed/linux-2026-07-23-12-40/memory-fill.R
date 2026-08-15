@@ -9,25 +9,38 @@ coefs <- coef(model)
 # Print regression coefficients
 print(coefs)
 
-# Estimating function
+# Estimating linear function
+a <- 512.0
+b <- 2900000.0
+fl <- function(x) {
+  a*x + b
+}
+
+# Estimated linear values
+xl <- seq(1, 4000000000, by = 10000)
+yl <- fl(xl)
+
+# Estimating staircase function
 base <- 2900000
 size <- 64
 cost <- 32768
-fe <- function(x) {
+fs <- function(x) {
   base + (((x + size - 1) / size) * cost)
 }
 
-# Estimated values
-xe <- seq(1, 4000000000, by = 10000)
-ye <- fe(xe)
+# Estimated staircase values
+xs <- seq(1, 4000000000, by = 10000)
+ys <- fs(xs)
 
 png("memory-fill-reg.png")
 plot(x, y, main = "memory.fill reg Linux")
 abline(model, col = "blue")
-lines(xe, ye, col = "magenta")
+lines(xl, yl, col = "magenta")
+lines(xs, ys, col = "green", lty = 2)
 legend("bottomright", legend = sprintf("y = %.0f + %.2f x", coefs[1], coefs[2]), bty = "n")
 
 png("memory-fill-log.png")
 plot(x, y, log = "x", main = "memory.fill log Linux")
-lines(xe, ye, col = "magenta")
+lines(xl, yl, col = "magenta")
+lines(xs, ys, col = "green", lty = 2)
 legend("topleft", legend = sprintf(" base = %i\n size = %i\n cost = %i", base, size, cost), bty = "n")

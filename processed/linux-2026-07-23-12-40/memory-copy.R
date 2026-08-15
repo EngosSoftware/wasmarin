@@ -10,7 +10,7 @@ coefs <- coef(model)
 print(coefs)
 
 # Estimating linear function
-a <- 784
+a <- 784.0
 b <- 4500000.0
 fl <- function(x) {
   a*x + b
