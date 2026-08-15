@@ -17,7 +17,7 @@ fl <- function(x) {
 }
 
 # Estimated linear values
-xl <- seq(1, 10000000, by = 10000)
+xl <- seq(1, 10000000, by = 1000)
 yl <- fl(xl)
 
 # Estimating staircase function
